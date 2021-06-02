@@ -3,8 +3,8 @@ import { PersistGate } from "redux-persist/integration/react";
 import { Route, Router, Switch } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
-import HeaderLayout from "../common/layouts/header";
-import BottomLayout from "../common/layouts/bottom";
+import HeaderLayout from "../common/layouts/Header";
+import BottomLayout from "../common/layouts/Bottom";
 import routes from "./routes";
 import { configureStore } from "../redux";
 
