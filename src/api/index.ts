@@ -1,7 +1,11 @@
 import axios from "axios";
+import { getLocalStorageItem, endPoint } from "../core";
 
 const instance = axios.create({
-  baseURL: "",
+  baseURL: endPoint,
+  headers: {
+    token: getLocalStorageItem("token"),
+  },
 });
 
 export const getAPI = async (endpoint: string = "", axiosOption = {}) => {

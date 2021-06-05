@@ -15,6 +15,16 @@ export const HeaderContainer = styled.div`
   font-size: 30px;
   font-weight: bold;
   color: white;
+
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 15px;
+  }
 `;
 
 export const BottomContainer = styled.div`

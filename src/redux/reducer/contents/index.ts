@@ -10,7 +10,7 @@ export default function contentsStore(
 ) {
   switch (action.type) {
     case ActionEnum.GET_CONTENTS:
-      return _.merge([], state, {
+      return Object.assign([], state, {
         contents: action.value,
       });
 
