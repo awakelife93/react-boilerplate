@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { HeaderContainer } from "../components/Conatainer";
-import { login } from "../../api/PostAPI";
 import { connectWrapper } from "../../redux";
-import {
-  clearLocalStorageItem,
-  getLocalStorageItem,
-  setLocalStorageItem,
-} from "../../core/storage";
+import { clearLocalStorageItem, getLocalStorageItem } from "../../core/storage";
 import _ from "lodash";
 
-const Header = () => {
+const HeaderComponent = (props: any) => {
   const [isLogin, setLoginState] = useState(false);
 
   useEffect(() => {
@@ -19,16 +15,15 @@ const Header = () => {
     }
   }, [isLogin]);
 
-  const _login = async () => {
-    const res = await login({ id: "test", password: "1234" });
-    // todo: 서버에서 toeken 값 내려주고 그것에 대해 검사하기
-    setLocalStorageItem(res);
-    setLoginState(true);
+  const history = useHistory();
+  const _login = () => {
+    history.push("/login");
   };
 
   const _logout = () => {
     clearLocalStorageItem();
     setLoginState(false);
+    history.push("/");
   };
 
   return (
@@ -40,4 +35,4 @@ const Header = () => {
   );
 };
 
-export default connectWrapper(Header);
+export default connectWrapper(HeaderComponent);

@@ -1,12 +1,12 @@
 import _ from "lodash";
 import { ActionEnum } from "../../type";
-import { actionIE } from "../../interface";
+import { ActionIE } from "../../interface";
 import { UserInfoIE } from "../../../api/PostAPI/interface";
 import { initUserState } from "./default";
 
 export default function userStore(
   state: UserInfoIE = initUserState,
-  action: actionIE
+  action: ActionIE
 ) {
   switch (action.type) {
     case ActionEnum.GET_USER_INFO:

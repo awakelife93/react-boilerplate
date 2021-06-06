@@ -1,6 +1,11 @@
+import { useEffect } from "react";
+import { connectWrapper } from "../../redux";
 import { BottomContainer } from "../components/Conatainer";
 
-export default () => {
+const BottomComponent = (props: any) => {
+  useEffect(() => {
+    console.log("Bottom", props);
+  });
   return (
     <BottomContainer>
       github:{" "}
@@ -10,3 +15,5 @@ export default () => {
     </BottomContainer>
   );
 };
+
+export default connectWrapper(BottomComponent);

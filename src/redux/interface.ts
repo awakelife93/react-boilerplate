@@ -1,4 +1,4 @@
-export interface actionIE {
+export interface ActionIE {
   type: string;
   value: any;
 }

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { getPagingContentsItem } from "../../api/GetAPI";
 
 import { connectWrapper } from "../../redux";
-import { MainContainer } from "../../common/components/Conatainer";
+import { BodyContainer } from "../../common/components/Conatainer";
 import List from "./List";
 
 /**
@@ -11,7 +11,7 @@ import List from "./List";
  * @param props
  * @returns {Component}
  */
-const Main = (props: any) => {
+const MainComponent = (props: any) => {
   useEffect(() => {
     getContents();
   }, [props.reduxStore.contentsStore.length]);
@@ -25,11 +25,7 @@ const Main = (props: any) => {
     }
   };
 
-  return (
-    <MainContainer>
-      <List cards={props.reduxStore.contentsStore.contents} />
-    </MainContainer>
-  );
+  return <List cards={props.reduxStore.contentsStore.contents} />;
 };
 
-export default connectWrapper(Main);
+export default connectWrapper(MainComponent);

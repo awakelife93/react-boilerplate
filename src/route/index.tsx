@@ -1,38 +1,45 @@
 import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
-import { Route, Router, Switch } from "react-router-dom";
+import { Route, RouteComponentProps, Router, Switch } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
 import HeaderLayout from "../common/layouts/Header";
+import BodyLayout from "../common/layouts/Body";
 import BottomLayout from "../common/layouts/Bottom";
-import routes from "./routes";
+import routes, { RouteIE } from "./routes";
 import { configureStore } from "../redux";
+import { showBottomContainer } from "../utils";
 
-// const { store, persistor } = configureStore();
 const store = configureStore();
 
 export default () => {
   return (
     <Provider store={store}>
-      {/* <PersistGate loading={null} persistor={persistor}> */}
       <Router history={createBrowserHistory()}>
-        <HeaderLayout />
         <Switch>
-          {routes.map((route: any, idx: number) => {
+          {routes.map((route: RouteIE, idx: number) => {
             return (
               <Route
                 key={`route_key_${idx}`}
                 path={route.path}
-                component={route.component}
                 exact={route.exact}
-                render={(props) => <route.component {...props} />}
+                render={(props: RouteComponentProps) => {
+                  return (
+                    <>
+                      <HeaderLayout {...props} />
+                      <BodyLayout>
+                        <route.component {...props} />
+                      </BodyLayout>
+                      {showBottomContainer(props.match.path) && (
+                        <BottomLayout {...props} />
+                      )}
+                    </>
+                  );
+                }}
               />
             );
           })}
         </Switch>
-        <BottomLayout />
       </Router>
-      {/* </PersistGate> */}
     </Provider>
   );
 };
