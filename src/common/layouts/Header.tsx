@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { HeaderContainer } from "../components/Conatainer";
+import _ from "lodash";
+
+import { HeaderContainer, RowContainer } from "../components/Conatainer";
+import { TextButton } from "../components/Button";
+import Icon from "../components/Icon";
 import { connectWrapper } from "../../redux";
 import { clearLocalStorageItem, getLocalStorageItem } from "../../core/storage";
-import _ from "lodash";
+import { RoutePath } from "../../route/routes";
 
 const HeaderComponent = (props: any) => {
   const [isLogin, setLoginState] = useState(false);
@@ -16,21 +20,42 @@ const HeaderComponent = (props: any) => {
   }, [isLogin]);
 
   const history = useHistory();
-  const _login = () => {
-    history.push("/login");
+  const _routePush = (route: string) => {
+    history.push(route);
   };
 
   const _logout = () => {
     clearLocalStorageItem();
     setLoginState(false);
-    history.push("/");
+    _routePush(RoutePath.MAIN);
   };
 
+  const { style } = props;
   return (
-    <HeaderContainer>
-      React Project
-      {!isLogin && <button onClick={() => _login()}>로그인</button>}
-      {isLogin && <button onClick={() => _logout()}>로그아웃</button>}
+    <HeaderContainer {...style}>
+      <RowContainer align-items={"center"} padding={"20px"}>
+        <TextButton font-size={"35px"} onClick={() => _routePush("/")}>
+          React Project
+        </TextButton>
+        <Icon.FaList
+          style={{ marginLeft: 20, cursor: "pointer" }}
+          size={20}
+          onClick={() => _routePush(RoutePath.CONTENTS)}
+        />
+        <Icon.FaList
+          style={{ marginLeft: 20, cursor: "pointer" }}
+          size={20}
+          onClick={() => alert("개발중")}
+        />
+      </RowContainer>
+      {isLogin === false && (
+        <TextButton onClick={() => _routePush(RoutePath.LOGIN)}>
+          로그인
+        </TextButton>
+      )}
+      {isLogin === true && (
+        <TextButton onClick={() => _logout()}>로그아웃</TextButton>
+      )}
     </HeaderContainer>
   );
 };

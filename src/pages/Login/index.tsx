@@ -38,6 +38,7 @@ const LoginComponent = (props: any) => {
   return (
     <RowContainer>
       <ColumnContainer>
+        Title
         <InputBox
           margin={"10px"}
           onChange={(e) => (loginInfo["id"] = e.target.value)}

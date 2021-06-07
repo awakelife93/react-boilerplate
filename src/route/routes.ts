@@ -1,6 +1,7 @@
+import React from "react";
 import MainPage from "../pages/Main";
 import LoginPage from "../pages/Login";
-import React from "react";
+import ContentsPage from "../pages/Contents";
 import { RouteComponentProps } from "react-router-dom";
 
 const routes = [
@@ -14,7 +15,18 @@ const routes = [
     exact: false,
     component: LoginPage,
   },
+  {
+    path: "/contents",
+    exact: false,
+    component: ContentsPage,
+  },
 ];
+
+export enum RoutePath {
+  MAIN = "/",
+  LOGIN = "/login",
+  CONTENTS = "/contents",
+}
 export interface RouteIE {
   path: string;
   exact: boolean;

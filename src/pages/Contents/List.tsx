@@ -1,8 +1,8 @@
 import _ from "lodash";
 import { Card, CardColumns } from "react-bootstrap";
-import { ContentIE } from "../../api/GetAPI/interface";
+import { ContentsIE } from "../../api/GetAPI/interface";
 
-const gridItem = (item: ContentIE, index: number) => {
+const gridItem = (item: ContentsIE, index: number) => {
   return (
     <Card key={`Contents_item_key${index}`}>
       <Card.Img variant="top" src={item.imageLink} />
@@ -19,7 +19,7 @@ export default (props: any) => {
   return (
     <CardColumns>
       {!_.isEmpty(props.cards) &&
-        props.cards.map((card: ContentIE, index: number) =>
+        props.cards.map((card: ContentsIE, index: number) =>
           gridItem(card, index)
         )}
     </CardColumns>

@@ -1,5 +1,6 @@
 import { BodyContainer } from "../components/Conatainer";
 
 export default (props: any) => {
-  return <BodyContainer>{props.children}</BodyContainer>;
+  const { style } = props;
+  return <BodyContainer {...style}>{props.children}</BodyContainer>;
 };

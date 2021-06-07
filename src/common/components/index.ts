@@ -5,5 +5,11 @@ export interface CommonComponentIE {
   padding?: string;
   color?: string;
   border?: string;
+  display?: string;
+  "justify-content"?: string;
+  "align-content"?: string;
+  "align-items"?: string;
+  "font-size"?: string;
+  "font-weight"?: string;
   "background-color"?: string;
 }

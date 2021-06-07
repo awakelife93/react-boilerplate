@@ -1,4 +1,4 @@
-export interface ContentIE {
+export interface ContentsIE {
   imageLink: string;
   title: string;
   subTitle: string;
@@ -6,7 +6,7 @@ export interface ContentIE {
 }
 
 export interface TempIE {
-  data: ContentIE[];
+  data: ContentsIE[];
   status: number;
   message: string;
 }

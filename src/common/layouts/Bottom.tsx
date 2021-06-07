@@ -1,13 +1,10 @@
-import { useEffect } from "react";
 import { connectWrapper } from "../../redux";
 import { BottomContainer } from "../components/Conatainer";
 
 const BottomComponent = (props: any) => {
-  useEffect(() => {
-    console.log("Bottom", props);
-  });
+  const { style } = props;
   return (
-    <BottomContainer>
+    <BottomContainer {...style}>
       github:{" "}
       <a href="https://github.com/HyunwooP" rel="noreferrer" target="_blank">
         https://github.com/HyunwooP

@@ -7,7 +7,13 @@ import BodyLayout from "../common/layouts/Body";
 import BottomLayout from "../common/layouts/Bottom";
 import routes, { RouteIE } from "./routes";
 import { configureStore } from "../redux";
-import { showBottomContainer } from "../utils";
+import {
+  generateBodyContainerStyle,
+  generateBottomContainerStyle,
+  generateHeaderContainerStyle,
+  showBottomContainer,
+  showHeaderContainer,
+} from "../common/styles";
 
 const store = configureStore();
 
@@ -23,14 +29,20 @@ export default () => {
                 path={route.path}
                 exact={route.exact}
                 render={(props: RouteComponentProps) => {
+                  const path = props.match.path ?? "";
+                  const headerStyles = generateHeaderContainerStyle(path);
+                  const bodyStyles = generateBodyContainerStyle(path);
+                  const bottomStyles = generateBottomContainerStyle(path);
                   return (
                     <>
-                      <HeaderLayout {...props} />
-                      <BodyLayout>
+                      {showHeaderContainer(path) && (
+                        <HeaderLayout {...props} {...headerStyles} />
+                      )}
+                      <BodyLayout {...bodyStyles}>
                         <route.component {...props} />
                       </BodyLayout>
-                      {showBottomContainer(props.match.path) && (
-                        <BottomLayout {...props} />
+                      {showBottomContainer(path) && (
+                        <BottomLayout {...props} {...bottomStyles} />
                       )}
                     </>
                   );

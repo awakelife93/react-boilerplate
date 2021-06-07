@@ -1,10 +1,6 @@
-import { useEffect } from "react";
-
-import { getPagingContentsItem } from "../../api/GetAPI";
-
+import { BannerImage } from "../../common/components/Image";
 import { connectWrapper } from "../../redux";
-import { BodyContainer } from "../../common/components/Conatainer";
-import List from "./List";
+import { fadeIn } from "../../core";
 
 /**
  * @description Main Component
@@ -12,20 +8,13 @@ import List from "./List";
  * @returns {Component}
  */
 const MainComponent = (props: any) => {
-  useEffect(() => {
-    getContents();
-  }, [props.reduxStore.contentsStore.length]);
-
-  const getContents = async () => {
-    try {
-      const data = await getPagingContentsItem();
-      props.contentsAction(data);
-    } catch (e) {
-      console.log("===========> MainPage Error", e);
-    }
-  };
-
-  return <List cards={props.reduxStore.contentsStore.contents} />;
+  return (
+    <>
+      <BannerImage src={"/assets/img.png"} {...fadeIn()} />
+      <BannerImage src={"/assets/img.png"} {...fadeIn()} />
+      <BannerImage src={"/assets/img.png"} {...fadeIn()} />
+    </>
+  );
 };
 
 export default connectWrapper(MainComponent);
