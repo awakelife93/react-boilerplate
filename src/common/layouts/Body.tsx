@@ -1,6 +1,6 @@
 import { BodyContainer } from "../components/Conatainer";
 
 export default (props: any) => {
-  const { style } = props;
-  return <BodyContainer {...style}>{props.children}</BodyContainer>;
+  const { layoutStyles } = props;
+  return <BodyContainer {...layoutStyles}>{props.children}</BodyContainer>;
 };

@@ -4,24 +4,6 @@ import LoginPage from "../pages/Login";
 import ContentsPage from "../pages/Contents";
 import { RouteComponentProps } from "react-router-dom";
 
-const routes = [
-  {
-    path: "/",
-    exact: true,
-    component: MainPage,
-  },
-  {
-    path: "/login",
-    exact: false,
-    component: LoginPage,
-  },
-  {
-    path: "/contents",
-    exact: false,
-    component: ContentsPage,
-  },
-];
-
 export enum RoutePath {
   MAIN = "/",
   LOGIN = "/login",
@@ -30,6 +12,25 @@ export enum RoutePath {
 export interface RouteIE {
   path: string;
   exact: boolean;
-  component: React.FC<RouteComponentProps>;
+  Component: React.FC<RouteComponentProps>;
 }
+
+const routes = [
+  {
+    path: "/",
+    exact: true,
+    Component: MainPage,
+  },
+  {
+    path: "/login",
+    exact: false,
+    Component: LoginPage,
+  },
+  {
+    path: "/contents",
+    exact: false,
+    Component: ContentsPage,
+  },
+];
+
 export default routes;

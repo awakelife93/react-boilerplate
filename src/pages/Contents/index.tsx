@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { useEffect } from "react";
 import { getPagingContentsItem } from "../../api/GetAPI";
 import { connectWrapper } from "../../redux";
@@ -15,8 +16,11 @@ const ContentsComponent = (props: any) => {
 
   const getContents = async () => {
     try {
+      const { contentsAction } = props;
       const data = await getPagingContentsItem();
-      props.contentsAction(data);
+      if (_.isFunction(contentsAction)) {
+        contentsAction(data);
+      }
     } catch (e) {
       console.log("===========> MainPage Error", e);
     }

@@ -35,10 +35,10 @@ const LoginComponent = (props: any) => {
     history.push("/");
   };
 
+  const { componentStyles } = props;
   return (
     <RowContainer>
       <ColumnContainer>
-        Title
         <InputBox
           margin={"10px"}
           onChange={(e) => (loginInfo["id"] = e.target.value)}
@@ -48,7 +48,11 @@ const LoginComponent = (props: any) => {
           margin={"10px"}
           onChange={(e) => (loginInfo["password"] = e.target.value)}
         />
-        <SubMitButton margin={"10px"} onClick={_login}>
+        <SubMitButton
+          {...componentStyles.SUB_MIT_BUTTON}
+          margin={"10px"}
+          onClick={_login}
+        >
           로그인
         </SubMitButton>
       </ColumnContainer>

@@ -5,4 +5,5 @@
 export enum ActionEnum {
   GET_USER_INFO = "GET_USER_INFO",
   GET_CONTENTS = "GET_CONTENTS",
+  SET_DARK_MODE = "SET_DARK_MODE",
 }

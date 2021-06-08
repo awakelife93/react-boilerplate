@@ -2,9 +2,9 @@ import { connectWrapper } from "../../redux";
 import { BottomContainer } from "../components/Conatainer";
 
 const BottomComponent = (props: any) => {
-  const { style } = props;
+  const { layoutStyles } = props;
   return (
-    <BottomContainer {...style}>
+    <BottomContainer {...layoutStyles}>
       github:{" "}
       <a href="https://github.com/HyunwooP" rel="noreferrer" target="_blank">
         https://github.com/HyunwooP

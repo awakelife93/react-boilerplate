@@ -30,11 +30,24 @@ const HeaderComponent = (props: any) => {
     _routePush(RoutePath.MAIN);
   };
 
-  const { style } = props;
+  const _DarkMode = () => {
+    const { themeAction, reduxStore } = props;
+
+    if (_.isFunction(themeAction)) {
+      const isDarkMode = reduxStore.themeStore.isDarkMode;
+      themeAction(!isDarkMode);
+    }
+  };
+
+  const { layoutStyles, componentStyles } = props;
   return (
-    <HeaderContainer {...style}>
+    <HeaderContainer {...layoutStyles}>
       <RowContainer align-items={"center"} padding={"20px"}>
-        <TextButton font-size={"35px"} onClick={() => _routePush("/")}>
+        <TextButton
+          {...componentStyles.TEXT_BUTTON}
+          font-size={"35px"}
+          onClick={() => _routePush("/")}
+        >
           React Project
         </TextButton>
         <Icon.FaList
@@ -42,19 +55,24 @@ const HeaderComponent = (props: any) => {
           size={20}
           onClick={() => _routePush(RoutePath.CONTENTS)}
         />
-        <Icon.FaList
+        <Icon.IoIosFlashlight
           style={{ marginLeft: 20, cursor: "pointer" }}
           size={20}
-          onClick={() => alert("개발중")}
+          onClick={() => _DarkMode()}
         />
       </RowContainer>
       {isLogin === false && (
-        <TextButton onClick={() => _routePush(RoutePath.LOGIN)}>
+        <TextButton
+          {...componentStyles.TEXT_BUTTON}
+          onClick={() => _routePush(RoutePath.LOGIN)}
+        >
           로그인
         </TextButton>
       )}
       {isLogin === true && (
-        <TextButton onClick={() => _logout()}>로그아웃</TextButton>
+        <TextButton {...componentStyles.TEXT_BUTTON} onClick={() => _logout()}>
+          로그아웃
+        </TextButton>
       )}
     </HeaderContainer>
   );
