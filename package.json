@@ -1,6 +1,22 @@
 {
-  "name": "bucket_place_proj",
   "version": "0.1.0",
+  "description": "React Template",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HyunwooP/react_template.git"
+  },
+  "keywords": [
+    "React",
+    "Template",
+    "DarkMode",
+    "template"
+  ],
+  "author": "HyunwooPark",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HyunwooP/react_template/issues"
+  },
+  "homepage": "https://github.com/HyunwooP/react_template#readme",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.1.5",
