@@ -6,6 +6,7 @@ import {
   RowContainer,
   ColumnContainer,
 } from "../../common/components/Conatainer";
+import { CommonLabel } from "../../common/components/Label";
 import { InputBox } from "../../common/components/InputBox";
 import { SubMitButton } from "../../common/components/Button";
 import { login } from "../../api/PostAPI";
@@ -39,13 +40,21 @@ const LoginComponent = (props: any) => {
   return (
     <RowContainer>
       <ColumnContainer>
+        <RowContainer align-self={"flex-start"}>
+          <CommonLabel {...componentStyles.COMMON_LABEL}>Email</CommonLabel>
+        </RowContainer>
         <InputBox
-          margin={"10px"}
+          margin-bottom={"15px"}
+          placeholder={"Email"}
           onChange={(e) => (loginInfo["id"] = e.target.value)}
         />
+        <RowContainer align-self={"flex-start"}>
+          <CommonLabel {...componentStyles.COMMON_LABEL}>Password</CommonLabel>
+        </RowContainer>
         <InputBox
+          margin-bottom={"15px"}
+          placeholder={"Password"}
           type={"password"}
-          margin={"10px"}
           onChange={(e) => (loginInfo["password"] = e.target.value)}
         />
         <SubMitButton

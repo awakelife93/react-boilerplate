@@ -51,11 +51,13 @@ const HeaderComponent = (props: any) => {
           React Project
         </TextButton>
         <Icon.FaList
+          {...componentStyles.ICON}
           style={{ marginLeft: 20, cursor: "pointer" }}
           size={20}
           onClick={() => _routePush(RoutePath.CONTENTS)}
         />
         <Icon.IoIosFlashlight
+          {...componentStyles.ICON}
           style={{ marginLeft: 20, cursor: "pointer" }}
           size={20}
           onClick={() => _DarkMode()}

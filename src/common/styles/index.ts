@@ -5,7 +5,8 @@ import {
   BottomContainerIE,
   HeaderContainerIE,
 } from "../components/Conatainer";
-import { CommonColor } from "./color";
+import CommonColor from "./color";
+import CommonTheme from "./theme";
 
 /**
  *
@@ -38,9 +39,9 @@ const generateHeaderContainerStyle = ({
   let style: HeaderContainerIE = {};
 
   if (isDarkMode === true) {
-    style = { ...CommonColor.BLACK_THEME.LAYOUT };
+    style = { ...CommonTheme.BLACK_THEME.LAYOUT };
   } else {
-    style = { ...CommonColor.WHITE_THEME.LAYOUT };
+    style = { ...CommonTheme.WHITE_THEME.LAYOUT };
   }
 
   switch (
@@ -64,14 +65,11 @@ const generateBodyContainerStyle = ({
   let style: BodyContainerIE = {};
 
   if (isDarkMode === true) {
-    style = { ...CommonColor.BLACK_THEME.LAYOUT };
+    style = { ...CommonTheme.BLACK_THEME.LAYOUT };
   } else {
-    style = { ...CommonColor.WHITE_THEME.LAYOUT };
+    style = { ...CommonTheme.WHITE_THEME.LAYOUT };
   }
 
-  // todo: header, top, bottom별 LAYOUT 쪼개기
-  // 그전까지는 delete 처리함
-  delete style.color;
   switch (path) {
     case RoutePath.CONTENTS:
       style.padding = "20px";
@@ -96,9 +94,9 @@ const generateBottomContainerStyle = ({
   let style: BottomContainerIE = {};
 
   if (isDarkMode === true) {
-    style = { ...CommonColor.BLACK_THEME.LAYOUT };
+    style = { ...CommonTheme.BLACK_THEME.LAYOUT };
   } else {
-    style = { ...CommonColor.WHITE_THEME.LAYOUT };
+    style = { ...CommonTheme.WHITE_THEME.LAYOUT };
   }
 
   switch (
@@ -122,9 +120,9 @@ const generateComponentStyle = ({
   let style = {};
 
   if (isDarkMode === true) {
-    style = { ...CommonColor.BLACK_THEME.COMPONENT };
+    style = { ...CommonTheme.BLACK_THEME.COMPONENT };
   } else {
-    style = { ...CommonColor.WHITE_THEME.COMPONENT };
+    style = { ...CommonTheme.WHITE_THEME.COMPONENT };
   }
 
   switch (
@@ -157,6 +155,7 @@ const showHeaderContainer = (route: string): boolean => {
 
 export {
   CommonColor,
+  CommonTheme,
   generateLayoutContainerStyle,
   generateHeaderContainerStyle,
   generateBodyContainerStyle,
