@@ -26,7 +26,13 @@ const ContentsComponent = (props: any) => {
     }
   };
 
-  return <List cards={props.reduxStore.contentsStore.contents} />;
+  const { componentStyles } = props;
+  return (
+    <List
+      style={componentStyles.CARD}
+      cards={props.reduxStore.contentsStore.contents}
+    />
+  );
 };
 
 export default connectWrapper(ContentsComponent);

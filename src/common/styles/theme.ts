@@ -1,13 +1,12 @@
 import { CommonColor } from ".";
 
+// 테마용 컬러
 export default {
-  // 테마용 컬러
   BLACK_THEME: {
     LAYOUT: {
       "background-color": CommonColor.BLACK,
     },
     COMPONENT: {
-      // 안에 컨텐츠들을 여기다가 정의하면 될듯.
       SUB_MIT_BUTTON: {
         "background-color": CommonColor.BLACK,
         color: CommonColor.WHITE,
@@ -23,6 +22,10 @@ export default {
       COMMON_LABEL: {
         color: CommonColor.WHITE,
       },
+      CARD: {
+        "background-color": CommonColor.BLACK,
+        color: CommonColor.WHITE,
+      },
     },
   },
   WHITE_THEME: {
@@ -30,7 +33,6 @@ export default {
       "background-color": CommonColor.WHITE,
     },
     COMPONENT: {
-      // 안에 컨텐츠들을 여기다가 정의하면 될듯.
       SUB_MIT_BUTTON: {
         "background-color": CommonColor.WHITE,
         color: CommonColor.BLACK,
@@ -44,6 +46,10 @@ export default {
         color: CommonColor.BLACK,
       },
       COMMON_LABEL: {
+        color: CommonColor.BLACK,
+      },
+      CARD: {
+        "background-color": CommonColor.WHITE,
         color: CommonColor.BLACK,
       },
     },
