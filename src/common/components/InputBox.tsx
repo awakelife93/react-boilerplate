@@ -6,6 +6,7 @@ interface InputBoxIE extends CommonComponentIE {}
 export const InputBox = styled.input`
   width: ${(props: InputBoxIE) => props["width"] ?? "300px"};
   height: ${(props: InputBoxIE) => props["height"] ?? "40px"};
+  padding: ${(props: InputBoxIE) => props["padding"] ?? "0px"};
   margin: ${(props: InputBoxIE) => props["margin"] ?? "0px"};
   border: ${(props: InputBoxIE) =>
     props["border"] ?? `1px solid ${CommonColor.INPUT_COLOR}`};

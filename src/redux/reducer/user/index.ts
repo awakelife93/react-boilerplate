@@ -11,6 +11,7 @@ export default function userStore(
   switch (action.type) {
     case ActionEnum.GET_USER_INFO:
       return Object.assign({}, state, action.value);
+
     default:
       return state;
   }

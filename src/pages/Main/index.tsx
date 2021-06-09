@@ -1,5 +1,4 @@
 import { BannerImage } from "../../common/components/Image";
-import { connectWrapper } from "../../redux";
 import { fadeIn } from "../../core";
 
 /**
@@ -7,7 +6,7 @@ import { fadeIn } from "../../core";
  * @param props
  * @returns {Component}
  */
-const MainComponent = (props: any) => {
+export default (props: any) => {
   return (
     <>
       <BannerImage src={"/assets/img.png"} {...fadeIn()} />
@@ -16,5 +15,3 @@ const MainComponent = (props: any) => {
     </>
   );
 };
-
-export default connectWrapper(MainComponent);

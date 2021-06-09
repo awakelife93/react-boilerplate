@@ -3,6 +3,10 @@ export interface ActionIE {
   value: any;
 }
 
-export interface DarkModeIE {
+export interface ThemeIE {
   isDarkMode: boolean;
+}
+
+export interface GlobalIE {
+  isShowAdContainer: boolean;
 }

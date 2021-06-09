@@ -1,10 +1,10 @@
 import _ from "lodash";
 import { ActionEnum } from "../../type";
-import { ActionIE, DarkModeIE } from "../../interface";
+import { ActionIE, ThemeIE } from "../../interface";
 import { initDarkModeState } from "./default";
 
-export default function contentsStore(
-  state: DarkModeIE = initDarkModeState,
+export default function themeStore(
+  state: ThemeIE = initDarkModeState,
   action: ActionIE
 ) {
   switch (action.type) {

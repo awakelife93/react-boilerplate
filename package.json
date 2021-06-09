@@ -16,7 +16,6 @@
   "bugs": {
     "url": "https://github.com/HyunwooP/react_template/issues"
   },
-  "homepage": "https://github.com/HyunwooP/react_template#readme",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.1.5",

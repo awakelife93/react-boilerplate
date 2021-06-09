@@ -1,5 +1,6 @@
 import { contentsAction } from "./contents";
 import { loginAction } from "./user";
-import { themeAction } from "./theme";
+import { darkModeAction } from "./theme";
+import { adAction } from "./global";
 
-export { contentsAction, loginAction, themeAction };
+export { contentsAction, loginAction, darkModeAction, adAction };

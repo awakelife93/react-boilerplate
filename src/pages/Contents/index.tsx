@@ -1,7 +1,6 @@
 import _ from "lodash";
 import { useEffect } from "react";
 import { getPagingContentsItem } from "../../api/GetAPI";
-import { connectWrapper } from "../../redux";
 import List from "./List";
 
 /**
@@ -9,7 +8,7 @@ import List from "./List";
  * @param props
  * @returns {Component}
  */
-const ContentsComponent = (props: any) => {
+export default (props: any) => {
   useEffect(() => {
     getContents();
   }, [props.reduxStore.contentsStore.length]);
@@ -34,5 +33,3 @@ const ContentsComponent = (props: any) => {
     />
   );
 };
-
-export default connectWrapper(ContentsComponent);

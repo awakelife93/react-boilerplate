@@ -1,8 +1,7 @@
-import { connectWrapper } from "../../redux";
-import { BottomContainer } from "../components/Conatainer";
-import { CommonLabel } from "../components/Label";
+import { BottomContainer } from "../../components/Conatainer";
+import { CommonLabel } from "../../components/Label";
 
-const BottomComponent = (props: any) => {
+export default (props: any) => {
   const { layoutStyles, componentStyles } = props;
   return (
     <BottomContainer {...layoutStyles}>
@@ -15,5 +14,3 @@ const BottomComponent = (props: any) => {
     </BottomContainer>
   );
 };
-
-export default connectWrapper(BottomComponent);

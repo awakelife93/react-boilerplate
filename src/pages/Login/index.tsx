@@ -1,7 +1,6 @@
 import _ from "lodash";
 import { useHistory } from "react-router";
 
-import { connectWrapper } from "../../redux";
 import {
   RowContainer,
   ColumnContainer,
@@ -18,7 +17,7 @@ import { setLocalStorageItem } from "../../core";
  * @returns {Component}
  */
 
-const LoginComponent = (props: any) => {
+export default (props: any) => {
   const loginInfo = {
     id: "",
     password: "",
@@ -26,6 +25,9 @@ const LoginComponent = (props: any) => {
 
   const history = useHistory();
   const _login = async () => {
+    alert("API 서버 개발 완료하면 붙일 예정입니다.");
+    return false;
+
     if (_.isEmpty(loginInfo["id"]) || _.isEmpty(loginInfo["password"])) {
       alert("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
       return false;
@@ -44,6 +46,7 @@ const LoginComponent = (props: any) => {
           <CommonLabel {...componentStyles.COMMON_LABEL}>Email</CommonLabel>
         </RowContainer>
         <InputBox
+          padding={"5px"}
           margin-bottom={"15px"}
           placeholder={"Email"}
           onChange={(e) => (loginInfo["id"] = e.target.value)}
@@ -52,6 +55,7 @@ const LoginComponent = (props: any) => {
           <CommonLabel {...componentStyles.COMMON_LABEL}>Password</CommonLabel>
         </RowContainer>
         <InputBox
+          padding={"5px"}
           margin-bottom={"15px"}
           placeholder={"Password"}
           type={"password"}
@@ -68,5 +72,3 @@ const LoginComponent = (props: any) => {
     </RowContainer>
   );
 };
-
-export default connectWrapper(LoginComponent);

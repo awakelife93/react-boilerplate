@@ -1,4 +1,4 @@
-import { BodyContainer } from "../components/Conatainer";
+import { BodyContainer } from "../../components/Conatainer";
 
 export default (props: any) => {
   const { layoutStyles } = props;

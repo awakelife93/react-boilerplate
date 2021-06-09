@@ -29,6 +29,24 @@ const generateLayoutContainerStyle = ({ path = "" }: { path: string }) => {
   };
 };
 
+const generateCommonContainerStyle = ({
+  isDarkMode = false,
+}: {
+  isDarkMode: boolean;
+}) => {
+  let style: HeaderContainerIE = {};
+
+  if (isDarkMode === true) {
+    style = { ...CommonTheme.BLACK_THEME.LAYOUT };
+  } else {
+    style = { ...CommonTheme.WHITE_THEME.LAYOUT };
+  }
+
+  return {
+    style,
+  };
+};
+
 const generateHeaderContainerStyle = ({
   path = "",
   isDarkMode = false,
@@ -157,6 +175,7 @@ export {
   CommonColor,
   CommonTheme,
   generateLayoutContainerStyle,
+  generateCommonContainerStyle,
   generateHeaderContainerStyle,
   generateBodyContainerStyle,
   generateBottomContainerStyle,
