@@ -15,17 +15,17 @@ import CommonTheme from "./theme";
  */
 
 const generateLayoutContainerStyle = ({ path = "" }: { path: string }) => {
-  let style: LayoutContainerIE = {};
+  let _style: LayoutContainerIE = {};
 
   switch (path) {
     // todo: 필요 시 작성
     case RoutePath.LOGIN: {
-      style["position"] = "absolute";
+      _style["style"] = { position: "absolute" };
     }
   }
 
   return {
-    style,
+    ..._style["style"],
   };
 };
 
@@ -34,16 +34,16 @@ const generateCommonContainerStyle = ({
 }: {
   isDarkMode: boolean;
 }) => {
-  let style: HeaderContainerIE = {};
+  let _style: HeaderContainerIE = {};
 
   if (isDarkMode === true) {
-    style = { ...CommonTheme.BLACK_THEME.LAYOUT };
+    _style["style"] = { ...CommonTheme.BLACK_THEME.LAYOUT };
   } else {
-    style = { ...CommonTheme.WHITE_THEME.LAYOUT };
+    _style["style"] = { ...CommonTheme.WHITE_THEME.LAYOUT };
   }
 
   return {
-    style,
+    ..._style["style"],
   };
 };
 
@@ -54,12 +54,12 @@ const generateHeaderContainerStyle = ({
   path: string;
   isDarkMode: boolean;
 }) => {
-  let style: HeaderContainerIE = {};
+  let _style: HeaderContainerIE = {};
 
   if (isDarkMode === true) {
-    style = { ...CommonTheme.BLACK_THEME.LAYOUT };
+    _style["style"] = { ...CommonTheme.BLACK_THEME.LAYOUT };
   } else {
-    style = { ...CommonTheme.WHITE_THEME.LAYOUT };
+    _style["style"] = { ...CommonTheme.WHITE_THEME.LAYOUT };
   }
 
   switch (
@@ -69,7 +69,7 @@ const generateHeaderContainerStyle = ({
   }
 
   return {
-    style,
+    ..._style["style"],
   };
 };
 
@@ -80,25 +80,25 @@ const generateBodyContainerStyle = ({
   path: string;
   isDarkMode: boolean;
 }) => {
-  let style: BodyContainerIE = {};
+  let _style: BodyContainerIE = {};
 
   if (isDarkMode === true) {
-    style = { ...CommonTheme.BLACK_THEME.LAYOUT };
+    _style["style"] = { ...CommonTheme.BLACK_THEME.LAYOUT };
   } else {
-    style = { ...CommonTheme.WHITE_THEME.LAYOUT };
+    _style["style"] = { ...CommonTheme.WHITE_THEME.LAYOUT };
   }
 
   switch (path) {
     case RoutePath.CONTENTS:
-      style.padding = "20px";
+      _style["style"].padding = "20px";
       break;
     case RoutePath.LOGIN:
-      style.padding = "100px";
+      _style["style"].padding = "100px";
       break;
   }
 
   return {
-    style,
+    ..._style["style"],
   };
 };
 
@@ -109,12 +109,12 @@ const generateBottomContainerStyle = ({
   path: string;
   isDarkMode: boolean;
 }) => {
-  let style: BottomContainerIE = {};
+  let _style: BottomContainerIE = {};
 
   if (isDarkMode === true) {
-    style = { ...CommonTheme.BLACK_THEME.LAYOUT };
+    _style["style"] = { ...CommonTheme.BLACK_THEME.LAYOUT };
   } else {
-    style = { ...CommonTheme.WHITE_THEME.LAYOUT };
+    _style["style"] = { ...CommonTheme.WHITE_THEME.LAYOUT };
   }
 
   switch (
@@ -124,7 +124,7 @@ const generateBottomContainerStyle = ({
   }
 
   return {
-    style,
+    ..._style["style"],
   };
 };
 
@@ -150,7 +150,6 @@ const generateComponentStyle = ({
   }
 
   return {
-    // 원뎁스로 풀어주자... style key 제거
     ...style,
   };
 };

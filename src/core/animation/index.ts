@@ -1,3 +1,4 @@
-import fadeIn from "./fadeIn";
+import FadeIn from "./FadeIn";
+import Move from "./Move";
 
-export { fadeIn };
+export { FadeIn, Move };

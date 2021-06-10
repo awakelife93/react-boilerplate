@@ -51,7 +51,7 @@ export default (props: any) => {
 
   const { layoutStyles, componentStyles, reduxStore } = props;
   return (
-    <HeaderContainer {...layoutStyles}>
+    <HeaderContainer style={{ ...layoutStyles }}>
       <IconsActionComponent
         isShowAdContainer={reduxStore.globalStore.isShowAdContainer}
         _routePush={_routePush}

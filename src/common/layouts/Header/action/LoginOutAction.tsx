@@ -7,14 +7,21 @@ export default (props: any) => {
     <>
       {isLogin === false && (
         <TextButton
-          {...componentStyles.TEXT_BUTTON}
+          style={{
+            ...componentStyles.TEXT_BUTTON,
+          }}
           onClick={() => _routePush(RoutePath.LOGIN)}
         >
           로그인
         </TextButton>
       )}
       {isLogin === true && (
-        <TextButton {...componentStyles.TEXT_BUTTON} onClick={() => _logout()}>
+        <TextButton
+          style={{
+            ...componentStyles.TEXT_BUTTON,
+          }}
+          onClick={() => _logout()}
+        >
           로그아웃
         </TextButton>
       )}

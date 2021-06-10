@@ -1,6 +1,10 @@
 import { useCallback, useEffect, useRef } from "react";
 import { AnimationOption } from "./interface";
 
+/**
+ * @description
+ * Scroll을 감지하여 FadeIn Animation
+ */
 export default (
   option: AnimationOption = {
     delay: 0,

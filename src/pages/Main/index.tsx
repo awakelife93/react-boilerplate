@@ -1,5 +1,5 @@
 import { BannerImage } from "../../common/components/Image";
-import { fadeIn } from "../../core";
+import { FadeIn } from "../../core";
 
 /**
  * @description Main Component
@@ -9,9 +9,9 @@ import { fadeIn } from "../../core";
 export default (props: any) => {
   return (
     <>
-      <BannerImage src={"/assets/img.png"} {...fadeIn()} />
-      <BannerImage src={"/assets/img.png"} {...fadeIn()} />
-      <BannerImage src={"/assets/img.png"} {...fadeIn()} />
+      <BannerImage src={"/assets/img.png"} {...FadeIn()} />
+      <BannerImage src={"/assets/img.png"} {...FadeIn()} />
+      <BannerImage src={"/assets/img.png"} {...FadeIn()} />
     </>
   );
 };

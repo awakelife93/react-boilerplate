@@ -42,28 +42,46 @@ export default (props: any) => {
   return (
     <RowContainer>
       <ColumnContainer>
-        <RowContainer align-self={"flex-start"}>
-          <CommonLabel {...componentStyles.COMMON_LABEL}>Email</CommonLabel>
+        <RowContainer
+          style={{
+            alignSelf: "flex-start",
+          }}
+        >
+          <CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
+            Email
+          </CommonLabel>
         </RowContainer>
         <InputBox
-          padding={"5px"}
-          margin-bottom={"15px"}
+          style={{
+            padding: "5px",
+            marginBottom: "15px",
+          }}
           placeholder={"Email"}
           onChange={(e) => (loginInfo["id"] = e.target.value)}
         />
-        <RowContainer align-self={"flex-start"}>
-          <CommonLabel {...componentStyles.COMMON_LABEL}>Password</CommonLabel>
+        <RowContainer
+          style={{
+            alignSelf: "flex-start",
+          }}
+        >
+          <CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
+            Password
+          </CommonLabel>
         </RowContainer>
         <InputBox
-          padding={"5px"}
-          margin-bottom={"15px"}
+          style={{
+            padding: "5px",
+            marginBottom: "15px",
+          }}
           placeholder={"Password"}
           type={"password"}
           onChange={(e) => (loginInfo["password"] = e.target.value)}
         />
         <SubMitButton
-          {...componentStyles.SUB_MIT_BUTTON}
-          margin={"10px"}
+          style={{
+            ...componentStyles.SUB_MIT_BUTTON,
+            margin: "10px",
+          }}
           onClick={_login}
         >
           로그인

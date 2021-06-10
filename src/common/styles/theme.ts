@@ -4,16 +4,16 @@ import { CommonColor } from ".";
 export default {
   BLACK_THEME: {
     LAYOUT: {
-      "background-color": CommonColor.BLACK,
+      backgroundColor: CommonColor.BLACK,
     },
     COMPONENT: {
       SUB_MIT_BUTTON: {
-        "background-color": CommonColor.BLACK,
+        backgroundColor: CommonColor.BLACK,
         color: CommonColor.WHITE,
         border: `solid 1px ${CommonColor.WHITE}`,
       },
       TEXT_BUTTON: {
-        "background-color": CommonColor.BLACK,
+        backgroundColor: CommonColor.BLACK,
         color: CommonColor.WHITE,
       },
       ICON: {
@@ -23,23 +23,23 @@ export default {
         color: CommonColor.WHITE,
       },
       CARD: {
-        "background-color": CommonColor.BLACK,
+        backgroundColor: CommonColor.BLACK,
         color: CommonColor.WHITE,
       },
     },
   },
   WHITE_THEME: {
     LAYOUT: {
-      "background-color": CommonColor.WHITE,
+      backgroundColor: CommonColor.WHITE,
     },
     COMPONENT: {
       SUB_MIT_BUTTON: {
-        "background-color": CommonColor.WHITE,
+        backgroundColor: CommonColor.WHITE,
         color: CommonColor.BLACK,
         border: `solid 1px ${CommonColor.BLACK}`,
       },
       TEXT_BUTTON: {
-        "background-color": CommonColor.WHITE,
+        backgroundColor: CommonColor.WHITE,
         color: CommonColor.BLACK,
       },
       ICON: {
@@ -49,7 +49,7 @@ export default {
         color: CommonColor.BLACK,
       },
       CARD: {
-        "background-color": CommonColor.WHITE,
+        backgroundColor: CommonColor.WHITE,
         color: CommonColor.BLACK,
       },
     },

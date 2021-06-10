@@ -13,37 +13,48 @@ export default (props: any) => {
   } = props;
   return (
     <>
-      <RowContainer align-items={"center"} padding={"20px"}>
+      <RowContainer
+        style={{
+          alignItems: "center",
+          padding: "20px",
+        }}
+      >
         <TextButton
-          {...componentStyles.TEXT_BUTTON}
-          font-size={"35px"}
+          style={{
+            ...componentStyles.TEXT_BUTTON,
+            fontSize: "35px",
+          }}
           onClick={() => _routePush("/")}
         >
           React Project
         </TextButton>
         <Icon.FaList
-          {...componentStyles.ICON}
-          style={{ marginLeft: 20, cursor: "pointer" }}
+          style={{ ...componentStyles.ICON, marginLeft: 20, cursor: "pointer" }}
           size={20}
           onClick={() => _routePush(RoutePath.CONTENTS)}
         />
         <Icon.IoIosFlashlight
-          {...componentStyles.ICON}
-          style={{ marginLeft: 20, cursor: "pointer" }}
+          style={{ ...componentStyles.ICON, marginLeft: 20, cursor: "pointer" }}
           size={20}
           onClick={() => _darkMode()}
         />
         {isShowAdContainer ? (
           <Icon.FaAngleUp
-            {...componentStyles.ICON}
-            style={{ marginLeft: 20, cursor: "pointer" }}
+            style={{
+              ...componentStyles.ICON,
+              marginLeft: 20,
+              cursor: "pointer",
+            }}
             size={20}
             onClick={() => _showAdContainer()}
           />
         ) : (
           <Icon.FaAngleDown
-            {...componentStyles.ICON}
-            style={{ marginLeft: 20, cursor: "pointer" }}
+            style={{
+              ...componentStyles.ICON,
+              marginLeft: 20,
+              cursor: "pointer",
+            }}
             size={20}
             onClick={() => _showAdContainer()}
           />

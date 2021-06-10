@@ -6,14 +6,12 @@ const gridItem = (item: ContentsIE, index: number, style: any) => {
   return (
     <Card key={`Contents_item_key${index}`}>
       <Card.Img variant="top" src={item.imageLink} />
-      <Card.Body style={{ backgroundColor: style["background-color"] }}>
-        <Card.Title style={{ color: style["color"] }}>{item.title}</Card.Title>
-        <Card.Subtitle style={{ color: style["color"] }}>
+      <Card.Body style={{ backgroundColor: style.backgroundColor }}>
+        <Card.Title style={{ color: style.color }}>{item.title}</Card.Title>
+        <Card.Subtitle style={{ color: style.color }}>
           {item.subTitle}
         </Card.Subtitle>
-        <Card.Text style={{ color: style["color"] }}>
-          {item.description}
-        </Card.Text>
+        <Card.Text style={{ color: style.color }}>{item.description}</Card.Text>
       </Card.Body>
     </Card>
   );

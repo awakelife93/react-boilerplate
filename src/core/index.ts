@@ -5,7 +5,8 @@ import {
   removeLocalStorageItem,
 } from "./storage";
 
-import { fadeIn } from "./animation";
+import { FadeIn } from "./animation";
+import { Move } from "./animation";
 
 const __DEV__ = window.location.hostname === "localhost";
 const endPoint = "http://localhost:3001/";
@@ -15,7 +16,8 @@ export {
   setLocalStorageItem,
   clearLocalStorageItem,
   removeLocalStorageItem,
-  fadeIn,
+  FadeIn,
+  Move,
   __DEV__,
   endPoint,
 };
