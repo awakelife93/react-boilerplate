@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import _ from "lodash";
 
 import { RoutePath } from "../../../route/routes";
-import { HeaderContainer } from "../../components/Conatainer";
+import { Container } from "../../components";
 import {
   clearLocalStorageItem,
   getLocalStorageItem,
@@ -49,14 +49,20 @@ export default (props: any) => {
     }
   };
 
+  const _setLaunage = (launage: any) => {
+    // todo: 작업 예정
+    console.log("lauange: ", launage);
+  };
+
   const { layoutStyles, componentStyles, reduxStore } = props;
   return (
-    <HeaderContainer style={{ ...layoutStyles }}>
+    <Container.HeaderContainer style={{ ...layoutStyles }}>
       <IconsActionComponent
         isShowAdContainer={reduxStore.globalStore.isShowAdContainer}
         _routePush={_routePush}
         _darkMode={_darkMode}
         _showAdContainer={_showAdContainer}
+        _setLaunage={_setLaunage}
         componentStyles={componentStyles}
       />
       <LoginOutActionComponent
@@ -65,6 +71,6 @@ export default (props: any) => {
         _logout={_logout}
         componentStyles={componentStyles}
       />
-    </HeaderContainer>
+    </Container.HeaderContainer>
   );
 };

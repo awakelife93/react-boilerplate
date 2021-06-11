@@ -1,29 +1,29 @@
 import { RoutePath } from "../../../../route/routes";
-import { TextButton } from "../../../components/Button";
+import { Button } from "../../../components";
 
 export default (props: any) => {
   const { isLogin, _routePush, _logout, componentStyles } = props;
   return (
     <>
       {isLogin === false && (
-        <TextButton
+        <Button.TextButton
           style={{
             ...componentStyles.TEXT_BUTTON,
           }}
           onClick={() => _routePush(RoutePath.LOGIN)}
         >
           로그인
-        </TextButton>
+        </Button.TextButton>
       )}
       {isLogin === true && (
-        <TextButton
+        <Button.TextButton
           style={{
             ...componentStyles.TEXT_BUTTON,
           }}
           onClick={() => _logout()}
         >
           로그아웃
-        </TextButton>
+        </Button.TextButton>
       )}
     </>
   );

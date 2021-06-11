@@ -1,16 +1,15 @@
-import { BottomContainer } from "../../components/Conatainer";
-import { CommonLabel } from "../../components/Label";
+import { Container, Label } from "../../components";
 
 export default (props: any) => {
   const { layoutStyles, componentStyles } = props;
   return (
-    <BottomContainer style={{ ...layoutStyles }}>
-      <CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
+    <Container.BottomContainer style={{ ...layoutStyles }}>
+      <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
         github:{" "}
         <a href="https://github.com/HyunwooP" rel="noreferrer" target="_blank">
           https://github.com/HyunwooP
         </a>
-      </CommonLabel>
-    </BottomContainer>
+      </Label.CommonLabel>
+    </Container.BottomContainer>
   );
 };

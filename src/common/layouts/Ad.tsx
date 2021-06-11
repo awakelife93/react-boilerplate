@@ -1,12 +1,10 @@
 import _ from "lodash";
-import { Move } from "../../core";
-import { ColumnContainer } from "../components/Conatainer";
-import Icon from "../components/Icon";
-import { CommonLabel } from "../components/Label";
+import { FadeIn, Move } from "../../core";
+import { Container, Label, Icon, Image } from "../components";
+import { CommonImage } from "../styles";
 
-// todo = styled component로 layout 따기 (common하게 쓸 수 있는 것으로)
 const AdComponent = (props: any) => {
-  const { layoutStyles, componentStyles } = props;
+  const { componentStyles, reduxStore } = props;
 
   const _hideAdContainer = () => {
     const { adAction } = props;
@@ -16,18 +14,24 @@ const AdComponent = (props: any) => {
     }
   };
 
+  const isDarkMode = reduxStore.themeStore.isDarkMode;
   return (
-    <div
+    <Image.BackGroundImage
+      requireStyle={{
+        backgroundImage: isDarkMode
+          ? `url(${CommonImage.FREE_IMAGE2})`
+          : `url(${CommonImage.FREE_IMAGE3})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
       style={{
-        height: 300,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        ...layoutStyles,
       }}
     >
-      <ColumnContainer>
-        <CommonLabel
+      <Container.ColumnContainer>
+        <Label.CommonLabel
           style={{
             ...componentStyles.COMMON_LABEL,
             fontWeight: "bold",
@@ -35,17 +39,17 @@ const AdComponent = (props: any) => {
           }}
         >
           AD 영역이라고 부르지만...
-        </CommonLabel>
-        <CommonLabel
+        </Label.CommonLabel>
+        <Label.CommonLabel
           style={{ ...componentStyles.COMMON_LABEL, fontSize: "15px" }}
         >
           혹시 모를 상황을 대비하여
-        </CommonLabel>
-        <CommonLabel
+        </Label.CommonLabel>
+        <Label.CommonLabel
           style={{ ...componentStyles.COMMON_LABEL, fontSize: "15px" }}
         >
           공간을 미리 만들어 둔다.
-        </CommonLabel>
+        </Label.CommonLabel>
         <div {...Move()}>
           <Icon.FaAngleDoubleUp
             style={{ ...componentStyles.ICON, cursor: "pointer" }}
@@ -53,8 +57,8 @@ const AdComponent = (props: any) => {
             onClick={() => _hideAdContainer()}
           />
         </div>
-      </ColumnContainer>
-    </div>
+      </Container.ColumnContainer>
+    </Image.BackGroundImage>
   );
 };
 

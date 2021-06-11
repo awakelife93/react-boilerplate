@@ -1,10 +1,10 @@
-import { LayoutContainer } from "../components/Conatainer";
+import { Container } from "../components";
 
 export default (props: any) => {
   const { layoutStyles } = props;
   return (
-    <LayoutContainer style={{ ...layoutStyles }}>
+    <Container.LayoutContainer style={{ ...layoutStyles }}>
       {props.children}
-    </LayoutContainer>
+    </Container.LayoutContainer>
   );
 };

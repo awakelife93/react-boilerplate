@@ -4,9 +4,10 @@ import {
   BodyContainerIE,
   BottomContainerIE,
   HeaderContainerIE,
-} from "../components/Conatainer";
+} from "../components/Container";
 import CommonColor from "./color";
 import CommonTheme from "./theme";
+import CommonImage from "./image";
 
 /**
  *
@@ -15,17 +16,17 @@ import CommonTheme from "./theme";
  */
 
 const generateLayoutContainerStyle = ({ path = "" }: { path: string }) => {
-  let _style: LayoutContainerIE = {};
+  let props: LayoutContainerIE = {};
 
   switch (path) {
     // todo: 필요 시 작성
     case RoutePath.LOGIN: {
-      _style["style"] = { position: "absolute" };
+      props["style"] = { position: "absolute" };
     }
   }
 
   return {
-    ..._style["style"],
+    ...props["style"],
   };
 };
 
@@ -34,16 +35,16 @@ const generateCommonContainerStyle = ({
 }: {
   isDarkMode: boolean;
 }) => {
-  let _style: HeaderContainerIE = {};
+  let props: HeaderContainerIE = {};
 
   if (isDarkMode === true) {
-    _style["style"] = { ...CommonTheme.BLACK_THEME.LAYOUT };
+    props["style"] = { ...CommonTheme.BLACK_THEME.LAYOUT };
   } else {
-    _style["style"] = { ...CommonTheme.WHITE_THEME.LAYOUT };
+    props["style"] = { ...CommonTheme.WHITE_THEME.LAYOUT };
   }
 
   return {
-    ..._style["style"],
+    ...props["style"],
   };
 };
 
@@ -54,12 +55,12 @@ const generateHeaderContainerStyle = ({
   path: string;
   isDarkMode: boolean;
 }) => {
-  let _style: HeaderContainerIE = {};
+  let props: HeaderContainerIE = {};
 
   if (isDarkMode === true) {
-    _style["style"] = { ...CommonTheme.BLACK_THEME.LAYOUT };
+    props["style"] = { ...CommonTheme.BLACK_THEME.LAYOUT };
   } else {
-    _style["style"] = { ...CommonTheme.WHITE_THEME.LAYOUT };
+    props["style"] = { ...CommonTheme.WHITE_THEME.LAYOUT };
   }
 
   switch (
@@ -69,7 +70,7 @@ const generateHeaderContainerStyle = ({
   }
 
   return {
-    ..._style["style"],
+    ...props["style"],
   };
 };
 
@@ -80,25 +81,25 @@ const generateBodyContainerStyle = ({
   path: string;
   isDarkMode: boolean;
 }) => {
-  let _style: BodyContainerIE = {};
+  let props: BodyContainerIE = {};
 
   if (isDarkMode === true) {
-    _style["style"] = { ...CommonTheme.BLACK_THEME.LAYOUT };
+    props["style"] = { ...CommonTheme.BLACK_THEME.LAYOUT };
   } else {
-    _style["style"] = { ...CommonTheme.WHITE_THEME.LAYOUT };
+    props["style"] = { ...CommonTheme.WHITE_THEME.LAYOUT };
   }
 
   switch (path) {
     case RoutePath.CONTENTS:
-      _style["style"].padding = "20px";
+      props["style"].padding = "20px";
       break;
     case RoutePath.LOGIN:
-      _style["style"].padding = "100px";
+      props["style"].padding = "100px";
       break;
   }
 
   return {
-    ..._style["style"],
+    ...props["style"],
   };
 };
 
@@ -109,12 +110,12 @@ const generateBottomContainerStyle = ({
   path: string;
   isDarkMode: boolean;
 }) => {
-  let _style: BottomContainerIE = {};
+  let props: BottomContainerIE = {};
 
   if (isDarkMode === true) {
-    _style["style"] = { ...CommonTheme.BLACK_THEME.LAYOUT };
+    props["style"] = { ...CommonTheme.BLACK_THEME.LAYOUT };
   } else {
-    _style["style"] = { ...CommonTheme.WHITE_THEME.LAYOUT };
+    props["style"] = { ...CommonTheme.WHITE_THEME.LAYOUT };
   }
 
   switch (
@@ -124,7 +125,7 @@ const generateBottomContainerStyle = ({
   }
 
   return {
-    ..._style["style"],
+    ...props["style"],
   };
 };
 
@@ -173,6 +174,7 @@ const showHeaderContainer = (route: string): boolean => {
 export {
   CommonColor,
   CommonTheme,
+  CommonImage,
   generateLayoutContainerStyle,
   generateCommonContainerStyle,
   generateHeaderContainerStyle,

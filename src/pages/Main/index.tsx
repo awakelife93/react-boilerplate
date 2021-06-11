@@ -1,4 +1,5 @@
-import { BannerImage } from "../../common/components/Image";
+import { Image } from "../../common/components";
+import { CommonImage } from "../../common/styles";
 import { FadeIn } from "../../core";
 
 /**
@@ -9,9 +10,9 @@ import { FadeIn } from "../../core";
 export default (props: any) => {
   return (
     <>
-      <BannerImage src={"/assets/img.png"} {...FadeIn()} />
-      <BannerImage src={"/assets/img.png"} {...FadeIn()} />
-      <BannerImage src={"/assets/img.png"} {...FadeIn()} />
+      <Image.BannerImage src={CommonImage.FREE_IMAGE1} />
+      <Image.BannerImage src={CommonImage.FREE_IMAGE1} {...FadeIn()} />
+      <Image.BannerImage src={CommonImage.FREE_IMAGE1} {...FadeIn()} />
     </>
   );
 };
