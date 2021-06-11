@@ -1,4 +1,3 @@
-import _ from "lodash";
 import { ActionEnum } from "../../type";
 import { ActionIE, ThemeIE } from "../../interface";
 import { initDarkModeState } from "./default";

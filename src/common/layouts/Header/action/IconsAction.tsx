@@ -20,7 +20,7 @@ export default (props: any) => {
       <Button.TextButton
         style={{
           ...componentStyles.TEXT_BUTTON,
-          fontSize: "35px",
+          fontSize: 35,
         }}
         onClick={() => _routePush("/")}
       >
@@ -74,17 +74,17 @@ export default (props: any) => {
           // props로 던지자...
 
           // 애는 테마와 전혀 상관이 없어서 Theme에 안넣는다.
-          borderRadius: "15px",
-          width: "150px",
-          height: "30px",
-          marginLeft: "150px",
+          borderRadius: 15,
+          width: 150,
+          height: 30,
+          marginLeft: 150,
           position: "absolute",
-          top: "60px",
+          top: 60,
         }}
         menuItemStyle={{
           ...componentStyles.MENU_BOX_ITEM,
-          fontSize: "15px",
-          marginRight: "5px",
+          fontSize: 15,
+          marginRight: 5,
         }}
         renderItems={["한국어", "영어"]}
         onSelect={(launage: any) => _setLaunage(launage)}

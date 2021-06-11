@@ -1,4 +1,3 @@
-import _ from "lodash";
 import { ActionEnum } from "../../type";
 import { ActionIE, GlobalIE } from "../../interface";
 import { initGlobalState } from "./default";

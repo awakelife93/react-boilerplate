@@ -1,4 +1,3 @@
-import _ from "lodash";
 import { ActionEnum } from "../../type";
 import { ActionIE } from "../../interface";
 import { UserInfoIE } from "../../../api/PostAPI/interface";

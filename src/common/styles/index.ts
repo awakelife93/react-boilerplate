@@ -91,10 +91,10 @@ const generateBodyContainerStyle = ({
 
   switch (path) {
     case RoutePath.CONTENTS:
-      props["style"].padding = "20px";
+      props["style"].padding = 20;
       break;
     case RoutePath.LOGIN:
-      props["style"].padding = "100px";
+      props["style"].padding = 100;
       break;
   }
 

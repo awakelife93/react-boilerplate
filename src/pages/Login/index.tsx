@@ -50,8 +50,8 @@ export default (props: any) => {
         </Container.RowContainer>
         <InputBox.CommonInputBox
           style={{
-            padding: "5px",
-            marginBottom: "15px",
+            padding: 5,
+            marginBottom: 15,
           }}
           placeholder={"Email"}
           onChange={(e) => (loginInfo["id"] = e.target.value)}
@@ -67,8 +67,8 @@ export default (props: any) => {
         </Container.RowContainer>
         <InputBox.CommonInputBox
           style={{
-            padding: "5px",
-            marginBottom: "15px",
+            padding: 5,
+            marginBottom: 15,
           }}
           placeholder={"Password"}
           type={"password"}
@@ -77,7 +77,7 @@ export default (props: any) => {
         <Button.SubMitButton
           style={{
             ...componentStyles.SUB_MIT_BUTTON,
-            margin: "10px",
+            margin: 10,
           }}
           onClick={_login}
         >

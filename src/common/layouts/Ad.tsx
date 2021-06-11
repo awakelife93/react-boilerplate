@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { FadeIn, Move } from "../../core";
+import { Move } from "../../core";
 import { Container, Label, Icon, Image } from "../components";
 import { CommonImage } from "../styles";
 
@@ -35,18 +35,18 @@ const AdComponent = (props: any) => {
           style={{
             ...componentStyles.COMMON_LABEL,
             fontWeight: "bold",
-            fontSize: "20px",
+            fontSize: 20,
           }}
         >
           AD 영역이라고 부르지만...
         </Label.CommonLabel>
         <Label.CommonLabel
-          style={{ ...componentStyles.COMMON_LABEL, fontSize: "15px" }}
+          style={{ ...componentStyles.COMMON_LABEL, fontSize: 15 }}
         >
           혹시 모를 상황을 대비하여
         </Label.CommonLabel>
         <Label.CommonLabel
-          style={{ ...componentStyles.COMMON_LABEL, fontSize: "15px" }}
+          style={{ ...componentStyles.COMMON_LABEL, fontSize: 15 }}
         >
           공간을 미리 만들어 둔다.
         </Label.CommonLabel>
