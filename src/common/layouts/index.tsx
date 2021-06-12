@@ -1,3 +1,4 @@
+import { withTranslation } from "react-i18next";
 import { connectWrapper } from "../../redux";
 import Layout from "./Layout";
 import AdLayout from "./Ad";
@@ -29,7 +30,6 @@ const _Layout = (props: any) => {
   const { reduxStore, path, Component } = props;
   const isDarkMode = reduxStore.themeStore.isDarkMode;
   const isShowAdContainer = reduxStore.globalStore.isShowAdContainer;
-
   const layoutStyles = generateLayoutContainerStyle({ path }) ?? {};
   const commonStyles = generateCommonContainerStyle({ isDarkMode }) ?? {};
   const headerStyles = generateHeaderContainerStyle({ path, isDarkMode }) ?? {};
@@ -66,4 +66,4 @@ const _Layout = (props: any) => {
   );
 };
 
-export default connectWrapper(_Layout);
+export default connectWrapper(withTranslation()(_Layout));
