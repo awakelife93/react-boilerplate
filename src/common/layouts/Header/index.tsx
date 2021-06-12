@@ -10,7 +10,7 @@ import {
   getLocalStorageItem,
 } from "../../../core/storage";
 import { LoginOutActionComponent, IconsActionComponent } from "./action";
-import { ModalContents } from "../../components";
+import { modalContents } from "../Modal";
 
 export default (props: any) => {
   const [isLogin, setLoginState] = useState(false);
@@ -63,7 +63,7 @@ export default (props: any) => {
       const isShowModal = reduxStore.globalStore.modal.isShowModal;
       showModalAction({
         isShowModal: !isShowModal,
-        children: ModalContents.IntroDuce,
+        children: modalContents.Introduce,
         style: {
           width: 500,
           height: 300,

@@ -1,11 +1,19 @@
+import { useEffect } from "react";
 import _ from "lodash";
-import { Container, Icon } from "../components";
+import { Container, Icon } from "../../components";
 import {
   initModalStatus,
   removeBodyScroll,
   revertBodyScroll,
-} from "../../utils";
-import { useEffect } from "react";
+} from "../../../utils";
+
+/**
+ * ModalContents로 따로 빼내주기
+ */
+import Introduce from "./Introduce";
+export const modalContents = {
+  Introduce,
+};
 
 /**
  * todo: Styled Component로 모달 레이아웃 따기.

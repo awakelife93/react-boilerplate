@@ -1,4 +1,4 @@
-import { Container, Label, InputBox, Button } from "..";
+import { Container, Label, InputBox, Button } from "../../components";
 
 export default (props: any) => {
   const { componentStyles } = props;
