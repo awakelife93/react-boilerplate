@@ -1,9 +1,12 @@
-import { defaultShowAdContainer } from "../../../common/const";
+import {
+  defaultShowAdContainer,
+  defaultShowModal,
+} from "../../../common/const";
 
 export const initGlobalState = {
   isShowAdContainer: defaultShowAdContainer,
   modal: {
-    isShowModal: false,
+    isShowModal: defaultShowModal,
     children: "",
     style: {},
   },

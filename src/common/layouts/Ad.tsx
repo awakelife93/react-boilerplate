@@ -10,10 +10,10 @@ const AdComponent = (props: any) => {
   const { t } = useTranslation();
 
   const _hideAdContainer = () => {
-    const { showAdAction } = props;
+    const { initShowAdAction } = props;
 
-    if (_.isFunction(showAdAction)) {
-      showAdAction(false);
+    if (_.isFunction(initShowAdAction)) {
+      initShowAdAction();
     }
   };
 

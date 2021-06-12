@@ -1,11 +1,7 @@
 import { useEffect } from "react";
 import _ from "lodash";
 import { Container, Icon } from "../../components";
-import {
-  initModalStatus,
-  removeBodyScroll,
-  revertBodyScroll,
-} from "../../../utils";
+import { removeBodyScroll, revertBodyScroll } from "../../../utils";
 
 /**
  * ModalContents로 따로 빼내주기
@@ -19,7 +15,7 @@ export const modalContents = {
  * todo: Styled Component로 모달 레이아웃 따기.
  */
 export default (props: any) => {
-  const { layoutStyles, componentStyles, showModalAction, style } = props;
+  const { layoutStyles, componentStyles, initShowModalAction, style } = props;
 
   useEffect(() => {
     removeBodyScroll();
@@ -28,6 +24,14 @@ export default (props: any) => {
       revertBodyScroll();
     };
   });
+
+  const _closeModal = () => {
+    const { initShowModalAction } = props;
+
+    if (_.isFunction(initShowModalAction)) {
+      initShowModalAction();
+    }
+  };
 
   return (
     <Container.LayoutContainer>
@@ -45,6 +49,7 @@ export default (props: any) => {
         style={{
           ...layoutStyles,
           ...style,
+          border: "1px solid white", // 다크모드 고려해서 받기
           borderRadius: 25, // WrapperStyle에 받기
           position: "absolute", // 필수
           transform: "translate(-50%, -50%)", // 필수
@@ -60,11 +65,7 @@ export default (props: any) => {
             cursor: "pointer",
           }}
           size={30}
-          onClick={() => {
-            if (_.isFunction(showModalAction)) {
-              showModalAction(initModalStatus());
-            }
-          }}
+          onClick={() => _closeModal()}
         />
         <Container.LayoutContainer style={{ padding: 30 }}>
           <props.children componentStyles={componentStyles} />
