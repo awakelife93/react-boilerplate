@@ -1,6 +1,7 @@
 /**
  * @description
  * i18n Launage Command Type 정의
+ * 자동으로 command를 만들어주는 함수를 만들까 했지만, 어차피 엔티티를 정의해줘야 하는거 Enum으로 땄음.
  */
 export enum I18nCommandEnum {
   KO = "ko",

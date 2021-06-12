@@ -1,3 +1,5 @@
+import { defaultDarkMode } from "../../../common/const";
+
 export const initDarkModeState = {
-  isDarkMode: false,
+  isDarkMode: defaultDarkMode,
 };

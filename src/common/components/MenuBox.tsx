@@ -7,7 +7,15 @@ interface ItemIE {
   value: any;
 }
 
-export default (props: any) => {
+interface MenuBoxIE {
+  renderItems: ItemIE[];
+  children: React.FC;
+  onClick: (props: any) => null;
+  menuContainerStyle: any;
+  menuItemStyle: any;
+}
+
+export default (props: MenuBoxIE) => {
   const [isShowMenuBox, setShowMenuBox] = useState(false);
   const { menuContainerStyle, menuItemStyle, onClick, renderItems } = props;
 

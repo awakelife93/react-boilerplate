@@ -73,7 +73,7 @@ export default (props: any) => {
           />
         )}
         menuContainerStyle={{
-          ...componentStyles.MENU_BOX_CONTAINER,
+          ...componentStyles.MENU_BOX.CONTAINER,
           // 최대한 공통으로 따고 싶은 스타일이지만, 애가 어디에 위치할지 몰라서
           // props로 던지자...
 
@@ -86,7 +86,7 @@ export default (props: any) => {
           top: 60,
         }}
         menuItemStyle={{
-          ...componentStyles.MENU_BOX_ITEM,
+          ...componentStyles.MENU_BOX.ITEM,
           fontSize: 15,
           marginRight: 5,
         }}

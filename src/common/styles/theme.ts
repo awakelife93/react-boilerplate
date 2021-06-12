@@ -7,12 +7,14 @@ export default {
       backgroundColor: CommonColor.BLACK,
     },
     COMPONENT: {
-      MENU_BOX_CONTAINER: {
-        backgroundColor: CommonColor.BLACK,
-        border: `solid 1px ${CommonColor.WHITE}`,
-      },
-      MENU_BOX_ITEM: {
-        color: CommonColor.WHITE,
+      MENU_BOX: {
+        CONTAINER: {
+          backgroundColor: CommonColor.BLACK,
+          border: `solid 1px ${CommonColor.WHITE}`,
+        },
+        ITEM: {
+          color: CommonColor.WHITE,
+        },
       },
       SUB_MIT_BUTTON: {
         backgroundColor: CommonColor.BLACK,
@@ -40,12 +42,14 @@ export default {
       backgroundColor: CommonColor.WHITE,
     },
     COMPONENT: {
-      MENU_BOX_CONTAINER: {
-        backgroundColor: CommonColor.WHITE,
-        border: `solid 1px ${CommonColor.BLACK}`,
-      },
-      MENU_BOX_ITEM: {
-        color: CommonColor.BLACK,
+      MENU_BOX: {
+        CONTAINER: {
+          backgroundColor: CommonColor.WHITE,
+          border: `solid 1px ${CommonColor.BLACK}`,
+        },
+        ITEM: {
+          color: CommonColor.BLACK,
+        },
       },
       SUB_MIT_BUTTON: {
         backgroundColor: CommonColor.WHITE,
