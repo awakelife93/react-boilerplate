@@ -2,9 +2,14 @@ import _ from "lodash";
 import { useState } from "react";
 import { Container } from "../components";
 
+interface ItemIE {
+  displayName: string;
+  value: any;
+}
+
 export default (props: any) => {
   const [isShowMenuBox, setShowMenuBox] = useState(false);
-  const { menuContainerStyle, menuItemStyle, onSelect, renderItems } = props;
+  const { menuContainerStyle, menuItemStyle, onClick, renderItems } = props;
 
   if (!_.isArray(renderItems) || renderItems.length === 0) {
     return null;
@@ -15,7 +20,7 @@ export default (props: any) => {
       <props.children />
       {isShowMenuBox === true && (
         <Container.RowContainer style={{ ...menuContainerStyle }}>
-          {renderItems.map((item: any, idx: number) => {
+          {renderItems.map((item: ItemIE, idx: number) => {
             return (
               <Container.RowContainer
                 key={`MenuBox_Item_${idx}`}
@@ -23,9 +28,9 @@ export default (props: any) => {
                   ...menuItemStyle,
                   cursor: "pointer",
                 }}
-                onClick={() => onSelect(item)}
+                onClick={() => onClick(item.value)}
               >
-                {item}
+                {item.displayName}
               </Container.RowContainer>
             );
           })}

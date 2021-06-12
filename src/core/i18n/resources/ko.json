@@ -1,3 +1,13 @@
 {
-  "logo_title": "리액트"
+  "ko": "한국어",
+  "en": "영어",
+  "login": "로그인",
+  "logout": "로그아웃",
+
+  "ad_title": "AD 영역",
+  "ad_content1": "혹시 모를 상황을 대비하여",
+  "ad_content2": "공간을 미리 만들어 둔다.",
+
+  "email": "이메일",
+  "password": "패스워드"
 }

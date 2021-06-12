@@ -1,3 +1,13 @@
 {
-  "logo_title": "React Project"
+  "ko": "Korean",
+  "en": "English",
+  "login": "Login",
+  "logout": "Logout",
+
+  "ad_title": "AD AREA",
+  "ad_content1": "In case of unforeseen circumstances",
+  "ad_content2": "Make space in advance.",
+
+  "email": "Email",
+  "password": "Password"
 }

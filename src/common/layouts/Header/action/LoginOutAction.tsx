@@ -1,8 +1,11 @@
+import { useTranslation } from "react-i18next";
+import { I18nCommandEnum } from "../../../../core/i18n/type";
 import { RoutePath } from "../../../../route/routes";
 import { Button } from "../../../components";
 
 export default (props: any) => {
   const { isLogin, _routePush, _logout, componentStyles } = props;
+  const { t } = useTranslation();
   return (
     <>
       {isLogin === false && (
@@ -12,7 +15,7 @@ export default (props: any) => {
           }}
           onClick={() => _routePush(RoutePath.LOGIN)}
         >
-          로그인
+          {t(I18nCommandEnum.LOGIN)}
         </Button.TextButton>
       )}
       {isLogin === true && (
@@ -22,7 +25,7 @@ export default (props: any) => {
           }}
           onClick={() => _logout()}
         >
-          로그아웃
+          {t(I18nCommandEnum.LOGOUT)}
         </Button.TextButton>
       )}
     </>

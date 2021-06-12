@@ -5,6 +5,7 @@ import {
   removeLocalStorageItem,
 } from "./storage";
 
+import i18n from "./i18n";
 import { FadeIn } from "./animation";
 import { Move } from "./animation";
 
@@ -16,6 +17,7 @@ export {
   setLocalStorageItem,
   clearLocalStorageItem,
   removeLocalStorageItem,
+  i18n,
   FadeIn,
   Move,
   __DEV__,

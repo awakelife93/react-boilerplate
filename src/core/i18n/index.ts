@@ -6,11 +6,15 @@ import en from "./resources/en.json";
 import ko from "./resources/ko.json";
 
 const resources = {
-  en,
-  ko,
+  en: {
+    translation: en,
+  },
+  ko: {
+    translation: ko,
+  },
 };
 
-export default i18n.use(initReactI18next).init({
+i18n.use(initReactI18next).init({
   resources,
   // 기본 언어
   lng: defaultLng,
@@ -21,3 +25,5 @@ export default i18n.use(initReactI18next).init({
     escapeValue: false,
   },
 });
+
+export default i18n;

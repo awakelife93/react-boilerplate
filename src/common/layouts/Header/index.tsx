@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import _ from "lodash";
 
 import { RoutePath } from "../../../route/routes";
@@ -49,9 +50,9 @@ export default (props: any) => {
     }
   };
 
-  const _setLaunage = (launage: any) => {
-    // todo: 작업 예정
-    console.log("lauange: ", launage);
+  const { i18n } = useTranslation();
+  const _setLaunage = (lng: string) => {
+    i18n.changeLanguage(lng);
   };
 
   const { layoutStyles, componentStyles, reduxStore } = props;

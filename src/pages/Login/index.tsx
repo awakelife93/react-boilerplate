@@ -7,6 +7,8 @@ import { Container, Label, InputBox, Button } from "../../common/components";
 // import { SubMitButton } from "../../common/components/Button";
 import { login } from "../../api/PostAPI";
 import { setLocalStorageItem } from "../../core";
+import { useTranslation } from "react-i18next";
+import { I18nCommandEnum } from "../../core/i18n/type";
 
 /**
  * @description Login Component
@@ -15,11 +17,11 @@ import { setLocalStorageItem } from "../../core";
  */
 
 export default (props: any) => {
+  const { t } = useTranslation();
   const loginInfo = {
     id: "",
     password: "",
   };
-
   const history = useHistory();
   const _login = async () => {
     alert("API 서버 개발 완료하면 붙일 예정입니다.");
@@ -45,7 +47,7 @@ export default (props: any) => {
           }}
         >
           <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
-            Email
+            {t(I18nCommandEnum.EMAIL)}
           </Label.CommonLabel>
         </Container.RowContainer>
         <InputBox.CommonInputBox
@@ -53,7 +55,7 @@ export default (props: any) => {
             padding: 5,
             marginBottom: 15,
           }}
-          placeholder={"Email"}
+          placeholder={t(I18nCommandEnum.EMAIL)}
           onChange={(e) => (loginInfo["id"] = e.target.value)}
         />
         <Container.RowContainer
@@ -62,7 +64,7 @@ export default (props: any) => {
           }}
         >
           <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
-            Password
+            {t(I18nCommandEnum.PASSWORD)}
           </Label.CommonLabel>
         </Container.RowContainer>
         <InputBox.CommonInputBox
@@ -70,7 +72,7 @@ export default (props: any) => {
             padding: 5,
             marginBottom: 15,
           }}
-          placeholder={"Password"}
+          placeholder={t(I18nCommandEnum.PASSWORD)}
           type={"password"}
           onChange={(e) => (loginInfo["password"] = e.target.value)}
         />
@@ -81,7 +83,7 @@ export default (props: any) => {
           }}
           onClick={_login}
         >
-          로그인
+          {t(I18nCommandEnum.LOGIN)}
         </Button.SubMitButton>
       </Container.ColumnContainer>
     </Container.RowContainer>

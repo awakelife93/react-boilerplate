@@ -1,8 +1,11 @@
+import { useTranslation } from "react-i18next";
+import { I18nCommandEnum } from "../../../../core/i18n/type";
 import { RoutePath } from "../../../../route/routes";
 import { Container, Button, Icon } from "../../../components";
 import { MenuBox } from "../../../components";
 
 export default (props: any) => {
+  const { t } = useTranslation();
   const {
     isShowAdContainer,
     _routePush,
@@ -11,6 +14,7 @@ export default (props: any) => {
     _setLaunage,
     componentStyles,
   } = props;
+
   return (
     <Container.RowContainer
       style={{
@@ -86,8 +90,17 @@ export default (props: any) => {
           fontSize: 15,
           marginRight: 5,
         }}
-        renderItems={["한국어", "영어"]}
-        onSelect={(launage: any) => _setLaunage(launage)}
+        renderItems={[
+          {
+            displayName: t(I18nCommandEnum.KO),
+            value: "ko",
+          },
+          {
+            displayName: t(I18nCommandEnum.EN),
+            value: "en",
+          },
+        ]}
+        onClick={(lng: any) => _setLaunage(lng)}
       />
     </Container.RowContainer>
   );

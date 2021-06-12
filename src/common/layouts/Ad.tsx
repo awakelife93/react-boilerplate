@@ -1,10 +1,13 @@
 import _ from "lodash";
+import { useTranslation } from "react-i18next";
 import { Move } from "../../core";
+import { I18nCommandEnum } from "../../core/i18n/type";
 import { Container, Label, Icon, Image } from "../components";
 import { CommonImage } from "../styles";
 
 const AdComponent = (props: any) => {
   const { componentStyles, reduxStore } = props;
+  const { t } = useTranslation();
 
   const _hideAdContainer = () => {
     const { adAction } = props;
@@ -38,17 +41,17 @@ const AdComponent = (props: any) => {
             fontSize: 20,
           }}
         >
-          AD 영역이라고 부르지만...
+          {t(I18nCommandEnum.AD_TITLE)}
         </Label.CommonLabel>
         <Label.CommonLabel
           style={{ ...componentStyles.COMMON_LABEL, fontSize: 15 }}
         >
-          혹시 모를 상황을 대비하여
+          {t(I18nCommandEnum.AD_CONTENT1)}
         </Label.CommonLabel>
         <Label.CommonLabel
           style={{ ...componentStyles.COMMON_LABEL, fontSize: 15 }}
         >
-          공간을 미리 만들어 둔다.
+          {t(I18nCommandEnum.AD_CONTENT2)}
         </Label.CommonLabel>
         <div {...Move()}>
           <Icon.FaAngleDoubleUp
