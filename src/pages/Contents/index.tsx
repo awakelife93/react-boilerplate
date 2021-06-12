@@ -15,10 +15,10 @@ export default (props: any) => {
 
   const getContents = async () => {
     try {
-      const { contentsAction } = props;
+      const { getContentsAction } = props;
       const data = await getPagingContentsItem();
-      if (_.isFunction(contentsAction)) {
-        contentsAction(data);
+      if (_.isFunction(getContentsAction)) {
+        getContentsAction(data);
       }
     } catch (e) {
       console.log("===========> MainPage Error", e);

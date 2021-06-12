@@ -10,6 +10,7 @@ import {
   getLocalStorageItem,
 } from "../../../core/storage";
 import { LoginOutActionComponent, IconsActionComponent } from "./action";
+import { ModalContents } from "../../components";
 
 export default (props: any) => {
   const [isLogin, setLoginState] = useState(false);
@@ -33,26 +34,42 @@ export default (props: any) => {
   };
 
   const _darkMode = () => {
-    const { darkModeAction, reduxStore } = props;
+    const { setDarkModeAction, reduxStore } = props;
 
-    if (_.isFunction(darkModeAction)) {
+    if (_.isFunction(setDarkModeAction)) {
       const isDarkMode = reduxStore.themeStore.isDarkMode;
-      darkModeAction(!isDarkMode);
+      setDarkModeAction(!isDarkMode);
     }
   };
 
   const _showAdContainer = () => {
-    const { adAction, reduxStore } = props;
+    const { showAdAction, reduxStore } = props;
 
-    if (_.isFunction(adAction)) {
+    if (_.isFunction(showAdAction)) {
       const isShowAdContainer = reduxStore.globalStore.isShowAdContainer;
-      adAction(!isShowAdContainer);
+      showAdAction(!isShowAdContainer);
     }
   };
 
   const { i18n } = useTranslation();
   const _setLaunage = (lng: string) => {
     i18n.changeLanguage(lng);
+  };
+
+  const _showTemplateModal = () => {
+    const { showModalAction, reduxStore, componentStyles } = props;
+
+    if (_.isFunction(showModalAction)) {
+      const isShowModal = reduxStore.globalStore.modal.isShowModal;
+      showModalAction({
+        isShowModal: !isShowModal,
+        children: ModalContents.IntroDuce,
+        style: {
+          width: 500,
+          height: 300,
+        },
+      });
+    }
   };
 
   const { layoutStyles, componentStyles, reduxStore } = props;
@@ -64,6 +81,7 @@ export default (props: any) => {
         _darkMode={_darkMode}
         _showAdContainer={_showAdContainer}
         _setLaunage={_setLaunage}
+        _showTemplateModal={_showTemplateModal}
         componentStyles={componentStyles}
       />
       <LoginOutActionComponent

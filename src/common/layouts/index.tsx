@@ -1,9 +1,11 @@
 import { connectWrapper } from "../../redux";
+
 import Layout from "./Layout";
 import AdLayout from "./Ad";
 import HeaderLayout from "./Header";
 import BodyLayout from "./Body";
 import BottomLayout from "./Bottom";
+import ModalLayout from "./Modal";
 
 import {
   generateLayoutContainerStyle,
@@ -30,6 +32,8 @@ const _Layout = (props: any) => {
 
   const isDarkMode = reduxStore.themeStore.isDarkMode;
   const isShowAdContainer = reduxStore.globalStore.isShowAdContainer;
+  const isShowModal = reduxStore.globalStore.modal.isShowModal;
+
   const layoutStyles = generateLayoutContainerStyle({ path }) ?? {};
   const commonStyles = generateCommonContainerStyle({ isDarkMode }) ?? {};
   const headerStyles = generateHeaderContainerStyle({ path, isDarkMode }) ?? {};
@@ -39,6 +43,15 @@ const _Layout = (props: any) => {
 
   return (
     <Layout layoutStyles={layoutStyles}>
+      {isShowModal && (
+        <ModalLayout
+          {...props}
+          layoutStyles={commonStyles}
+          componentStyles={componentStyles}
+          children={reduxStore.globalStore.modal.children}
+          style={reduxStore.globalStore.modal.style}
+        />
+      )}
       {showHeaderContainer(path) && (
         <HeaderLayout
           {...props}

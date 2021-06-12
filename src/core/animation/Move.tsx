@@ -39,7 +39,9 @@ export default (
       timeoutId = setTimeout(() => move(), option.delay);
     }
 
-    return () => clearTimeout(timeoutId);
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, [animationObject.isMove]);
 
   return {

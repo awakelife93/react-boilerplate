@@ -12,6 +12,10 @@ export default function globalStore(
         isShowAdContainer: action.value,
       });
 
+    case ActionEnum.SET_MODAL:
+      return Object.assign([], state, {
+        modal: action.value,
+      });
     default:
       return state;
   }

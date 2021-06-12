@@ -12,6 +12,7 @@ export default (props: any) => {
     _darkMode,
     _showAdContainer,
     _setLaunage,
+    _showTemplateModal,
     componentStyles,
   } = props;
 
@@ -101,6 +102,11 @@ export default (props: any) => {
           },
         ]}
         onClick={(lng: any) => _setLaunage(lng)}
+      />
+      <Icon.FaThList
+        style={{ ...componentStyles.ICON, marginLeft: 20, cursor: "pointer" }}
+        size={20}
+        onClick={() => _showTemplateModal()}
       />
     </Container.RowContainer>
   );

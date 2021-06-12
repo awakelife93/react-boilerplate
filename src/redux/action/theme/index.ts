@@ -1,6 +1,6 @@
 import { ActionEnum } from "../../type";
 
-export const darkModeAction = (value: boolean) => ({
+export const setDarkModeAction = (value: boolean) => ({
   type: ActionEnum.SET_DARK_MODE,
   value,
 });
