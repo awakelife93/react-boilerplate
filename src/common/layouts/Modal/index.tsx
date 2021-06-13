@@ -3,19 +3,13 @@ import _ from "lodash";
 import { Container, Icon } from "../../components";
 import { removeBodyScroll, revertBodyScroll } from "../../../utils";
 
-/**
- * ModalContents로 따로 빼내주기
- */
 import Introduce from "./Introduce";
 export const modalContents = {
   Introduce,
 };
 
-/**
- * todo: Styled Component로 모달 레이아웃 따기.
- */
 export default (props: any) => {
-  const { layoutStyles, componentStyles, initShowModalAction, style } = props;
+  const { layoutStyles, componentStyles, style, option } = props;
 
   useEffect(() => {
     removeBodyScroll();
@@ -39,9 +33,12 @@ export default (props: any) => {
       <Container.LayoutContainer
         style={{
           ...layoutStyles,
-          position: "fixed", // 필수
-          opacity: 0.5, // ContainerStyle로 받기
-          zIndex: 1, // 필수
+          position: "fixed",
+          opacity: 0.5,
+          zIndex: 1,
+        }}
+        onClick={() => {
+          if (option.dimClose === true) _closeModal();
         }}
       />
       {/* modal area */}
@@ -49,14 +46,11 @@ export default (props: any) => {
         style={{
           ...layoutStyles,
           ...style,
-          border: "1px solid white", // 다크모드 고려해서 받기
-          borderRadius: 25, // WrapperStyle에 받기
-          position: "absolute", // 필수
-          transform: "translate(-50%, -50%)", // 필수
-          top: "50%", // 필수
-          left: "50%", // 필수
-          padding: 20, // WrapperStyle에 받기
-          zIndex: 2, // 필수
+          position: "absolute",
+          transform: "translate(-50%, -50%)",
+          top: "50%",
+          left: "50%",
+          zIndex: 2,
         }}
       >
         <Icon.IoCloseCircleOutline

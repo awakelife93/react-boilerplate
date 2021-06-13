@@ -9,4 +9,9 @@ export interface ThemeIE {
 
 export interface GlobalIE {
   isShowAdContainer: boolean;
+  modalItem: {
+    children: any;
+    style: any;
+    option: any;
+  };
 }

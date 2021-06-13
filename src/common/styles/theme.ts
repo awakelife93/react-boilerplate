@@ -6,11 +6,14 @@ export default {
     LAYOUT: {
       backgroundColor: CommonColor.BLACK,
     },
+    MODAL_LAYOUT: {
+      border: `1px solid ${CommonColor.WHITE}`,
+    },
     COMPONENT: {
       MENU_BOX: {
         CONTAINER: {
           backgroundColor: CommonColor.BLACK,
-          border: `solid 1px ${CommonColor.WHITE}`,
+          border: `1px solid ${CommonColor.WHITE}`,
         },
         ITEM: {
           color: CommonColor.WHITE,
@@ -19,7 +22,7 @@ export default {
       SUB_MIT_BUTTON: {
         backgroundColor: CommonColor.BLACK,
         color: CommonColor.WHITE,
-        border: `solid 1px ${CommonColor.WHITE}`,
+        border: `1px solid ${CommonColor.WHITE}`,
       },
       TEXT_BUTTON: {
         backgroundColor: CommonColor.BLACK,
@@ -41,11 +44,14 @@ export default {
     LAYOUT: {
       backgroundColor: CommonColor.WHITE,
     },
+    MODAL_LAYOUT: {
+      border: `1px solid ${CommonColor.BLACK}`,
+    },
     COMPONENT: {
       MENU_BOX: {
         CONTAINER: {
           backgroundColor: CommonColor.WHITE,
-          border: `solid 1px ${CommonColor.BLACK}`,
+          border: `1px solid ${CommonColor.BLACK}`,
         },
         ITEM: {
           color: CommonColor.BLACK,
@@ -54,7 +60,7 @@ export default {
       SUB_MIT_BUTTON: {
         backgroundColor: CommonColor.WHITE,
         color: CommonColor.BLACK,
-        border: `solid 1px ${CommonColor.BLACK}`,
+        border: `1px solid ${CommonColor.BLACK}`,
       },
       TEXT_BUTTON: {
         backgroundColor: CommonColor.WHITE,

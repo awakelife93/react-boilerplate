@@ -11,27 +11,25 @@ export default (props: any) => {
           marginBottom: 20,
         }}
       >
-        Common Modal!
+        Common Modal
       </Label.CommonLabel>
       <Container.RowContainer
         style={{ ...componentStyles.COMMON_LABEL, marginBottom: 10 }}
       >
-        어떻게 꾸며야 잘 꾸민 모달이 될까...
+        모달이 필요한 컴포넌트를 전달 받아
       </Container.RowContainer>
       <Container.RowContainer
         style={{ ...componentStyles.COMMON_LABEL, marginBottom: 10 }}
       >
-        텍스트를 일단 막 넣어보도록 하자.
+        해당 레이아웃안에 위치시킨다.
       </Container.RowContainer>
       <Container.RowContainer
         style={{ ...componentStyles.COMMON_LABEL, marginBottom: 10 }}
-      >
-        3줄 정도?
-      </Container.RowContainer>
+      ></Container.RowContainer>
       <Container.RowContainer
         style={{ ...componentStyles.COMMON_LABEL, marginBottom: 10 }}
       >
-        굿 3줄이다.
+        리사이징 고려중
       </Container.RowContainer>
     </Container.ColumnContainer>
   );

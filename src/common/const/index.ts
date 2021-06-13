@@ -4,3 +4,4 @@ export const defaultLng = I18nCommandEnum.KO;
 export const defaultDarkMode = true;
 export const defaultShowAdContainer = false;
 export const defaultShowModal = false;
+export const defaultDimClose = false;

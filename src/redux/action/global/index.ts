@@ -1,21 +1,14 @@
 import { ActionEnum } from "../../type";
-import {
-  defaultShowAdContainer,
-  defaultShowModal,
-} from "../../../common/const";
+import { initGlobalState } from "../../reducer/global/default";
 
 export const initShowAdAction = () => ({
   type: ActionEnum.SET_AD_CONTAINER,
-  value: defaultShowAdContainer,
+  value: initGlobalState.isShowAdContainer,
 });
 
 export const initShowModalAction = () => ({
-  type: ActionEnum.SET_MODAL,
-  value: {
-    isShowModal: defaultShowModal,
-    children: "",
-    style: {},
-  },
+  type: ActionEnum.SET_MODAL_ITEM,
+  value: initGlobalState.modalItem,
 });
 
 export const showAdAction = (value: boolean) => ({
@@ -24,6 +17,6 @@ export const showAdAction = (value: boolean) => ({
 });
 
 export const showModalAction = (value: any) => ({
-  type: ActionEnum.SET_MODAL,
+  type: ActionEnum.SET_MODAL_ITEM,
   value,
 });

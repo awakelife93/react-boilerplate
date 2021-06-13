@@ -1,13 +1,17 @@
 import {
+  defaultDimClose,
   defaultShowAdContainer,
   defaultShowModal,
 } from "../../../common/const";
 
 export const initGlobalState = {
   isShowAdContainer: defaultShowAdContainer,
-  modal: {
+  modalItem: {
     isShowModal: defaultShowModal,
     children: "",
     style: {},
+    option: {
+      dimClose: defaultDimClose,
+    },
   },
 };

@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { ActionEnum } from "../../type";
 import { ActionIE } from "../../interface";
 import { ContentsIE } from "../../../api/GetAPI/interface";
@@ -9,7 +10,7 @@ export default function contentsStore(
 ) {
   switch (action.type) {
     case ActionEnum.GET_CONTENTS:
-      return Object.assign([], state, {
+      return _.merge([], state, {
         contents: action.value,
       });
 

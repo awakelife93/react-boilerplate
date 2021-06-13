@@ -16,6 +16,7 @@ import {
   showBottomContainer,
   showHeaderContainer,
   generateCommonContainerStyle,
+  generateModalContainerStyle,
 } from "../styles";
 
 /**
@@ -30,26 +31,49 @@ import {
 const _Layout = (props: any) => {
   const { reduxStore, path, Component } = props;
 
+  const modalItem = reduxStore.globalStore.modalItem;
   const isDarkMode = reduxStore.themeStore.isDarkMode;
   const isShowAdContainer = reduxStore.globalStore.isShowAdContainer;
-  const isShowModal = reduxStore.globalStore.modal.isShowModal;
 
+  /**
+   * common layout style
+   * @function layoutStyles path에 따라 수정이 가능한 스타일
+   * @function commonStyles 수정이 불가능한 스타일
+   */
   const layoutStyles = generateLayoutContainerStyle({ path }) ?? {};
   const commonStyles = generateCommonContainerStyle({ isDarkMode }) ?? {};
+
+  /**
+   * modal layout style
+   * @function modalStyles 따로 수정이 가능하게끔 확장해둔 형태
+   */
+  const modalStyles = generateModalContainerStyle({ isDarkMode }) ?? {};
+
+  /**
+   * header, body, bottom styles
+   * @function headerStyles 수정이 가능한 스타일
+   * @function bodyStyles 수정이 가능한 스타일
+   * @function bottomStyles 수정이 가능한 스타일
+   */
   const headerStyles = generateHeaderContainerStyle({ path, isDarkMode }) ?? {};
   const bodyStyles = generateBodyContainerStyle({ path, isDarkMode }) ?? {};
   const bottomStyles = generateBottomContainerStyle({ path, isDarkMode }) ?? {};
-  const componentStyles = generateComponentStyle({ path, isDarkMode }) ?? {};
 
+  /**
+   * component styles
+   * @function componentStyles 수정이 가능한 스타일
+   */
+  const componentStyles = generateComponentStyle({ path, isDarkMode }) ?? {};
   return (
     <Layout layoutStyles={layoutStyles}>
-      {isShowModal && (
+      {modalItem.isShowModal && (
         <ModalLayout
           {...props}
           layoutStyles={commonStyles}
           componentStyles={componentStyles}
-          children={reduxStore.globalStore.modal.children}
-          style={reduxStore.globalStore.modal.style}
+          children={modalItem.children}
+          style={{ ...modalStyles, ...modalItem.style }}
+          option={modalItem.option}
         />
       )}
       {showHeaderContainer(path) && (

@@ -31,12 +31,30 @@ const generateLayoutContainerStyle = ({ path = "" }: { path: string }) => {
   };
 };
 
+const generateModalContainerStyle = ({
+  isDarkMode = false,
+}: {
+  isDarkMode: boolean;
+}) => {
+  let props: LayoutContainerIE = {};
+
+  if (isDarkMode === true) {
+    props["style"] = { ...CommonTheme.BLACK_THEME.MODAL_LAYOUT };
+  } else {
+    props["style"] = { ...CommonTheme.WHITE_THEME.MODAL_LAYOUT };
+  }
+
+  return {
+    ...props["style"],
+  };
+};
+
 const generateCommonContainerStyle = ({
   isDarkMode = false,
 }: {
   isDarkMode: boolean;
 }) => {
-  let props: HeaderContainerIE = {};
+  let props: LayoutContainerIE = {};
 
   if (isDarkMode === true) {
     props["style"] = { ...CommonTheme.BLACK_THEME.LAYOUT };
@@ -177,6 +195,7 @@ export {
   CommonTheme,
   CommonImage,
   generateLayoutContainerStyle,
+  generateModalContainerStyle,
   generateCommonContainerStyle,
   generateHeaderContainerStyle,
   generateBodyContainerStyle,

@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { ActionEnum } from "../../type";
 import { ActionIE, ThemeIE } from "../../interface";
 import { initDarkModeState } from "./default";
@@ -8,7 +9,7 @@ export default function themeStore(
 ) {
   switch (action.type) {
     case ActionEnum.SET_DARK_MODE:
-      return Object.assign([], state, {
+      return _.merge({}, state, {
         isDarkMode: action.value,
       });
 

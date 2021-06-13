@@ -1,6 +1,8 @@
 import _ from "lodash";
+import { useEffect } from "react";
 import { useState } from "react";
 import { Container } from "../components";
+import { defaultShowModal } from "../const";
 
 interface ItemIE {
   displayName: string;
@@ -22,6 +24,19 @@ export default (props: MenuBoxIE) => {
   if (!_.isArray(renderItems) || renderItems.length === 0) {
     return null;
   }
+
+  const checkOutSideClick = (event: any) => {
+    // 어느 영역을 눌러도 종료가 되게끔...
+    setShowMenuBox(defaultShowModal);
+  };
+
+  useEffect(() => {
+    if (isShowMenuBox === true) {
+      window.addEventListener("click", checkOutSideClick);
+    }
+
+    return () => window.removeEventListener("click", checkOutSideClick);
+  }, [isShowMenuBox]);
 
   return (
     <Container.ColumnContainer onClick={() => setShowMenuBox(!isShowMenuBox)}>

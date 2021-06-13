@@ -57,16 +57,21 @@ export default (props: any) => {
   };
 
   const _showTemplateModal = () => {
-    const { showModalAction, reduxStore, componentStyles } = props;
+    const { showModalAction, reduxStore } = props;
 
     if (_.isFunction(showModalAction)) {
-      const isShowModal = reduxStore.globalStore.modal.isShowModal;
+      const isShowModal = reduxStore.globalStore.modalItem.isShowModal;
       showModalAction({
         isShowModal: !isShowModal,
         children: modalContents.Introduce,
         style: {
           width: 500,
           height: 300,
+          borderRadius: 25,
+          padding: 20,
+        },
+        option: {
+          dimClose: true,
         },
       });
     }
