@@ -11,6 +11,7 @@ export default (
     direction: "Y",
     position: 10,
     endPosition: 15,
+    style: {},
   }
 ) => {
   const component: any = useRef();
@@ -48,6 +49,7 @@ export default (
     ref: component,
     style: {
       transform: `translate${option.direction}(${animationObject.position}px)`,
+      ...option.style,
     },
   };
 };

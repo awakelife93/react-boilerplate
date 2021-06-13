@@ -36,6 +36,14 @@ const _Layout = (props: any) => {
   const isShowAdContainer = reduxStore.globalStore.isShowAdContainer;
 
   /**
+   * @description
+   * generateStyle
+   * Styled Component에 props 데이터에 맞춰서 상응하는 렌더링이 되게끔 구현하려 했지만,
+   * 앞으로 늘어날 props 데이터를 기존에 사용중인 컴포넌트들마다 확장하기가 쉽지 않은 것 같고 불편해이기도 하고,
+   * Styled Component에 다양한 렌더링 방식이 작성되어 복잡성이 올라갈까봐 따로 함수형으로 구현하여 확장성을 고려하였음,
+   */
+
+  /**
    * common layout style
    * @function layoutStyles path에 따라 수정이 가능한 스타일
    * @function commonStyles 수정이 불가능한 스타일

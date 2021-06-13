@@ -9,6 +9,7 @@ export default (
   option: AnimationOption = {
     delay: 0,
     duration: 1,
+    style: {},
   }
 ) => {
   const component: any = useRef();
@@ -38,6 +39,6 @@ export default (
 
   return {
     ref: component,
-    style: { opacity: 0 },
+    style: { opacity: 0, ...option.style },
   };
 };
