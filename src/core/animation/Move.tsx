@@ -35,7 +35,7 @@ export default (
   };
 
   useEffect(() => {
-    let timeoutId: number;
+    let timeoutId: NodeJS.Timeout;
     if (component.current) {
       timeoutId = setTimeout(() => move(), option.delay);
     }

@@ -8,7 +8,11 @@
   "keywords": [
     "React",
     "Template",
-    "DarkMode"
+    "DarkMode",
+    "React Temaplte",
+    "react",
+    "template",
+    "react template"
   ],
   "author": "HyunwooPark",
   "license": "ISC",
@@ -17,21 +21,10 @@
   },
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.1.5",
-    "@emotion/styled": "^11.3.0",
     "@material-ui/core": "^5.0.0-alpha.32",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
-    "@types/lodash": "^4.14.168",
-    "@types/node": "^12.0.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "@types/react-redux": "^7.1.16",
-    "@types/react-router-dom": "^5.1.7",
-    "@types/react-virtualized": "^9.21.11",
-    "@types/styled-components": "^5.1.9",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "i18next": "^20.3.1",
@@ -41,7 +34,6 @@
     "react-dom": "^17.0.2",
     "react-i18next": "^11.10.0",
     "react-icons": "^4.2.0",
-    "react-loader-spinner": "^4.0.0",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
@@ -78,6 +70,15 @@
     ]
   },
   "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "@types/lodash": "^4.14.170",
+    "@types/node": "^15.12.2",
+    "@types/react": "^17.0.11",
+    "@types/react-dom": "^17.0.7",
+    "@types/react-redux": "^7.1.16",
+    "@types/react-router-dom": "^5.1.7",
+    "@types/react-virtualized": "^9.21.11",
+    "@types/styled-components": "^5.1.10",
     "prettier": "^2.2.1"
   }
 }
