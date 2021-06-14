@@ -1,5 +1,6 @@
 import {
   defaultDimClose,
+  defaultKeyClose,
   defaultShowAdContainer,
   defaultShowModal,
 } from "../../../common/const";
@@ -12,6 +13,7 @@ export const initGlobalState = {
     style: {},
     option: {
       dimClose: defaultDimClose,
+      keyClose: defaultKeyClose,
     },
   },
 };

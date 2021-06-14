@@ -13,10 +13,15 @@ export default (props: any) => {
 
   useEffect(() => {
     removeBodyScroll();
-    window.addEventListener("keydown", checkKeydown);
+
+    if (option.keyClose === true) {
+      window.addEventListener("keydown", checkKeydown);
+    }
 
     return () => {
-      window.removeEventListener("keydown", checkKeydown);
+      if (option.keyClose === true) {
+        window.removeEventListener("keydown", checkKeydown);
+      }
       revertBodyScroll();
     };
   });
