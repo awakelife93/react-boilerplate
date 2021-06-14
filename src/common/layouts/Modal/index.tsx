@@ -13,11 +13,19 @@ export default (props: any) => {
 
   useEffect(() => {
     removeBodyScroll();
+    window.addEventListener("keydown", checkKeydown);
 
     return () => {
+      window.removeEventListener("keydown", checkKeydown);
       revertBodyScroll();
     };
   });
+
+  const checkKeydown = (event: any) => {
+    if (_.isString(event.code) && event.code === "Escape") {
+      _closeModal();
+    }
+  };
 
   const _closeModal = () => {
     const { initShowModalAction } = props;

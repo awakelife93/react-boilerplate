@@ -1,4 +1,4 @@
-import LoginOutActionComponent from "./LoginOutAction";
+import SignActionComponent from "./SignAction";
 import IconsActionComponent from "./IconsAction";
 
-export { LoginOutActionComponent, IconsActionComponent };
+export { SignActionComponent, IconsActionComponent };

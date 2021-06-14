@@ -1,13 +1,15 @@
 {
   "ko": "Korean",
   "en": "English",
-  "login": "Login",
-  "logout": "Logout",
-
+  "signIn": "SignIn",
+  "signOut": "SignOut",
+  "signUp": "SignUp",
   "ad_title": "AD AREA",
   "ad_content1": "In case of unforeseen circumstances",
   "ad_content2": "Make space in advance.",
 
   "email": "Email",
-  "password": "Password"
+  "nickname": "Nickname",
+  "password": "Password",
+  "confirm_password": "Confirm Password"
 }

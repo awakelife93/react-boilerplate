@@ -8,7 +8,6 @@ import { FadeIn } from "../../core";
  * @returns {Component}
  */
 export default (props: any) => {
-  console.log(document.body.clientHeight);
   return (
     <Container.LayoutContainer>
       <Image.CommonImage src={CommonImage.FREE_IMAGE1} />

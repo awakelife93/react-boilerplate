@@ -1,12 +1,13 @@
 import React from "react";
 import MainPage from "../pages/Main";
-import LoginPage from "../pages/Login";
 import ContentsPage from "../pages/Contents";
+import { SignInPage, SignUpPage } from "../pages/Sign";
 import { RouteComponentProps } from "react-router-dom";
 
 export enum RoutePath {
   MAIN = "/",
-  LOGIN = "/login",
+  SIGN_IN = "/signIn",
+  SIGN_UP = "/signUp",
   CONTENTS = "/contents",
 }
 export interface RouteIE {
@@ -22,9 +23,14 @@ const routes = [
     Component: MainPage,
   },
   {
-    path: "/login",
+    path: "/signIn",
     exact: false,
-    Component: LoginPage,
+    Component: SignInPage,
+  },
+  {
+    path: "/signUp",
+    exact: false,
+    Component: SignUpPage,
   },
   {
     path: "/contents",

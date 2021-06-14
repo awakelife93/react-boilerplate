@@ -6,12 +6,15 @@
 export enum I18nCommandEnum {
   KO = "ko",
   EN = "en",
-  LOGIN = "login",
-  LOGOUT = "logout",
+  SIGN_IN = "signIn",
+  SIGN_OUT = "signOut",
+  SIGN_UP = "signUp",
   AD_TITLE = "ad_title",
   AD_CONTENT1 = "ad_content1",
   AD_CONTENT2 = "ad_content2",
 
   EMAIL = "email",
+  NICKNAME = "nickname",
   PASSWORD = "password",
+  CONFIRM_PASSWORD = "confirm_password",
 }

@@ -1,13 +1,15 @@
 {
   "ko": "한국어",
   "en": "영어",
-  "login": "로그인",
-  "logout": "로그아웃",
-
+  "signIn": "로그인",
+  "signOut": "로그아웃",
+  "signUp": "회원가입",
   "ad_title": "AD 영역",
   "ad_content1": "혹시 모를 상황을 대비하여",
   "ad_content2": "공간을 미리 만들어 둔다.",
 
   "email": "이메일",
-  "password": "패스워드"
+  "nickname": "닉네임",
+  "password": "패스워드",
+  "confirm_password": "패스워드 확인"
 }

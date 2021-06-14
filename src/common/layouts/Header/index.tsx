@@ -9,27 +9,27 @@ import {
   clearLocalStorageItem,
   getLocalStorageItem,
 } from "../../../core/storage";
-import { LoginOutActionComponent, IconsActionComponent } from "./action";
+import { SignActionComponent, IconsActionComponent } from "./action";
 import { modalContents } from "../Modal";
 
 export default (props: any) => {
-  const [isLogin, setLoginState] = useState(false);
+  const [isSignIn, setSignInState] = useState(false);
 
   useEffect(() => {
-    const _isLogin = getLocalStorageItem("id");
-    if (!_.isEmpty(_isLogin)) {
-      setLoginState(true);
+    const _isSignIn = getLocalStorageItem("id");
+    if (!_.isEmpty(_isSignIn)) {
+      setSignInState(true);
     }
-  }, [isLogin]);
+  }, [isSignIn]);
 
   const history = useHistory();
   const _routePush = (route: string) => {
     history.push(route);
   };
 
-  const _logout = () => {
+  const _signOut = () => {
     clearLocalStorageItem();
-    setLoginState(false);
+    setSignInState(false);
     _routePush(RoutePath.MAIN);
   };
 
@@ -89,10 +89,10 @@ export default (props: any) => {
         _showTemplateModal={_showTemplateModal}
         componentStyles={componentStyles}
       />
-      <LoginOutActionComponent
-        isLogin={isLogin}
+      <SignActionComponent
+        isSignIn={isSignIn}
         _routePush={_routePush}
-        _logout={_logout}
+        _signOut={_signOut}
         componentStyles={componentStyles}
       />
     </Container.HeaderContainer>

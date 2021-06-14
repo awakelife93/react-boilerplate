@@ -21,7 +21,8 @@ const generateLayoutContainerStyle = ({ path = "" }: { path: string }) => {
 
   switch (path) {
     // todo: 필요 시 작성
-    case RoutePath.LOGIN: {
+    case RoutePath.SIGN_UP:
+    case RoutePath.SIGN_IN: {
       props["style"] = { position: "absolute" };
     }
   }
@@ -112,8 +113,9 @@ const generateBodyContainerStyle = ({
     case RoutePath.CONTENTS:
       props["style"].padding = 20;
       break;
-    case RoutePath.LOGIN:
-      props["style"].padding = 100;
+    case RoutePath.SIGN_UP:
+    case RoutePath.SIGN_IN:
+      props["style"].padding = 120;
       break;
   }
 
@@ -176,7 +178,7 @@ const generateComponentStyle = ({
 
 const showBottomContainer = (route: string): boolean => {
   switch (route) {
-    case RoutePath.LOGIN:
+    case RoutePath.SIGN_IN:
       return false;
     default:
       return true;
