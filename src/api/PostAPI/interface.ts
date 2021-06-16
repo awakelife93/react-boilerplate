@@ -1,5 +1,4 @@
 export interface UserInfoIE {
-  userId: string;
-  userName: string;
-  createdAt: number;
+  email: string;
+  nickname: string;
 }

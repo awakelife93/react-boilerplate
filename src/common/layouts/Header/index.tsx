@@ -16,7 +16,7 @@ export default (props: any) => {
   const [isSignIn, setSignInState] = useState(false);
 
   useEffect(() => {
-    const _isSignIn = getLocalStorageItem("id");
+    const _isSignIn = getLocalStorageItem("token");
     if (!_.isEmpty(_isSignIn)) {
       setSignInState(true);
     }

@@ -41,13 +41,9 @@ export const patchAPI = async (
 };
 
 export const generateAPIData = async (res: any) => {
-  try {
-    if (res.status !== 200) {
-      const msg = res.message ?? "server error";
-      throw new Error(msg);
-    }
-    return res.data;
-  } catch (e) {
-    throw new Error(e);
+  if (res.status !== 200) {
+    const msg = res.data.message ?? res.message;
+    return new Error(msg);
   }
+  return res.data;
 };

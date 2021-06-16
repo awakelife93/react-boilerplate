@@ -1,5 +1,4 @@
 export const initUserState = {
-  userId: "",
-  userName: "",
-  createdAt: 0,
+  email: "",
+  nickname: "",
 };
