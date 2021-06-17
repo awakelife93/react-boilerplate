@@ -6,6 +6,7 @@ import { signIn } from "../../api/PostAPI";
 import { setLocalStorageItem } from "../../core";
 import { useTranslation } from "react-i18next";
 import { I18nCommandEnum } from "../../core/i18n/type";
+import { UserInfoIE } from "../../api/PostAPI/interface";
 
 /**
  * @description SignIn Component
@@ -19,6 +20,7 @@ export default (props: any) => {
     email: "",
     password: "",
   };
+
   const history = useHistory();
   const _signIn = async () => {
     if (_.isEmpty(signInfo["email"]) || _.isEmpty(signInfo["password"])) {
@@ -26,14 +28,27 @@ export default (props: any) => {
       return false;
     }
 
-    const res = await signIn(signInfo);
+    try {
+      const res: UserInfoIE = await signIn(signInfo);
 
-    if (_.isUndefined(res)) {
-      alert("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
-      return false;
-    } else {
-      setLocalStorageItem(res);
-      history.push("/");
+      if (_.isUndefined(res)) {
+        alert("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
+        return false;
+      } else {
+        setLocalStorageItem({ token: res.token });
+        history.push("/");
+      }
+    } catch (e) {
+      switch (e.status) {
+        case 401: {
+          alert("잘못된 이메일, 비밀번호 입니다.");
+          return false;
+        }
+        case 404: {
+          alert("계정이 없습니다.");
+          return false;
+        }
+      }
     }
   };
 

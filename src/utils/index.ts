@@ -1,7 +1,19 @@
-export const removeBodyScroll = () => {
+import _, { isArray } from "lodash";
+
+export const removeBodyScroll = (): void => {
   document.body.style.overflow = "hidden";
 };
 
-export const revertBodyScroll = () => {
+export const revertBodyScroll = (): void => {
   document.body.style.overflow = "";
+};
+
+export const validationObject = (object: any): boolean => {
+  const keys = Object.keys(object);
+
+  if (!isArray(keys)) return false;
+
+  return keys.some((key) => {
+    return _.isUndefined(object[key]) || _.isEmpty(object[key]);
+  });
 };

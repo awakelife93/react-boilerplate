@@ -4,9 +4,20 @@ import { getLocalStorageItem, endPoint } from "../core";
 const instance = axios.create({
   baseURL: endPoint,
   headers: {
-    token: getLocalStorageItem("token"),
+    token: getLocalStorageItem("token") ?? "",
   },
 });
+
+instance.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    // todo = 500 error는 여기서 처리해버리기
+    const err = error.response;
+    return Promise.reject(err);
+  }
+);
 
 export const getAPI = async (endpoint: string = "", axiosOption = {}) => {
   const result = await instance.get(endpoint, axiosOption);
@@ -41,9 +52,5 @@ export const patchAPI = async (
 };
 
 export const generateAPIData = async (res: any) => {
-  if (res.status !== 200) {
-    const msg = res.data.message ?? res.message;
-    return new Error(msg);
-  }
   return res.data;
 };

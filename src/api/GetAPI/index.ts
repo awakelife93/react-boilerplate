@@ -10,5 +10,6 @@ export const getPagingContentsItem = async () => {
     return result;
   } catch (e) {
     console.log("===============> getPagingCardItem Error", e);
+    throw e;
   }
 };

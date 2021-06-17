@@ -13,5 +13,28 @@ export const signIn = async ({
     return result;
   } catch (e) {
     console.log("===============> signIn Error", e);
+    throw e;
+  }
+};
+
+export const signUp = async ({
+  email,
+  nickname,
+  password,
+}: {
+  email: string;
+  nickname: string;
+  password: string;
+}) => {
+  try {
+    let result: UserInfoIE = await postAPI("signUp", {
+      email,
+      nickname,
+      password,
+    });
+    return result;
+  } catch (e) {
+    console.log("===============> signUp Error", e);
+    throw e;
   }
 };

@@ -1,7 +1,12 @@
+import _ from "lodash";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
+import { signUp } from "../../api/PostAPI";
+import { UserInfoIE } from "../../api/PostAPI/interface";
 import { Container, InputBox, Label, Button } from "../../common/components";
+import { setLocalStorageItem } from "../../core";
 import { I18nCommandEnum } from "../../core/i18n/type";
+import { validationObject } from "../../utils";
 
 export default (props: any) => {
   const { componentStyles } = props;
@@ -12,15 +17,39 @@ export default (props: any) => {
     password: "",
     confirm_password: "",
   };
+
   const history = useHistory();
   const _signUp = async () => {
-    alert("API 서버 개발 완료하면 붙일 예정입니다.");
-    return false;
+    if (validationObject(signUpInfo)) {
+      alert("회원가입 정보를 다시 한번 확인 해주시기 바랍니다.");
+      return false;
+    }
 
-    // const res = await signUp(signUpInfo);
-    // todo: 서버에서 toeken 값 내려주고 그것에 대해 검사하기
-    // setLocalStorageItem(res);
-    history.push("/");
+    if (signUpInfo.confirm_password !== signUpInfo.password) {
+      alert("패스워드를 확인해주시기 바랍니다.");
+      return false;
+    }
+
+    try {
+      const res: UserInfoIE = await signUp(signUpInfo);
+
+      if (_.isUndefined(res)) {
+        alert("회원가입 정보를 다시 한번 확인 해주시기 바랍니다.");
+        return false;
+      } else {
+        setLocalStorageItem({ token: res.token });
+        history.push("/");
+      }
+    } catch (e) {
+      switch (e.status) {
+        case 409: {
+          alert(
+            "중복된 이메일이 있습니다. 다른 이메일을 사용해주시기 바랍니다."
+          );
+          return false;
+        }
+      }
+    }
   };
 
   return (
@@ -76,6 +105,7 @@ export default (props: any) => {
             padding: 5,
             marginBottom: 15,
           }}
+          type={"password"}
           placeholder={t(I18nCommandEnum.PASSWORD)}
           onChange={(e) => (signUpInfo["password"] = e.target.value)}
         />
@@ -94,6 +124,7 @@ export default (props: any) => {
             padding: 5,
             marginBottom: 15,
           }}
+          type={"password"}
           placeholder={t(I18nCommandEnum.CONFIRM_PASSWORD)}
           onChange={(e) => (signUpInfo["confirm_password"] = e.target.value)}
         />
