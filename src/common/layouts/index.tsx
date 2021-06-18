@@ -80,6 +80,7 @@ const _Layout = (props: any) => {
           layoutStyles={commonStyles}
           componentStyles={componentStyles}
           children={modalItem.children}
+          childrenProps={modalItem.childrenProps}
           style={{ ...modalStyles, ...modalItem.style }}
           option={modalItem.option}
         />

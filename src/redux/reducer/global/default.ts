@@ -9,7 +9,8 @@ export const initGlobalState = {
   isShowAdContainer: defaultShowAdContainer,
   modalItem: {
     isShowModal: defaultShowModal,
-    children: "",
+    children: null,
+    childrenProps: {},
     style: {},
     option: {
       dimClose: defaultDimClose,

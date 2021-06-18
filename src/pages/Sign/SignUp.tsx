@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { signUp } from "../../api/PostAPI";
 import { UserInfoIE } from "../../api/PostAPI/interface";
 import { Container, InputBox, Label, Button } from "../../common/components";
+import { _showModalAction } from "../../common/layouts/Modal";
 import { setLocalStorageItem } from "../../core";
 import { I18nCommandEnum } from "../../core/i18n/type";
 import { validationObject } from "../../utils";
@@ -21,12 +22,12 @@ export default (props: any) => {
   const history = useHistory();
   const _signUp = async () => {
     if (validationObject(signUpInfo)) {
-      alert("회원가입 정보를 다시 한번 확인 해주시기 바랍니다.");
+      _showMessageModal("회원가입 정보를 다시 한번 확인 해주시기 바랍니다.");
       return false;
     }
 
     if (signUpInfo.confirm_password !== signUpInfo.password) {
-      alert("패스워드를 확인해주시기 바랍니다.");
+      _showMessageModal("패스워드를 확인해주시기 바랍니다.");
       return false;
     }
 
@@ -34,7 +35,7 @@ export default (props: any) => {
       const res: UserInfoIE = await signUp(signUpInfo);
 
       if (_.isUndefined(res)) {
-        alert("회원가입 정보를 다시 한번 확인 해주시기 바랍니다.");
+        _showMessageModal("회원가입 정보를 다시 한번 확인 해주시기 바랍니다.");
         return false;
       } else {
         setLocalStorageItem({ token: res.token });
@@ -43,12 +44,35 @@ export default (props: any) => {
     } catch (e) {
       switch (e.status) {
         case 409: {
-          alert(
+          _showMessageModal(
             "중복된 이메일이 있습니다. 다른 이메일을 사용해주시기 바랍니다."
           );
           return false;
         }
       }
+    }
+  };
+
+  const _showMessageModal = (message: string) => {
+    const { showModalAction } = props;
+    if (_.isFunction(showModalAction)) {
+      _showModalAction({
+        next: showModalAction,
+        type: "MESSAGE",
+        item: {
+          childrenProps: { message },
+          style: {
+            width: 500,
+            height: 120,
+            borderRadius: 25,
+            padding: 20,
+          },
+          option: {
+            dimClose: true,
+            keyClose: true,
+          },
+        },
+      });
     }
   };
 

@@ -7,24 +7,24 @@ import { setLocalStorageItem } from "../../core";
 import { useTranslation } from "react-i18next";
 import { I18nCommandEnum } from "../../core/i18n/type";
 import { UserInfoIE } from "../../api/PostAPI/interface";
+import { _showModalAction } from "../../common/layouts/Modal";
 
 /**
  * @description SignIn Component
  * @param props
  * @returns {Component}
  */
-
+const signInfo = {
+  email: "",
+  password: "",
+};
 export default (props: any) => {
   const { t } = useTranslation();
-  const signInfo = {
-    email: "",
-    password: "",
-  };
 
   const history = useHistory();
   const _signIn = async () => {
     if (_.isEmpty(signInfo["email"]) || _.isEmpty(signInfo["password"])) {
-      alert("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
+      _showMessageModal("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
       return false;
     }
 
@@ -32,7 +32,7 @@ export default (props: any) => {
       const res: UserInfoIE = await signIn(signInfo);
 
       if (_.isUndefined(res)) {
-        alert("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
+        _showMessageModal("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
         return false;
       } else {
         setLocalStorageItem({ token: res.token });
@@ -41,14 +41,37 @@ export default (props: any) => {
     } catch (e) {
       switch (e.status) {
         case 401: {
-          alert("잘못된 이메일, 비밀번호 입니다.");
+          _showMessageModal("잘못된 이메일, 비밀번호 입니다.");
           return false;
         }
         case 404: {
-          alert("계정이 없습니다.");
+          _showMessageModal("계정이 없습니다.");
           return false;
         }
       }
+    }
+  };
+
+  const _showMessageModal = (message: string) => {
+    const { showModalAction } = props;
+    if (_.isFunction(showModalAction)) {
+      _showModalAction({
+        next: showModalAction,
+        type: "MESSAGE",
+        item: {
+          childrenProps: { message },
+          style: {
+            width: 500,
+            height: 120,
+            borderRadius: 25,
+            padding: 20,
+          },
+          option: {
+            dimClose: true,
+            keyClose: true,
+          },
+        },
+      });
     }
   };
 

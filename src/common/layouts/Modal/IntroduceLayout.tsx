@@ -1,6 +1,10 @@
-import { Container, Label, InputBox, Button } from "../../components";
+import { Container, Label } from "../../components";
 
-export default (props: any) => {
+interface IntroduceLayoutIE {
+  componentStyles: any;
+}
+
+export default (props: IntroduceLayoutIE) => {
   const { componentStyles } = props;
   return (
     <Container.ColumnContainer>

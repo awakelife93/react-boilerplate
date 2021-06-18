@@ -8,7 +8,8 @@ import { Container } from "../../components";
 import {
   clearLocalStorageItem,
   getLocalStorageItem,
-} from "../../../core/storage";
+  setLocalStorageItem,
+} from "../../../core";
 import { SignActionComponent, IconsActionComponent } from "./action";
 import { modalContents } from "../Modal";
 
@@ -38,6 +39,7 @@ export default (props: any) => {
 
     if (_.isFunction(setDarkModeAction)) {
       const isDarkMode = reduxStore.themeStore.isDarkMode;
+      setLocalStorageItem({ darkMode: !isDarkMode });
       setDarkModeAction(!isDarkMode);
     }
   };
@@ -53,17 +55,17 @@ export default (props: any) => {
 
   const { i18n } = useTranslation();
   const _setLaunage = (lng: string) => {
+    setLocalStorageItem({ lng });
     i18n.changeLanguage(lng);
   };
 
   const _showTemplateModal = () => {
-    const { showModalAction, reduxStore } = props;
+    const { showModalAction } = props;
 
     if (_.isFunction(showModalAction)) {
-      const isShowModal = reduxStore.globalStore.modalItem.isShowModal;
       showModalAction({
-        isShowModal: !isShowModal,
-        children: modalContents.Introduce,
+        isShowModal: true,
+        children: modalContents.IntroduceLayout,
         style: {
           width: 500,
           height: 300,
