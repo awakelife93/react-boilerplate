@@ -3,6 +3,7 @@ import {
   setLocalStorageItem,
   clearLocalStorageItem,
   removeLocalStorageItem,
+  clearLocalStorageUserItem,
 } from "./storage";
 import i18n from "./i18n";
 import { I18nCommandEnum } from "./i18n/type";
@@ -17,6 +18,7 @@ export {
   setLocalStorageItem,
   clearLocalStorageItem,
   removeLocalStorageItem,
+  clearLocalStorageUserItem,
   i18n,
   I18nCommandEnum,
   FadeIn,

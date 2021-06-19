@@ -41,7 +41,7 @@ export default (props: any) => {
         _showMessageModal("회원가입 정보를 다시 한번 확인 해주시기 바랍니다.");
         return false;
       } else {
-        setLocalStorageItem({ token: userInfo.token });
+        setLocalStorageItem({ ...userInfo });
         history.push(RoutePath.MAIN);
       }
     } catch (e) {

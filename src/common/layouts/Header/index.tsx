@@ -10,8 +10,8 @@ import { modalContents } from "../Modal";
 import { signOut } from "../../../api/PostAPI";
 import {
   getLocalStorageItem,
-  removeLocalStorageItem,
   setLocalStorageItem,
+  clearLocalStorageUserItem,
 } from "../../../core";
 
 export default (props: any) => {
@@ -31,10 +31,14 @@ export default (props: any) => {
 
   const _signOut = async () => {
     try {
-      removeLocalStorageItem("token");
+      clearLocalStorageUserItem();
       setSignInState(false);
 
-      await signOut({ email: "awakelife93@gmail.com" });
+      const email = getLocalStorageItem("email");
+      if (!_.isEmpty(email) && _.isString(email)) {
+        await signOut({ email });
+      }
+
       _routePush(RoutePath.MAIN);
     } catch (e) {
       console.log(e);
