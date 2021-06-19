@@ -1,4 +1,5 @@
 import axios from "axios";
+import _ from "lodash";
 import { getLocalStorageItem, endPoint } from "../core";
 
 const instance = axios.create({
@@ -14,7 +15,13 @@ instance.interceptors.response.use(
   },
   (error) => {
     // todo = 500 error는 여기서 처리해버리기
-    const err = error.response;
+    const err = error.response ?? error;
+
+    // Network Error
+    if (_.isUndefined(err.status)) {
+      console.log("NETWORK ERROR");
+    }
+
     return Promise.reject(err);
   }
 );
