@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import { I18nCommandEnum } from "../../core/i18n/type";
 import { UserInfoIE } from "../../api/PostAPI/interface";
 import { _showModalAction } from "../../common/layouts/Modal";
+import { RoutePath } from "../../route/routes";
 
 /**
  * @description SignIn Component
@@ -29,14 +30,14 @@ export default (props: any) => {
     }
 
     try {
-      const res: UserInfoIE = await signIn(signInfo);
+      const userInfo: UserInfoIE = await signIn(signInfo);
 
-      if (_.isUndefined(res)) {
+      if (_.isUndefined(userInfo)) {
         _showMessageModal("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
         return false;
       } else {
-        setLocalStorageItem({ token: res.token });
-        history.push("/");
+        setLocalStorageItem({ token: userInfo.token });
+        history.push(RoutePath.MAIN);
       }
     } catch (e) {
       switch (e.status) {

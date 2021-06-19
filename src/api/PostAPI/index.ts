@@ -38,3 +38,13 @@ export const signUp = async ({
     throw e;
   }
 };
+
+export const signOut = async ({ email }: { email: string }) => {
+  try {
+    let result: object = await postAPI("signOut", { email });
+    return result;
+  } catch (e) {
+    console.log("===============> signOut Error", e);
+    throw e;
+  }
+};

@@ -5,13 +5,14 @@ import _ from "lodash";
 
 import { RoutePath } from "../../../route/routes";
 import { Container } from "../../components";
-import {
-  clearLocalStorageItem,
-  getLocalStorageItem,
-  setLocalStorageItem,
-} from "../../../core";
 import { SignActionComponent, IconsActionComponent } from "./action";
 import { modalContents } from "../Modal";
+import { signOut } from "../../../api/PostAPI";
+import {
+  getLocalStorageItem,
+  removeLocalStorageItem,
+  setLocalStorageItem,
+} from "../../../core";
 
 export default (props: any) => {
   const [isSignIn, setSignInState] = useState(false);
@@ -28,10 +29,16 @@ export default (props: any) => {
     history.push(route);
   };
 
-  const _signOut = () => {
-    clearLocalStorageItem();
-    setSignInState(false);
-    _routePush(RoutePath.MAIN);
+  const _signOut = async () => {
+    try {
+      removeLocalStorageItem("token");
+      setSignInState(false);
+
+      await signOut({ email: "awakelife93@gmail.com" });
+      _routePush(RoutePath.MAIN);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const _darkMode = () => {

@@ -1,12 +1,15 @@
 import _ from "lodash";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
-import { signUp } from "../../api/PostAPI";
-import { UserInfoIE } from "../../api/PostAPI/interface";
+
 import { Container, InputBox, Label, Button } from "../../common/components";
 import { _showModalAction } from "../../common/layouts/Modal";
-import { setLocalStorageItem } from "../../core";
-import { I18nCommandEnum } from "../../core/i18n/type";
+import { setLocalStorageItem, I18nCommandEnum } from "../../core";
+
+import { signUp } from "../../api/PostAPI";
+import { UserInfoIE } from "../../api/PostAPI/interface";
+
+import { RoutePath } from "../../route/routes";
 import { validationObject } from "../../utils";
 
 export default (props: any) => {
@@ -32,14 +35,14 @@ export default (props: any) => {
     }
 
     try {
-      const res: UserInfoIE = await signUp(signUpInfo);
+      const userInfo: UserInfoIE = await signUp(signUpInfo);
 
-      if (_.isUndefined(res)) {
+      if (_.isUndefined(userInfo)) {
         _showMessageModal("회원가입 정보를 다시 한번 확인 해주시기 바랍니다.");
         return false;
       } else {
-        setLocalStorageItem({ token: res.token });
-        history.push("/");
+        setLocalStorageItem({ token: userInfo.token });
+        history.push(RoutePath.MAIN);
       }
     } catch (e) {
       switch (e.status) {

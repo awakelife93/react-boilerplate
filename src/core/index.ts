@@ -4,8 +4,8 @@ import {
   clearLocalStorageItem,
   removeLocalStorageItem,
 } from "./storage";
-
 import i18n from "./i18n";
+import { I18nCommandEnum } from "./i18n/type";
 import { FadeIn } from "./animation";
 import { Move } from "./animation";
 
@@ -18,6 +18,7 @@ export {
   clearLocalStorageItem,
   removeLocalStorageItem,
   i18n,
+  I18nCommandEnum,
   FadeIn,
   Move,
   __DEV__,
