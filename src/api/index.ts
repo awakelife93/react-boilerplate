@@ -20,6 +20,7 @@ instance.interceptors.response.use(
     // Network Error
     if (_.isUndefined(err.status)) {
       console.log("NETWORK ERROR");
+      // todo: 서버 통신 불가능으로 인한 사유 전달하기
     }
 
     return Promise.reject(err);
