@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { getLocalStorageItem } from "../../../../core";
+import { getWindowData } from "../../../../core";
 import { I18nCommandEnum } from "../../../../core/i18n/type";
 import { RoutePath } from "../../../../route/routes";
 import { Button, Container, Label } from "../../../components";
@@ -34,7 +34,7 @@ export default (props: any) => {
           <Label.CommonLabel
             style={{ ...componentStyles.COMMON_LABEL, margin: 0 }}
           >
-            {getLocalStorageItem("nickname")}
+            {getWindowData("nickname")}
           </Label.CommonLabel>
           <Button.TextButton
             style={{

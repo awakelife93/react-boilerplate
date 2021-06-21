@@ -3,8 +3,14 @@ import {
   setLocalStorageItem,
   clearLocalStorageItem,
   removeLocalStorageItem,
-  clearLocalStorageUserItem,
 } from "./storage";
+import {
+  initWindowObject,
+  getWindowData,
+  removeWindowData,
+  clearWindowData,
+  setWindowData,
+} from "./window";
 import i18n from "./i18n";
 import { I18nCommandEnum } from "./i18n/type";
 import { FadeIn } from "./animation";
@@ -18,7 +24,11 @@ export {
   setLocalStorageItem,
   clearLocalStorageItem,
   removeLocalStorageItem,
-  clearLocalStorageUserItem,
+  initWindowObject,
+  getWindowData,
+  removeWindowData,
+  clearWindowData,
+  setWindowData,
   i18n,
   I18nCommandEnum,
   FadeIn,

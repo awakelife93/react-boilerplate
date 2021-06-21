@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 
 import { Container, Label, InputBox, Button } from "../../common/components";
 import { signIn } from "../../api/PostAPI";
-import { setLocalStorageItem } from "../../core";
+import { setLocalStorageItem, setWindowData } from "../../core";
 import { useTranslation } from "react-i18next";
 import { I18nCommandEnum } from "../../core/i18n/type";
 import { UserInfoIE } from "../../api/PostAPI/interface";
@@ -36,7 +36,11 @@ export default (props: any) => {
         _showMessageModal("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
         return false;
       } else {
-        setLocalStorageItem({ ...userInfo });
+        setLocalStorageItem({ token: userInfo.token });
+        setWindowData({
+          email: userInfo.nickname,
+          nickname: userInfo.nickname,
+        });
         history.push(RoutePath.MAIN);
       }
     } catch (e) {

@@ -11,10 +11,3 @@ export const removeLocalStorageItem = (key: string): void =>
   window.localStorage.removeItem(key);
 
 export const clearLocalStorageItem = (): void => window.localStorage.clear();
-
-export const clearLocalStorageUserItem = (): void => {
-  removeLocalStorageItem("id");
-  removeLocalStorageItem("token");
-  removeLocalStorageItem("email");
-  removeLocalStorageItem("nickname");
-};

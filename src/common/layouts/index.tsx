@@ -18,6 +18,8 @@ import {
   generateCommonContainerStyle,
   generateModalContainerStyle,
 } from "../styles";
+import { useEffect } from "react";
+import { initWindowObject } from "../../core";
 
 /**
  * Layout (최상단 컴포넌트)
@@ -29,7 +31,15 @@ import {
  * 그 외에 독립되는 컴포넌트는 connectWrapper로 연결
  */
 const _Layout = (props: any) => {
+  // init
+  useEffect(() => {
+    initWindowObject();
+  }, []);
+
   const { reduxStore, path, Component } = props;
+
+  // 토큰 연장은 새로운 코드(http) 하나 따서 검사 후 토큰 바꿔버리기
+  // 토큰 연장이 안되면 axios 인터셉터에서 체크해서 로그아웃 해버리기 (로그아웃 되었습니다.)
 
   const modalItem = reduxStore.globalStore.modalItem;
   const isDarkMode = reduxStore.themeStore.isDarkMode;

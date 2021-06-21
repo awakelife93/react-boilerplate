@@ -11,7 +11,9 @@ import { signOut } from "../../../api/PostAPI";
 import {
   getLocalStorageItem,
   setLocalStorageItem,
-  clearLocalStorageUserItem,
+  getWindowData,
+  removeLocalStorageItem,
+  clearWindowData,
 } from "../../../core";
 
 export default (props: any) => {
@@ -31,15 +33,17 @@ export default (props: any) => {
 
   const _signOut = async () => {
     try {
-      clearLocalStorageUserItem();
-      setSignInState(false);
-
-      const email = getLocalStorageItem("email");
+      const email = getWindowData("email");
       if (!_.isEmpty(email) && _.isString(email)) {
-        await signOut({ email });
-      }
+        // token 삭제
+        removeLocalStorageItem("token");
+        // 글로벌 객체 삭제
+        clearWindowData();
+        setSignInState(false);
 
-      _routePush(RoutePath.MAIN);
+        await signOut({ email });
+        _routePush(RoutePath.MAIN);
+      }
     } catch (e) {
       console.log(e);
     }
