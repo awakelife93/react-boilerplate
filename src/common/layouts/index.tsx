@@ -44,7 +44,6 @@ const _Layout = (props: any) => {
     // 로그인이 된 상태라면
     if (!_.isEmpty(token)) {
       // LocalStorage에 넣기 싫어서 보안상 서버에서 얻어옴.
-      // Window 객체 -> 리덕스는 추후 예정
       _getUserProfile();
     }
   }, []);
