@@ -1,16 +1,16 @@
 import _ from "lodash";
 import { ActionEnum } from "../../type";
-import { ActionIE, ThemeStoreIE } from "../../interface";
-import { initDarkModeState } from "./default";
+import { ActionIE, UserStoreIE } from "../../interface";
+import { initUserState } from "./default";
 
 export default function themeStore(
-  state: ThemeStoreIE = initDarkModeState,
+  state: UserStoreIE = initUserState,
   action: ActionIE
 ) {
   switch (action.type) {
-    case ActionEnum.SET_DARK_MODE:
+    case ActionEnum.SET_USER_INFO:
       return _.merge({}, state, {
-        isDarkMode: action.value,
+        user: action.value,
       });
 
     default:

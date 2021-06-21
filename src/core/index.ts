@@ -6,6 +6,7 @@ import {
 } from "./storage";
 import {
   initWindowObject,
+  getWindowDataLength,
   getWindowData,
   removeWindowData,
   clearWindowData,
@@ -17,7 +18,7 @@ import { FadeIn } from "./animation";
 import { Move } from "./animation";
 
 const __DEV__ = window.location.hostname === "localhost";
-const endPoint = "http://localhost:3001/";
+const baseURL = "http://localhost:3001/";
 
 export {
   getLocalStorageItem,
@@ -25,6 +26,7 @@ export {
   clearLocalStorageItem,
   removeLocalStorageItem,
   initWindowObject,
+  getWindowDataLength,
   getWindowData,
   removeWindowData,
   clearWindowData,
@@ -34,5 +36,5 @@ export {
   FadeIn,
   Move,
   __DEV__,
-  endPoint,
+  baseURL,
 };

@@ -12,7 +12,7 @@ export const getWindowDataLength = () => {
 };
 
 export const getWindowData = (key: string): string => {
-  return window.reactClient[key];
+  return window.reactClient[key] ?? "";
 };
 
 export const setWindowData = (item: any): void => {

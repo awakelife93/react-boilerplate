@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import _ from "lodash";
+
 import { connectWrapper } from "../../redux";
 
 import Layout from "./Layout";
@@ -18,8 +21,9 @@ import {
   generateCommonContainerStyle,
   generateModalContainerStyle,
 } from "../styles";
-import { useEffect } from "react";
-import { initWindowObject } from "../../core";
+
+import { getLocalStorageItem } from "../../core";
+import { getUserProfile } from "../../api/GetAPI";
 
 /**
  * Layout (최상단 컴포넌트)
@@ -31,15 +35,27 @@ import { initWindowObject } from "../../core";
  * 그 외에 독립되는 컴포넌트는 connectWrapper로 연결
  */
 const _Layout = (props: any) => {
+  const { reduxStore, path, Component, setUserInfoAction } = props;
+
   // init
   useEffect(() => {
-    initWindowObject();
+    const token = getLocalStorageItem("token");
+
+    // 로그인이 된 상태라면
+    if (!_.isEmpty(token)) {
+      // LocalStorage에 넣기 싫어서 보안상 서버에서 얻어옴.
+      // Window 객체 -> 리덕스는 추후 예정
+      _getUserProfile();
+    }
   }, []);
 
-  const { reduxStore, path, Component } = props;
-
-  // 토큰 연장은 새로운 코드(http) 하나 따서 검사 후 토큰 바꿔버리기
-  // 토큰 연장이 안되면 axios 인터셉터에서 체크해서 로그아웃 해버리기 (로그아웃 되었습니다.)
+  const _getUserProfile = async () => {
+    const profile = await getUserProfile();
+    setUserInfoAction({
+      isLogin: true,
+      info: { ...profile },
+    });
+  };
 
   const modalItem = reduxStore.globalStore.modalItem;
   const isDarkMode = reduxStore.themeStore.isDarkMode;

@@ -3,15 +3,25 @@ export interface ActionIE {
   value: any;
 }
 
-export interface ThemeIE {
+export interface ThemeStoreIE {
   isDarkMode: boolean;
 }
 
-export interface GlobalIE {
+export interface GlobalStoreIE {
   isShowAdContainer: boolean;
   modalItem: {
     children: any;
     style: any;
     option: any;
+  };
+}
+
+export interface UserStoreIE {
+  user: {
+    isLogin: boolean;
+    info: {
+      email: string;
+      nickname: string;
+    };
   };
 }

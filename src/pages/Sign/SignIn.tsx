@@ -3,10 +3,10 @@ import { useHistory } from "react-router";
 
 import { Container, Label, InputBox, Button } from "../../common/components";
 import { signIn } from "../../api/PostAPI";
-import { setLocalStorageItem, setWindowData } from "../../core";
+import { setLocalStorageItem } from "../../core";
 import { useTranslation } from "react-i18next";
 import { I18nCommandEnum } from "../../core/i18n/type";
-import { UserInfoIE } from "../../api/PostAPI/interface";
+import { UserInfoIE } from "../../api/interface";
 import { _showModalAction } from "../../common/layouts/Modal";
 import { RoutePath } from "../../route/routes";
 
@@ -24,6 +24,7 @@ export default (props: any) => {
 
   const history = useHistory();
   const _signIn = async () => {
+    const { setUserInfoAction } = props;
     if (_.isEmpty(signInfo["email"]) || _.isEmpty(signInfo["password"])) {
       _showMessageModal("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
       return false;
@@ -37,9 +38,9 @@ export default (props: any) => {
         return false;
       } else {
         setLocalStorageItem({ token: userInfo.token });
-        setWindowData({
-          email: userInfo.nickname,
-          nickname: userInfo.nickname,
+        setUserInfoAction({
+          isLogin: true,
+          info: { email: userInfo.email, nickname: userInfo.nickname },
         });
         history.push(RoutePath.MAIN);
       }

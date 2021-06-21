@@ -1,15 +1,14 @@
 import { useTranslation } from "react-i18next";
-import { getWindowData } from "../../../../core";
 import { I18nCommandEnum } from "../../../../core/i18n/type";
 import { RoutePath } from "../../../../route/routes";
 import { Button, Container, Label } from "../../../components";
 
 export default (props: any) => {
-  const { isSignIn, _routePush, _signOut, componentStyles } = props;
+  const { _routePush, _signOut, componentStyles, userInfo } = props;
   const { t } = useTranslation();
   return (
     <Container.LayoutContainer>
-      {isSignIn === false && (
+      {userInfo.isLogin === false && (
         <Container.RowContainer>
           <Button.TextButton
             style={{
@@ -29,12 +28,12 @@ export default (props: any) => {
           </Button.TextButton>
         </Container.RowContainer>
       )}
-      {isSignIn === true && (
+      {userInfo.isLogin === true && (
         <Container.RowContainer>
           <Label.CommonLabel
             style={{ ...componentStyles.COMMON_LABEL, margin: 0 }}
           >
-            {getWindowData("nickname")}
+            {userInfo.info.nickname}
           </Label.CommonLabel>
           <Button.TextButton
             style={{

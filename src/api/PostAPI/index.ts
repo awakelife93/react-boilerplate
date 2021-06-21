@@ -1,5 +1,5 @@
 import { postAPI } from "..";
-import { UserInfoIE } from "./interface";
+import { UserInfoIE } from "../interface";
 
 export const signIn = async ({
   email,
@@ -39,9 +39,9 @@ export const signUp = async ({
   }
 };
 
-export const signOut = async ({ email }: { email: string }) => {
+export const signOut = async () => {
   try {
-    let result: object = await postAPI("signOut", { email });
+    let result: object = await postAPI("signOut");
     return result;
   } catch (e) {
     console.log("===============> signOut Error", e);

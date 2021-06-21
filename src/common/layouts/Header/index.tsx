@@ -11,37 +11,26 @@ import { signOut } from "../../../api/PostAPI";
 import {
   getLocalStorageItem,
   setLocalStorageItem,
-  getWindowData,
   removeLocalStorageItem,
-  clearWindowData,
 } from "../../../core";
 
 export default (props: any) => {
-  const [isSignIn, setSignInState] = useState(false);
-
-  useEffect(() => {
-    const _isSignIn = getLocalStorageItem("token");
-    if (!_.isEmpty(_isSignIn)) {
-      setSignInState(true);
-    }
-  }, [isSignIn]);
-
   const history = useHistory();
   const _routePush = (route: string) => {
     history.push(route);
   };
 
   const _signOut = async () => {
+    const { initUserInfoAction } = props;
     try {
-      const email = getWindowData("email");
-      if (!_.isEmpty(email) && _.isString(email)) {
+      const token = getLocalStorageItem("token");
+
+      if (!_.isEmpty(token)) {
+        await signOut();
         // token 삭제
         removeLocalStorageItem("token");
-        // 글로벌 객체 삭제
-        clearWindowData();
-        setSignInState(false);
-
-        await signOut({ email });
+        // 리덕스 초기화
+        initUserInfoAction();
         _routePush(RoutePath.MAIN);
       }
     } catch (e) {
@@ -107,7 +96,7 @@ export default (props: any) => {
         componentStyles={componentStyles}
       />
       <SignActionComponent
-        isSignIn={isSignIn}
+        userInfo={reduxStore.userStore.user}
         _routePush={_routePush}
         _signOut={_signOut}
         componentStyles={componentStyles}

@@ -7,7 +7,7 @@ import { _showModalAction } from "../../common/layouts/Modal";
 import { setLocalStorageItem, I18nCommandEnum } from "../../core";
 
 import { signUp } from "../../api/PostAPI";
-import { UserInfoIE } from "../../api/PostAPI/interface";
+import { UserInfoIE } from "../../api/interface";
 
 import { RoutePath } from "../../route/routes";
 import { validationObject } from "../../utils";

@@ -1,10 +1,10 @@
 import _ from "lodash";
 import { ActionEnum } from "../../type";
-import { ActionIE, GlobalIE } from "../../interface";
+import { ActionIE, GlobalStoreIE } from "../../interface";
 import { initGlobalState } from "./default";
 
 export default function globalStore(
-  state: GlobalIE = initGlobalState,
+  state: GlobalStoreIE = initGlobalState,
   action: ActionIE
 ) {
   switch (action.type) {

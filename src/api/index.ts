@@ -2,14 +2,13 @@ import axios, { AxiosRequestConfig } from "axios";
 import _ from "lodash";
 import {
   getLocalStorageItem,
-  endPoint,
+  baseURL,
   setLocalStorageItem,
   removeLocalStorageItem,
-  clearWindowData,
 } from "../core";
 
 const instance = axios.create({
-  baseURL: endPoint,
+  baseURL,
   headers: {
     token: getLocalStorageItem("token") ?? "",
   },
@@ -22,7 +21,12 @@ instance.interceptors.request.use(
     // 토큰이 소실되었을 경우 지워주기
     if (_.isEmpty(token)) {
       config.headers.token = "";
+    } else {
+      if (_.isEmpty(config.headers.token))
+        // 토큰이 생겼을 경우 request headers에 달아주기
+        config.headers.token = token;
     }
+
     return config;
   },
   (error) => {
@@ -54,43 +58,62 @@ instance.interceptors.response.use(
     // 서버 Auth 실패 -> 로그아웃
     if (err.status === 401) {
       removeLocalStorageItem("token");
-      // 글로벌 객체 삭제
-      clearWindowData();
     }
 
     return Promise.reject(err);
   }
 );
 
-export const getAPI = async (endpoint: string = "", axiosOption = {}) => {
-  const result = await instance.get(endpoint, axiosOption);
+const generateGetendPoint = (endPoint: string, params: any) => {
+  let _endPoint = `${endPoint}?`;
+
+  Object.keys(params).forEach((key: string, index: number) => {
+    if (index === 0) {
+      _endPoint += `${key}=${params[key]}`;
+    } else {
+      _endPoint += `&${key}=${params[key]}`;
+    }
+  });
+
+  return _endPoint;
+};
+
+export const getAPI = async (
+  endPoint: string = "",
+  params = {},
+  axiosOption = {}
+) => {
+  const getEndPoint = _.isEmpty(params)
+    ? endPoint
+    : generateGetendPoint(endPoint, params);
+  const result = await instance.get(getEndPoint, axiosOption);
   return await generateAPIData(result);
 };
 
-export const deleteAPI = async (endpoint: string = "", axiosOption = {}) => {
-  const result = await instance.delete(endpoint, axiosOption);
+export const deleteAPI = async (endPoint: string = "", axiosOption = {}) => {
+  const result = await instance.delete(endPoint, axiosOption);
   return await generateAPIData(result);
 };
 
 export const postAPI = async (
-  endpoint: string = "",
+  endPoint: string = "",
   data = {},
   axiosOption = {
     timeout: 2000,
   }
 ) => {
-  const result = await instance.post(endpoint, data, axiosOption);
+  const result = await instance.post(endPoint, data, axiosOption);
   return await generateAPIData(result);
 };
 
 export const patchAPI = async (
-  endpoint: string = "",
+  endPoint: string = "",
   data = {},
   axiosOption = {
     timeout: 2000,
   }
 ) => {
-  const result = await instance.patch(endpoint, data, axiosOption);
+  const result = await instance.patch(endPoint, data, axiosOption);
   return await generateAPIData(result);
 };
 
