@@ -1,13 +1,15 @@
-import { generateAPIData, getAPI } from "..";
+import { getAPI } from "..";
 import { __DEV__ } from "../../core";
 import { UserInfoIE } from "../interface";
-import { TempIE } from "./interface";
-import { sample } from "./sample";
+import { ContentsIE } from "./interface";
 
-export const getPagingContentsItem = async () => {
+// todo: 페이징 추가
+export const getPagingContentsItem = async (skip: number = 0) => {
   try {
-    let result: TempIE = await generateAPIData(sample);
-    if (!__DEV__) result = await getAPI();
+    const result: ContentsIE[] = await getAPI("findContents", {
+      take: skip + 20,
+      skip,
+    });
     return result;
   } catch (e) {
     console.log("===============> getPagingCardItem Error", e);
@@ -17,7 +19,7 @@ export const getPagingContentsItem = async () => {
 
 export const getUserProfile = async () => {
   try {
-    const result: UserInfoIE = await getAPI("getUserProfile");
+    const result: UserInfoIE = await getAPI("findUserProfile");
     return result;
   } catch (e) {
     console.log("===============> getUserProfile Error", e);

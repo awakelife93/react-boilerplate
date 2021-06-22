@@ -4,7 +4,7 @@ import _ from "lodash";
 import { connectWrapper } from "../../redux";
 
 import Layout from "./Layout";
-import AdLayout from "./Ad";
+import AdLayout from "../components/Ad";
 import HeaderLayout from "./Header";
 import BodyLayout from "./Body";
 import BottomLayout from "./Bottom";
@@ -22,7 +22,7 @@ import {
   generateModalContainerStyle,
 } from "../styles";
 
-import { getLocalStorageItem } from "../../core";
+import { getLocalStorageItem, initWindowFunc } from "../../core";
 import { getUserProfile } from "../../api/GetAPI";
 
 /**
@@ -35,14 +35,26 @@ import { getUserProfile } from "../../api/GetAPI";
  * 그 외에 독립되는 컴포넌트는 connectWrapper로 연결
  */
 const _Layout = (props: any) => {
-  const { reduxStore, path, Component, setUserInfoAction } = props;
+  const {
+    reduxStore,
+    path,
+    Component,
+    showModalAction,
+    setUserInfoAction,
+    initUserInfoAction,
+  } = props;
 
   // init
   useEffect(() => {
+    // 전역에서 쓰일 Global Function Init
+    initWindowFunc({
+      initUserInfoAction,
+      showModalAction,
+    });
     const token = getLocalStorageItem("token");
-
+    const userStore = reduxStore.userStore.user;
     // 로그인이 된 상태라면
-    if (!_.isEmpty(token)) {
+    if (!_.isEmpty(token) && userStore.isLogin === false) {
       // LocalStorage에 넣기 싫어서 보안상 서버에서 얻어옴.
       _getUserProfile();
     }

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import _ from "lodash";
@@ -6,7 +5,6 @@ import _ from "lodash";
 import { RoutePath } from "../../../route/routes";
 import { Container } from "../../components";
 import { SignActionComponent, IconsActionComponent } from "./action";
-import { modalContents } from "../Modal";
 import { signOut } from "../../../api/PostAPI";
 import {
   getLocalStorageItem,
@@ -64,20 +62,16 @@ export default (props: any) => {
   };
 
   const _showTemplateModal = () => {
-    const { showModalAction } = props;
-
-    if (_.isFunction(showModalAction)) {
-      showModalAction({
-        isShowModal: true,
-        children: modalContents.IntroduceLayout,
-        style: {
-          width: 500,
-          height: 300,
-          borderRadius: 25,
-          padding: 20,
-        },
-        option: {
-          dimClose: true,
+    if (_.isFunction(window.globalFunc.showModalAction)) {
+      window.globalFunc.showModalAction({
+        type: "SAMPLE",
+        item: {
+          style: {
+            width: 500,
+            height: 300,
+            borderRadius: 25,
+            padding: 20,
+          },
         },
       });
     }

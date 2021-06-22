@@ -12,18 +12,20 @@ import { UserInfoIE } from "../../api/interface";
 import { RoutePath } from "../../route/routes";
 import { validationObject } from "../../utils";
 
+const signUpInfo = {
+  email: "",
+  nickname: "",
+  password: "",
+  confirm_password: "",
+};
 export default (props: any) => {
   const { componentStyles } = props;
   const { t } = useTranslation();
-  const signUpInfo = {
-    email: "",
-    nickname: "",
-    password: "",
-    confirm_password: "",
-  };
 
   const history = useHistory();
   const _signUp = async () => {
+    const { setUserInfoAction } = props;
+
     if (validationObject(signUpInfo)) {
       _showMessageModal("회원가입 정보를 다시 한번 확인 해주시기 바랍니다.");
       return false;
@@ -41,7 +43,11 @@ export default (props: any) => {
         _showMessageModal("회원가입 정보를 다시 한번 확인 해주시기 바랍니다.");
         return false;
       } else {
-        setLocalStorageItem({ ...userInfo });
+        setLocalStorageItem({ token: userInfo.token });
+        setUserInfoAction({
+          isLogin: true,
+          info: { email: userInfo.email, nickname: userInfo.nickname },
+        });
         history.push(RoutePath.MAIN);
       }
     } catch (e) {
@@ -57,23 +63,11 @@ export default (props: any) => {
   };
 
   const _showMessageModal = (message: string) => {
-    const { showModalAction } = props;
-    if (_.isFunction(showModalAction)) {
-      _showModalAction({
-        next: showModalAction,
+    if (_.isFunction(window.globalFunc.showModalAction)) {
+      window.globalFunc.showModalAction({
         type: "MESSAGE",
         item: {
           childrenProps: { message },
-          style: {
-            width: 500,
-            height: 120,
-            borderRadius: 25,
-            padding: 20,
-          },
-          option: {
-            dimClose: true,
-            keyClose: true,
-          },
         },
       });
     }

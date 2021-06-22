@@ -11,14 +11,11 @@ export const modalContents = {
   MessageLayout,
 };
 
-export const _showModalAction = ({
-  next,
-  type,
-  item,
-}: {
-  next: Function;
+export interface ShowModalActionIE {
+  next?: Function;
   type: "SAMPLE" | "MESSAGE";
-  item: {
+  children?: React.FC<any>;
+  item?: {
     childrenProps?: any;
     style?: any;
     option?: {
@@ -26,28 +23,33 @@ export const _showModalAction = ({
       keyClose?: boolean;
     };
   };
-}): void => {
+}
+
+export const _showModalAction = ({
+  next,
+  type,
+  children,
+  item,
+}: ShowModalActionIE): void => {
   if (_.isFunction(next)) {
-    let children: React.FC<any>;
-    switch (type) {
-      case "SAMPLE":
-        children = modalContents.IntroduceLayout;
-        break;
-      case "MESSAGE":
-        children = modalContents.MessageLayout;
-        break;
-      default:
-        // todo: common layout 하나 따기
-        children = modalContents.MessageLayout;
-        break;
+    // 넘겨 받은 children이 없거나, type을 주었을 경우 그것에 맞는 레이아웃 제공
+    if (_.isEmpty(children) || !_.isEmpty(type)) {
+      switch (type) {
+        case "SAMPLE":
+          children = modalContents.IntroduceLayout;
+          break;
+        case "MESSAGE":
+          children = modalContents.MessageLayout;
+          break;
+      }
     }
 
     next({
       isShowModal: true,
       children,
-      childrenProps: item.childrenProps,
-      style: item.style,
-      option: item.option,
+      childrenProps: item?.childrenProps,
+      style: item?.style,
+      option: item?.option,
     });
   }
 };

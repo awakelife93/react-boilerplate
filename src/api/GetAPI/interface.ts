@@ -4,9 +4,3 @@ export interface ContentsIE {
   subTitle: string;
   description: string;
 }
-
-export interface TempIE {
-  data: ContentsIE[];
-  status: number;
-  message: string;
-}
