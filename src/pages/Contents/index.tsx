@@ -1,6 +1,6 @@
 import _ from "lodash";
 import { useEffect } from "react";
-import { getPagingContentsItem } from "../../api/GetAPI";
+import { findContents } from "../../api/GetAPI";
 import List from "./List";
 
 /**
@@ -16,7 +16,7 @@ export default (props: any) => {
   const getContents = async () => {
     try {
       const { getContentsAction } = props;
-      const data = await getPagingContentsItem();
+      const data = await findContents();
       if (_.isFunction(getContentsAction)) {
         getContentsAction(data);
       }

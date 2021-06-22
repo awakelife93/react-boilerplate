@@ -4,7 +4,7 @@ import { UserInfoIE } from "../interface";
 import { ContentsIE } from "./interface";
 
 // todo: 페이징 추가
-export const getPagingContentsItem = async (skip: number = 0) => {
+export const findContents = async (skip: number = 0) => {
   try {
     const result: ContentsIE[] = await getAPI("findContents", {
       take: skip + 20,
@@ -12,17 +12,17 @@ export const getPagingContentsItem = async (skip: number = 0) => {
     });
     return result;
   } catch (e) {
-    console.log("===============> getPagingCardItem Error", e);
+    console.log("===============> findContents Error", e);
     throw e;
   }
 };
 
-export const getUserProfile = async () => {
+export const findUserProfile = async () => {
   try {
     const result: UserInfoIE = await getAPI("findUserProfile");
     return result;
   } catch (e) {
-    console.log("===============> getUserProfile Error", e);
+    console.log("===============> findUserProfile Error", e);
     throw e;
   }
 };

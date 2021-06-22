@@ -23,7 +23,7 @@ import {
 } from "../styles";
 
 import { getLocalStorageItem, initWindowFunc } from "../../core";
-import { getUserProfile } from "../../api/GetAPI";
+import { findUserProfile } from "../../api/GetAPI";
 
 /**
  * Layout (최상단 컴포넌트)
@@ -56,12 +56,12 @@ const _Layout = (props: any) => {
     // 로그인이 된 상태라면
     if (!_.isEmpty(token) && userStore.isLogin === false) {
       // LocalStorage에 넣기 싫어서 보안상 서버에서 얻어옴.
-      _getUserProfile();
+      _findUserProfile();
     }
   }, []);
 
-  const _getUserProfile = async () => {
-    const profile = await getUserProfile();
+  const _findUserProfile = async () => {
+    const profile = await findUserProfile();
     setUserInfoAction({
       isLogin: true,
       info: { ...profile },
