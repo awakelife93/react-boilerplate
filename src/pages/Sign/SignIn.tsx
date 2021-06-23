@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import _ from "lodash";
 import { useHistory } from "react-router";
 
@@ -21,6 +22,17 @@ const signInfo = {
 };
 export default (props: any) => {
   const { t } = useTranslation();
+
+  useEffect(() => {
+    window.addEventListener("keypress", checkKeyPress);
+    return () => window.removeEventListener("keypress", checkKeyPress);
+  });
+
+  const checkKeyPress = (event: any) => {
+    if (_.isString(event.code) && event.code === "Enter") {
+      _signIn();
+    }
+  };
 
   const history = useHistory();
   const _signIn = async () => {

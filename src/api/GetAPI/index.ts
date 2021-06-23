@@ -1,13 +1,14 @@
 import { getAPI } from "..";
+import { defaultPagingCount } from "../../common/const";
 import { __DEV__ } from "../../core";
 import { UserInfoIE } from "../interface";
 import { ContentsIE } from "./interface";
 
-// todo: 페이징 추가
 export const findContents = async (skip: number = 0) => {
   try {
+    // typeorm 엔티티의 take, skip을 그대로 전송하기 위해 프로퍼티를 지어줌.
     const result: ContentsIE[] = await getAPI("findContents", {
-      take: skip + 20,
+      take: defaultPagingCount,
       skip,
     });
     return result;

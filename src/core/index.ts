@@ -15,8 +15,7 @@ import {
 } from "./window";
 import i18n from "./i18n";
 import { I18nCommandEnum } from "./i18n/type";
-import { FadeIn } from "./animation";
-import { Move } from "./animation";
+import { ScrollFadeIn, TopDownMove } from "./animation";
 
 const __DEV__ = window.location.hostname === "localhost";
 
@@ -38,8 +37,8 @@ export {
   i18n,
   I18nCommandEnum,
   // animation
-  FadeIn,
-  Move,
+  ScrollFadeIn,
+  TopDownMove,
   // dev
   __DEV__,
 };

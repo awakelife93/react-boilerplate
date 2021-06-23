@@ -1,6 +1,12 @@
+import { ContentsIE } from "../api/GetAPI/interface";
+
 export interface ActionIE {
   type: string;
   value: any;
+}
+
+export interface ContentsStoreIE {
+  contents: ContentsIE[];
 }
 
 export interface ThemeStoreIE {

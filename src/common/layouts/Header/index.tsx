@@ -32,7 +32,7 @@ export default (props: any) => {
         _routePush(RoutePath.MAIN);
       }
     } catch (e) {
-      console.log(e);
+      console.log("_signOut Error", e);
     }
   };
 

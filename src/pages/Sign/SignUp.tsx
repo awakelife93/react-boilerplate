@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import _ from "lodash";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
@@ -21,6 +22,17 @@ const signUpInfo = {
 export default (props: any) => {
   const { componentStyles } = props;
   const { t } = useTranslation();
+
+  useEffect(() => {
+    window.addEventListener("keypress", checkKeyPress);
+    return () => window.removeEventListener("keypress", checkKeyPress);
+  });
+
+  const checkKeyPress = (event: any) => {
+    if (_.isString(event.code) && event.code === "Enter") {
+      _signUp();
+    }
+  };
 
   const history = useHistory();
   const _signUp = async () => {

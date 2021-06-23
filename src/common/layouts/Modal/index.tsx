@@ -61,18 +61,18 @@ export default (props: any) => {
     removeBodyScroll();
 
     if (option.keyClose === true) {
-      window.addEventListener("keydown", checkKeydown);
+      window.addEventListener("keydown", checkKeyPress);
     }
 
     return () => {
       if (option.keyClose === true) {
-        window.removeEventListener("keydown", checkKeydown);
+        window.removeEventListener("keydown", checkKeyPress);
       }
       revertBodyScroll();
     };
   });
 
-  const checkKeydown = (event: any) => {
+  const checkKeyPress = (event: any) => {
     if (_.isString(event.code) && event.code === "Escape") {
       _closeModal();
     }

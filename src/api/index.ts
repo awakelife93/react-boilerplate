@@ -10,21 +10,23 @@ const baseURL = "http://localhost:3001/";
 const instance = axios.create({
   baseURL,
   headers: {
-    token: getLocalStorageItem("token") ?? "",
+    Authorization: getLocalStorageItem("token")
+      ? `Bearer ${getLocalStorageItem("token")}`
+      : "",
   },
 });
 
 instance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
-    const token = getLocalStorageItem("token");
+    const localStorageToken = getLocalStorageItem("token");
 
     // 토큰이 소실되었을 경우 지워주기
-    if (_.isEmpty(token)) {
-      config.headers.token = "";
+    if (_.isEmpty(localStorageToken)) {
+      config.headers.Authorization = "";
     } else {
-      if (_.isEmpty(config.headers.token))
+      if (_.isEmpty(config.headers.Authorization))
         // 토큰이 생겼을 경우 request headers에 달아주기
-        config.headers.token = token;
+        config.headers.Authorization = `Bearer ${localStorageToken ?? ""}`;
     }
 
     return config;

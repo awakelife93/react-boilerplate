@@ -1,6 +1,7 @@
 import _ from "lodash";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { findContents } from "../../api/GetAPI";
+import { defaultPagingCount } from "../../common/const";
 import List from "./List";
 
 /**
@@ -9,27 +10,38 @@ import List from "./List";
  * @returns {Component}
  */
 export default (props: any) => {
+  const {
+    componentStyles,
+    reduxStore: {
+      contentsStore: { contents },
+    },
+  } = props;
+  const [skip, setSkip] = useState(0);
+
   useEffect(() => {
     getContents();
-  }, [props.reduxStore.contentsStore.length]);
+  }, []);
 
   const getContents = async () => {
     try {
       const { getContentsAction } = props;
-      const data = await findContents();
-      if (_.isFunction(getContentsAction)) {
+      const data = await findContents(skip);
+
+      if (_.isFunction(getContentsAction) && !_.isEmpty(data)) {
+        setSkip(skip + defaultPagingCount);
         getContentsAction(data);
       }
     } catch (e) {
-      console.log("===========> MainPage Error", e);
+      console.log("===========> ContentsPage Error", e);
     }
   };
 
-  const { componentStyles } = props;
   return (
     <List
       style={componentStyles.CARD}
-      cards={props.reduxStore.contentsStore.contents}
+      contents={contents}
+      getContents={getContents}
+      skip={skip}
     />
   );
 };

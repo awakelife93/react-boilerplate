@@ -14,3 +14,5 @@ export const defaultShowModal = false;
 export const defaultDimClose = false;
 // default 모달 ESC Key Click Close 유무
 export const defaultKeyClose = true;
+// default Paging Count
+export const defaultPagingCount = 20;

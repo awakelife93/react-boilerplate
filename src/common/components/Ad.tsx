@@ -1,6 +1,6 @@
 import _ from "lodash";
 import { useTranslation } from "react-i18next";
-import { Move } from "../../core";
+import { TopDownMove } from "../../core";
 import { I18nCommandEnum } from "../../core/i18n/type";
 import { Container, Label, Icon, Image } from ".";
 import { CommonImage } from "../styles";
@@ -53,7 +53,7 @@ const AdComponent = (props: any) => {
         >
           {t(I18nCommandEnum.AD_CONTENT2)}
         </Label.CommonLabel>
-        <div {...Move()}>
+        <div {...TopDownMove()}>
           <Icon.FaAngleDoubleUp
             style={{ ...componentStyles.ICON, cursor: "pointer" }}
             size={30}

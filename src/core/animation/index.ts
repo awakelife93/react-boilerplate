@@ -1,4 +1,4 @@
-import FadeIn from "./FadeIn";
-import Move from "./Move";
+import ScrollFadeIn from "./ScrollFadeIn";
+import TopDownMove from "./TopDownMove";
 
-export { FadeIn, Move };
+export { ScrollFadeIn, TopDownMove };

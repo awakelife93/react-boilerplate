@@ -34,3 +34,14 @@ export interface CommonComponentIE {
     backgroundSize?: string;
   };
 }
+
+export interface PagingIE {
+  target: {
+    ref: any;
+    callback: Function | null;
+    page: number;
+  };
+  observer?: {
+    threshold?: number;
+  };
+}

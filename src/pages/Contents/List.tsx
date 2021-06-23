@@ -1,6 +1,7 @@
 import _ from "lodash";
 import { Card, CardColumns } from "react-bootstrap";
 import { ContentsIE } from "../../api/GetAPI/interface";
+import { ScrollPaging } from "../../common/components";
 
 const gridItem = (item: ContentsIE, index: number, style: any) => {
   return (
@@ -18,12 +19,29 @@ const gridItem = (item: ContentsIE, index: number, style: any) => {
 };
 
 export default (props: any) => {
+  const { contents, skip, getContents } = props;
+
   return (
     <CardColumns>
-      {!_.isEmpty(props.cards) &&
-        props.cards.map((card: ContentsIE, index: number) =>
-          gridItem(card, index, props.style)
-        )}
+      {!_.isEmpty(contents) &&
+        contents.map((card: ContentsIE, index: number) => {
+          if (index + 1 === contents.length) {
+            return (
+              <ScrollPaging
+                key={`ScrollPaging_Contents_Key_${index}`}
+                option={{
+                  target: {
+                    skip,
+                    callback: getContents,
+                  },
+                }}
+              >
+                {gridItem(card, index, props.style)}
+              </ScrollPaging>
+            );
+          }
+          return gridItem(card, index, props.style);
+        })}
     </CardColumns>
   );
 };
