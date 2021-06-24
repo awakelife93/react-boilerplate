@@ -1,10 +1,16 @@
 import { Container } from "../../components";
+import { ComponentIE } from "../../interface";
 
-export default (props: any) => {
-  const { layoutStyles } = props;
+/**
+ * @description Body Component
+ * @param {ComponentIE} props
+ * @returns {React.ReactElement}
+ */
+export default (props: ComponentIE): React.ReactElement => {
+  const { layoutStyles, children } = props;
   return (
     <Container.BodyContainer style={{ ...layoutStyles }}>
-      {props.children}
+      {children}
     </Container.BodyContainer>
   );
 };

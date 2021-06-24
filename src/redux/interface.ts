@@ -1,27 +1,28 @@
+import React, { ReactElement } from "react";
 import { ContentsIE } from "../api/GetAPI/interface";
-
 export interface ActionIE {
   type: string;
   value: any;
 }
-
 export interface ContentsStoreIE {
   contents: ContentsIE[];
 }
-
 export interface ThemeStoreIE {
   isDarkMode: boolean;
 }
-
 export interface GlobalStoreIE {
   isShowAdContainer: boolean;
   modalItem: {
-    children: any;
+    isShowModal: boolean;
+    children: React.ReactElement;
+    childrenProps: any;
     style: any;
-    option: any;
+    option: {
+      dimClose: boolean;
+      keyClose: boolean;
+    };
   };
 }
-
 export interface UserStoreIE {
   user: {
     isLogin: boolean;
@@ -30,4 +31,21 @@ export interface UserStoreIE {
       nickname: string;
     };
   };
+}
+export interface ReduxIE {
+  reduxStore: {
+    contentsStore: ContentsStoreIE;
+    themeStore: ThemeStoreIE;
+    globalStore: GlobalStoreIE;
+    userStore: UserStoreIE;
+  };
+  getContentsAction: Function;
+  initDarkModeAction: Function;
+  setDarkModeAction: Function;
+  initShowAdAction: Function;
+  showAdAction: Function;
+  initShowModalAction: Function;
+  showModalAction: Function;
+  setUserInfoAction: Function;
+  initUserInfoAction: Function;
 }

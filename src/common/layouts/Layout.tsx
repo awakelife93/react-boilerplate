@@ -1,10 +1,11 @@
 import { Container } from "../components";
+import { ComponentIE } from "../interface";
 
-export default (props: any) => {
-  const { layoutStyles } = props;
+export default (props: ComponentIE): React.ReactElement => {
+  const { layoutStyles, children } = props;
   return (
     <Container.LayoutContainer style={{ ...layoutStyles }}>
-      {props.children}
+      {children}
     </Container.LayoutContainer>
   );
 };

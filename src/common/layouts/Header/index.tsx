@@ -11,8 +11,20 @@ import {
   setLocalStorageItem,
   removeLocalStorageItem,
 } from "../../../core";
+import { ComponentIE } from "../../interface";
 
-export default (props: any) => {
+/**
+ * @description Header Component
+ * @param {ComponentIE} props
+ * @returns {React.ReactElement}
+ */
+export default (props: ComponentIE): React.ReactElement => {
+  const {
+    layoutStyles,
+    componentStyles,
+    reduxStore: { globalStore, themeStore, userStore },
+  } = props;
+
   const history = useHistory();
   const _routePush = (route: string) => {
     history.push(route);
@@ -20,6 +32,7 @@ export default (props: any) => {
 
   const _signOut = async () => {
     const { initUserInfoAction } = props;
+
     try {
       const token = getLocalStorageItem("token");
 
@@ -37,20 +50,20 @@ export default (props: any) => {
   };
 
   const _darkMode = () => {
-    const { setDarkModeAction, reduxStore } = props;
+    const { setDarkModeAction } = props;
 
     if (_.isFunction(setDarkModeAction)) {
-      const isDarkMode = reduxStore.themeStore.isDarkMode;
+      const isDarkMode = themeStore.isDarkMode;
       setLocalStorageItem({ darkMode: !isDarkMode });
       setDarkModeAction(!isDarkMode);
     }
   };
 
   const _showAdContainer = () => {
-    const { showAdAction, reduxStore } = props;
+    const { showAdAction } = props;
 
     if (_.isFunction(showAdAction)) {
-      const isShowAdContainer = reduxStore.globalStore.isShowAdContainer;
+      const isShowAdContainer = globalStore.isShowAdContainer;
       showAdAction(!isShowAdContainer);
     }
   };
@@ -77,11 +90,10 @@ export default (props: any) => {
     }
   };
 
-  const { layoutStyles, componentStyles, reduxStore } = props;
   return (
     <Container.HeaderContainer style={{ ...layoutStyles }}>
       <IconsActionComponent
-        isShowAdContainer={reduxStore.globalStore.isShowAdContainer}
+        isShowAdContainer={globalStore.isShowAdContainer}
         _routePush={_routePush}
         _darkMode={_darkMode}
         _showAdContainer={_showAdContainer}
@@ -90,7 +102,7 @@ export default (props: any) => {
         componentStyles={componentStyles}
       />
       <SignActionComponent
-        userInfo={reduxStore.userStore.user}
+        userInfo={userStore}
         _routePush={_routePush}
         _signOut={_signOut}
         componentStyles={componentStyles}

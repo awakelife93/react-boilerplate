@@ -1,14 +1,33 @@
 import { useTranslation } from "react-i18next";
 import { I18nCommandEnum } from "../../../../core/i18n/type";
+import { UserStoreIE } from "../../../../redux/interface";
 import { RoutePath } from "../../../../route/routes";
 import { Button, Container, Label } from "../../../components";
 
-export default (props: any) => {
-  const { _routePush, _signOut, componentStyles, userInfo } = props;
+interface SignActionIE {
+  componentStyles: any;
+  userInfo: UserStoreIE;
+  _routePush: Function;
+  _signOut: Function;
+}
+
+/**
+ * @description Header Sign Component
+ * @param {SignActionIE} props
+ * @returns {React.ReactElement}
+ */
+export default (props: SignActionIE): React.ReactElement => {
+  const {
+    _routePush,
+    _signOut,
+    componentStyles,
+    userInfo: { user },
+  } = props;
+
   const { t } = useTranslation();
   return (
     <Container.LayoutContainer>
-      {userInfo.isLogin === false && (
+      {user.isLogin === false && (
         <Container.RowContainer>
           <Button.TextButton
             style={{
@@ -28,12 +47,12 @@ export default (props: any) => {
           </Button.TextButton>
         </Container.RowContainer>
       )}
-      {userInfo.isLogin === true && (
+      {user.isLogin === true && (
         <Container.RowContainer>
           <Label.CommonLabel
             style={{ ...componentStyles.COMMON_LABEL, margin: 0 }}
           >
-            {userInfo.info.nickname}
+            {user.info.nickname}
           </Label.CommonLabel>
           <Button.TextButton
             style={{

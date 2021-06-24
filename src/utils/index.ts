@@ -1,4 +1,4 @@
-import _, { isArray } from "lodash";
+import _ from "lodash";
 
 export const removeBodyScroll = (): void => {
   document.body.style.overflow = "hidden";
@@ -11,7 +11,7 @@ export const revertBodyScroll = (): void => {
 export const validationObject = (object: any): boolean => {
   const keys = Object.keys(object);
 
-  if (!isArray(keys)) return false;
+  if (!_.isArray(keys)) return false;
 
   return keys.some((key) => {
     return _.isUndefined(object[key]) || _.isEmpty(object[key]);

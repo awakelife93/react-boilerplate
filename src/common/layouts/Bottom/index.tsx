@@ -1,6 +1,12 @@
 import { Container, Label } from "../../components";
+import { ComponentIE } from "../../interface";
 
-export default (props: any) => {
+/**
+ * @description Bottom Component
+ * @param {ComponentIE} props
+ * @returns {React.ReactElement}
+ */
+export default (props: ComponentIE): React.ReactElement => {
   const { layoutStyles, componentStyles } = props;
   return (
     <Container.BottomContainer style={{ ...layoutStyles }}>

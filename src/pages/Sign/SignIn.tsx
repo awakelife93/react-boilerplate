@@ -1,26 +1,27 @@
 import { useEffect } from "react";
 import _ from "lodash";
 import { useHistory } from "react-router";
+import { useTranslation } from "react-i18next";
 
 import { Container, Label, InputBox, Button } from "../../common/components";
-import { signIn } from "../../api/PostAPI";
-import { setLocalStorageItem } from "../../core";
-import { useTranslation } from "react-i18next";
-import { I18nCommandEnum } from "../../core/i18n/type";
-import { UserInfoIE } from "../../api/interface";
 import { _showModalAction } from "../../common/layouts/Modal";
+import { ComponentIE } from "../../common/interface";
+import { setLocalStorageItem } from "../../core";
+import { I18nCommandEnum } from "../../core/i18n/type";
+import { signIn } from "../../api/PostAPI";
+import { UserInfoIE } from "../../api/interface";
 import { RoutePath } from "../../route/routes";
 
 /**
  * @description SignIn Component
- * @param props
- * @returns {Component}
+ * @param {ComponentIE} props
+ * @returns {React.ReactElement}
  */
 const signInfo = {
   email: "",
   password: "",
 };
-export default (props: any) => {
+export default (props: ComponentIE): React.ReactElement => {
   const { t } = useTranslation();
 
   useEffect(() => {

@@ -18,9 +18,17 @@ const gridItem = (item: ContentsIE, index: number, style: any) => {
   );
 };
 
-export default (props: any) => {
-  const { contents, skip, getContents } = props;
-
+export default ({
+  style,
+  contents,
+  skip,
+  getContents,
+}: {
+  style: any;
+  contents: ContentsIE[];
+  getContents: Function;
+  skip: number;
+}) => {
   return (
     <CardColumns>
       {!_.isEmpty(contents) &&
@@ -36,11 +44,11 @@ export default (props: any) => {
                   },
                 }}
               >
-                {gridItem(card, index, props.style)}
+                {gridItem(card, index, style)}
               </ScrollPaging>
             );
           }
-          return gridItem(card, index, props.style);
+          return gridItem(card, index, style);
         })}
     </CardColumns>
   );

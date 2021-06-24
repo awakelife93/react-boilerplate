@@ -1,13 +1,14 @@
 import { Container, Image } from "../../common/components";
+import { ComponentIE } from "../../common/interface";
 import { CommonImage } from "../../common/styles";
 import { ScrollFadeIn } from "../../core";
 
 /**
  * @description Main Component
- * @param props
- * @returns {Component}
+ * @param {ComponentIE} props
+ * @returns {React.ReactElement}
  */
-export default (props: any) => {
+export default (props: ComponentIE): React.ReactElement => {
   return (
     <Container.LayoutContainer>
       <Image.CommonImage src={CommonImage.FREE_IMAGE1} />

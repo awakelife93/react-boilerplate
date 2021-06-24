@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import _ from "lodash";
 
 import { connectWrapper } from "../../redux";
@@ -24,7 +24,7 @@ import {
 
 import { getLocalStorageItem, initWindowFunc } from "../../core";
 import { findUserProfile } from "../../api/GetAPI";
-
+import { LayoutIE } from "../interface";
 /**
  * Layout (최상단 컴포넌트)
  * @param {redux} props
@@ -34,9 +34,10 @@ import { findUserProfile } from "../../api/GetAPI";
  * 해당 컴포넌트만 Redux에 연결하여 props로 자식 컴포넌트 전체 (페이지)에 뿌린다.
  * 그 외에 독립되는 컴포넌트는 connectWrapper로 연결
  */
-const _Layout = (props: any) => {
+
+const _Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
   const {
-    reduxStore,
+    reduxStore: { userStore, globalStore, themeStore },
     path,
     Component,
     showModalAction,
@@ -52,25 +53,25 @@ const _Layout = (props: any) => {
       showModalAction,
     });
     const token = getLocalStorageItem("token");
-    const userStore = reduxStore.userStore.user;
+
     // 로그인이 된 상태라면
-    if (!_.isEmpty(token) && userStore.isLogin === false) {
+    if (!_.isEmpty(token) && userStore.user.isLogin === false) {
       // LocalStorage에 넣기 싫어서 보안상 서버에서 얻어옴.
+      const _findUserProfile = async () => {
+        const profile = await findUserProfile();
+        setUserInfoAction({
+          isLogin: true,
+          info: { ...profile },
+        });
+      };
+
       _findUserProfile();
     }
   }, []);
 
-  const _findUserProfile = async () => {
-    const profile = await findUserProfile();
-    setUserInfoAction({
-      isLogin: true,
-      info: { ...profile },
-    });
-  };
-
-  const modalItem = reduxStore.globalStore.modalItem;
-  const isDarkMode = reduxStore.themeStore.isDarkMode;
-  const isShowAdContainer = reduxStore.globalStore.isShowAdContainer;
+  const modalItem = globalStore.modalItem;
+  const isShowAdContainer = globalStore.isShowAdContainer;
+  const isDarkMode = themeStore.isDarkMode;
 
   /**
    * @description
@@ -136,7 +137,7 @@ const _Layout = (props: any) => {
           componentStyles={componentStyles}
         />
       )}
-      <BodyLayout layoutStyles={bodyStyles}>
+      <BodyLayout {...props} layoutStyles={bodyStyles}>
         <Component {...props} componentStyles={componentStyles} />
       </BodyLayout>
       {showBottomContainer(path) && (

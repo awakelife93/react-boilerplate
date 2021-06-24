@@ -1,15 +1,17 @@
 import _ from "lodash";
 import { useEffect, useState } from "react";
-import { findContents } from "../../api/GetAPI";
 import { defaultPagingCount } from "../../common/const";
+import { ComponentIE } from "../../common/interface";
+import { findContents } from "../../api/GetAPI";
+import { ContentsIE } from "../../api/GetAPI/interface";
 import List from "./List";
 
 /**
  * @description Contents Component
- * @param props
- * @returns {Component}
+ * @param {ComponentIE} props
+ * @returns {React.ReactElement}
  */
-export default (props: any) => {
+export default (props: ComponentIE): React.ReactElement => {
   const {
     componentStyles,
     reduxStore: {
@@ -25,7 +27,7 @@ export default (props: any) => {
   const getContents = async () => {
     try {
       const { getContentsAction } = props;
-      const data = await findContents(skip);
+      const data: ContentsIE[] = await findContents(skip);
 
       if (_.isFunction(getContentsAction) && !_.isEmpty(data)) {
         setSkip(skip + defaultPagingCount);

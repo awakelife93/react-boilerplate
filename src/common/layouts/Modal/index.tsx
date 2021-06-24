@@ -5,6 +5,7 @@ import { removeBodyScroll, revertBodyScroll } from "../../../utils";
 
 import IntroduceLayout from "./IntroduceLayout";
 import MessageLayout from "./MessageLayout";
+import { ComponentIE } from "../../interface";
 
 export const modalContents = {
   IntroduceLayout,

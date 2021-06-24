@@ -5,21 +5,27 @@ import { useHistory } from "react-router-dom";
 
 import { Container, InputBox, Label, Button } from "../../common/components";
 import { _showModalAction } from "../../common/layouts/Modal";
+import { ComponentIE } from "../../common/interface";
+
 import { setLocalStorageItem, I18nCommandEnum } from "../../core";
+import { validationObject } from "../../utils";
 
 import { signUp } from "../../api/PostAPI";
 import { UserInfoIE } from "../../api/interface";
-
 import { RoutePath } from "../../route/routes";
-import { validationObject } from "../../utils";
 
+/**
+ * @description SignUp Component
+ * @param {ComponentIE} props
+ * @returns {React.ReactElement}
+ */
 const signUpInfo = {
   email: "",
   nickname: "",
   password: "",
   confirm_password: "",
 };
-export default (props: any) => {
+export default (props: ComponentIE): React.ReactElement => {
   const { componentStyles } = props;
   const { t } = useTranslation();
 

@@ -2,7 +2,7 @@ import React from "react";
 import MainPage from "../pages/Main";
 import ContentsPage from "../pages/Contents";
 import { SignInPage, SignUpPage } from "../pages/Sign";
-import { RouteComponentProps } from "react-router-dom";
+import { ComponentIE } from "../common/interface";
 
 export enum RoutePath {
   MAIN = "/",
@@ -13,7 +13,7 @@ export enum RoutePath {
 export interface RouteIE {
   path: string;
   exact: boolean;
-  Component: React.FC<RouteComponentProps>;
+  Component: React.FC<ComponentIE>;
 }
 
 const routes = [
