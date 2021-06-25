@@ -1,17 +1,17 @@
 import { useCallback, useEffect, useRef } from "react";
-import { AnimationOption, CommonAnimationReturn } from "./interface";
+import { AnimationOptionIE, CommonAnimationReturnIE } from "./interface";
 
 /**
  * @description
  * Scroll을 감지하여 FadeIn Animation
  */
 const ScrollFadeIn = (
-  option: AnimationOption = {
+  option: AnimationOptionIE = {
     delay: 0,
     duration: 1,
     style: {},
   }
-): CommonAnimationReturn => {
+): CommonAnimationReturnIE => {
   const component: any = useRef();
 
   const onScroll = useCallback(

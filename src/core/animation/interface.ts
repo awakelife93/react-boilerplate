@@ -1,18 +1,18 @@
 import React from "react";
 
-export interface AnimationOption {
+export interface AnimationOptionIE {
   delay?: number;
   duration?: number;
   style?: any;
 }
 
-export interface MoveOption extends AnimationOption {
+export interface MoveOptionIE extends AnimationOptionIE {
   direction: string;
   position: number;
   endPosition: number;
 }
 
-export interface CommonAnimationReturn {
+export interface CommonAnimationReturnIE {
   ref: React.MutableRefObject<any>;
   style: any;
 }
