@@ -4,7 +4,7 @@ import _ from "lodash";
 
 import { RoutePath } from "../../../route/routes";
 import { Container } from "../../components";
-import { SignMenu, IconsMenu } from "./action";
+import { SignMenu, IconsMenu } from "./Menu";
 import { signOut } from "../../../api/PostAPI";
 import {
   getLocalStorageItem,

@@ -11,20 +11,23 @@ interface ItemIE {
 
 interface MenuBoxIE {
   renderItems: ItemIE[];
-  children: React.FC;
-  onClick: (props: any) => null;
+  renderType?: "row" | "column";
+  children: React.ReactElement;
+  onClick: Function;
   menuContainerStyle: any;
   menuItemStyle: any;
 }
 
 const MenuBox: React.FC<MenuBoxIE> = (props: MenuBoxIE) => {
   const [isShowMenuBox, setShowMenuBox] = useState(false);
-  const { menuContainerStyle, menuItemStyle, onClick, renderItems } = props;
-
-  const checkOutSideClick = (event: any) => {
-    // 어느 영역을 눌러도 종료가 되게끔...
-    setShowMenuBox(defaultShowModal);
-  };
+  const {
+    children,
+    menuContainerStyle,
+    menuItemStyle,
+    onClick,
+    renderItems,
+    renderType = "row",
+  } = props;
 
   useEffect(() => {
     if (isShowMenuBox === true) {
@@ -34,30 +37,68 @@ const MenuBox: React.FC<MenuBoxIE> = (props: MenuBoxIE) => {
     return () => window.removeEventListener("click", checkOutSideClick);
   }, [isShowMenuBox]);
 
-  if (!_.isArray(renderItems) || renderItems.length === 0) {
+  const checkOutSideClick = (event: any) => {
+    // 어느 영역을 눌러도 종료가 되게끔...
+    setShowMenuBox(defaultShowModal);
+  };
+
+  const renderLayout = () => {
+    // item이 수평으로 나열
+    if (renderType === "row") {
+      return (
+        <Container.RowContainer style={{ ...menuContainerStyle }}>
+          {renderItems.map((item: ItemIE, idx: number) => {
+            return (
+              <Container.RowContainer
+                key={`MenuBox_Row_Item_${idx}`}
+                style={{
+                  ...menuItemStyle,
+                  cursor: "pointer",
+                }}
+                onClick={() => onClick(item.value)}
+              >
+                {item.displayName}
+              </Container.RowContainer>
+            );
+          })}
+        </Container.RowContainer>
+      );
+      // item이 수직으로 나열
+    } else {
+      return (
+        <Container.ColumnContainer style={{ ...menuContainerStyle }}>
+          {renderItems.map((item: ItemIE, idx: number) => {
+            return (
+              <Container.RowContainer
+                key={`MenuBox_Row_Item_${idx}`}
+                style={{
+                  ...menuItemStyle,
+                  cursor: "pointer",
+                }}
+                onClick={() => onClick(item.value)}
+              >
+                {item.displayName}
+              </Container.RowContainer>
+            );
+          })}
+        </Container.ColumnContainer>
+      );
+    }
+  };
+
+  if (
+    // MenuBox가 뿌리 삼을 컴포넌트가 없다면?
+    _.isEmpty(children) ||
+    // Item이 없다면?
+    !_.isArray(renderItems) ||
+    renderItems.length === 0
+  ) {
     return null;
   } else {
     return (
       <Container.ColumnContainer onClick={() => setShowMenuBox(!isShowMenuBox)}>
-        <props.children />
-        {isShowMenuBox === true && (
-          <Container.RowContainer style={{ ...menuContainerStyle }}>
-            {renderItems.map((item: ItemIE, idx: number) => {
-              return (
-                <Container.RowContainer
-                  key={`MenuBox_Item_${idx}`}
-                  style={{
-                    ...menuItemStyle,
-                    cursor: "pointer",
-                  }}
-                  onClick={() => onClick(item.value)}
-                >
-                  {item.displayName}
-                </Container.RowContainer>
-              );
-            })}
-          </Container.RowContainer>
-        )}
+        {children}
+        {isShowMenuBox === true && renderLayout()}
       </Container.ColumnContainer>
     );
   }

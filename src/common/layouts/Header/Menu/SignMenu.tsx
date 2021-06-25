@@ -1,8 +1,9 @@
+import _ from "lodash";
 import { useTranslation } from "react-i18next";
 import { I18nCommandEnum } from "../../../../core/i18n/type";
 import { UserStoreIE } from "../../../../redux/interface";
 import { RoutePath } from "../../../../route/routes";
-import { Button, Container, Label } from "../../../components";
+import { Button, Container, Label, MenuBox } from "../../../components";
 
 interface SignMenuIE {
   componentStyles: any;
@@ -51,19 +52,52 @@ const SignMenu: React.FC<SignMenuIE> = (
       )}
       {user.isLogin === true && (
         <Container.RowContainer>
-          <Label.CommonLabel
-            style={{ ...componentStyles.COMMON_LABEL, margin: 0 }}
-          >
-            {user.info.nickname}
-          </Label.CommonLabel>
-          <Button.TextButton
-            style={{
-              ...componentStyles.TEXT_BUTTON,
+          <MenuBox
+            children={
+              <Label.CommonLabel
+                style={{
+                  ...componentStyles.COMMON_LABEL,
+                  margin: 0,
+                  cursor: "pointer",
+                }}
+              >
+                {user.info.nickname}
+              </Label.CommonLabel>
+            }
+            menuContainerStyle={{
+              ...componentStyles.MENU_BOX.CONTAINER,
+              borderRadius: 15,
+              width: 150,
+              height: 100,
+              marginRight: 90,
+              position: "absolute",
+              top: 60,
+              padding: 10,
             }}
-            onClick={() => _signOut()}
-          >
-            {t(I18nCommandEnum.SIGN_OUT)}
-          </Button.TextButton>
+            menuItemStyle={{
+              ...componentStyles.MENU_BOX.ITEM,
+              fontSize: 15,
+              marginBottom: 5,
+            }}
+            renderType={"column"}
+            renderItems={[
+              {
+                displayName: t(I18nCommandEnum.UPDATE_USER_INFO),
+                value: () => alert("개발 예정입니다."),
+              },
+              {
+                displayName: t(I18nCommandEnum.DELETE_ACCOUNT),
+                value: () => alert("개발 예정입니다."),
+              },
+              {
+                displayName: t(I18nCommandEnum.SIGN_OUT),
+                value: _signOut,
+              },
+            ]}
+            onClick={(action: Function) => {
+              if (_.isFunction(action)) action();
+            }}
+          />
         </Container.RowContainer>
       )}
     </Container.LayoutContainer>

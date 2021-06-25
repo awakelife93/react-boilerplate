@@ -80,7 +80,7 @@ const IconMenu: React.FC<IconMenuIE> = (
         />
       )}
       <MenuBox
-        children={() => (
+        children={
           <Icon.GiWorld
             style={{
               ...componentStyles.ICON,
@@ -89,7 +89,7 @@ const IconMenu: React.FC<IconMenuIE> = (
             }}
             size={20}
           />
-        )}
+        }
         menuContainerStyle={{
           ...componentStyles.MENU_BOX.CONTAINER,
           // 최대한 공통으로 따고 싶은 스타일이지만, 애가 어디에 위치할지 몰라서

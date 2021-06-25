@@ -6,9 +6,11 @@
 export enum I18nCommandEnum {
   KO = "ko",
   EN = "en",
-  SIGN_IN = "signIn",
-  SIGN_OUT = "signOut",
-  SIGN_UP = "signUp",
+
+  SIGN_IN = "sign_in",
+  SIGN_OUT = "sign_out",
+  SIGN_UP = "sign_up",
+
   AD_TITLE = "ad_title",
   AD_CONTENT1 = "ad_content1",
   AD_CONTENT2 = "ad_content2",
@@ -17,4 +19,7 @@ export enum I18nCommandEnum {
   NICKNAME = "nickname",
   PASSWORD = "password",
   CONFIRM_PASSWORD = "confirm_password",
+
+  UPDATE_USER_INFO = "update_user_info",
+  DELETE_ACCOUNT = "delete_account",
 }
