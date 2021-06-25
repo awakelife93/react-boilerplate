@@ -24,7 +24,7 @@ const Contents: React.FC<ComponentIE> = (
 
   useEffect(() => {
     getContents();
-  }, []);
+  });
 
   const getContents = async () => {
     try {

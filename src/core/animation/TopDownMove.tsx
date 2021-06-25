@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from "react";
-import { MoveOption } from "./interface";
+import { CommonAnimationReturn, MoveOption } from "./interface";
 
 /**
  * @description
  * Component가 Unmount할 때 까지 특정 딜레이 주기로 포지션 이동 Animation
  */
-export default (
+const TopDownMove = (
   option: MoveOption = {
     delay: 500,
     direction: "Y",
@@ -13,7 +13,7 @@ export default (
     endPosition: 15,
     style: {},
   }
-) => {
+): CommonAnimationReturn => {
   const component: any = useRef();
   const [animationObject, setAnimationObject] = useState({
     isMove: false,
@@ -53,3 +53,5 @@ export default (
     },
   };
 };
+
+export default TopDownMove;

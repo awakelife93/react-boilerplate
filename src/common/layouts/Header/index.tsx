@@ -18,7 +18,9 @@ import { ComponentIE } from "../../interface";
  * @param {ComponentIE} props
  * @returns {React.ReactElement}
  */
-export default (props: ComponentIE): React.ReactElement => {
+const Header: React.FC<ComponentIE> = (
+  props: ComponentIE
+): React.ReactElement => {
   const {
     layoutStyles,
     componentStyles,
@@ -110,3 +112,5 @@ export default (props: ComponentIE): React.ReactElement => {
     </Container.HeaderContainer>
   );
 };
+
+export default Header;
