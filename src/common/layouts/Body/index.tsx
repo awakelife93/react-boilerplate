@@ -6,7 +6,9 @@ import { ComponentIE } from "../../interface";
  * @param {ComponentIE} props
  * @returns {React.ReactElement}
  */
-export default (props: ComponentIE): React.ReactElement => {
+const Body: React.FC<ComponentIE> = (
+  props: ComponentIE
+): React.ReactElement => {
   const { layoutStyles, children } = props;
   return (
     <Container.BodyContainer style={{ ...layoutStyles }}>
@@ -14,3 +16,5 @@ export default (props: ComponentIE): React.ReactElement => {
     </Container.BodyContainer>
   );
 };
+
+export default Body;

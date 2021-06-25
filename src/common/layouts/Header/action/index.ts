@@ -1,4 +1,4 @@
-import SignActionComponent from "./SignAction";
-import IconsActionComponent from "./IconsAction";
+import SignMenu from "./SignMenu";
+import IconsMenu from "./IconsMenu";
 
-export { SignActionComponent, IconsActionComponent };
+export { SignMenu, IconsMenu };

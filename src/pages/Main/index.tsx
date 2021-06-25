@@ -8,7 +8,10 @@ import { ScrollFadeIn } from "../../core";
  * @param {ComponentIE} props
  * @returns {React.ReactElement}
  */
-export default (props: ComponentIE): React.ReactElement => {
+
+const Main: React.FC<ComponentIE> = (
+  props: ComponentIE
+): React.ReactElement => {
   return (
     <Container.LayoutContainer>
       <Image.CommonImage src={CommonImage.FREE_IMAGE1} />
@@ -17,3 +20,5 @@ export default (props: ComponentIE): React.ReactElement => {
     </Container.LayoutContainer>
   );
 };
+
+export default Main;

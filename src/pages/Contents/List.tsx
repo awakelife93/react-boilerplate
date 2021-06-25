@@ -18,7 +18,7 @@ const gridItem = (item: ContentsIE, index: number, style: any) => {
   );
 };
 
-export default ({
+const List = ({
   style,
   contents,
   skip,
@@ -28,7 +28,7 @@ export default ({
   contents: ContentsIE[];
   getContents: Function;
   skip: number;
-}) => {
+}): React.ReactElement => {
   return (
     <CardColumns>
       {!_.isEmpty(contents) &&
@@ -37,11 +37,9 @@ export default ({
             return (
               <ScrollPaging
                 key={`ScrollPaging_Contents_Key_${index}`}
-                option={{
-                  target: {
-                    skip,
-                    callback: getContents,
-                  },
+                target={{
+                  skip,
+                  callback: getContents,
                 }}
               >
                 {gridItem(card, index, style)}
@@ -53,3 +51,5 @@ export default ({
     </CardColumns>
   );
 };
+
+export default List;

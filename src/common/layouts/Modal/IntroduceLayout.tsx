@@ -4,7 +4,9 @@ interface IntroduceLayoutIE {
   componentStyles: any;
 }
 
-export default (props: IntroduceLayoutIE) => {
+const IntroduceLayout: React.FC<IntroduceLayoutIE> = (
+  props: IntroduceLayoutIE
+) => {
   const { componentStyles } = props;
   return (
     <Container.ColumnContainer>
@@ -38,3 +40,5 @@ export default (props: IntroduceLayoutIE) => {
     </Container.ColumnContainer>
   );
 };
+
+export default IntroduceLayout;

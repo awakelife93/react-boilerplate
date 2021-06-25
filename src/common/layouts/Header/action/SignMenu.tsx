@@ -4,7 +4,7 @@ import { UserStoreIE } from "../../../../redux/interface";
 import { RoutePath } from "../../../../route/routes";
 import { Button, Container, Label } from "../../../components";
 
-interface SignActionIE {
+interface SignMenuIE {
   componentStyles: any;
   userInfo: UserStoreIE;
   _routePush: Function;
@@ -16,7 +16,9 @@ interface SignActionIE {
  * @param {SignActionIE} props
  * @returns {React.ReactElement}
  */
-export default (props: SignActionIE): React.ReactElement => {
+const SignMenu: React.FC<SignMenuIE> = (
+  props: SignMenuIE
+): React.ReactElement => {
   const {
     _routePush,
     _signOut,
@@ -67,3 +69,5 @@ export default (props: SignActionIE): React.ReactElement => {
     </Container.LayoutContainer>
   );
 };
+
+export default SignMenu;

@@ -14,7 +14,7 @@ export interface GlobalStoreIE {
   isShowAdContainer: boolean;
   modalItem: {
     isShowModal: boolean;
-    children: React.ReactElement;
+    children: React.ReactElement | null;
     childrenProps: any;
     style: any;
     option: {

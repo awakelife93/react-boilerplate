@@ -4,7 +4,6 @@ import { useHistory } from "react-router";
 import { useTranslation } from "react-i18next";
 
 import { Container, Label, InputBox, Button } from "../../common/components";
-import { _showModalAction } from "../../common/layouts/Modal";
 import { ComponentIE } from "../../common/interface";
 import { setLocalStorageItem } from "../../core";
 import { I18nCommandEnum } from "../../core/i18n/type";
@@ -21,7 +20,9 @@ const signInfo = {
   email: "",
   password: "",
 };
-export default (props: ComponentIE): React.ReactElement => {
+const SignIn: React.FC<ComponentIE> = (
+  props: ComponentIE
+): React.ReactElement => {
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -134,3 +135,5 @@ export default (props: ComponentIE): React.ReactElement => {
     </Container.RowContainer>
   );
 };
+
+export default SignIn;

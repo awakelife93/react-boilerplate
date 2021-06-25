@@ -8,7 +8,7 @@ import { configureStore } from "../redux";
 
 const store = configureStore();
 
-export default () => {
+const RouteComponent = () => {
   return (
     <Provider store={store}>
       <Router history={createBrowserHistory()}>
@@ -30,3 +30,5 @@ export default () => {
     </Provider>
   );
 };
+
+export default RouteComponent;

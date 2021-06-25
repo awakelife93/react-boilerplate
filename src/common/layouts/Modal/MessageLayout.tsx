@@ -5,7 +5,7 @@ interface MessageLayoutIE {
   message: string;
 }
 
-export default (props: MessageLayoutIE) => {
+const MessageLayout: React.FC<any> = (props: MessageLayoutIE) => {
   const { componentStyles, message } = props;
   return (
     <Container.ColumnContainer>
@@ -20,3 +20,5 @@ export default (props: MessageLayoutIE) => {
     </Container.ColumnContainer>
   );
 };
+
+export default MessageLayout;

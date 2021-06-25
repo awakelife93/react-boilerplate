@@ -4,7 +4,7 @@ import { RoutePath } from "../../../../route/routes";
 import { Container, Button, Icon } from "../../../components";
 import { MenuBox } from "../../../components";
 
-interface IconsActionIE {
+interface IconMenuIE {
   componentStyles: any;
   isShowAdContainer: boolean;
   _darkMode: Function;
@@ -19,7 +19,9 @@ interface IconsActionIE {
  * @param {IconsActionIE} props
  * @returns {React.ReactElement}
  */
-export default (props: IconsActionIE): React.ReactElement => {
+const IconMenu: React.FC<IconMenuIE> = (
+  props: IconMenuIE
+): React.ReactElement => {
   const { t } = useTranslation();
   const {
     isShowAdContainer,
@@ -126,3 +128,5 @@ export default (props: IconsActionIE): React.ReactElement => {
     </Container.RowContainer>
   );
 };
+
+export default IconMenu;

@@ -6,7 +6,9 @@ import { ComponentIE } from "../../interface";
  * @param {ComponentIE} props
  * @returns {React.ReactElement}
  */
-export default (props: ComponentIE): React.ReactElement => {
+const Bottom: React.FC<ComponentIE> = (
+  props: ComponentIE
+): React.ReactElement => {
   const { layoutStyles, componentStyles } = props;
   return (
     <Container.BottomContainer style={{ ...layoutStyles }}>
@@ -19,3 +21,5 @@ export default (props: ComponentIE): React.ReactElement => {
     </Container.BottomContainer>
   );
 };
+
+export default Bottom;

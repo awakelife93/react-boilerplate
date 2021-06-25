@@ -6,11 +6,21 @@ import { Container } from ".";
  * @description
  * Scroll을 감지하여 Paging
  */
-export default (props: any) => {
+interface ScrollPagingIE {
+  children: React.ReactElement;
+  target: {
+    callback: Function;
+    skip: number;
+  };
+  observerOption?: {
+    threshold?: number;
+  };
+}
+const ScrollPaging: React.FC<ScrollPagingIE> = (props: ScrollPagingIE) => {
   const {
-    option: {
-      target: { callback, skip },
-    },
+    children,
+    target: { callback, skip },
+    observerOption,
   } = props;
 
   const component: any = useRef<HTMLDivElement>();
@@ -35,8 +45,9 @@ export default (props: any) => {
     let observer: IntersectionObserver;
 
     if (component.current) {
+      const threshold = observerOption?.threshold ?? 1;
       observer = new IntersectionObserver(onPagingEnd, {
-        threshold: 1,
+        threshold,
       });
       observer.observe(component.current);
     }
@@ -46,7 +57,9 @@ export default (props: any) => {
 
   return (
     <Container.LayoutContainer ref={component}>
-      {props.children}
+      {children}
     </Container.LayoutContainer>
   );
 };
+
+export default ScrollPaging;

@@ -11,7 +11,9 @@ import List from "./List";
  * @param {ComponentIE} props
  * @returns {React.ReactElement}
  */
-export default (props: ComponentIE): React.ReactElement => {
+const Contents: React.FC<ComponentIE> = (
+  props: ComponentIE
+): React.ReactElement => {
   const {
     componentStyles,
     reduxStore: {
@@ -47,3 +49,5 @@ export default (props: ComponentIE): React.ReactElement => {
     />
   );
 };
+
+export default Contents;

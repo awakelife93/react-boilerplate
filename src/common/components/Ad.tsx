@@ -4,9 +4,15 @@ import { TopDownMove } from "../../core";
 import { I18nCommandEnum } from "../../core/i18n/type";
 import { Container, Label, Icon, Image } from ".";
 import { CommonImage } from "../styles";
+import { ComponentIE } from "../interface";
 
-const AdComponent = (props: any) => {
-  const { componentStyles, reduxStore } = props;
+const Ad: React.FC<ComponentIE> = (props: ComponentIE) => {
+  const {
+    componentStyles,
+    reduxStore: {
+      themeStore: { isDarkMode },
+    },
+  } = props;
   const { t } = useTranslation();
 
   const _hideAdContainer = () => {
@@ -17,7 +23,6 @@ const AdComponent = (props: any) => {
     }
   };
 
-  const isDarkMode = reduxStore.themeStore.isDarkMode;
   return (
     <Image.BackGroundImage
       requireStyle={{
@@ -65,4 +70,4 @@ const AdComponent = (props: any) => {
   );
 };
 
-export default AdComponent;
+export default Ad;

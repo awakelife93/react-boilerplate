@@ -17,13 +17,9 @@ interface MenuBoxIE {
   menuItemStyle: any;
 }
 
-export default (props: MenuBoxIE) => {
+const MenuBox: React.FC<MenuBoxIE> = (props: MenuBoxIE) => {
   const [isShowMenuBox, setShowMenuBox] = useState(false);
   const { menuContainerStyle, menuItemStyle, onClick, renderItems } = props;
-
-  if (!_.isArray(renderItems) || renderItems.length === 0) {
-    return null;
-  }
 
   const checkOutSideClick = (event: any) => {
     // 어느 영역을 눌러도 종료가 되게끔...
@@ -38,27 +34,33 @@ export default (props: MenuBoxIE) => {
     return () => window.removeEventListener("click", checkOutSideClick);
   }, [isShowMenuBox]);
 
-  return (
-    <Container.ColumnContainer onClick={() => setShowMenuBox(!isShowMenuBox)}>
-      <props.children />
-      {isShowMenuBox === true && (
-        <Container.RowContainer style={{ ...menuContainerStyle }}>
-          {renderItems.map((item: ItemIE, idx: number) => {
-            return (
-              <Container.RowContainer
-                key={`MenuBox_Item_${idx}`}
-                style={{
-                  ...menuItemStyle,
-                  cursor: "pointer",
-                }}
-                onClick={() => onClick(item.value)}
-              >
-                {item.displayName}
-              </Container.RowContainer>
-            );
-          })}
-        </Container.RowContainer>
-      )}
-    </Container.ColumnContainer>
-  );
+  if (!_.isArray(renderItems) || renderItems.length === 0) {
+    return null;
+  } else {
+    return (
+      <Container.ColumnContainer onClick={() => setShowMenuBox(!isShowMenuBox)}>
+        <props.children />
+        {isShowMenuBox === true && (
+          <Container.RowContainer style={{ ...menuContainerStyle }}>
+            {renderItems.map((item: ItemIE, idx: number) => {
+              return (
+                <Container.RowContainer
+                  key={`MenuBox_Item_${idx}`}
+                  style={{
+                    ...menuItemStyle,
+                    cursor: "pointer",
+                  }}
+                  onClick={() => onClick(item.value)}
+                >
+                  {item.displayName}
+                </Container.RowContainer>
+              );
+            })}
+          </Container.RowContainer>
+        )}
+      </Container.ColumnContainer>
+    );
+  }
 };
+
+export default MenuBox;

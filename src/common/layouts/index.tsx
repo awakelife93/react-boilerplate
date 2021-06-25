@@ -3,7 +3,7 @@ import _ from "lodash";
 
 import { connectWrapper } from "../../redux";
 
-import Layout from "./Layout";
+import { Container } from "../components";
 import AdLayout from "../components/Ad";
 import HeaderLayout from "./Header";
 import BodyLayout from "./Body";
@@ -18,7 +18,6 @@ import {
   generateComponentStyle,
   showBottomContainer,
   showHeaderContainer,
-  generateCommonContainerStyle,
   generateModalContainerStyle,
 } from "../styles";
 
@@ -84,10 +83,8 @@ const _Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
   /**
    * common layout style
    * @function layoutStyles path에 따라 수정이 가능한 스타일
-   * @function commonStyles 수정이 불가능한 스타일
    */
-  const layoutStyles = generateLayoutContainerStyle({ path }) ?? {};
-  const commonStyles = generateCommonContainerStyle({ isDarkMode }) ?? {};
+  const layoutStyles = generateLayoutContainerStyle({ path, isDarkMode }) ?? {};
 
   /**
    * modal layout style
@@ -111,11 +108,11 @@ const _Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
    */
   const componentStyles = generateComponentStyle({ path, isDarkMode }) ?? {};
   return (
-    <Layout layoutStyles={layoutStyles}>
+    <Container.LayoutContainer>
       {modalItem.isShowModal && (
         <ModalLayout
           {...props}
-          layoutStyles={commonStyles}
+          layoutStyles={layoutStyles}
           componentStyles={componentStyles}
           children={modalItem.children}
           childrenProps={modalItem.childrenProps}
@@ -133,7 +130,7 @@ const _Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
       {isShowAdContainer && (
         <AdLayout
           {...props}
-          layoutStyles={commonStyles}
+          layoutStyles={layoutStyles}
           componentStyles={componentStyles}
         />
       )}
@@ -147,7 +144,7 @@ const _Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
           componentStyles={componentStyles}
         />
       )}
-    </Layout>
+    </Container.LayoutContainer>
   );
 };
 

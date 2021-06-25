@@ -55,7 +55,7 @@ export const _showModalAction = ({
   }
 };
 
-export default (props: any) => {
+const Modal: React.FC<any> = (props: any) => {
   const { childrenProps, layoutStyles, componentStyles, style, option } = props;
 
   useEffect(() => {
@@ -137,3 +137,5 @@ export default (props: any) => {
     </Container.LayoutContainer>
   );
 };
+
+export default Modal;

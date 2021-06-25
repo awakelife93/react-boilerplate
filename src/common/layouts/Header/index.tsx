@@ -4,7 +4,7 @@ import _ from "lodash";
 
 import { RoutePath } from "../../../route/routes";
 import { Container } from "../../components";
-import { SignActionComponent, IconsActionComponent } from "./action";
+import { SignMenu, IconsMenu } from "./action";
 import { signOut } from "../../../api/PostAPI";
 import {
   getLocalStorageItem,
@@ -92,7 +92,7 @@ export default (props: ComponentIE): React.ReactElement => {
 
   return (
     <Container.HeaderContainer style={{ ...layoutStyles }}>
-      <IconsActionComponent
+      <IconsMenu
         isShowAdContainer={globalStore.isShowAdContainer}
         _routePush={_routePush}
         _darkMode={_darkMode}
@@ -101,7 +101,7 @@ export default (props: ComponentIE): React.ReactElement => {
         _showTemplateModal={_showTemplateModal}
         componentStyles={componentStyles}
       />
-      <SignActionComponent
+      <SignMenu
         userInfo={userStore}
         _routePush={_routePush}
         _signOut={_signOut}

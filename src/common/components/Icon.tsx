@@ -13,7 +13,7 @@ import * as Ionic4Icons from "react-icons/io";
 import * as Ionic5Icons from "react-icons/io5";
 import * as MaterialIcons from "react-icons/md";
 
-export default {
+const CommonIcons = {
   ...BoxIcons,
   ...Devicons,
   ...FontAwesomeIcons,
@@ -25,3 +25,5 @@ export default {
   ...Ionic5Icons,
   ...MaterialIcons,
 };
+
+export default CommonIcons;

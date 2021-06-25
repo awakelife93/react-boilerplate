@@ -16,8 +16,20 @@ import CommonImage from "./image";
  * 페이지를 이루는 3개의 영역을 동적으로 스타일을 제작한다.
  */
 
-const generateLayoutContainerStyle = ({ path = "" }: { path: string }) => {
+const generateLayoutContainerStyle = ({
+  path = "",
+  isDarkMode = false,
+}: {
+  path: string;
+  isDarkMode: boolean;
+}) => {
   let props: LayoutContainerIE = {};
+
+  if (isDarkMode === true) {
+    props["style"] = { ...CommonTheme.BLACK_THEME.MODAL_LAYOUT };
+  } else {
+    props["style"] = { ...CommonTheme.WHITE_THEME.MODAL_LAYOUT };
+  }
 
   switch (path) {
     // todo: 필요 시 작성
@@ -43,24 +55,6 @@ const generateModalContainerStyle = ({
     props["style"] = { ...CommonTheme.BLACK_THEME.MODAL_LAYOUT };
   } else {
     props["style"] = { ...CommonTheme.WHITE_THEME.MODAL_LAYOUT };
-  }
-
-  return {
-    ...props["style"],
-  };
-};
-
-const generateCommonContainerStyle = ({
-  isDarkMode = false,
-}: {
-  isDarkMode: boolean;
-}) => {
-  let props: LayoutContainerIE = {};
-
-  if (isDarkMode === true) {
-    props["style"] = { ...CommonTheme.BLACK_THEME.LAYOUT };
-  } else {
-    props["style"] = { ...CommonTheme.WHITE_THEME.LAYOUT };
   }
 
   return {
@@ -115,6 +109,7 @@ const generateBodyContainerStyle = ({
       break;
     case RoutePath.SIGN_UP:
     case RoutePath.SIGN_IN:
+      props["style"].position = "absolute";
       props["style"].padding = 120;
       break;
   }
@@ -198,7 +193,6 @@ export {
   CommonImage,
   generateLayoutContainerStyle,
   generateModalContainerStyle,
-  generateCommonContainerStyle,
   generateHeaderContainerStyle,
   generateBodyContainerStyle,
   generateBottomContainerStyle,
