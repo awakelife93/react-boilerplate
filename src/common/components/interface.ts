@@ -32,7 +32,9 @@ export interface CommonComponentIE {
     backgroundImage?: string;
     backgroundRepeat?: string;
     backgroundSize?: string;
+    minHeight?: string | number;
   };
+  requireStyle?: {};
 }
 
 export interface PagingIE {

@@ -26,9 +26,9 @@ const generateLayoutContainerStyle = ({
   let props: LayoutContainerIE = {};
 
   if (isDarkMode === true) {
-    props["style"] = { ...CommonTheme.BLACK_THEME.MODAL_LAYOUT };
+    props["style"] = { ...CommonTheme.BLACK_THEME.LAYOUT };
   } else {
-    props["style"] = { ...CommonTheme.WHITE_THEME.MODAL_LAYOUT };
+    props["style"] = { ...CommonTheme.WHITE_THEME.LAYOUT };
   }
 
   switch (path) {
@@ -109,7 +109,6 @@ const generateBodyContainerStyle = ({
       break;
     case RoutePath.SIGN_UP:
     case RoutePath.SIGN_IN:
-      props["style"].position = "absolute";
       props["style"].padding = 120;
       break;
   }

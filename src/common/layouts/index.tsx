@@ -66,7 +66,7 @@ const _Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
 
       _findUserProfile();
     }
-  });
+  }, []);
 
   const modalItem = globalStore.modalItem;
   const isShowAdContainer = globalStore.isShowAdContainer;

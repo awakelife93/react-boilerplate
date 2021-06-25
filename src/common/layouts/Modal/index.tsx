@@ -3,28 +3,9 @@ import _ from "lodash";
 import { Container, Icon } from "../../components";
 import { removeBodyScroll, revertBodyScroll } from "../../../utils";
 
-import IntroduceLayout from "./IntroduceLayout";
-import MessageLayout from "./MessageLayout";
-import { ComponentIE } from "../../interface";
-
-export const modalContents = {
-  IntroduceLayout,
-  MessageLayout,
-};
-
-export interface ShowModalActionIE {
-  next?: Function;
-  type: "SAMPLE" | "MESSAGE";
-  children?: React.FC<any>;
-  item?: {
-    childrenProps?: any;
-    style?: any;
-    option?: {
-      dimClose?: boolean;
-      keyClose?: boolean;
-    };
-  };
-}
+import IntroduceLayout from "./layout/Introduce";
+import MessageLayout from "./layout/Message";
+import { ModalIE, ShowModalActionIE } from "./interface";
 
 export const _showModalAction = ({
   next,
@@ -37,10 +18,10 @@ export const _showModalAction = ({
     if (_.isEmpty(children) || !_.isEmpty(type)) {
       switch (type) {
         case "SAMPLE":
-          children = modalContents.IntroduceLayout;
+          children = IntroduceLayout;
           break;
         case "MESSAGE":
-          children = modalContents.MessageLayout;
+          children = MessageLayout;
           break;
       }
     }
@@ -55,7 +36,7 @@ export const _showModalAction = ({
   }
 };
 
-const Modal: React.FC<any> = (props: any) => {
+const Modal: React.FC<ModalIE> = (props: ModalIE) => {
   const { childrenProps, layoutStyles, componentStyles, style, option } = props;
 
   useEffect(() => {

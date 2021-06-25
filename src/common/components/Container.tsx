@@ -21,6 +21,7 @@ export interface BodyContainerIE extends CommonComponentIE {}
 export const BodyContainer = styled.div`
   width: ${(props: BodyContainerIE) => props.style?.width ?? "100%"};
   height: ${(props: BodyContainerIE) => props.style?.height ?? "100%"};
+  min-height: ${(props: BodyContainerIE) => props.style?.minHeight ?? "100vh"};
   padding: ${(props: BodyContainerIE) => props.style?.padding ?? "0px"};
   background-color: ${(props: BodyContainerIE) =>
     props.style?.backgroundColor ??

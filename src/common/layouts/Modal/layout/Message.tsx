@@ -1,11 +1,11 @@
-import { Container, Label } from "../../components";
+import { Container, Label } from "../../../components";
 
 interface MessageLayoutIE {
   componentStyles: any;
   message: string;
 }
 
-const MessageLayout: React.FC<any> = (props: MessageLayoutIE) => {
+const MessageLayout: React.FC<MessageLayoutIE> = (props: MessageLayoutIE) => {
   const { componentStyles, message } = props;
   return (
     <Container.ColumnContainer>

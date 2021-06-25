@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React from "react";
 import { ContentsIE } from "../api/GetAPI/interface";
 export interface ActionIE {
   type: string;
@@ -14,7 +14,7 @@ export interface GlobalStoreIE {
   isShowAdContainer: boolean;
   modalItem: {
     isShowModal: boolean;
-    children: React.ReactElement | null;
+    children: React.FC<any>;
     childrenProps: any;
     style: any;
     option: {

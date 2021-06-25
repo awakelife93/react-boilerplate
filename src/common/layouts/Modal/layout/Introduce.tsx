@@ -1,4 +1,4 @@
-import { Container, Label } from "../../components";
+import { Container, Label } from "../../../components";
 
 interface IntroduceLayoutIE {
   componentStyles: any;
