@@ -17,28 +17,6 @@ export const signIn = async ({
   }
 };
 
-export const signUp = async ({
-  email,
-  nickname,
-  password,
-}: {
-  email: string;
-  nickname: string;
-  password: string;
-}) => {
-  try {
-    let result: UserInfoIE = await postAPI("signUp", {
-      email,
-      nickname,
-      password,
-    });
-    return result;
-  } catch (e) {
-    console.log("===============> signUp Error", e);
-    throw e;
-  }
-};
-
 export const signOut = async () => {
   try {
     let result: object = await postAPI("signOut");

@@ -127,14 +127,14 @@ export const postAPI = async (
   return await generateAPIData(result);
 };
 
-export const patchAPI = async (
+export const putAPI = async (
   endPoint: string = "",
   data = {},
   axiosOption = {
     timeout: 2000,
   }
 ) => {
-  const result = await instance.patch(endPoint, data, axiosOption);
+  const result = await instance.put(endPoint, data, axiosOption);
   return await generateAPIData(result);
 };
 

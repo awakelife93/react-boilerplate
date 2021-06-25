@@ -9,7 +9,7 @@ import { ComponentIE } from "../../common/interface";
 import { setLocalStorageItem, I18nCommandEnum } from "../../core";
 import { validationObject } from "../../utils";
 
-import { signUp } from "../../api/PostAPI";
+import { signUp } from "../../api/PutAPI";
 import { UserInfoIE } from "../../api/interface";
 import { RoutePath } from "../../route/routes";
 
