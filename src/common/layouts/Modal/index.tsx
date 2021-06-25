@@ -76,7 +76,6 @@ const Modal: React.FC<ModalIE> = (props: ModalIE) => {
           ...layoutStyles,
           position: "fixed",
           opacity: 0.5,
-          zIndex: 1,
         }}
         onClick={() => {
           if (option.dimClose === true) _closeModal();
@@ -94,7 +93,6 @@ const Modal: React.FC<ModalIE> = (props: ModalIE) => {
           transform: "translate(-50%, -50%)",
           top: "50%",
           left: "50%",
-          zIndex: 2,
         }}
       >
         <Icon.IoCloseCircleOutline

@@ -31,12 +31,10 @@ const generateLayoutContainerStyle = ({
     props["style"] = { ...CommonTheme.WHITE_THEME.LAYOUT };
   }
 
-  switch (path) {
+  switch (
+    path
     // todo: 필요 시 작성
-    case RoutePath.SIGN_UP:
-    case RoutePath.SIGN_IN: {
-      props["style"] = { position: "absolute" };
-    }
+  ) {
   }
 
   return {
