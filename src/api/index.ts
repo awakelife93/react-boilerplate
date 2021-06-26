@@ -85,7 +85,7 @@ instance.interceptors.response.use(
   }
 );
 
-const generateGetendPoint = (endPoint: string, params: any) => {
+const generateQueryEndPoint = (endPoint: string, params: any) => {
   let _endPoint = `${endPoint}?`;
 
   Object.keys(params).forEach((key: string, index: number) => {
@@ -106,13 +106,20 @@ export const getAPI = async (
 ) => {
   const getEndPoint = _.isEmpty(params)
     ? endPoint
-    : generateGetendPoint(endPoint, params);
+    : generateQueryEndPoint(endPoint, params);
   const result = await instance.get(getEndPoint, axiosOption);
   return await generateAPIData(result);
 };
 
-export const deleteAPI = async (endPoint: string = "", axiosOption = {}) => {
-  const result = await instance.delete(endPoint, axiosOption);
+export const deleteAPI = async (
+  endPoint: string = "",
+  params = {},
+  axiosOption = {}
+) => {
+  const deleteEndPoint = _.isEmpty(params)
+    ? endPoint
+    : generateQueryEndPoint(endPoint, params);
+  const result = await instance.delete(deleteEndPoint, axiosOption);
   return await generateAPIData(result);
 };
 

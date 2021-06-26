@@ -10,6 +10,7 @@ interface SignMenuIE {
   userInfo: UserStoreIE;
   _routePush: Function;
   _signOut: Function;
+  _updateUserInfo: Function;
 }
 
 /**
@@ -23,6 +24,7 @@ const SignMenu: React.FC<SignMenuIE> = (
   const {
     _routePush,
     _signOut,
+    _updateUserInfo,
     componentStyles,
     userInfo: { user },
   } = props;
@@ -69,7 +71,7 @@ const SignMenu: React.FC<SignMenuIE> = (
               borderRadius: 15,
               width: 150,
               height: 100,
-              marginRight: 90,
+              marginRight: 115,
               position: "absolute",
               top: 60,
               padding: 10,
@@ -83,15 +85,15 @@ const SignMenu: React.FC<SignMenuIE> = (
             renderItems={[
               {
                 displayName: t(I18nCommandEnum.UPDATE_USER_INFO),
-                value: () => alert("개발 예정입니다."),
+                value: () => _updateUserInfo(),
               },
               {
                 displayName: t(I18nCommandEnum.DELETE_ACCOUNT),
-                value: () => alert("개발 예정입니다."),
+                value: () => _signOut({ isDelete: true }),
               },
               {
                 displayName: t(I18nCommandEnum.SIGN_OUT),
-                value: _signOut,
+                value: () => _signOut({ isDelete: false }),
               },
             ]}
             onClick={(action: Function) => {
