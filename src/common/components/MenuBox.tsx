@@ -96,7 +96,10 @@ const MenuBox: React.FC<MenuBoxIE> = (props: MenuBoxIE) => {
     return null;
   } else {
     return (
-      <Container.ColumnContainer onClick={() => setShowMenuBox(!isShowMenuBox)}>
+      <Container.ColumnContainer
+        onClick={() => setShowMenuBox(!isShowMenuBox)}
+        style={{ zIndex: 1 }}
+      >
         {children}
         {isShowMenuBox === true && renderLayout()}
       </Container.ColumnContainer>

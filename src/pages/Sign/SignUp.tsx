@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import _ from "lodash";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
@@ -18,17 +18,18 @@ import { RoutePath } from "../../route/routes";
  * @param {ComponentIE} props
  * @returns {React.ReactElement}
  */
-const signUpInfo = {
-  email: "",
-  nickname: "",
-  password: "",
-  confirm_password: "",
-};
+
 const SignUp: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {
   const { componentStyles } = props;
   const { t } = useTranslation();
+
+  // Input
+  const [email, setEmail] = useState("");
+  const [nickname, setNickname] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   useEffect(() => {
     window.addEventListener("keypress", checkKeyPress);
@@ -38,46 +39,6 @@ const SignUp: React.FC<ComponentIE> = (
   const checkKeyPress = (event: any) => {
     if (_.isString(event.code) && event.code === "Enter") {
       _signUp();
-    }
-  };
-
-  const history = useHistory();
-  const _signUp = async () => {
-    const { setUserInfoAction } = props;
-
-    if (validationObject(signUpInfo)) {
-      _showMessageModal("회원가입 정보를 다시 한번 확인 해주시기 바랍니다.");
-      return false;
-    }
-
-    if (signUpInfo.confirm_password !== signUpInfo.password) {
-      _showMessageModal("패스워드를 확인해주시기 바랍니다.");
-      return false;
-    }
-
-    try {
-      const userInfo: UserInfoIE = await signUp(signUpInfo);
-
-      if (_.isUndefined(userInfo)) {
-        _showMessageModal("회원가입 정보를 다시 한번 확인 해주시기 바랍니다.");
-        return false;
-      } else {
-        setLocalStorageItem({ token: userInfo.token });
-        setUserInfoAction({
-          isLogin: true,
-          info: { email: userInfo.email, nickname: userInfo.nickname },
-        });
-        history.push(RoutePath.MAIN);
-      }
-    } catch (e) {
-      switch (e.status) {
-        case 409: {
-          _showMessageModal(
-            "중복된 이메일이 있습니다. 다른 이메일을 사용해주시기 바랍니다."
-          );
-          return false;
-        }
-      }
     }
   };
 
@@ -92,9 +53,66 @@ const SignUp: React.FC<ComponentIE> = (
     }
   };
 
+  const validationItem = useCallback(
+    (item: any) => {
+      if (!validationObject(item)) {
+        _showMessageModal("회원가입 정보를 다시 한번 확인 해주시기 바랍니다.");
+        return false;
+      }
+
+      if (confirmPassword !== password) {
+        _showMessageModal("패스워드를 확인해주시기 바랍니다.");
+        return false;
+      }
+
+      return true;
+    },
+    [email, nickname, password, confirmPassword]
+  );
+
+  const history = useHistory();
+  const _signUp = async () => {
+    const { setUserInfoAction } = props;
+    const item = { email, nickname, password, confirmPassword };
+
+    if (validationItem(item) === true) {
+      try {
+        const userInfo: UserInfoIE = await signUp(item);
+
+        if (_.isUndefined(userInfo)) {
+          _showMessageModal(
+            "회원가입 정보를 다시 한번 확인 해주시기 바랍니다."
+          );
+          return false;
+        } else {
+          setLocalStorageItem({ token: userInfo.token });
+          setUserInfoAction({
+            isLogin: true,
+            info: {
+              id: userInfo.id,
+              email: userInfo.email,
+              nickname: userInfo.nickname,
+            },
+          });
+          history.push(RoutePath.MAIN);
+        }
+      } catch (e) {
+        switch (e.status) {
+          case 409: {
+            _showMessageModal(
+              "중복된 이메일이 있습니다. 다른 이메일을 사용해주시기 바랍니다."
+            );
+            return false;
+          }
+        }
+      }
+    }
+  };
+
   return (
     <Container.RowContainer>
       <Container.ColumnContainer>
+        {/**********************************************************/}
         <Container.RowContainer
           style={{
             alignSelf: "flex-start",
@@ -110,9 +128,9 @@ const SignUp: React.FC<ComponentIE> = (
             marginBottom: 15,
           }}
           placeholder={t(I18nCommandEnum.EMAIL)}
-          onChange={(e) => (signUpInfo["email"] = e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
-
+        {/**********************************************************/}
         <Container.RowContainer
           style={{
             alignSelf: "flex-start",
@@ -128,9 +146,9 @@ const SignUp: React.FC<ComponentIE> = (
             marginBottom: 15,
           }}
           placeholder={t(I18nCommandEnum.NICKNAME)}
-          onChange={(e) => (signUpInfo["nickname"] = e.target.value)}
+          onChange={(e) => setNickname(e.target.value)}
         />
-
+        {/**********************************************************/}
         <Container.RowContainer
           style={{
             alignSelf: "flex-start",
@@ -147,9 +165,9 @@ const SignUp: React.FC<ComponentIE> = (
           }}
           type={"password"}
           placeholder={t(I18nCommandEnum.PASSWORD)}
-          onChange={(e) => (signUpInfo["password"] = e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
         />
-
+        {/**********************************************************/}
         <Container.RowContainer
           style={{
             alignSelf: "flex-start",
@@ -166,9 +184,9 @@ const SignUp: React.FC<ComponentIE> = (
           }}
           type={"password"}
           placeholder={t(I18nCommandEnum.CONFIRM_PASSWORD)}
-          onChange={(e) => (signUpInfo["confirm_password"] = e.target.value)}
+          onChange={(e) => setConfirmPassword(e.target.value)}
         />
-
+        {/**********************************************************/}
         <Button.SubMitButton
           style={{
             ...componentStyles.SUB_MIT_BUTTON,

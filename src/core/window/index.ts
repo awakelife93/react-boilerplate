@@ -10,15 +10,16 @@ export const initWindowFunc = ({
 }): void => {
   window.globalFunc = {
     initUserInfoAction: () => initUserInfoAction(),
-    showModalAction: ({ type, item }: ShowModalActionIE) =>
+    showModalAction: ({ type, item, children }: ShowModalActionIE) =>
       _showModalAction({
         next: showModalAction,
         type,
+        children,
         item: {
           childrenProps: item?.childrenProps,
           style: {
             width: 500,
-            height: 120,
+            height: 150,
             borderRadius: 25,
             padding: 20,
             ...item?.style,

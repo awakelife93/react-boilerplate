@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import _ from "lodash";
 
 import { connectWrapper } from "../../redux";
@@ -24,6 +24,7 @@ import {
 import { getLocalStorageItem, initWindowFunc } from "../../core";
 import { findUserProfile } from "../../api/GetAPI";
 import { LayoutIE } from "../interface";
+import { UserInfoIE } from "../../api/interface";
 /**
  * Layout (최상단 컴포넌트)
  * @param {redux} props
@@ -44,27 +45,33 @@ const _Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
     initUserInfoAction,
   } = props;
 
+  const initResources = useCallback(() => {
+    Promise.all([(() => require("../const/index"))()]);
+  }, []);
+
+  const initUserProfile = useCallback(async () => {
+    const profile: UserInfoIE = await findUserProfile();
+
+    setUserInfoAction({
+      isLogin: true,
+      info: { ...profile },
+    });
+  }, [userStore.user.isLogin]);
+
   // init
   useEffect(() => {
-    // 전역에서 쓰일 Global Function Init
+    // resources preload
+    initResources();
+    // generate global function
     initWindowFunc({
       initUserInfoAction,
       showModalAction,
     });
-    const token = getLocalStorageItem("token");
 
+    const token = getLocalStorageItem("token");
     // 로그인이 된 상태라면
     if (!_.isEmpty(token) && userStore.user.isLogin === false) {
-      // LocalStorage에 넣기 싫어서 보안상 서버에서 얻어옴.
-      const _findUserProfile = async () => {
-        const profile = await findUserProfile();
-        setUserInfoAction({
-          isLogin: true,
-          info: { ...profile },
-        });
-      };
-
-      _findUserProfile();
+      initUserProfile();
     }
   }, []);
 

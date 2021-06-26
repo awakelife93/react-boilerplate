@@ -145,6 +145,17 @@ export const putAPI = async (
   return await generateAPIData(result);
 };
 
+export const patchAPI = async (
+  endPoint: string = "",
+  data = {},
+  axiosOption = {
+    timeout: 2000,
+  }
+) => {
+  const result = await instance.patch(endPoint, data, axiosOption);
+  return await generateAPIData(result);
+};
+
 export const generateAPIData = async (res: any) => {
   // 확장할 것이 있으면 여기에 작성
   return res.data;

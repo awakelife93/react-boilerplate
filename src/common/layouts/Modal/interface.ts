@@ -3,7 +3,7 @@ import { ComponentIE } from "../../interface";
 
 export interface ShowModalActionIE {
   next?: Function;
-  type: "SAMPLE" | "MESSAGE";
+  type: "MESSAGE";
   children?: React.FC<any>;
   item?: {
     childrenProps?: any;

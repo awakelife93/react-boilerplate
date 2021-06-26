@@ -1,12 +1,10 @@
 import { Container, Label } from "../../../components";
 
-interface IntroduceLayoutIE {
+interface IntroduceIE {
   componentStyles: any;
 }
 
-const IntroduceLayout: React.FC<IntroduceLayoutIE> = (
-  props: IntroduceLayoutIE
-) => {
+const Introduce: React.FC<IntroduceIE> = (props: IntroduceIE) => {
   const { componentStyles } = props;
   return (
     <Container.ColumnContainer>
@@ -41,4 +39,4 @@ const IntroduceLayout: React.FC<IntroduceLayoutIE> = (
   );
 };
 
-export default IntroduceLayout;
+export default Introduce;

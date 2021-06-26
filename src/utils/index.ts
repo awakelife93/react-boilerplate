@@ -13,7 +13,7 @@ export const validationObject = (object: any): boolean => {
 
   if (!_.isArray(keys)) return false;
 
-  return keys.some((key) => {
-    return _.isUndefined(object[key]) || _.isEmpty(object[key]);
+  return keys.every((key) => {
+    return !_.isUndefined(object[key]) && !_.isEmpty(object[key]);
   });
 };

@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { defaultPagingCount } from "../../common/const";
 import { ComponentIE } from "../../common/interface";
 import { findContents } from "../../api/GetAPI";
@@ -26,7 +26,7 @@ const Contents: React.FC<ComponentIE> = (
     getContents();
   }, []);
 
-  const getContents = async () => {
+  const getContents = useCallback(async () => {
     try {
       const { getContentsAction } = props;
       const data: ContentsIE[] = await findContents(skip);
@@ -38,7 +38,7 @@ const Contents: React.FC<ComponentIE> = (
     } catch (e) {
       console.log("===========> ContentsPage Error", e);
     }
-  };
+  }, [skip]);
 
   return (
     <List

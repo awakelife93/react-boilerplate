@@ -2,6 +2,9 @@ import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import _ from "lodash";
 
+import UpdateUserInfo from "../Modal/component/UpdateUserInfo";
+import Introduce from "../Modal/component/Introduce";
+
 import { RoutePath } from "../../../route/routes";
 import { Container } from "../../components";
 import { SignMenu, IconsMenu } from "./Menu";
@@ -34,7 +37,19 @@ const Header: React.FC<ComponentIE> = (
   };
 
   const _updateUserInfo = () => {
-    alert("개발 예정입니다.");
+    if (_.isFunction(window.globalFunc.showModalAction)) {
+      window.globalFunc.showModalAction({
+        children: UpdateUserInfo,
+        item: {
+          style: {
+            width: 500,
+            height: document.documentElement.clientHeight - 100,
+            borderRadius: 25,
+            padding: 20,
+          },
+        },
+      });
+    }
   };
 
   const _signOut = async ({ isDelete = false }: { isDelete: boolean }) => {
@@ -99,7 +114,7 @@ const Header: React.FC<ComponentIE> = (
   const _showTemplateModal = () => {
     if (_.isFunction(window.globalFunc.showModalAction)) {
       window.globalFunc.showModalAction({
-        type: "SAMPLE",
+        children: Introduce,
         item: {
           style: {
             width: 500,

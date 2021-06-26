@@ -3,7 +3,6 @@ import _ from "lodash";
 import { Container, Icon } from "../../components";
 import { removeBodyScroll, revertBodyScroll } from "../../../utils";
 
-import IntroduceLayout from "./layout/Introduce";
 import MessageLayout from "./layout/Message";
 import { ModalIE, ShowModalActionIE } from "./interface";
 
@@ -17,9 +16,6 @@ export const _showModalAction = ({
     // 넘겨 받은 children이 없거나, type을 주었을 경우 그것에 맞는 레이아웃 제공
     if (_.isEmpty(children) || !_.isEmpty(type)) {
       switch (type) {
-        case "SAMPLE":
-          children = IntroduceLayout;
-          break;
         case "MESSAGE":
           children = MessageLayout;
           break;
@@ -37,7 +33,16 @@ export const _showModalAction = ({
 };
 
 const Modal: React.FC<ModalIE> = (props: ModalIE) => {
-  const { childrenProps, layoutStyles, componentStyles, style, option } = props;
+  const {
+    childrenProps,
+    layoutStyles,
+    componentStyles,
+    style,
+    option,
+    reduxStore,
+    initShowModalAction,
+    setUserInfoAction,
+  } = props;
 
   useEffect(() => {
     removeBodyScroll();
@@ -61,8 +66,6 @@ const Modal: React.FC<ModalIE> = (props: ModalIE) => {
   };
 
   const _closeModal = () => {
-    const { initShowModalAction } = props;
-
     if (_.isFunction(initShowModalAction)) {
       initShowModalAction();
     }
@@ -93,6 +96,7 @@ const Modal: React.FC<ModalIE> = (props: ModalIE) => {
           transform: "translate(-50%, -50%)",
           top: "50%",
           left: "50%",
+          zIndex: 1,
         }}
       >
         <Icon.IoCloseCircleOutline
@@ -109,6 +113,9 @@ const Modal: React.FC<ModalIE> = (props: ModalIE) => {
         <Container.LayoutContainer style={{ padding: 30 }}>
           <props.children
             {...childrenProps}
+            {...reduxStore}
+            setUserInfoAction={setUserInfoAction}
+            _closeModal={_closeModal}
             componentStyles={componentStyles}
           />
         </Container.LayoutContainer>

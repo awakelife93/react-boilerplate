@@ -25,7 +25,7 @@ interface Window {
       },
     }: {
       next?: Function;
-      type: "SAMPLE" | "MESSAGE";
+      type: "MESSAGE";
       children?: React.FC<any>;
       item?: {
         childrenProps?: any;
