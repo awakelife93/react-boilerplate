@@ -15,6 +15,7 @@ const Contents: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {
   const {
+    getContentsAction,
     componentStyles,
     reduxStore: {
       contentsStore: { contents },
@@ -23,15 +24,14 @@ const Contents: React.FC<ComponentIE> = (
   const [skip, setSkip] = useState(0);
 
   useEffect(() => {
-    getContents();
+    if (_.isEmpty(contents)) getContents();
   }, []);
 
   const getContents = useCallback(async () => {
     try {
-      const { getContentsAction } = props;
       const data: ContentsIE[] = await findContents(skip);
 
-      if (_.isFunction(getContentsAction) && !_.isEmpty(data)) {
+      if (!_.isEmpty(data)) {
         setSkip(skip + defaultPagingCount);
         getContentsAction(data);
       }

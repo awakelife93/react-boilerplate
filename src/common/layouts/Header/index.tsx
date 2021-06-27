@@ -1,14 +1,16 @@
+import React, { useCallback } from "react";
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import _ from "lodash";
 
-import UpdateUserInfo from "../Modal/component/UpdateUserInfo";
-import Introduce from "../Modal/component/Introduce";
+import UpdateUserInfo from "../../components/Modal/component/UpdateUserInfo";
+import Introduce from "../../components/Modal/component/Introduce";
 
 import { RoutePath } from "../../../route/routes";
 import { Container } from "../../components";
-import { SignMenu, IconsMenu } from "./Menu";
 import { signOut } from "../../../api/PostAPI";
+import { SignMenu, IconsMenu } from "./Menu";
+
 import {
   getLocalStorageItem,
   setLocalStorageItem,
@@ -28,15 +30,28 @@ const Header: React.FC<ComponentIE> = (
   const {
     layoutStyles,
     componentStyles,
-    reduxStore: { globalStore, themeStore, userStore },
+    setDarkModeAction,
+    showAdAction,
+    initUserInfoAction,
+    reduxStore: {
+      globalStore: { isShowAdContainer },
+      themeStore: { isDarkMode },
+      userStore,
+    },
   } = props;
 
   const history = useHistory();
-  const _routePush = (route: string) => {
+  const _routePush = useCallback((route: string) => {
     history.push(route);
-  };
+  }, []);
 
-  const _updateUserInfo = () => {
+  const { i18n } = useTranslation();
+  const _setLaunage = useCallback((lng: string) => {
+    setLocalStorageItem({ lng });
+    i18n.changeLanguage(lng);
+  }, []);
+
+  const _updateUserInfo = useCallback(() => {
     if (_.isFunction(window.globalFunc.showModalAction)) {
       window.globalFunc.showModalAction({
         children: UpdateUserInfo,
@@ -50,11 +65,38 @@ const Header: React.FC<ComponentIE> = (
         },
       });
     }
-  };
+  }, []);
+
+  const _showTemplateModal = useCallback(() => {
+    if (_.isFunction(window.globalFunc.showModalAction)) {
+      window.globalFunc.showModalAction({
+        children: Introduce,
+        item: {
+          style: {
+            width: 500,
+            height: 300,
+            borderRadius: 25,
+            padding: 20,
+          },
+        },
+      });
+    }
+  }, []);
+
+  const _darkMode = useCallback(() => {
+    if (_.isFunction(setDarkModeAction)) {
+      setLocalStorageItem({ darkMode: !isDarkMode });
+      setDarkModeAction(!isDarkMode);
+    }
+  }, [isDarkMode]);
+
+  const _showAdContainer = useCallback(() => {
+    if (_.isFunction(showAdAction)) {
+      showAdAction(!isShowAdContainer);
+    }
+  }, [isShowAdContainer]);
 
   const _signOut = async ({ isDelete = false }: { isDelete: boolean }) => {
-    const { initUserInfoAction } = props;
-
     try {
       const token = getLocalStorageItem("token");
 
@@ -86,52 +128,11 @@ const Header: React.FC<ComponentIE> = (
     }
   };
 
-  const _darkMode = () => {
-    const { setDarkModeAction } = props;
-
-    if (_.isFunction(setDarkModeAction)) {
-      const isDarkMode = themeStore.isDarkMode;
-      setLocalStorageItem({ darkMode: !isDarkMode });
-      setDarkModeAction(!isDarkMode);
-    }
-  };
-
-  const _showAdContainer = () => {
-    const { showAdAction } = props;
-
-    if (_.isFunction(showAdAction)) {
-      const isShowAdContainer = globalStore.isShowAdContainer;
-      showAdAction(!isShowAdContainer);
-    }
-  };
-
-  const { i18n } = useTranslation();
-  const _setLaunage = (lng: string) => {
-    setLocalStorageItem({ lng });
-    i18n.changeLanguage(lng);
-  };
-
-  const _showTemplateModal = () => {
-    if (_.isFunction(window.globalFunc.showModalAction)) {
-      window.globalFunc.showModalAction({
-        children: Introduce,
-        item: {
-          style: {
-            width: 500,
-            height: 300,
-            borderRadius: 25,
-            padding: 20,
-          },
-        },
-      });
-    }
-  };
-
   return (
     <header>
       <Container.HeaderContainer style={{ ...layoutStyles }}>
         <IconsMenu
-          isShowAdContainer={globalStore.isShowAdContainer}
+          isShowAdContainer={isShowAdContainer}
           _routePush={_routePush}
           _darkMode={_darkMode}
           _showAdContainer={_showAdContainer}

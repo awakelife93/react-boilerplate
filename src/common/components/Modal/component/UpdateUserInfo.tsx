@@ -5,7 +5,7 @@ import { UserInfoIE } from "../../../../api/interface";
 import { updateUser } from "../../../../api/PatchAPI";
 import { I18nCommandEnum } from "../../../../core";
 import { UserStoreIE } from "../../../../redux/interface";
-import { Button, Container, InputBox, Label } from "../../../components";
+import { Button, Container, InputBox, Label } from "../../";
 import { CommonColor } from "../../../styles";
 
 interface UpdateUserInfoIE {

@@ -1,5 +1,5 @@
-import { _showModalAction } from "../../common/layouts/Modal";
-import { ShowModalActionIE } from "../../common/layouts/Modal/interface";
+import { _showModalAction } from "../../common/components/Modal";
+import { ShowModalActionIE } from "../../common/components/Modal/interface";
 
 export const initWindowFunc = ({
   initUserInfoAction,

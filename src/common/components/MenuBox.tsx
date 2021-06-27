@@ -1,6 +1,5 @@
 import _ from "lodash";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Container } from "../components";
 import { defaultShowModal } from "../const";
 
@@ -37,10 +36,10 @@ const MenuBox: React.FC<MenuBoxIE> = (props: MenuBoxIE) => {
     return () => window.removeEventListener("click", checkOutSideClick);
   }, [isShowMenuBox]);
 
-  const checkOutSideClick = (event: any) => {
+  const checkOutSideClick = useCallback((event: any) => {
     // 어느 영역을 눌러도 종료가 되게끔...
     setShowMenuBox(defaultShowModal);
-  };
+  }, []);
 
   const renderLayout = () => {
     // item이 수평으로 나열

@@ -40,6 +40,7 @@ export interface ReduxIE {
     globalStore: GlobalStoreIE;
     userStore: UserStoreIE;
   };
+  initContentsAction: Function;
   getContentsAction: Function;
   initDarkModeAction: Function;
   setDarkModeAction: Function;

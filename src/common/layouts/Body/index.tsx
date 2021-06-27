@@ -1,3 +1,4 @@
+import React from "react";
 import { Container } from "../../components";
 import { ComponentIE } from "../../interface";
 
@@ -17,4 +18,4 @@ const Body: React.FC<ComponentIE> = (
   );
 };
 
-export default Body;
+export default React.memo(Body);

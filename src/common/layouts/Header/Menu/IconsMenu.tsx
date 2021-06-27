@@ -1,3 +1,4 @@
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { I18nCommandEnum } from "../../../../core/i18n/type";
 import { RoutePath } from "../../../../route/routes";
@@ -129,4 +130,4 @@ const IconMenu: React.FC<IconMenuIE> = (
   );
 };
 
-export default IconMenu;
+export default React.memo(IconMenu);

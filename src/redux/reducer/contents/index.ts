@@ -10,7 +10,7 @@ export default function contentsStore(
   switch (action.type) {
     case ActionEnum.GET_CONTENTS:
       return _.merge([], state, {
-        contents: state.contents.concat(action.value),
+        contents: [...state.contents, ...action.value],
       });
 
     default:

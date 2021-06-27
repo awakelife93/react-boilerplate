@@ -1,3 +1,4 @@
+import React from "react";
 import _ from "lodash";
 import { useTranslation } from "react-i18next";
 import { I18nCommandEnum } from "../../../../core/i18n/type";
@@ -106,4 +107,4 @@ const SignMenu: React.FC<SignMenuIE> = (
   );
 };
 
-export default SignMenu;
+export default React.memo(SignMenu);

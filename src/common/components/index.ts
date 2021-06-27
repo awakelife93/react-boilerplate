@@ -3,6 +3,7 @@ import * as Container from "./Container";
 import * as InputBox from "./InputBox";
 import * as Image from "./Image";
 import * as Label from "./Label";
+import * as Modal from "./Modal";
 import Icon from "./Icon";
 import MenuBox from "./MenuBox";
 import ScrollPaging from "./ScrollPaging";
@@ -16,4 +17,5 @@ export {
   Image,
   MenuBox,
   ScrollPaging,
+  Modal,
 };

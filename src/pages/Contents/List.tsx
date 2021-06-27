@@ -1,3 +1,4 @@
+import React from "react";
 import _ from "lodash";
 import { Card, CardColumns } from "react-bootstrap";
 import { ContentsIE } from "../../api/GetAPI/interface";
@@ -52,4 +53,4 @@ const List = ({
   );
 };
 
-export default List;
+export default React.memo(List);

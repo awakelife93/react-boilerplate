@@ -1,3 +1,4 @@
+import React from "react";
 import _ from "lodash";
 import { useCallback, useEffect, useRef } from "react";
 import { Container } from ".";
@@ -62,4 +63,4 @@ const ScrollPaging: React.FC<ScrollPagingIE> = (props: ScrollPagingIE) => {
   );
 };
 
-export default ScrollPaging;
+export default React.memo(ScrollPaging);

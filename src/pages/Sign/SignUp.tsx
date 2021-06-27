@@ -67,7 +67,7 @@ const SignUp: React.FC<ComponentIE> = (
 
       return true;
     },
-    [email, nickname, password, confirmPassword]
+    [password, confirmPassword]
   );
 
   const history = useHistory();

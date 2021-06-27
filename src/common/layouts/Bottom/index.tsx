@@ -1,3 +1,4 @@
+import React from "react";
 import { Container, Label } from "../../components";
 import { ComponentIE } from "../../interface";
 
@@ -22,4 +23,4 @@ const Bottom: React.FC<ComponentIE> = (
   );
 };
 
-export default Bottom;
+export default React.memo(Bottom);
