@@ -1,7 +1,8 @@
 import { Container, Label } from "../..";
+import { ComponentStyleIE } from "../../../interface";
 
 interface MessageLayoutIE {
-  componentStyles: any;
+  componentStyles: ComponentStyleIE;
   message: string;
 }
 

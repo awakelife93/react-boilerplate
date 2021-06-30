@@ -11,6 +11,7 @@ const Bottom: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {
   const { layoutStyles, componentStyles } = props;
+
   return (
     <Container.BottomContainer style={{ ...layoutStyles }}>
       <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>

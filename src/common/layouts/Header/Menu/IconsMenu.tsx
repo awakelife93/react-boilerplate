@@ -4,9 +4,10 @@ import { I18nCommandEnum } from "../../../../core/i18n/type";
 import { RoutePath } from "../../../../route/routes";
 import { Container, Button, Icon } from "../../../components";
 import { MenuBox } from "../../../components";
+import { ComponentStyleIE } from "../../../interface";
 
 interface IconMenuIE {
-  componentStyles: any;
+  componentStyles: ComponentStyleIE;
   isShowAdContainer: boolean;
   _darkMode: Function;
   _routePush: Function;
@@ -119,7 +120,7 @@ const IconMenu: React.FC<IconMenuIE> = (
             value: "en",
           },
         ]}
-        onClick={(lng: any) => _setLaunage(lng)}
+        onClick={(lng: string) => _setLaunage(lng)}
       />
       <Icon.FaThList
         style={{ ...componentStyles.ICON, marginLeft: 20, cursor: "pointer" }}

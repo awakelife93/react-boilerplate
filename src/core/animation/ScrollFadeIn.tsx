@@ -12,7 +12,7 @@ const ScrollFadeIn = (
     style: {},
   }
 ): CommonAnimationReturnIE => {
-  const component: any = useRef();
+  const component: React.MutableRefObject<any> = useRef<HTMLDivElement>();
 
   const onScroll = useCallback(
     ([entry]: any) => {

@@ -1,3 +1,4 @@
+import { CSSProperties } from "styled-components";
 import { RoutePath } from "../../route/routes";
 import {
   LayoutContainerIE,
@@ -9,6 +10,7 @@ import {
 import CommonColor from "./color";
 import CommonTheme from "./theme";
 import CommonImage from "./image";
+import { ComponentStyleIE } from "../interface";
 
 /**
  *
@@ -26,9 +28,9 @@ const generateLayoutContainerStyle = ({
   let props: LayoutContainerIE = {};
 
   if (isDarkMode === true) {
-    props["style"] = { ...CommonTheme.BLACK_THEME.LAYOUT };
+    props["style"] = { ...CommonTheme.BLACK_THEME.LAYOUT } as CSSProperties;
   } else {
-    props["style"] = { ...CommonTheme.WHITE_THEME.LAYOUT };
+    props["style"] = { ...CommonTheme.WHITE_THEME.LAYOUT } as CSSProperties;
   }
 
   switch (
@@ -50,9 +52,13 @@ const generateModalContainerStyle = ({
   let props: LayoutContainerIE = {};
 
   if (isDarkMode === true) {
-    props["style"] = { ...CommonTheme.BLACK_THEME.MODAL_LAYOUT };
+    props["style"] = {
+      ...CommonTheme.BLACK_THEME.MODAL_LAYOUT,
+    } as CSSProperties;
   } else {
-    props["style"] = { ...CommonTheme.WHITE_THEME.MODAL_LAYOUT };
+    props["style"] = {
+      ...CommonTheme.WHITE_THEME.MODAL_LAYOUT,
+    } as CSSProperties;
   }
 
   return {
@@ -70,9 +76,9 @@ const generateHeaderContainerStyle = ({
   let props: HeaderContainerIE = {};
 
   if (isDarkMode === true) {
-    props["style"] = { ...CommonTheme.BLACK_THEME.LAYOUT };
+    props["style"] = { ...CommonTheme.BLACK_THEME.LAYOUT } as CSSProperties;
   } else {
-    props["style"] = { ...CommonTheme.WHITE_THEME.LAYOUT };
+    props["style"] = { ...CommonTheme.WHITE_THEME.LAYOUT } as CSSProperties;
   }
 
   switch (
@@ -96,9 +102,9 @@ const generateBodyContainerStyle = ({
   let props: BodyContainerIE = {};
 
   if (isDarkMode === true) {
-    props["style"] = { ...CommonTheme.BLACK_THEME.LAYOUT };
+    props["style"] = { ...CommonTheme.BLACK_THEME.LAYOUT } as CSSProperties;
   } else {
-    props["style"] = { ...CommonTheme.WHITE_THEME.LAYOUT };
+    props["style"] = { ...CommonTheme.WHITE_THEME.LAYOUT } as CSSProperties;
   }
 
   switch (path) {
@@ -126,9 +132,9 @@ const generateBottomContainerStyle = ({
   let props: BottomContainerIE = {};
 
   if (isDarkMode === true) {
-    props["style"] = { ...CommonTheme.BLACK_THEME.LAYOUT };
+    props["style"] = { ...CommonTheme.BLACK_THEME.LAYOUT } as CSSProperties;
   } else {
-    props["style"] = { ...CommonTheme.WHITE_THEME.LAYOUT };
+    props["style"] = { ...CommonTheme.WHITE_THEME.LAYOUT } as CSSProperties;
   }
 
   switch (
@@ -149,13 +155,10 @@ const generateComponentStyle = ({
   path: string;
   isDarkMode: boolean;
 }) => {
-  let style = {};
-
-  if (isDarkMode === true) {
-    style = { ...CommonTheme.BLACK_THEME.COMPONENT };
-  } else {
-    style = { ...CommonTheme.WHITE_THEME.COMPONENT };
-  }
+  let style: ComponentStyleIE =
+    isDarkMode === true
+      ? CommonTheme.BLACK_THEME.COMPONENT
+      : CommonTheme.WHITE_THEME.COMPONENT;
 
   switch (
     path
@@ -171,6 +174,7 @@ const generateComponentStyle = ({
 const showBottomContainer = (route: string): boolean => {
   switch (route) {
     case RoutePath.SIGN_IN:
+    case RoutePath.CONTENTS_DETAIL:
       return false;
     default:
       return true;

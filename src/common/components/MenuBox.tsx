@@ -1,5 +1,6 @@
 import _ from "lodash";
 import React, { useCallback, useEffect, useState } from "react";
+import { CSSProperties } from "styled-components";
 import { Container } from "../components";
 import { defaultShowModal } from "../const";
 
@@ -13,8 +14,8 @@ interface MenuBoxIE {
   renderType?: "row" | "column";
   children: React.ReactElement;
   onClick: Function;
-  menuContainerStyle: any;
-  menuItemStyle: any;
+  menuContainerStyle: CSSProperties;
+  menuItemStyle: CSSProperties;
 }
 
 const MenuBox: React.FC<MenuBoxIE> = (props: MenuBoxIE) => {

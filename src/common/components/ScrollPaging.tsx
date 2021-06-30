@@ -24,7 +24,7 @@ const ScrollPaging: React.FC<ScrollPagingIE> = (props: ScrollPagingIE) => {
     observerOption,
   } = props;
 
-  const component: any = useRef<HTMLDivElement>();
+  const component: React.MutableRefObject<any> = useRef<HTMLDivElement>();
 
   const onPagingEnd = useCallback(
     ([entry]: any) => {

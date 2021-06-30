@@ -17,8 +17,6 @@ import i18n from "./i18n";
 import { I18nCommandEnum } from "./i18n/type";
 import { ScrollFadeIn, TopDownMove } from "./animation";
 
-const __DEV__ = window.location.hostname === "localhost";
-
 export {
   // local storage
   getLocalStorageItem,
@@ -39,6 +37,4 @@ export {
   // animation
   ScrollFadeIn,
   TopDownMove,
-  // dev
-  __DEV__,
 };

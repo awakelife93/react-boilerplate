@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import _ from "lodash";
-import { Container, Icon } from "..";
+import { Container, Icon } from "../../components";
 import { removeBodyScroll, revertBodyScroll } from "../../../utils";
 
 import MessageLayout from "./layout/Message";

@@ -1,4 +1,5 @@
 import React from "react";
+import { CSSProperties } from "styled-components";
 import { ContentsIE } from "../api/GetAPI/interface";
 export interface ActionIE {
   type: string;
@@ -16,7 +17,7 @@ export interface GlobalStoreIE {
     isShowModal: boolean;
     children: React.FC<any>;
     childrenProps: any;
-    style: any;
+    style: CSSProperties;
     option: {
       dimClose: boolean;
       keyClose: boolean;

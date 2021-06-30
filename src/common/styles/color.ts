@@ -1,4 +1,4 @@
-const CommonColors = {
+const CommonColor = {
   WHITE: "#ffffff",
   BLACK: "#000000",
   RED: "#ff0000",
@@ -6,4 +6,4 @@ const CommonColors = {
   TRANS_PARENT: "transparent",
 };
 
-export default CommonColors;
+export default CommonColor;

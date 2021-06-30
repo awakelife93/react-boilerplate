@@ -1,7 +1,8 @@
 import { Container, Label } from "../..";
+import { ComponentStyleIE } from "../../../interface";
 
 interface IntroduceIE {
-  componentStyles: any;
+  componentStyles: ComponentStyleIE;
 }
 
 const Introduce: React.FC<IntroduceIE> = (props: IntroduceIE) => {

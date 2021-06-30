@@ -14,7 +14,7 @@ const TopDownMove = (
     style: {},
   }
 ): CommonAnimationReturnIE => {
-  const component: any = useRef();
+  const component: React.MutableRefObject<any> = useRef<HTMLDivElement>();
   const [animationObject, setAnimationObject] = useState({
     isMove: false,
     position: option.position,

@@ -1,12 +1,22 @@
 import React from "react";
 import _ from "lodash";
+import { CSSProperties } from "styled-components";
 import { Card, CardColumns } from "react-bootstrap";
 import { ContentsIE } from "../../api/GetAPI/interface";
 import { ScrollPaging } from "../../common/components";
 
-const gridItem = (item: ContentsIE, index: number, style: any) => {
+const gridItem = (
+  item: ContentsIE,
+  index: number,
+  style: CSSProperties,
+  goDetail: Function
+) => {
   return (
-    <Card key={`Contents_item_key${index}`}>
+    <Card
+      key={`Contents_item_key${index}`}
+      style={{ cursor: "pointer" }}
+      onClick={() => goDetail(item)}
+    >
       <Card.Img variant="top" src={item.imageLink} />
       <Card.Body style={{ backgroundColor: style.backgroundColor }}>
         <Card.Title style={{ color: style.color }}>{item.title}</Card.Title>
@@ -24,10 +34,12 @@ const List = ({
   contents,
   skip,
   getContents,
+  goDetail,
 }: {
-  style: any;
+  style: CSSProperties;
   contents: ContentsIE[];
   getContents: Function;
+  goDetail: Function;
   skip: number;
 }): React.ReactElement => {
   return (
@@ -43,11 +55,11 @@ const List = ({
                   callback: getContents,
                 }}
               >
-                {gridItem(card, index, style)}
+                {gridItem(card, index, style, goDetail)}
               </ScrollPaging>
             );
           }
-          return gridItem(card, index, style);
+          return gridItem(card, index, style, goDetail);
         })}
     </CardColumns>
   );

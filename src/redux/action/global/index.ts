@@ -16,7 +16,7 @@ export const showAdAction = (value: boolean) => ({
   value,
 });
 
-export const showModalAction = (value: any) => ({
+export const showModalAction = (value: boolean) => ({
   type: ActionEnum.SET_MODAL_ITEM,
   value,
 });

@@ -1,7 +1,12 @@
 import React from "react";
+
 import MainPage from "../pages/Main";
+
 import ContentsPage from "../pages/Contents";
+import ContentsDetailPage from "../pages/Contents/Detail";
+
 import { SignInPage, SignUpPage } from "../pages/Sign";
+
 import { ComponentIE } from "../common/interface";
 
 export enum RoutePath {
@@ -9,6 +14,7 @@ export enum RoutePath {
   SIGN_IN = "/signIn",
   SIGN_UP = "/signUp",
   CONTENTS = "/contents",
+  CONTENTS_DETAIL = "/contentsDetail",
 }
 export interface RouteIE {
   path: string;
@@ -36,6 +42,11 @@ const routes = [
     path: "/contents",
     exact: false,
     Component: ContentsPage,
+  },
+  {
+    path: "/contentsDetail",
+    exact: false,
+    Component: ContentsDetailPage,
   },
 ];
 

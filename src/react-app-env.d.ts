@@ -29,7 +29,7 @@ interface Window {
       children?: React.FC<any>;
       item?: {
         childrenProps?: any;
-        style?: any;
+        style?: CSSProperties;
         option?: {
           dimClose?: boolean;
           keyClose?: boolean;

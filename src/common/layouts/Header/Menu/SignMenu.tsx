@@ -5,9 +5,10 @@ import { I18nCommandEnum } from "../../../../core/i18n/type";
 import { UserStoreIE } from "../../../../redux/interface";
 import { RoutePath } from "../../../../route/routes";
 import { Button, Container, Label, MenuBox } from "../../../components";
+import { ComponentStyleIE } from "../../../interface";
 
 interface SignMenuIE {
-  componentStyles: any;
+  componentStyles: ComponentStyleIE;
   userInfo: UserStoreIE;
   _routePush: Function;
   _signOut: Function;

@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo } from "react";
 import _ from "lodash";
+import { CSSProperties } from "styled-components";
 
 import { connectWrapper } from "../../redux";
 
@@ -23,8 +24,9 @@ import {
 
 import { getLocalStorageItem, initWindowFunc } from "../../core";
 import { findUserProfile } from "../../api/GetAPI";
-import { LayoutIE } from "../interface";
+import { ComponentStyleIE, LayoutIE } from "../interface";
 import { UserInfoIE } from "../../api/interface";
+
 /**
  * Layout (최상단 컴포넌트)
  * @param {redux} props
@@ -49,23 +51,8 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
     initUserInfoAction,
   } = props;
 
-  const initResources = useCallback(() => {
-    Promise.all([(() => require("../const/index"))()]);
-  }, []);
-
-  const initUserProfile = useCallback(async () => {
-    const profile: UserInfoIE = await findUserProfile();
-
-    setUserInfoAction({
-      isLogin: true,
-      info: { ...profile },
-    });
-  }, [userStore.user.isLogin]);
-
   // init
   useEffect(() => {
-    // resources preload
-    initResources();
     // generate global function
     initWindowFunc({
       initUserInfoAction,
@@ -79,11 +66,20 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
     }
   }, []);
 
+  const initUserProfile = useCallback(async () => {
+    const profile: UserInfoIE = await findUserProfile();
+
+    setUserInfoAction({
+      isLogin: true,
+      info: { ...profile },
+    });
+  }, [userStore.user.isLogin]);
+
   /**
    * common layout style
    * @function layoutStyles path에 따라 수정이 가능한 스타일
    */
-  const layoutStyles = useMemo(
+  const layoutStyles: CSSProperties = useMemo(
     () => generateLayoutContainerStyle({ path, isDarkMode }) ?? {},
     [path, isDarkMode]
   );
@@ -92,7 +88,7 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
    * modal layout style
    * @function modalStyles 따로 수정이 가능하게끔 확장해둔 형태
    */
-  const modalStyles = useMemo(
+  const modalStyles: CSSProperties = useMemo(
     () => generateModalContainerStyle({ isDarkMode }) ?? {},
     [isDarkMode]
   );
@@ -103,15 +99,15 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
    * @function bodyStyles 수정이 가능한 스타일
    * @function bottomStyles 수정이 가능한 스타일
    */
-  const headerStyles = useMemo(
+  const headerStyles: CSSProperties = useMemo(
     () => generateHeaderContainerStyle({ path, isDarkMode }) ?? {},
     [path, isDarkMode]
   );
-  const bodyStyles = useMemo(
+  const bodyStyles: CSSProperties = useMemo(
     () => generateBodyContainerStyle({ path, isDarkMode }) ?? {},
     [path, isDarkMode]
   );
-  const bottomStyles = useMemo(
+  const bottomStyles: CSSProperties = useMemo(
     () => generateBottomContainerStyle({ path, isDarkMode }) ?? {},
     [path, isDarkMode]
   );
@@ -120,7 +116,7 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
    * component styles
    * @function componentStyles 수정이 가능한 스타일
    */
-  const componentStyles = useMemo(
+  const componentStyles: ComponentStyleIE = useMemo(
     () => generateComponentStyle({ path, isDarkMode }) ?? {},
     [path, isDarkMode]
   );
@@ -152,8 +148,16 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
           componentStyles={componentStyles}
         />
       )}
-      <BodyLayout {...props} layoutStyles={bodyStyles}>
-        <Component {...props} componentStyles={componentStyles} />
+      <BodyLayout
+        {...props}
+        layoutStyles={bodyStyles}
+        componentStyles={componentStyles}
+      >
+        <Component
+          {...props}
+          layoutStyles={bodyStyles}
+          componentStyles={componentStyles}
+        />
       </BodyLayout>
       {showBottomContainer(path) && (
         <BottomLayout

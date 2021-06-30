@@ -1,7 +1,7 @@
 import { CommonColor } from ".";
 
 // 테마용 컬러
-const Theme = {
+const CommonTheme = {
   BLACK_THEME: {
     LAYOUT: {
       backgroundColor: CommonColor.BLACK,
@@ -80,4 +80,4 @@ const Theme = {
   },
 };
 
-export default Theme;
+export default CommonTheme;

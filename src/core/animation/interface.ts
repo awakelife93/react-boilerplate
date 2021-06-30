@@ -1,9 +1,10 @@
 import React from "react";
+import { CSSProperties } from "styled-components";
 
 export interface AnimationOptionIE {
   delay?: number;
   duration?: number;
-  style?: any;
+  style?: CSSProperties;
 }
 
 export interface MoveOptionIE extends AnimationOptionIE {
@@ -14,5 +15,5 @@ export interface MoveOptionIE extends AnimationOptionIE {
 
 export interface CommonAnimationReturnIE {
   ref: React.MutableRefObject<any>;
-  style: any;
+  style: CSSProperties;
 }

@@ -1,5 +1,8 @@
-import _ from "lodash";
 import { useCallback, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import _ from "lodash";
+
+import { RoutePath } from "../../route/routes";
 import { defaultPagingCount } from "../../common/const";
 import { ComponentIE } from "../../common/interface";
 import { findContents } from "../../api/GetAPI";
@@ -40,11 +43,17 @@ const Contents: React.FC<ComponentIE> = (
     }
   }, [skip]);
 
+  const history = useHistory();
+  const goDetail = useCallback((item: ContentsIE) => {
+    history.push(RoutePath.CONTENTS_DETAIL, item);
+  }, []);
+
   return (
     <List
       style={componentStyles.CARD}
       contents={contents}
       getContents={getContents}
+      goDetail={goDetail}
       skip={skip}
     />
   );

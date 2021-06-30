@@ -1,6 +1,5 @@
 import { getAPI } from "..";
 import { defaultPagingCount } from "../../common/const";
-import { __DEV__ } from "../../core";
 import { UserInfoIE } from "../interface";
 import { ContentsIE } from "./interface";
 
