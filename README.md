@@ -1,8 +1,14 @@
 # React TypeScript Template
 
-## Server Repository
+## React + Node API Server + Style Server
+
+## API Server Repository
 
 https://github.com/HyunwooP/node_api_template
+
+## Style Server Repository
+
+https://github.com/HyunwooP/node_design_style
 
 ## Step
 
