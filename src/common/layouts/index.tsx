@@ -23,7 +23,7 @@ import {
 } from "../styles";
 
 import { getLocalStorageItem, initWindowFunc } from "../../core";
-import { findUserProfile } from "../../api/GetAPI";
+import { findTheme, findUserProfile } from "../../api/GetAPI";
 import { ComponentStyleIE, LayoutIE } from "../interface";
 import { UserInfoIE } from "../../api/interface";
 
@@ -53,6 +53,7 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
 
   // init
   useEffect(() => {
+    findTheme();
     // generate global function
     initWindowFunc({
       initUserInfoAction,
