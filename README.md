@@ -8,7 +8,7 @@ https://github.com/HyunwooP/node_api_template
 
 ## Style Server Repository
 
-https://github.com/HyunwooP/node_design_style
+https://github.com/HyunwooP/node_design_server
 
 ## Step
 
