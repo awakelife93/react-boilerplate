@@ -79,6 +79,7 @@ const Modal: React.FC<ModalIE> = (props: ModalIE) => {
           ...layoutStyles,
           position: "fixed",
           opacity: 0.5,
+          zIndex: 1,
         }}
         onClick={() => {
           if (option.dimClose === true) _closeModal();
