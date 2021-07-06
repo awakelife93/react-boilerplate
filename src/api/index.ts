@@ -6,7 +6,7 @@ import {
   removeLocalStorageItem,
 } from "../core";
 
-const baseURL = "http://localhost:3001/";
+const baseURL = "http://localhost:8080/";
 const instance = axios.create({
   baseURL,
   headers: {
