@@ -3,7 +3,7 @@
   "description": "React Template",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HyunwooP/react_template.git"
+    "url": "git+https://github.com/HyunwooP/react_client_template.git"
   },
   "keywords": [
     "React",
@@ -17,7 +17,7 @@
   "author": "HyunwooPark",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/HyunwooP/react_template/issues"
+    "url": "https://github.com/HyunwooP/react_client_template/issues"
   },
   "private": true,
   "dependencies": {
