@@ -22,7 +22,7 @@ export interface RouteIE {
   Component: React.FC<ComponentIE>;
 }
 
-const routes = [
+const routes: RouteIE[] = [
   {
     path: "/",
     exact: true,
