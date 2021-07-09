@@ -24,27 +24,27 @@ export interface RouteIE {
 
 const routes: RouteIE[] = [
   {
-    path: "/",
+    path: RoutePath.MAIN,
     exact: true,
     Component: MainPage,
   },
   {
-    path: "/signIn",
+    path: RoutePath.SIGN_IN,
     exact: false,
     Component: SignInPage,
   },
   {
-    path: "/signUp",
+    path: RoutePath.SIGN_UP,
     exact: false,
     Component: SignUpPage,
   },
   {
-    path: "/contents",
+    path: RoutePath.CONTENTS,
     exact: false,
     Component: ContentsPage,
   },
   {
-    path: "/contentsDetail",
+    path: RoutePath.CONTENTS_DETAIL,
     exact: false,
     Component: ContentsDetailPage,
   },

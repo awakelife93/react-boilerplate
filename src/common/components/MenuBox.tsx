@@ -39,7 +39,7 @@ const MenuBox: React.FC<MenuBoxIE> = (props: MenuBoxIE) => {
 
   const checkOutSideClick = useCallback((event: any) => {
     // 어느 영역을 눌러도 종료가 되게끔...
-    setShowMenuBox(defaultShowModal);
+    setShowMenuBox(false);
   }, []);
 
   const renderLayout = () => {
