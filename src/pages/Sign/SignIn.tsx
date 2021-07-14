@@ -26,8 +26,8 @@ const SignIn: React.FC<ComponentIE> = (
   const { t } = useTranslation();
 
   // Input
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [userEmail, setEmail] = useState("");
+  const [userPw, setPassword] = useState("");
 
   useEffect(() => {
     window.addEventListener("keypress", checkKeyPress);
@@ -60,17 +60,17 @@ const SignIn: React.FC<ComponentIE> = (
 
       return true;
     },
-    [email, password]
+    [userEmail, userPw]
   );
 
   const history = useHistory();
   const _signIn = async () => {
     const { setUserInfoAction } = props;
-    const item = { email, password };
+    const item = { userEmail, userPw };
 
     if (validationItem(item) === true) {
       try {
-        const userInfo: UserInfoIE = await signIn({ email, password });
+        const userInfo: UserInfoIE = await signIn({ userEmail, userPw });
 
         if (_.isUndefined(userInfo)) {
           _showMessageModal("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
@@ -80,9 +80,9 @@ const SignIn: React.FC<ComponentIE> = (
           setUserInfoAction({
             isLogin: true,
             info: {
-              id: userInfo.id,
-              email: userInfo.email,
-              nickname: userInfo.nickname,
+              userId: userInfo.userId,
+              userEmail: userInfo.userEmail,
+              userNickname: userInfo.userNickname,
             },
           });
           history.push(RoutePath.MAIN);

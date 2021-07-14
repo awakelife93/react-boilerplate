@@ -17,13 +17,13 @@ const gridItem = (
       style={{ cursor: "pointer" }}
       onClick={() => goDetail(item)}
     >
-      <Card.Img variant="top" src={item.imageLink} />
+      <Card.Img variant="top" src={item.contImageLink} />
       <Card.Body style={{ backgroundColor: style.backgroundColor }}>
-        <Card.Title style={{ color: style.color }}>{item.title}</Card.Title>
+        <Card.Title style={{ color: style.color }}>{item.contTitle}</Card.Title>
         <Card.Subtitle style={{ color: style.color }}>
-          {item.subTitle}
+          {item.contSubTitle}
         </Card.Subtitle>
-        <Card.Text style={{ color: style.color }}>{item.description}</Card.Text>
+        <Card.Text style={{ color: style.color }}>{item.contDesc}</Card.Text>
       </Card.Body>
     </Card>
   );

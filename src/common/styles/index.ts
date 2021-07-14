@@ -24,7 +24,13 @@ const generateThemeStyle = ({ item }: { item: any[] }) => {
 
   for (let i = 0; i < item.length; i++) {
     const theme = item[i];
-    if (theme.isActive === false || theme.isDeleted === true) break;
+
+    if (
+      theme.isActive === false ||
+      theme.isDeleted === true ||
+      _.isEmpty(theme.styles)
+    )
+      break;
 
     const style = theme.styles;
     const layout = style.layout;

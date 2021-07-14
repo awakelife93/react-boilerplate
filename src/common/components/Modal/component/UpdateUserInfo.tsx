@@ -29,42 +29,42 @@ const UpdateUserInfo: React.FC<UpdateUserInfoIE> = (
   const [confirmPasswordError, setConfirmPWErrorItems] = useState("");
 
   // Input
-  const [nickname, setNickname] = useState("");
-  const [password, setPassword] = useState("");
+  const [userNickname, setNickname] = useState("");
+  const [userPw, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const validationItem = useCallback(() => {
-    if (!_.isEmpty(password)) {
+    if (!_.isEmpty(userPw)) {
       if (_.isEmpty(confirmPassword)) {
         setConfirmPWErrorItems("확인 패스워드를 입력해주시기 바랍니다.");
         return false;
       }
-      if (password !== confirmPassword) {
+      if (userPw !== confirmPassword) {
         setPWErrorItems("비밀번호가 동일하지 않습니다.");
         return false;
       }
     }
 
-    if (_.isEmpty(nickname)) {
+    if (_.isEmpty(userNickname)) {
       setNMErrorItems("변경하실 닉네임을 입력해주세요.");
       return false;
     }
 
     return true;
-  }, [nickname, password, confirmPassword]);
+  }, [userNickname, userPw, confirmPassword]);
 
   const _updateUser = async () => {
     if (validationItem() === true) {
       try {
         const userInfo: UserInfoIE = await updateUser({
-          id: userStore.user.info.id,
-          nickname,
-          password,
+          userId: userStore.user.info.userId,
+          userNickname,
+          userPw,
         });
 
         setUserInfoAction({
           info: {
-            nickname: userInfo.nickname,
+            userNickname: userInfo.userNickname,
           },
         });
         _closeModal();

@@ -26,9 +26,9 @@ const SignUp: React.FC<ComponentIE> = (
   const { t } = useTranslation();
 
   // Input
-  const [email, setEmail] = useState("");
-  const [nickname, setNickname] = useState("");
-  const [password, setPassword] = useState("");
+  const [userEmail, setEmail] = useState("");
+  const [userNickname, setNickname] = useState("");
+  const [userPw, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   useEffect(() => {
@@ -60,20 +60,20 @@ const SignUp: React.FC<ComponentIE> = (
         return false;
       }
 
-      if (confirmPassword !== password) {
+      if (confirmPassword !== userPw) {
         _showMessageModal("패스워드를 확인해주시기 바랍니다.");
         return false;
       }
 
       return true;
     },
-    [password, confirmPassword]
+    [userPw, confirmPassword]
   );
 
   const history = useHistory();
   const _signUp = async () => {
     const { setUserInfoAction } = props;
-    const item = { email, nickname, password, confirmPassword };
+    const item = { userEmail, userNickname, userPw, confirmPassword };
 
     if (validationItem(item) === true) {
       try {
@@ -89,9 +89,9 @@ const SignUp: React.FC<ComponentIE> = (
           setUserInfoAction({
             isLogin: true,
             info: {
-              id: userInfo.id,
-              email: userInfo.email,
-              nickname: userInfo.nickname,
+              userId: userInfo.userId,
+              userEmail: userInfo.userEmail,
+              userNickname: userInfo.userNickname,
             },
           });
           history.push(RoutePath.MAIN);

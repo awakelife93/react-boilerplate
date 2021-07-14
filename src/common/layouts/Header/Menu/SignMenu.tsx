@@ -65,7 +65,7 @@ const SignMenu: React.FC<SignMenuIE> = (
                   cursor: "pointer",
                 }}
               >
-                {user.info.nickname}
+                {user.info.userNickname}
               </Label.CommonLabel>
             }
             menuContainerStyle={{
