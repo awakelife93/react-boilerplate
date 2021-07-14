@@ -98,6 +98,7 @@ const SignUp: React.FC<ComponentIE> = (
         }
       } catch (e) {
         switch (e.status) {
+          // 이메일 중복
           case 409: {
             _showMessageModal(
               "중복된 이메일이 있습니다. 다른 이메일을 사용해주시기 바랍니다."
