@@ -24,7 +24,7 @@ import {
 } from "../styles";
 
 import { getLocalStorageItem, initWindowFunc } from "../../core";
-import { findTheme, findUserProfile } from "../../api/GetAPI";
+import { findThemeItem, findUserProfile } from "../../api/GetAPI";
 import { ComponentStyleIE, LayoutIE } from "../interface";
 import { UserInfoIE } from "../../api/interface";
 
@@ -76,7 +76,7 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
   }, []);
 
   const initThemeStyle = useCallback(async () => {
-    const item: any = await findTheme();
+    const item: any = await findThemeItem();
     const themeItem = generateThemeStyle({ item });
     setThemeItem(themeItem);
   }, [themeItem]);

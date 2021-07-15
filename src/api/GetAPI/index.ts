@@ -3,12 +3,12 @@ import { defaultPagingCount } from "../../common/const";
 import { UserInfoIE } from "../interface";
 import { ContentsIE } from "./interface";
 
-export const findTheme = async () => {
+export const findThemeItem = async () => {
   try {
-    const result: any = await getAPI("findTheme");
+    const result: any = await getAPI("findThemeItem");
     return result;
   } catch (e) {
-    console.log("===============> findTheme Error", e);
+    console.log("===============> findThemeItem Error", e);
     throw e;
   }
 };
