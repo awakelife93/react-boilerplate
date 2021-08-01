@@ -73,7 +73,7 @@ const SignMenu: React.FC<SignMenuIE> = (
               borderRadius: 15,
               width: 150,
               height: 100,
-              marginRight: 115,
+              right: 10,
               position: "absolute",
               top: 60,
               padding: 10,
