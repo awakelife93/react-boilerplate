@@ -6,6 +6,12 @@ import { Container, Label, Icon, Image } from ".";
 import { CommonImage } from "../styles";
 import { ComponentIE } from "../interface";
 
+/**
+ * Ad
+ * @description 미리 만들어둔 여분의 공간 컴포넌ㄴ트
+ * @param {ComponentIE} props
+ * @returns {React.ReactElement}
+ */
 const Ad: React.FC<ComponentIE> = (props: ComponentIE) => {
   const {
     componentStyles,

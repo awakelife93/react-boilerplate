@@ -16,6 +16,7 @@ interface DownLoaderIE {
   };
   next: Function;
 }
+
 /**
  * DownLoader
  * @description 다운로드 컴포넌트이다.

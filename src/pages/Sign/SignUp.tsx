@@ -18,7 +18,6 @@ import { RoutePath } from "../../route/routes";
  * @param {ComponentIE} props
  * @returns {React.ReactElement}
  */
-
 const SignUp: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {

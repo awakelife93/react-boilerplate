@@ -8,7 +8,6 @@ import { ScrollFadeIn } from "../../core";
  * @param {ComponentIE} props
  * @returns {React.ReactElement}
  */
-
 const Main: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {
