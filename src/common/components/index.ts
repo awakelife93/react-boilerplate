@@ -5,6 +5,7 @@ import * as Image from "./Image";
 import * as Label from "./Label";
 import * as Modal from "./Modal";
 import * as TextArea from "./TextArea";
+import * as CommonRender from "./CommonRender";
 
 import Icon from "./Icon";
 import Downloader from "./Downloader";
@@ -21,6 +22,7 @@ export {
   ScrollPaging,
   Downloader,
   TextArea,
+  CommonRender,
   Icon,
   MenuBox,
 };

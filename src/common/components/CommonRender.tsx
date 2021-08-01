@@ -1,3 +1,3 @@
-export const defaultFC: React.FC = (): React.ReactElement => {
+export const DefaultFC: React.FC = (): React.ReactElement => {
   return <></>;
 };

@@ -147,6 +147,8 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
           childrenProps={modalItem.childrenProps}
           style={{ ...modalStyles, ...modalItem.style }}
           option={modalItem.option}
+          buttonItem={modalItem.buttonItem}
+          titleItem={modalItem.titleItem}
         />
       )}
       {showHeaderContainer(path) && (
