@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { CommonComponentIE } from "./interface";
+import { CommonComponentIE, DynamicColorComponentIE } from "./interface";
 import { CommonTheme } from "../styles";
 import { CommonColor } from "../styles";
 
@@ -33,4 +33,25 @@ export const TextButton = styled.button`
     props.style?.color ??
     CommonTheme.WHITE_THEME.COMPONENT.SUB_MIT_BUTTON.color};
   font-size: ${(props: TextButtonIE) => props.style?.fontSize ?? "15px"};
+`;
+
+interface DynamicColorButtonIE
+  extends CommonComponentIE,
+    DynamicColorComponentIE {}
+export const DynamicColorButton = styled.button`
+  border: ${(props: DynamicColorButtonIE) => props.style?.border ?? "none"};
+  color: ${(props: DynamicColorButtonIE) =>
+    props.style?.color ?? CommonColor.WHITE};
+  font-size: ${(props: DynamicColorButtonIE) =>
+    props.style?.fontSize ?? "15px"};
+  background-color: ${(props: DynamicColorButtonIE) =>
+    props.defaultBackgroundColor};
+  &:hover {
+    background-color: ${(props: DynamicColorButtonIE) =>
+      props.hoverBackgroundColor};
+  }
+  &:active {
+    background-color: ${(props: DynamicColorButtonIE) =>
+      props.activeBackgroundColor};
+  }
 `;

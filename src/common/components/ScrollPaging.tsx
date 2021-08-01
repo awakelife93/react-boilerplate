@@ -17,7 +17,9 @@ interface ScrollPagingIE {
     threshold?: number;
   };
 }
-const ScrollPaging: React.FC<ScrollPagingIE> = (props: ScrollPagingIE) => {
+const ScrollPaging: React.FC<ScrollPagingIE> = (
+  props: ScrollPagingIE
+): React.ReactElement => {
   const {
     children,
     target: { callback, skip },

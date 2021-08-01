@@ -4,18 +4,23 @@ import * as InputBox from "./InputBox";
 import * as Image from "./Image";
 import * as Label from "./Label";
 import * as Modal from "./Modal";
+import * as TextArea from "./TextArea";
+
 import Icon from "./Icon";
+import Downloader from "./Downloader";
 import MenuBox from "./MenuBox";
 import ScrollPaging from "./ScrollPaging";
 
 export {
   Button,
   Container,
-  Icon,
   InputBox,
   Label,
   Image,
-  MenuBox,
-  ScrollPaging,
   Modal,
+  ScrollPaging,
+  Downloader,
+  TextArea,
+  Icon,
+  MenuBox,
 };
