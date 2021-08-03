@@ -10,7 +10,7 @@ const gridItem = (
   index: number,
   style: CSSProperties,
   goDetail: Function
-) => {
+): React.ReactElement => {
   return (
     <Card
       key={`Contents_item_key${index}`}

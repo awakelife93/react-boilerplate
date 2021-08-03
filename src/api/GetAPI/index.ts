@@ -13,13 +13,18 @@ export const findThemeItem = async () => {
   }
 };
 
-export const findContents = async (skip: number = 0) => {
+export const findContents = async (
+  skip: number = 0
+): Promise<[ContentsIE[], number]> => {
   try {
     // typeorm 엔티티의 take, skip을 그대로 전송하기 위해 프로퍼티를 지어줌.
-    const result: ContentsIE[] = await getAPI("findContents", {
-      take: defaultPagingCount,
-      skip,
-    });
+    const result: Promise<[ContentsIE[], number]> = await getAPI(
+      "findContents",
+      {
+        take: defaultPagingCount,
+        skip,
+      }
+    );
     return result;
   } catch (e) {
     console.log("===============> findContents Error", e);
@@ -27,7 +32,7 @@ export const findContents = async (skip: number = 0) => {
   }
 };
 
-export const findUserProfile = async () => {
+export const findUserProfile = async (): Promise<UserInfoIE> => {
   try {
     const result: UserInfoIE = await getAPI("findUserProfile");
     return result;

@@ -9,7 +9,7 @@ export const signUp = async ({
   userEmail: string;
   userNickname: string;
   userPw: string;
-}) => {
+}): Promise<UserInfoIE> => {
   try {
     let result: UserInfoIE = await putAPI("signUp", {
       userEmail,

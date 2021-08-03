@@ -30,13 +30,13 @@ const Contents: React.FC<ComponentIE> = (
     if (_.isEmpty(contents)) getContents();
   }, []);
 
-  const getContents = useCallback(async () => {
+  const getContents = useCallback(async (): Promise<void> => {
     try {
-      const data: ContentsIE[] = await findContents(skip);
+      const data = await findContents(skip);
 
       if (!_.isEmpty(data)) {
         setSkip(skip + defaultPagingCount);
-        getContentsAction(data);
+        getContentsAction(data[0]);
       }
     } catch (e) {
       console.log("===========> ContentsPage Error", e);
@@ -44,7 +44,7 @@ const Contents: React.FC<ComponentIE> = (
   }, [skip]);
 
   const history = useHistory();
-  const goDetail = useCallback((item: ContentsIE) => {
+  const goDetail = useCallback((item: ContentsIE): void => {
     history.push(RoutePath.CONTENTS_DETAIL, item);
   }, []);
 

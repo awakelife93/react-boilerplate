@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import _ from "lodash";
 import {
   getLocalStorageItem,
@@ -6,8 +6,19 @@ import {
   removeLocalStorageItem,
 } from "../core";
 
-const baseURL = "http://localhost:8080/";
-const instance = axios.create({
+const _showMessageModal = (message: string): void => {
+  if (_.isFunction(window.globalFunc.showModalAction)) {
+    window.globalFunc.showModalAction({
+      type: "MESSAGE",
+      item: {
+        childrenProps: { message },
+      },
+    });
+  }
+};
+
+const baseURL: string = "http://localhost:8080/";
+const instance: AxiosInstance = axios.create({
   baseURL,
   headers: {
     Authorization: getLocalStorageItem("token")
@@ -35,17 +46,6 @@ instance.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-
-const _showMessageModal = (message: string) => {
-  if (_.isFunction(window.globalFunc.showModalAction)) {
-    window.globalFunc.showModalAction({
-      type: "MESSAGE",
-      item: {
-        childrenProps: { message },
-      },
-    });
-  }
-};
 
 instance.interceptors.response.use(
   (response) => {
@@ -85,7 +85,7 @@ instance.interceptors.response.use(
   }
 );
 
-const generateQueryEndPoint = (endPoint: string, params: any) => {
+const generateQueryEndPoint = (endPoint: string, params: any): string => {
   let _endPoint = `${endPoint}?`;
 
   Object.keys(params).forEach((key: string, index: number) => {
@@ -103,7 +103,7 @@ export const getAPI = async (
   endPoint: string = "",
   params = {},
   axiosOption = {}
-) => {
+): Promise<any> => {
   const getEndPoint = _.isEmpty(params)
     ? endPoint
     : generateQueryEndPoint(endPoint, params);
@@ -115,7 +115,7 @@ export const deleteAPI = async (
   endPoint: string = "",
   params = {},
   axiosOption = {}
-) => {
+): Promise<any> => {
   const deleteEndPoint = _.isEmpty(params)
     ? endPoint
     : generateQueryEndPoint(endPoint, params);
@@ -129,7 +129,7 @@ export const postAPI = async (
   axiosOption = {
     timeout: 2000,
   }
-) => {
+): Promise<any> => {
   const result = await instance.post(endPoint, data, axiosOption);
   return await generateAPIData(result);
 };
@@ -140,7 +140,7 @@ export const putAPI = async (
   axiosOption = {
     timeout: 2000,
   }
-) => {
+): Promise<any> => {
   const result = await instance.put(endPoint, data, axiosOption);
   return await generateAPIData(result);
 };
@@ -151,7 +151,7 @@ export const patchAPI = async (
   axiosOption = {
     timeout: 2000,
   }
-) => {
+): Promise<any> => {
   const result = await instance.patch(endPoint, data, axiosOption);
   return await generateAPIData(result);
 };

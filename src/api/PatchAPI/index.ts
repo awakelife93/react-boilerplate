@@ -10,7 +10,7 @@ export const updateUser = async ({
   userId: number;
   userNickname: string;
   userPw: string;
-}) => {
+}): Promise<UserInfoIE> => {
   try {
     const item: any = { userId };
 

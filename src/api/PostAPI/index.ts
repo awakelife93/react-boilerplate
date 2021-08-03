@@ -7,7 +7,7 @@ export const signIn = async ({
 }: {
   userEmail: string;
   userPw: string;
-}) => {
+}): Promise<UserInfoIE> => {
   try {
     let result: UserInfoIE = await postAPI("signInUser", { userEmail, userPw });
     return result;
@@ -17,7 +17,7 @@ export const signIn = async ({
   }
 };
 
-export const signOut = async () => {
+export const signOut = async (): Promise<object> => {
   try {
     let result: object = await postAPI("signOut");
     return result;
