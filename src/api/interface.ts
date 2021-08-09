@@ -6,4 +6,5 @@ export interface UserInfoIE {
   token: string;
   userEmail: string;
   userNickname: string;
+  userRoles: any[];
 }
