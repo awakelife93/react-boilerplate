@@ -26,10 +26,6 @@ const Contents: React.FC<ComponentIE> = (
   } = props;
   const [skip, setSkip] = useState(0);
 
-  useEffect(() => {
-    if (_.isEmpty(contents)) getContents();
-  }, []);
-
   const getContents = useCallback(async (): Promise<void> => {
     try {
       const data = await findContents(skip);
@@ -50,6 +46,10 @@ const Contents: React.FC<ComponentIE> = (
     },
     [history]
   );
+
+  useEffect(() => {
+    if (_.isEmpty(contents)) getContents();
+  }, [contents, getContents]);
 
   return (
     <List

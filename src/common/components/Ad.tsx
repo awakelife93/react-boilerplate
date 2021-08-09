@@ -5,6 +5,7 @@ import { I18nCommandEnum } from "../../core/i18n/type";
 import { Container, Label, Icon, Image } from ".";
 import { CommonImage } from "../styles";
 import { ComponentIE } from "../interface";
+import { useCallback } from "react";
 
 /**
  * Ad
@@ -12,7 +13,7 @@ import { ComponentIE } from "../interface";
  * @param {ComponentIE} props
  * @returns {React.ReactElement}
  */
-const Ad: React.FC<ComponentIE> = (props: ComponentIE) => {
+const Ad: React.FC<ComponentIE> = (props: ComponentIE): React.ReactElement => {
   const {
     componentStyles,
     reduxStore: {
@@ -21,13 +22,13 @@ const Ad: React.FC<ComponentIE> = (props: ComponentIE) => {
   } = props;
   const { t } = useTranslation();
 
-  const _hideAdContainer = () => {
+  const _hideAdContainer = useCallback((): void => {
     const { initShowAdAction } = props;
 
     if (_.isFunction(initShowAdAction)) {
       initShowAdAction();
     }
-  };
+  }, [props]);
 
   return (
     <Image.BackGroundImage

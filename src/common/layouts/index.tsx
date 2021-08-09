@@ -53,28 +53,6 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
   } = props;
   const [themeItem, setThemeItem] = useState({});
 
-  // init
-  useEffect(() => {
-    // generate global theme style
-    if (_.isEmpty(themeItem)) {
-      initThemeStyle();
-    }
-
-    // generate global function
-    if (_.isEmpty(window.globalFunc)) {
-      initWindowFunc({
-        initUserInfoAction,
-        showModalAction,
-      });
-    }
-
-    const token = getLocalStorageItem("token");
-    // 로그인이 된 상태라면
-    if (!_.isEmpty(token) && userStore.user.isLogin === false) {
-      initUserProfile();
-    }
-  }, []);
-
   const initThemeStyle = useCallback(async () => {
     const item: any = await findThemeItem();
     const themeItem = generateThemeStyle({ item });
@@ -135,6 +113,35 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
     () => generateComponentStyle({ themeItem, path, isDarkMode }) ?? {},
     [themeItem, path, isDarkMode]
   );
+
+  // init
+  useEffect(() => {
+    // generate global theme style
+    if (_.isEmpty(themeItem)) {
+      initThemeStyle();
+    }
+
+    // generate global function
+    if (_.isEmpty(window.globalFunc)) {
+      initWindowFunc({
+        initUserInfoAction,
+        showModalAction,
+      });
+    }
+
+    const token = getLocalStorageItem("token");
+    // 로그인이 된 상태라면
+    if (!_.isEmpty(token) && userStore.user.isLogin === false) {
+      initUserProfile();
+    }
+  }, [
+    userStore.user.isLogin,
+    themeItem,
+    initThemeStyle,
+    initUserProfile,
+    initUserInfoAction,
+    showModalAction,
+  ]);
 
   return (
     <Container.LayoutContainer>

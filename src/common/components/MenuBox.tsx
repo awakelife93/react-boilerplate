@@ -23,7 +23,9 @@ interface MenuBoxIE {
  * @param {MenuBoxIE} props
  * @returns {React.ReactElement}
  */
-const MenuBox: React.FC<MenuBoxIE> = (props: MenuBoxIE) => {
+const MenuBox: React.FC<MenuBoxIE> = (
+  props: MenuBoxIE
+): React.ReactElement | null => {
   const [isShowMenuBox, setShowMenuBox] = useState(false);
   const {
     children,
@@ -34,7 +36,7 @@ const MenuBox: React.FC<MenuBoxIE> = (props: MenuBoxIE) => {
     renderType = "row",
   } = props;
 
-  const checkOutSideClick = useCallback((event: any) => {
+  const checkOutSideClick = useCallback((event: any): void => {
     // 어느 영역을 눌러도 종료가 되게끔...
     setShowMenuBox(false);
   }, []);
@@ -47,7 +49,7 @@ const MenuBox: React.FC<MenuBoxIE> = (props: MenuBoxIE) => {
     return () => window.removeEventListener("click", checkOutSideClick);
   }, [isShowMenuBox, checkOutSideClick]);
 
-  const renderLayout = () => {
+  const renderLayout = (): React.ReactElement => {
     // item이 수평으로 나열
     if (renderType === "row") {
       return (
