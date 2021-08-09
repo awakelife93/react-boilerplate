@@ -4,6 +4,7 @@ import { CSSProperties } from "styled-components";
 import { Card, CardColumns } from "react-bootstrap";
 import { ContentsIE } from "../../api/GetAPI/interface";
 import { ScrollPaging } from "../../common/components";
+import { CommonImage } from "../../common/styles";
 
 const gridItem = (
   item: ContentsIE,
@@ -11,13 +12,15 @@ const gridItem = (
   style: CSSProperties,
   goDetail: Function
 ): React.ReactElement => {
+  const imageUrl: string = item.contImageLink ?? CommonImage.FREE_IMAGE1;
+
   return (
     <Card
       key={`Contents_item_key${index}`}
       style={{ cursor: "pointer" }}
       onClick={() => goDetail(item)}
     >
-      <Card.Img variant="top" src={item.contImageLink} />
+      <Card.Img variant="top" src={imageUrl} />
       <Card.Body style={{ backgroundColor: style.backgroundColor }}>
         <Card.Title style={{ color: style.color }}>{item.contTitle}</Card.Title>
         <Card.Subtitle style={{ color: style.color }}>

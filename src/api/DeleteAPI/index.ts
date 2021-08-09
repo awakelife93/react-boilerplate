@@ -2,8 +2,7 @@ import { deleteAPI } from "..";
 
 export const deleteUser = async (): Promise<object> => {
   try {
-    let result: object = await deleteAPI("tokenRemoveUser");
-    return result;
+    return await deleteAPI("tokenRemoveUser");
   } catch (e) {
     console.log("===============> deleteUser Error", e);
     throw e;

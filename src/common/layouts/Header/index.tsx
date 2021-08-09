@@ -41,15 +41,21 @@ const Header: React.FC<ComponentIE> = (
   } = props;
 
   const history = useHistory();
-  const _routePush = useCallback((route: string) => {
-    history.push(route);
-  }, []);
+  const _routePush = useCallback(
+    (route: string) => {
+      history.push(route);
+    },
+    [history]
+  );
 
   const { i18n } = useTranslation();
-  const _setLaunage = useCallback((lng: string) => {
-    setLocalStorageItem({ lng });
-    i18n.changeLanguage(lng);
-  }, []);
+  const _setLaunage = useCallback(
+    (lng: string) => {
+      setLocalStorageItem({ lng });
+      i18n.changeLanguage(lng);
+    },
+    [i18n]
+  );
 
   const _updateUserInfo = useCallback(() => {
     if (_.isFunction(window.globalFunc.showModalAction)) {
@@ -88,13 +94,13 @@ const Header: React.FC<ComponentIE> = (
       setLocalStorageItem({ darkMode: !isDarkMode });
       setDarkModeAction(!isDarkMode);
     }
-  }, [isDarkMode]);
+  }, [isDarkMode, setDarkModeAction]);
 
   const _showAdContainer = useCallback(() => {
     if (_.isFunction(showAdAction)) {
       showAdAction(!isShowAdContainer);
     }
-  }, [isShowAdContainer]);
+  }, [isShowAdContainer, showAdAction]);
 
   const _signOut = async ({ isDelete = false }: { isDelete: boolean }) => {
     try {

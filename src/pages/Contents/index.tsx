@@ -41,12 +41,15 @@ const Contents: React.FC<ComponentIE> = (
     } catch (e) {
       console.log("===========> ContentsPage Error", e);
     }
-  }, [skip]);
+  }, [skip, getContentsAction]);
 
   const history = useHistory();
-  const goDetail = useCallback((item: ContentsIE): void => {
-    history.push(RoutePath.CONTENTS_DETAIL, item);
-  }, []);
+  const goDetail = useCallback(
+    (item: ContentsIE): void => {
+      history.push(RoutePath.CONTENTS_DETAIL, item);
+    },
+    [history]
+  );
 
   return (
     <List

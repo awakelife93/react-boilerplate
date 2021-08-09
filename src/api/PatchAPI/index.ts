@@ -15,10 +15,10 @@ export const updateUser = async ({
     const item: any = { userId };
 
     if (!_.isEmpty(userNickname)) item.userNickname = userNickname;
+
     if (!_.isEmpty(userPw)) item.userPw = userPw;
 
-    let result: UserInfoIE = await patchAPI("updateUser", { ...item });
-    return result;
+    return await patchAPI("updateUser", { ...item });
   } catch (e) {
     console.log("===============> updateUser Error", e);
     throw e;

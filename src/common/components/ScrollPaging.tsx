@@ -25,7 +25,7 @@ const ScrollPaging: React.FC<ScrollPagingIE> = (
 ): React.ReactElement => {
   const {
     children,
-    target: { callback, skip },
+    target: { callback },
     observerOption,
   } = props;
 
@@ -44,7 +44,7 @@ const ScrollPaging: React.FC<ScrollPagingIE> = (
         }
       }
     },
-    [skip]
+    [callback]
   );
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const ScrollPaging: React.FC<ScrollPagingIE> = (
     }
 
     return () => observer && observer.disconnect();
-  }, [onPagingEnd]);
+  }, [onPagingEnd, observerOption?.threshold]);
 
   return (
     <Container.LayoutContainer ref={component}>

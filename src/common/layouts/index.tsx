@@ -79,7 +79,7 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
     const item: any = await findThemeItem();
     const themeItem = generateThemeStyle({ item });
     setThemeItem(themeItem);
-  }, [themeItem]);
+  }, []);
 
   const initUserProfile = useCallback(async () => {
     const profile: UserInfoIE = await findUserProfile();
@@ -88,7 +88,7 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
       isLogin: true,
       info: { ...profile },
     });
-  }, [userStore.user.isLogin]);
+  }, [setUserInfoAction]);
 
   /**
    * common layout style

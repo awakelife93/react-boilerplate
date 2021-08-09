@@ -33,13 +33,7 @@ const SignIn: React.FC<ComponentIE> = (
     return () => window.removeEventListener("keypress", checkKeyPress);
   });
 
-  const checkKeyPress = (event: any) => {
-    if (_.isString(event.code) && event.code === "Enter") {
-      _signIn();
-    }
-  };
-
-  const _showMessageModal = (message: string) => {
+  const _showMessageModal = useCallback((message: string): void => {
     if (_.isFunction(window.globalFunc.showModalAction)) {
       window.globalFunc.showModalAction({
         type: "MESSAGE",
@@ -48,10 +42,10 @@ const SignIn: React.FC<ComponentIE> = (
         },
       });
     }
-  };
+  }, []);
 
   const validationItem = useCallback(
-    (item: any) => {
+    (item: any): boolean => {
       if (!validationObject(item)) {
         _showMessageModal("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
         return false;
@@ -59,11 +53,11 @@ const SignIn: React.FC<ComponentIE> = (
 
       return true;
     },
-    [userEmail, userPw]
+    [_showMessageModal]
   );
 
   const history = useHistory();
-  const _signIn = async () => {
+  const _signIn = useCallback(async (): Promise<void | boolean> => {
     const { setUserInfoAction } = props;
     const item = { userEmail, userPw };
 
@@ -106,7 +100,16 @@ const SignIn: React.FC<ComponentIE> = (
         }
       }
     }
-  };
+  }, [history, props, userEmail, userPw, validationItem, _showMessageModal]);
+
+  const checkKeyPress = useCallback(
+    (event: any): void => {
+      if (_.isString(event.code) && event.code === "Enter") {
+        _signIn();
+      }
+    },
+    [_signIn]
+  );
 
   return (
     <Container.RowContainer>

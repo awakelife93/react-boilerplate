@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { CommonAnimationReturnIE, MoveOptionIE } from "./interface";
 
 /**
@@ -20,7 +20,7 @@ const TopDownMove = (
     position: option.position,
   });
 
-  const move = () => {
+  const move = useCallback(() => {
     if (animationObject.isMove === false) {
       setAnimationObject({
         isMove: true,
@@ -32,7 +32,7 @@ const TopDownMove = (
         position: option.position,
       });
     }
-  };
+  }, [animationObject.isMove, option.endPosition, option.position]);
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
@@ -43,7 +43,7 @@ const TopDownMove = (
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [animationObject.isMove]);
+  }, [animationObject.isMove, move, option.delay]);
 
   return {
     ref: component,

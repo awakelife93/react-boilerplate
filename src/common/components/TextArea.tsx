@@ -26,5 +26,7 @@ export const CommonTextArea = styled.textarea`
       props.thumbStyles?.borderRadius ?? "4px"};
     background-color: ${(props: CommonTextAreaIE) =>
       props.thumbStyles?.backgroundColor ?? "rgba(0, 0, 0, 0.24)"};
+
+    resize: none;
   }
 `;

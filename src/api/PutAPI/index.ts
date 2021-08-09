@@ -11,12 +11,11 @@ export const signUp = async ({
   userPw: string;
 }): Promise<UserInfoIE> => {
   try {
-    let result: UserInfoIE = await putAPI("signUp", {
+    return await putAPI("signUp", {
       userEmail,
       userNickname,
       userPw,
     });
-    return result;
   } catch (e) {
     console.log("===============> signUp Error", e);
     throw e;
