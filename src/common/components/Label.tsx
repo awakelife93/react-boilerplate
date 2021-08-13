@@ -13,5 +13,6 @@ export const CommonLabel = styled.label`
   font-size: ${(props: CommonLabelIE) => props.style?.fontSize ?? "1rem"};
   font-weight: ${(props: CommonLabelIE) => props.style?.fontWeight ?? ""};
   color: ${(props: CommonLabelIE) =>
-    props.style?.color ?? CommonTheme.WHITE_THEME.COMPONENT.COMMON_LABEL.color};
+    props.style?.color ??
+    CommonTheme.WHITE_THEME_STYLE.COMPONENT.COMMON_LABEL.color};
 `;

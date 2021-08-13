@@ -16,7 +16,7 @@ export const SubMitButton = styled.button`
   margin: ${(props: SubMitButtonIE) => props.style?.margin ?? "20px"};
   color: ${(props: SubMitButtonIE) =>
     props.style?.color ??
-    CommonTheme.WHITE_THEME.COMPONENT.SUB_MIT_BUTTON.backgroundColor};
+    CommonTheme.WHITE_THEME_STYLE.COMPONENT.SUB_MIT_BUTTON.backgroundColor};
   background-color: ${(props: SubMitButtonIE) =>
     props.style?.backgroundColor ?? "black"};
   border: ${(props: SubMitButtonIE) => props.style?.border ?? "none"};
@@ -31,7 +31,7 @@ export const TextButton = styled.button`
   border: ${(props: TextButtonIE) => props.style?.border ?? "none"};
   color: ${(props: TextButtonIE) =>
     props.style?.color ??
-    CommonTheme.WHITE_THEME.COMPONENT.SUB_MIT_BUTTON.color};
+    CommonTheme.WHITE_THEME_STYLE.COMPONENT.SUB_MIT_BUTTON.color};
   font-size: ${(props: TextButtonIE) => props.style?.fontSize ?? "15px"};
 `;
 

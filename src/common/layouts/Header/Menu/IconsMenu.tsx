@@ -9,7 +9,7 @@ import { ComponentStyleIE } from "../../../interface";
 interface IconMenuIE {
   componentStyles: ComponentStyleIE;
   isShowAdContainer: boolean;
-  _darkMode: Function;
+  _themeMode: Function;
   _routePush: Function;
   _setLaunage: Function;
   _showAdContainer: Function;
@@ -28,7 +28,7 @@ const IconMenu: React.FC<IconMenuIE> = (
   const {
     isShowAdContainer,
     _routePush,
-    _darkMode,
+    _themeMode,
     _showAdContainer,
     _setLaunage,
     _showTemplateModal,
@@ -58,7 +58,7 @@ const IconMenu: React.FC<IconMenuIE> = (
       <Icon.IoIosFlashlight
         style={{ ...componentStyles.ICON, marginLeft: 20, cursor: "pointer" }}
         size={20}
-        onClick={() => _darkMode()}
+        onClick={() => _themeMode()}
       />
       {isShowAdContainer ? (
         <Icon.FaAngleUp

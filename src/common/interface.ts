@@ -4,6 +4,12 @@ import { CSSProperties } from "styled-components";
 import { ReduxIE } from "../redux/interface";
 import { RouteIE } from "../route/routes";
 
+export interface ThemeItemIE {
+  [index: string]: {
+    LAYOUT?: any;
+    COMPONENT?: any;
+  };
+}
 export interface ComponentStyleIE {
   MENU_BOX: {
     CONTAINER: CSSProperties;

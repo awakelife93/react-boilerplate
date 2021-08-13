@@ -11,65 +11,114 @@ import {
 import CommonColor from "./color";
 import CommonTheme from "./theme";
 import CommonImage from "./image";
-import { ComponentStyleIE } from "../interface";
+import { ComponentStyleIE, ThemeItemIE } from "../interface";
 
-// todo:
-// Style Server에서 아직 관리 클라이언트가 없기 때문에 Sample 데이터 기준으로 로직을 짜야함.
-// 즉흥적인 아이디어라 좀 더 구체적인 가이드 및 설계가 필요
-interface ThemeItemIE {
-  [index: string]: any;
-}
+/**
+ * generateThemeStyle
+ * @description
+ * 컴포넌트, 레이아웃은 각각의 테마별로 지니고 있으며, __을 구분자로 사용한다.
+ * @param item
+ * @returns {ThemeItemIE}
+ */
 const generateThemeStyle = ({ item }: { item: any[] }) => {
-  let ThemeItem: ThemeItemIE = {};
+  let themeItem: ThemeItemIE = {};
 
-  for (let i = 0; i < item.length; i++) {
-    const theme = item[i];
+  try {
+    for (let i = 0; i < item.length; i++) {
+      const theme = item[i];
 
-    if (
-      theme.isActive === false ||
-      theme.isDeleted === true ||
-      _.isEmpty(theme.styles)
-    )
-      break;
+      if (
+        theme.isActive === false ||
+        theme.isDeleted === true ||
+        _.isEmpty(theme.styles)
+      )
+        break;
 
-    const style = theme.styles;
-    const layout = style.layout;
-    const component = style.component;
+      const style = theme.styles;
+      const layouts = style.layout;
+      const components = style.component;
 
-    ThemeItem[style.name] = {
-      LAYOUT: layout.attribute,
-      COMPONENT: component.attribute,
-    };
+      layouts.forEach((layout: any) => {
+        const layoutName = layout.name.split("__")[1];
+
+        if (_.isUndefined(themeItem[style.name])) {
+          themeItem[style.name] = {
+            LAYOUT: {
+              [layoutName]: layout.attribute,
+            },
+          };
+        } else {
+          themeItem[style.name].LAYOUT = {
+            ...themeItem[style.name]?.LAYOUT,
+            [layoutName]: layout.attribute,
+          };
+        }
+      });
+
+      components.forEach((component: any) => {
+        const componentName = component.name.split("__")[1];
+
+        if (_.isUndefined(themeItem[style.name])) {
+          themeItem[style.name] = {
+            COMPONENT: {
+              [componentName]: component.attribute,
+            },
+          };
+        } else {
+          themeItem[style.name].COMPONENT = {
+            ...themeItem[style.name]?.COMPONENT,
+            [componentName]: component.attribute,
+          };
+        }
+      });
+    }
+
+    return themeItem;
+  } catch (e) {
+    console.log(e);
+    return {};
   }
-
-  return ThemeItem;
 };
 
+/**
+ * setMockUpStyleData
+ * @param {"LAYOUT" | "MODAL" | "COMPONENT"} type
+ * @param {boolean} useTheme
+ * @returns {CSSProperties}
+ */
 const setMockUpStyleData = ({
   type,
-  isDarkMode,
+  useTheme,
 }: {
   type: "LAYOUT" | "MODAL" | "COMPONENT";
-  isDarkMode: boolean;
+  useTheme: boolean;
 }) => {
   switch (type) {
     case "LAYOUT":
-      if (isDarkMode === true) {
-        return { ...CommonTheme.BLACK_THEME.LAYOUT } as CSSProperties;
+      if (useTheme === true) {
+        return { ...CommonTheme.BLACK_THEME_STYLE.LAYOUT } as CSSProperties;
       } else {
-        return { ...CommonTheme.WHITE_THEME.LAYOUT } as CSSProperties;
+        return { ...CommonTheme.WHITE_THEME_STYLE.LAYOUT } as CSSProperties;
       }
     case "MODAL":
-      if (isDarkMode === true) {
-        return { ...CommonTheme.BLACK_THEME.MODAL_LAYOUT } as CSSProperties;
+      if (useTheme === true) {
+        return {
+          ...CommonTheme.BLACK_THEME_STYLE.MODAL_LAYOUT,
+        } as CSSProperties;
       } else {
-        return { ...CommonTheme.WHITE_THEME.MODAL_LAYOUT } as CSSProperties;
+        return {
+          ...CommonTheme.WHITE_THEME_STYLE.MODAL_LAYOUT,
+        } as CSSProperties;
       }
     case "COMPONENT":
-      if (isDarkMode === true) {
-        return { ...CommonTheme.BLACK_THEME.COMPONENT } as ComponentStyleIE;
+      if (useTheme === true) {
+        return {
+          ...CommonTheme.BLACK_THEME_STYLE.COMPONENT,
+        } as ComponentStyleIE;
       } else {
-        return { ...CommonTheme.WHITE_THEME.COMPONENT } as ComponentStyleIE;
+        return {
+          ...CommonTheme.WHITE_THEME_STYLE.COMPONENT,
+        } as ComponentStyleIE;
       }
   }
 };
@@ -77,27 +126,27 @@ const setMockUpStyleData = ({
 const generateLayoutContainerStyle = ({
   themeItem,
   path = "",
-  isDarkMode = false,
+  useTheme = false,
 }: {
   themeItem: any;
   path: string;
-  isDarkMode: boolean;
+  useTheme: boolean;
 }) => {
   let props: LayoutContainerIE = {};
 
   if (_.isEmpty(themeItem)) {
     props["style"] = setMockUpStyleData({
       type: "LAYOUT",
-      isDarkMode,
+      useTheme,
     }) as CSSProperties;
   } else {
     props["style"] =
-      isDarkMode === true
+      useTheme === true
         ? ({
-            ...themeItem.BLACK_THEME.LAYOUT.CONTAINER_LAYOUT,
+            ...themeItem.BLACK_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
           } as CSSProperties)
         : ({
-            ...themeItem.WHITE_THEME.LAYOUT.CONTAINER_LAYOUT,
+            ...themeItem.WHITE_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
           } as CSSProperties);
   }
 
@@ -114,26 +163,26 @@ const generateLayoutContainerStyle = ({
 
 const generateModalContainerStyle = ({
   themeItem,
-  isDarkMode = false,
+  useTheme = false,
 }: {
   themeItem: any;
-  isDarkMode: boolean;
+  useTheme: boolean;
 }) => {
   let props: LayoutContainerIE = {};
 
   if (_.isEmpty(themeItem)) {
     props["style"] = setMockUpStyleData({
       type: "MODAL",
-      isDarkMode,
+      useTheme,
     }) as CSSProperties;
   } else {
     props["style"] =
-      isDarkMode === true
+      useTheme === true
         ? ({
-            ...themeItem.BLACK_THEME.LAYOUT.MODAL_LAYOUT,
+            ...themeItem.BLACK_THEME_STYLE.LAYOUT.MODAL_LAYOUT,
           } as CSSProperties)
         : ({
-            ...themeItem.WHITE_THEME.LAYOUT.MODAL_LAYOUT,
+            ...themeItem.WHITE_THEME_STYLE.LAYOUT.MODAL_LAYOUT,
           } as CSSProperties);
   }
 
@@ -145,27 +194,27 @@ const generateModalContainerStyle = ({
 const generateHeaderContainerStyle = ({
   themeItem,
   path = "",
-  isDarkMode = false,
+  useTheme = false,
 }: {
   themeItem: any;
   path: string;
-  isDarkMode: boolean;
+  useTheme: boolean;
 }) => {
   let props: HeaderContainerIE = {};
 
   if (_.isEmpty(themeItem)) {
     props["style"] = setMockUpStyleData({
       type: "LAYOUT",
-      isDarkMode,
+      useTheme,
     }) as CSSProperties;
   } else {
     props["style"] =
-      isDarkMode === true
+      useTheme === true
         ? ({
-            ...themeItem.BLACK_THEME.LAYOUT.CONTAINER_LAYOUT,
+            ...themeItem.BLACK_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
           } as CSSProperties)
         : ({
-            ...themeItem.WHITE_THEME.LAYOUT.CONTAINER_LAYOUT,
+            ...themeItem.WHITE_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
           } as CSSProperties);
   }
 
@@ -183,27 +232,27 @@ const generateHeaderContainerStyle = ({
 const generateBodyContainerStyle = ({
   themeItem,
   path = "",
-  isDarkMode = false,
+  useTheme = false,
 }: {
   themeItem: any;
   path: string;
-  isDarkMode: boolean;
+  useTheme: boolean;
 }) => {
   let props: BodyContainerIE = {};
 
   if (_.isEmpty(themeItem)) {
     props["style"] = setMockUpStyleData({
       type: "LAYOUT",
-      isDarkMode,
+      useTheme,
     }) as CSSProperties;
   } else {
     props["style"] =
-      isDarkMode === true
+      useTheme === true
         ? ({
-            ...themeItem.BLACK_THEME.LAYOUT.CONTAINER_LAYOUT,
+            ...themeItem.BLACK_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
           } as CSSProperties)
         : ({
-            ...themeItem.WHITE_THEME.LAYOUT.CONTAINER_LAYOUT,
+            ...themeItem.WHITE_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
           } as CSSProperties);
   }
 
@@ -225,27 +274,27 @@ const generateBodyContainerStyle = ({
 const generateBottomContainerStyle = ({
   themeItem,
   path = "",
-  isDarkMode = false,
+  useTheme = false,
 }: {
   themeItem: any;
   path: string;
-  isDarkMode: boolean;
+  useTheme: boolean;
 }) => {
   let props: BottomContainerIE = {};
 
   if (_.isEmpty(themeItem)) {
     props["style"] = setMockUpStyleData({
       type: "LAYOUT",
-      isDarkMode,
+      useTheme,
     }) as CSSProperties;
   } else {
     props["style"] =
-      isDarkMode === true
+      useTheme === true
         ? ({
-            ...themeItem.BLACK_THEME.LAYOUT.CONTAINER_LAYOUT,
+            ...themeItem.BLACK_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
           } as CSSProperties)
         : ({
-            ...themeItem.WHITE_THEME.LAYOUT.CONTAINER_LAYOUT,
+            ...themeItem.WHITE_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
           } as CSSProperties);
   }
 
@@ -263,27 +312,27 @@ const generateBottomContainerStyle = ({
 const generateComponentStyle = ({
   themeItem,
   path = "",
-  isDarkMode = false,
+  useTheme = false,
 }: {
   themeItem: any;
   path: string;
-  isDarkMode: boolean;
+  useTheme: boolean;
 }) => {
   let style: ComponentStyleIE;
 
   if (_.isEmpty(themeItem)) {
     style = setMockUpStyleData({
       type: "COMPONENT",
-      isDarkMode,
+      useTheme,
     }) as ComponentStyleIE;
   } else {
     style =
-      isDarkMode === true
+      useTheme === true
         ? ({
-            ...themeItem.BLACK_THEME.COMPONENT,
+            ...themeItem.BLACK_THEME_STYLE.COMPONENT,
           } as ComponentStyleIE)
         : ({
-            ...themeItem.WHITE_THEME.COMPONENT,
+            ...themeItem.WHITE_THEME_STYLE.COMPONENT,
           } as ComponentStyleIE);
   }
 

@@ -1,12 +1,12 @@
 import { ActionEnum } from "../../type";
-import { initDarkModeState } from "../../reducer/theme/default";
+import { initThemeState } from "../../reducer/theme/default";
 
-export const initDarkModeAction = () => ({
-  type: ActionEnum.SET_DARK_MODE,
-  value: initDarkModeState.isDarkMode,
+export const initThemeAction = () => ({
+  type: ActionEnum.SET_THEME_MODE,
+  value: initThemeState.useTheme,
 });
 
-export const setDarkModeAction = (value: boolean) => ({
-  type: ActionEnum.SET_DARK_MODE,
+export const setThemeAction = (value: boolean) => ({
+  type: ActionEnum.SET_THEME_MODE,
   value,
 });

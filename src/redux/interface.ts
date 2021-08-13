@@ -9,7 +9,7 @@ export interface ContentsStoreIE {
   contents: ContentsIE[];
 }
 export interface ThemeStoreIE {
-  isDarkMode: boolean;
+  useTheme: boolean;
 }
 export interface GlobalStoreIE {
   isShowAdContainer: boolean;
@@ -58,8 +58,8 @@ export interface ReduxIE {
   };
   initContentsAction: Function;
   getContentsAction: Function;
-  initDarkModeAction: Function;
-  setDarkModeAction: Function;
+  initThemeAction: Function;
+  setThemeAction: Function;
   initShowAdAction: Function;
   showAdAction: Function;
   initShowModalAction: Function;

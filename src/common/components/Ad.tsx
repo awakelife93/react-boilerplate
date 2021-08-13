@@ -17,7 +17,7 @@ const Ad: React.FC<ComponentIE> = (props: ComponentIE): React.ReactElement => {
   const {
     componentStyles,
     reduxStore: {
-      themeStore: { isDarkMode },
+      themeStore: { useTheme },
     },
   } = props;
   const { t } = useTranslation();
@@ -33,7 +33,7 @@ const Ad: React.FC<ComponentIE> = (props: ComponentIE): React.ReactElement => {
   return (
     <Image.BackGroundImage
       requireStyle={{
-        backgroundImage: isDarkMode
+        backgroundImage: useTheme
           ? `url(${CommonImage.FREE_IMAGE2})`
           : `url(${CommonImage.FREE_IMAGE3})`,
         backgroundRepeat: "no-repeat",

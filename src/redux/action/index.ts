@@ -1,6 +1,6 @@
 import { getContentsAction, initContentsAction } from "./contents";
 import { setUserInfoAction, initUserInfoAction } from "./user";
-import { setDarkModeAction, initDarkModeAction } from "./theme";
+import { setThemeAction, initThemeAction } from "./theme";
 import {
   showAdAction,
   showModalAction,
@@ -11,8 +11,8 @@ import {
 export {
   initContentsAction,
   getContentsAction,
-  initDarkModeAction,
-  setDarkModeAction,
+  initThemeAction,
+  setThemeAction,
   initShowAdAction,
   showAdAction,
   initShowModalAction,

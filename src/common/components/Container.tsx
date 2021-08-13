@@ -29,7 +29,7 @@ export const BodyContainer = styled.div`
   padding: ${(props: BodyContainerIE) => props.style?.padding ?? "0px"};
   background-color: ${(props: BodyContainerIE) =>
     props.style?.backgroundColor ??
-    CommonTheme.WHITE_THEME.LAYOUT.backgroundColor};
+    CommonTheme.WHITE_THEME_STYLE.LAYOUT.backgroundColor};
 `;
 
 export interface HeaderContainerIE extends CommonComponentIE {}
@@ -47,7 +47,7 @@ export const HeaderContainer = styled.div`
     props.style?.alignItems ?? "center"};
   background-color: ${(props: HeaderContainerIE) =>
     props.style?.backgroundColor ??
-    CommonTheme.WHITE_THEME.LAYOUT.backgroundColor};
+    CommonTheme.WHITE_THEME_STYLE.LAYOUT.backgroundColor};
 `;
 
 export interface BottomContainerIE extends CommonComponentIE {}
@@ -57,7 +57,7 @@ export const BottomContainer = styled.footer`
   padding: ${(props: BottomContainerIE) => props.style?.padding ?? "20px"};
   background-color: ${(props: BottomContainerIE) =>
     props.style?.backgroundColor ??
-    CommonTheme.WHITE_THEME.LAYOUT.backgroundColor};
+    CommonTheme.WHITE_THEME_STYLE.LAYOUT.backgroundColor};
   font-size: ${(props: BottomContainerIE) => props.style?.fontSize ?? "30px"};
   font-weight: ${(props: BottomContainerIE) =>
     props.style?.fontWeight ?? "bold"};

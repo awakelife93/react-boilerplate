@@ -1,5 +1,5 @@
-import { defaultDarkMode } from "../../../common/const";
+import { defaultUseTheme } from "../../../common/const";
 
-export const initDarkModeState = {
-  isDarkMode: defaultDarkMode,
+export const initThemeState = {
+  useTheme: defaultUseTheme,
 };

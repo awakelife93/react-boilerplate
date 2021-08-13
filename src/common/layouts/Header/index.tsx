@@ -30,12 +30,12 @@ const Header: React.FC<ComponentIE> = (
   const {
     layoutStyles,
     componentStyles,
-    setDarkModeAction,
+    setThemeAction,
     showAdAction,
     initUserInfoAction,
     reduxStore: {
       globalStore: { isShowAdContainer },
-      themeStore: { isDarkMode },
+      themeStore: { useTheme },
       userStore,
     },
   } = props;
@@ -89,12 +89,12 @@ const Header: React.FC<ComponentIE> = (
     }
   }, []);
 
-  const _darkMode = useCallback(() => {
-    if (_.isFunction(setDarkModeAction)) {
-      setLocalStorageItem({ darkMode: !isDarkMode });
-      setDarkModeAction(!isDarkMode);
+  const _themeMode = useCallback(() => {
+    if (_.isFunction(setThemeAction)) {
+      setLocalStorageItem({ useTheme: !useTheme });
+      setThemeAction(!useTheme);
     }
-  }, [isDarkMode, setDarkModeAction]);
+  }, [useTheme, setThemeAction]);
 
   const _showAdContainer = useCallback(() => {
     if (_.isFunction(showAdAction)) {
@@ -140,7 +140,7 @@ const Header: React.FC<ComponentIE> = (
         <IconsMenu
           isShowAdContainer={isShowAdContainer}
           _routePush={_routePush}
-          _darkMode={_darkMode}
+          _themeMode={_themeMode}
           _showAdContainer={_showAdContainer}
           _setLaunage={_setLaunage}
           _showTemplateModal={_showTemplateModal}

@@ -2,7 +2,7 @@ import { CommonColor } from ".";
 
 // 테마용 컬러
 const CommonTheme = {
-  BLACK_THEME: {
+  BLACK_THEME_STYLE: {
     LAYOUT: {
       backgroundColor: CommonColor.BLACK,
     },
@@ -40,7 +40,7 @@ const CommonTheme = {
       },
     },
   },
-  WHITE_THEME: {
+  WHITE_THEME_STYLE: {
     LAYOUT: {
       backgroundColor: CommonColor.WHITE,
     },

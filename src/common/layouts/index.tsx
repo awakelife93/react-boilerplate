@@ -25,7 +25,7 @@ import {
 
 import { getLocalStorageItem, initWindowFunc } from "../../core";
 import { findThemeItem, findUserProfile } from "../../api/GetAPI";
-import { ComponentStyleIE, LayoutIE } from "../interface";
+import { ComponentStyleIE, LayoutIE, ThemeItemIE } from "../interface";
 import { UserInfoIE } from "../../api/interface";
 
 /**
@@ -43,7 +43,7 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
     reduxStore: {
       userStore,
       globalStore: { modalItem, isShowAdContainer },
-      themeStore: { isDarkMode },
+      themeStore: { useTheme },
     },
     path,
     Component,
@@ -51,7 +51,7 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
     setUserInfoAction,
     initUserInfoAction,
   } = props;
-  const [themeItem, setThemeItem] = useState({});
+  const [themeItem, setThemeItem] = useState<ThemeItemIE>({});
 
   const initThemeStyle = useCallback(async () => {
     const item: any = await findThemeItem();
@@ -73,8 +73,8 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
    * @function layoutStyles path에 따라 수정이 가능한 스타일
    */
   const layoutStyles: CSSProperties = useMemo(
-    () => generateLayoutContainerStyle({ themeItem, path, isDarkMode }) ?? {},
-    [themeItem, path, isDarkMode]
+    () => generateLayoutContainerStyle({ themeItem, path, useTheme }) ?? {},
+    [themeItem, path, useTheme]
   );
 
   /**
@@ -82,8 +82,8 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
    * @function modalStyles 따로 수정이 가능하게끔 확장해둔 형태
    */
   const modalStyles: CSSProperties = useMemo(
-    () => generateModalContainerStyle({ themeItem, isDarkMode }) ?? {},
-    [themeItem, isDarkMode]
+    () => generateModalContainerStyle({ themeItem, useTheme }) ?? {},
+    [themeItem, useTheme]
   );
 
   /**
@@ -93,16 +93,16 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
    * @function bottomStyles 수정이 가능한 스타일
    */
   const headerStyles: CSSProperties = useMemo(
-    () => generateHeaderContainerStyle({ themeItem, path, isDarkMode }) ?? {},
-    [themeItem, path, isDarkMode]
+    () => generateHeaderContainerStyle({ themeItem, path, useTheme }) ?? {},
+    [themeItem, path, useTheme]
   );
   const bodyStyles: CSSProperties = useMemo(
-    () => generateBodyContainerStyle({ themeItem, path, isDarkMode }) ?? {},
-    [themeItem, path, isDarkMode]
+    () => generateBodyContainerStyle({ themeItem, path, useTheme }) ?? {},
+    [themeItem, path, useTheme]
   );
   const bottomStyles: CSSProperties = useMemo(
-    () => generateBottomContainerStyle({ themeItem, path, isDarkMode }) ?? {},
-    [themeItem, path, isDarkMode]
+    () => generateBottomContainerStyle({ themeItem, path, useTheme }) ?? {},
+    [themeItem, path, useTheme]
   );
 
   /**
@@ -110,8 +110,8 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
    * @function componentStyles 수정이 가능한 스타일
    */
   const componentStyles: ComponentStyleIE = useMemo(
-    () => generateComponentStyle({ themeItem, path, isDarkMode }) ?? {},
-    [themeItem, path, isDarkMode]
+    () => generateComponentStyle({ themeItem, path, useTheme }) ?? {},
+    [themeItem, path, useTheme]
   );
 
   // init
