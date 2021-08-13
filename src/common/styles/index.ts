@@ -38,6 +38,8 @@ const generateThemeStyle = ({ item }: { item: any[] }) => {
       const layouts = style.layout;
       const components = style.component;
 
+      if (_.isEmpty(layouts) || _.isEmpty(components)) break;
+
       layouts.forEach((layout: any) => {
         const layoutName = layout.name.split("__")[1];
 

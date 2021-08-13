@@ -117,17 +117,12 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
   // init
   useEffect(() => {
     // generate global theme style
-    if (_.isEmpty(themeItem)) {
-      initThemeStyle();
-    }
-
+    initThemeStyle();
     // generate global function
-    if (_.isEmpty(window.globalFunc)) {
-      initWindowFunc({
-        initUserInfoAction,
-        showModalAction,
-      });
-    }
+    initWindowFunc({
+      initUserInfoAction,
+      showModalAction,
+    });
 
     const token = getLocalStorageItem("token");
     // 로그인이 된 상태라면
@@ -136,7 +131,6 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
     }
   }, [
     userStore.user.isLogin,
-    themeItem,
     initThemeStyle,
     initUserProfile,
     initUserInfoAction,
