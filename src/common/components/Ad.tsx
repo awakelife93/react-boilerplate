@@ -1,11 +1,11 @@
 import _ from "lodash";
+import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { Container, Icon, Image, Label } from ".";
 import { TopDownMove } from "../../core";
 import { I18nCommandEnum } from "../../core/i18n/type";
-import { Container, Label, Icon, Image } from ".";
-import { CommonImage } from "../styles";
 import { ComponentIE } from "../interface";
-import { useCallback } from "react";
+import { CommonImage } from "../styles";
 
 /**
  * Ad

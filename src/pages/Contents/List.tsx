@@ -1,7 +1,7 @@
-import React from "react";
 import _ from "lodash";
-import { CSSProperties } from "styled-components";
+import React from "react";
 import { Card, CardColumns } from "react-bootstrap";
+import { CSSProperties } from "styled-components";
 import { ContentsIE } from "../../api/GetAPI/interface";
 import { ScrollPaging } from "../../common/components";
 import { CommonImage } from "../../common/styles";

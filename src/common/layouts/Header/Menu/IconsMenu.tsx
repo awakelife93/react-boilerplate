@@ -2,8 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { I18nCommandEnum } from "../../../../core/i18n/type";
 import { RoutePath } from "../../../../route/routes";
-import { Container, Button, Icon } from "../../../components";
-import { MenuBox } from "../../../components";
+import { Button, Container, Icon, MenuBox } from "../../../components";
 import { ComponentStyleIE } from "../../../interface";
 
 interface IconMenuIE {

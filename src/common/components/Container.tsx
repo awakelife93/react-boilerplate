@@ -1,10 +1,10 @@
 import styled from "styled-components";
+import { CommonColor, CommonTheme } from "../styles";
 import {
   CommonComponentIE,
   DynamicColorComponentIE,
   ScrollComponentIE,
 } from "./interface";
-import { CommonColor, CommonTheme } from "../styles";
 
 /**
  * @description

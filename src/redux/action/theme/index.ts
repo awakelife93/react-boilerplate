@@ -1,5 +1,5 @@
-import { ActionEnum } from "../../type";
 import { initThemeState } from "../../reducer/theme/default";
+import { ActionEnum } from "../../type";
 
 export const initThemeAction = () => ({
   type: ActionEnum.SET_THEME_MODE,

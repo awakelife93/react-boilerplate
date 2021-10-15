@@ -1,13 +1,13 @@
 import _ from "lodash";
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Button, Container, InputBox, Label } from "../../";
 import { UserInfoIE } from "../../../../api/interface";
 import { updateUser } from "../../../../api/PatchAPI";
 import { I18nCommandEnum } from "../../../../core";
 import { UserStoreIE } from "../../../../redux/interface";
-import { Button, Container, InputBox, Label } from "../../";
-import { CommonColor } from "../../../styles";
 import { ComponentStyleIE } from "../../../interface";
+import { CommonColor } from "../../../styles";
 
 interface UpdateUserInfoIE {
   componentStyles: ComponentStyleIE;

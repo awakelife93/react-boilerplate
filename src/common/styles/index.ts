@@ -2,16 +2,15 @@ import _ from "lodash";
 import { CSSProperties } from "styled-components";
 import { RoutePath } from "../../route/routes";
 import {
-  LayoutContainerIE,
   BodyContainerIE,
   BottomContainerIE,
   HeaderContainerIE,
+  LayoutContainerIE,
 } from "../components/Container";
-
-import CommonColor from "./color";
-import CommonTheme from "./theme";
-import CommonImage from "./image";
 import { ComponentStyleIE, ThemeItemIE } from "../interface";
+import CommonColor from "./color";
+import CommonImage from "./image";
+import CommonTheme from "./theme";
 
 /**
  * generateThemeStyle

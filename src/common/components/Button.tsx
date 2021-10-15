@@ -1,7 +1,6 @@
 import styled from "styled-components";
+import { CommonColor, CommonTheme } from "../styles";
 import { CommonComponentIE, DynamicColorComponentIE } from "./interface";
-import { CommonTheme } from "../styles";
-import { CommonColor } from "../styles";
 
 /**
  * @description
