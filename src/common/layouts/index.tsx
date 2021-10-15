@@ -1,32 +1,28 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
 import _ from "lodash";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { CSSProperties } from "styled-components";
-
+import { findThemeItem, findUserProfile } from "../../api/GetAPI";
+import { UserInfoIE } from "../../api/interface";
+import { getLocalStorageItem, initWindowFunc } from "../../core";
 import { connectWrapper } from "../../redux";
-
 import { Container } from "../components";
 import AdLayout from "../components/Ad";
-import HeaderLayout from "./Header";
-import BodyLayout from "./Body";
-import BottomLayout from "./Bottom";
 import ModalLayout from "../components/Modal";
-
+import { ComponentStyleIE, LayoutIE, ThemeItemIE } from "../interface";
 import {
-  generateLayoutContainerStyle,
   generateBodyContainerStyle,
   generateBottomContainerStyle,
-  generateHeaderContainerStyle,
   generateComponentStyle,
-  showBottomContainer,
-  showHeaderContainer,
+  generateHeaderContainerStyle,
+  generateLayoutContainerStyle,
   generateModalContainerStyle,
   generateThemeStyle,
+  showBottomContainer,
+  showHeaderContainer,
 } from "../styles";
-
-import { getLocalStorageItem, initWindowFunc } from "../../core";
-import { findThemeItem, findUserProfile } from "../../api/GetAPI";
-import { ComponentStyleIE, LayoutIE, ThemeItemIE } from "../interface";
-import { UserInfoIE } from "../../api/interface";
+import BodyLayout from "./Body";
+import BottomLayout from "./Bottom";
+import HeaderLayout from "./Header";
 
 /**
  * Layout (최상단 컴포넌트)

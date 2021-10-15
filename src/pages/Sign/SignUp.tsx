@@ -1,17 +1,14 @@
-import { useCallback, useEffect, useState } from "react";
 import _ from "lodash";
+import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
-
-import { Container, InputBox, Label, Button } from "../../common/components";
-import { ComponentIE } from "../../common/interface";
-
-import { setLocalStorageItem, I18nCommandEnum } from "../../core";
-import { validationObject } from "../../utils";
-
-import { signUp } from "../../api/PutAPI";
 import { UserInfoIE } from "../../api/interface";
+import { signUp } from "../../api/PutAPI";
+import { Button, Container, InputBox, Label } from "../../common/components";
+import { ComponentIE } from "../../common/interface";
+import { I18nCommandEnum, setLocalStorageItem } from "../../core";
 import { RoutePath } from "../../route/routes";
+import { validationObject } from "../../utils";
 
 /**
  * @description SignUp Component
@@ -89,7 +86,7 @@ const SignUp: React.FC<ComponentIE> = (
           });
           history.push(RoutePath.MAIN);
         }
-      } catch (e) {
+      } catch (e: any) {
         switch (e.status) {
           // 이메일 중복
           case 409: {

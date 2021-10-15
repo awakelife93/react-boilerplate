@@ -1,12 +1,11 @@
+import _ from "lodash";
 import { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import _ from "lodash";
-
-import { RoutePath } from "../../route/routes";
-import { defaultPagingCount } from "../../common/const";
-import { ComponentIE } from "../../common/interface";
 import { findContents } from "../../api/GetAPI";
 import { ContentsIE } from "../../api/GetAPI/interface";
+import { defaultPagingCount } from "../../common/const";
+import { ComponentIE } from "../../common/interface";
+import { RoutePath } from "../../route/routes";
 import List from "./List";
 
 /**

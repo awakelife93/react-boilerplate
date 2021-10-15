@@ -1,13 +1,9 @@
 import React from "react";
-
-import MainPage from "../pages/Main";
-
+import { ComponentIE } from "../common/interface";
 import ContentsPage from "../pages/Contents";
 import ContentsDetailPage from "../pages/Contents/Detail";
-
+import MainPage from "../pages/Main";
 import { SignInPage, SignUpPage } from "../pages/Sign";
-
-import { ComponentIE } from "../common/interface";
 
 export enum RoutePath {
   MAIN = "/",
