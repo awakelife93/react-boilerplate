@@ -1,8 +1,11 @@
-export const getLocalStorageItem = (key: string): string | null =>
-  window.localStorage.getItem(key);
+import _ from "lodash";
+
+export const getLocalStorageItem = (key: string): string | null => {
+  return window.localStorage.getItem(key);
+};
 
 export const setLocalStorageItem = (item: any): void => {
-  Object.keys(item).forEach((key) => {
+  _.forEach(Object.keys(item), (key) => {
     window.localStorage.setItem(key, item[key]);
   });
 };
