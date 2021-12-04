@@ -36,7 +36,7 @@ const DownLoader: React.FC<DownLoaderIE> = (
   } = props;
 
   const init = (): void => {
-    if (downloadInput.current) {
+    if (_.isEmpty(downloadInput.current)) {
       downloadInput.current.value = "";
     }
   };

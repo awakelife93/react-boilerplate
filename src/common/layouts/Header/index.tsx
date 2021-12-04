@@ -7,7 +7,7 @@ import { signOut } from "../../../api/PostAPI";
 import {
   getLocalStorageItem,
   removeLocalStorageItem,
-  setLocalStorageItem,
+  setLocalStorageItem
 } from "../../../core";
 import { RoutePath } from "../../../route/routes";
 import { Container } from "../../components";
@@ -46,7 +46,7 @@ const Header: React.FC<ComponentIE> = (
   );
 
   const { i18n } = useTranslation();
-  const _setLaunage = useCallback(
+  const _setLanguage = useCallback(
     (lng: string) => {
       setLocalStorageItem({ lng });
       i18n.changeLanguage(lng);
@@ -139,7 +139,7 @@ const Header: React.FC<ComponentIE> = (
           _routePush={_routePush}
           _themeMode={_themeMode}
           _showAdContainer={_showAdContainer}
-          _setLaunage={_setLaunage}
+          _setLanguage={_setLanguage}
           _showTemplateModal={_showTemplateModal}
           componentStyles={componentStyles}
         />

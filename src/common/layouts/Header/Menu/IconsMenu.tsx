@@ -10,7 +10,7 @@ interface IconMenuIE {
   isShowAdContainer: boolean;
   _themeMode: Function;
   _routePush: Function;
-  _setLaunage: Function;
+  _setLanguage: Function;
   _showAdContainer: Function;
   _showTemplateModal: Function;
 }
@@ -29,7 +29,7 @@ const IconMenu: React.FC<IconMenuIE> = (
     _routePush,
     _themeMode,
     _showAdContainer,
-    _setLaunage,
+    _setLanguage,
     _showTemplateModal,
     componentStyles,
   } = props;
@@ -119,7 +119,7 @@ const IconMenu: React.FC<IconMenuIE> = (
             value: "en",
           },
         ]}
-        onClick={(lng: string) => _setLaunage(lng)}
+        onClick={(lng: string) => _setLanguage(lng)}
       />
       <Icon.FaThList
         style={{ ...componentStyles.ICON, marginLeft: 20, cursor: "pointer" }}

@@ -9,7 +9,7 @@ import { CommonImage } from "../styles";
 
 /**
  * Ad
- * @description 미리 만들어둔 여분의 공간 컴포넌ㄴ트
+ * @description 미리 만들어둔 여분의 공간 컴포넌트
  * @param {ComponentIE} props
  * @returns {React.ReactElement}
  */

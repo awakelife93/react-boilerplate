@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import _ from "lodash";
 import {
   getLocalStorageItem,
@@ -42,20 +42,20 @@ instance.interceptors.request.use(
 
     return config;
   },
-  (error) => {
+  (error: any) => {
     return Promise.reject(error);
   }
 );
 
 instance.interceptors.response.use(
-  (response) => {
+  (response: AxiosResponse) => {
     // 토큰 연장
     if (response.status === 201 && !_.isEmpty(response.data.token)) {
       setLocalStorageItem({ token: response.data.token });
     }
     return response;
   },
-  (error) => {
+  (error: any) => {
     const err = error.response ?? error;
 
     // 네트워크 에러
@@ -156,7 +156,7 @@ export const patchAPI = async (
   return await generateAPIData(result);
 };
 
-export const generateAPIData = async (res: any) => {
+export const generateAPIData = async (res: any): Promise<any> => {
   // 확장할 것이 있으면 여기에 작성
   return res.data;
 };

@@ -18,7 +18,7 @@ import {
   generateModalContainerStyle,
   generateThemeStyle,
   showBottomContainer,
-  showHeaderContainer,
+  showHeaderContainer
 } from "../styles";
 import BodyLayout from "./Body";
 import BottomLayout from "./Bottom";
