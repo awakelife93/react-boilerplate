@@ -37,7 +37,7 @@ instance.interceptors.request.use(
     } else {
       if (_.isEmpty(config.headers.Authorization))
         // 토큰이 생겼을 경우 request headers에 달아주기
-        config.headers.Authorization = `Bearer ${localStorageToken ?? ""}`;
+        config.headers.Authorization = `Bearer ${localStorageToken}`;
     }
 
     return config;
@@ -115,7 +115,7 @@ export const deleteAPI = async (
   endPoint: string = "",
   params = {},
   axiosOption = {}
-): Promise<any> => {
+): Promise<AxiosResponse> => {
   const deleteEndPoint = _.isEmpty(params)
     ? endPoint
     : generateQueryEndPoint(endPoint, params);
@@ -129,7 +129,7 @@ export const postAPI = async (
   axiosOption = {
     timeout: 2000,
   }
-): Promise<any> => {
+): Promise<AxiosResponse> => {
   const result = await instance.post(endPoint, data, axiosOption);
   return await generateAPIData(result);
 };
@@ -140,7 +140,7 @@ export const putAPI = async (
   axiosOption = {
     timeout: 2000,
   }
-): Promise<any> => {
+): Promise<AxiosResponse> => {
   const result = await instance.put(endPoint, data, axiosOption);
   return await generateAPIData(result);
 };
@@ -151,12 +151,12 @@ export const patchAPI = async (
   axiosOption = {
     timeout: 2000,
   }
-): Promise<any> => {
+): Promise<AxiosResponse> => {
   const result = await instance.patch(endPoint, data, axiosOption);
   return await generateAPIData(result);
 };
 
-export const generateAPIData = async (res: any): Promise<any> => {
+export const generateAPIData = async (res: AxiosResponse): Promise<any> => {
   // 확장할 것이 있으면 여기에 작성
   return res.data;
 };
