@@ -20,7 +20,7 @@ import CommonTheme from "./theme";
  * @returns {ThemeItemIE}
  */
 const generateThemeStyle = ({ item }: { item: any[] }) => {
-  let themeItem: ThemeItemIE = {};
+  const themeItem = {} as ThemeItemIE;
 
   try {
     for (let i = 0; i < item.length; i++) {
@@ -133,7 +133,7 @@ const generateLayoutContainerStyle = ({
   path: string;
   useTheme: boolean;
 }) => {
-  let props: LayoutContainerIE = {};
+  const props = {} as LayoutContainerIE;
 
   if (_.isEmpty(themeItem)) {
     props["style"] = setMockUpStyleData({
@@ -169,7 +169,7 @@ const generateModalContainerStyle = ({
   themeItem: any;
   useTheme: boolean;
 }) => {
-  let props: LayoutContainerIE = {};
+  let props = {} as LayoutContainerIE;
 
   if (_.isEmpty(themeItem)) {
     props["style"] = setMockUpStyleData({
@@ -201,7 +201,7 @@ const generateHeaderContainerStyle = ({
   path: string;
   useTheme: boolean;
 }) => {
-  let props: HeaderContainerIE = {};
+  let props = {} as HeaderContainerIE;
 
   if (_.isEmpty(themeItem)) {
     props["style"] = setMockUpStyleData({
@@ -239,7 +239,7 @@ const generateBodyContainerStyle = ({
   path: string;
   useTheme: boolean;
 }) => {
-  let props: BodyContainerIE = {};
+  let props = {} as BodyContainerIE;
 
   if (_.isEmpty(themeItem)) {
     props["style"] = setMockUpStyleData({
@@ -281,7 +281,7 @@ const generateBottomContainerStyle = ({
   path: string;
   useTheme: boolean;
 }) => {
-  let props: BottomContainerIE = {};
+  let props = {} as BottomContainerIE;
 
   if (_.isEmpty(themeItem)) {
     props["style"] = setMockUpStyleData({
@@ -319,7 +319,7 @@ const generateComponentStyle = ({
   path: string;
   useTheme: boolean;
 }) => {
-  let style: ComponentStyleIE;
+  let style = {} as ComponentStyleIE;
 
   if (_.isEmpty(themeItem)) {
     style = setMockUpStyleData({

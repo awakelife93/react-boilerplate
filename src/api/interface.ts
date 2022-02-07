@@ -1,3 +1,5 @@
+import { UnknownObject } from "../common/const/type";
+
 /**
  * 공통 인터페이스만 작성
  */
@@ -6,5 +8,5 @@ export interface UserInfoIE {
   token: string;
   userEmail: string;
   userNickname: string;
-  userRoles: any[];
+  userRoles: UnknownObject[];
 }

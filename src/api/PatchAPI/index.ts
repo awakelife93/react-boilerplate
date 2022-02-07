@@ -1,5 +1,6 @@
 import _ from "lodash";
 import { patchAPI } from "..";
+import { UnknownObject } from "../../common/const/type";
 import { UserInfoIE } from "../interface";
 
 export const updateUser = async ({
@@ -12,7 +13,7 @@ export const updateUser = async ({
   userPw: string;
 }): Promise<UserInfoIE> => {
   try {
-    const item: any = { userId };
+    const item: UnknownObject = { userId };
 
     if (!_.isEmpty(userNickname)) item.userNickname = userNickname;
 

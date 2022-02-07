@@ -1,5 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import _ from "lodash";
+import { UnknownObject } from "../common/const/type";
 import {
   getLocalStorageItem,
   removeLocalStorageItem,
@@ -85,7 +86,10 @@ instance.interceptors.response.use(
   }
 );
 
-const generateQueryEndPoint = (endPoint: string, params: any): string => {
+const generateQueryEndPoint = (
+  endPoint: string,
+  params: UnknownObject
+): string => {
   let _endPoint = `${endPoint}?`;
 
   Object.keys(params).forEach((key: string, index: number) => {
@@ -103,11 +107,11 @@ export const getAPI = async (
   endPoint: string = "",
   params = {},
   axiosOption = {}
-): Promise<any> => {
+) => {
   const getEndPoint = _.isEmpty(params)
     ? endPoint
     : generateQueryEndPoint(endPoint, params);
-  const result = await instance.get(getEndPoint, axiosOption);
+  const result: AxiosResponse = await instance.get(getEndPoint, axiosOption);
   return await generateAPIData(result);
 };
 
@@ -115,11 +119,14 @@ export const deleteAPI = async (
   endPoint: string = "",
   params = {},
   axiosOption = {}
-): Promise<AxiosResponse> => {
+) => {
   const deleteEndPoint = _.isEmpty(params)
     ? endPoint
     : generateQueryEndPoint(endPoint, params);
-  const result = await instance.delete(deleteEndPoint, axiosOption);
+  const result: AxiosResponse = await instance.delete(
+    deleteEndPoint,
+    axiosOption
+  );
   return await generateAPIData(result);
 };
 
@@ -129,8 +136,12 @@ export const postAPI = async (
   axiosOption = {
     timeout: 2000,
   }
-): Promise<AxiosResponse> => {
-  const result = await instance.post(endPoint, data, axiosOption);
+) => {
+  const result: AxiosResponse = await instance.post(
+    endPoint,
+    data,
+    axiosOption
+  );
   return await generateAPIData(result);
 };
 
@@ -140,8 +151,8 @@ export const putAPI = async (
   axiosOption = {
     timeout: 2000,
   }
-): Promise<AxiosResponse> => {
-  const result = await instance.put(endPoint, data, axiosOption);
+) => {
+  const result: AxiosResponse = await instance.put(endPoint, data, axiosOption);
   return await generateAPIData(result);
 };
 
@@ -151,12 +162,16 @@ export const patchAPI = async (
   axiosOption = {
     timeout: 2000,
   }
-): Promise<AxiosResponse> => {
-  const result = await instance.patch(endPoint, data, axiosOption);
+) => {
+  const result: AxiosResponse = await instance.patch(
+    endPoint,
+    data,
+    axiosOption
+  );
   return await generateAPIData(result);
 };
 
-export const generateAPIData = async (res: AxiosResponse): Promise<any> => {
+export const generateAPIData = async (response: AxiosResponse) => {
   // 확장할 것이 있으면 여기에 작성
-  return res.data;
+  return response.data;
 };
