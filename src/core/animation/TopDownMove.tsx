@@ -14,7 +14,7 @@ const TopDownMove = (
     style: {},
   }
 ): CommonAnimationReturnIE => {
-  const component: React.MutableRefObject<any> = useRef<HTMLDivElement>();
+  const component: React.MutableRefObject<HTMLDivElement | undefined> = useRef<HTMLDivElement>();
   const [animationObject, setAnimationObject] = useState({
     isMove: false,
     position: option.position,
@@ -35,11 +35,8 @@ const TopDownMove = (
   }, [animationObject.isMove, option.endPosition, option.position]);
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
-    if (component.current) {
-      timeoutId = setTimeout(() => move(), option.delay);
-    }
-
+    const timeoutId: NodeJS.Timeout = setTimeout(() => move(), option.delay);
+    
     return () => {
       clearTimeout(timeoutId);
     };
