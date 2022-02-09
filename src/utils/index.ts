@@ -14,11 +14,11 @@ export const revertBodyScroll = (): void => {
 };
 
 export const validationObject = (object: UnknownObject): boolean => {
-  const keys = Object.keys(object);
+  const keys: string[] = Object.keys(object);
 
-  if (!_.isArray(keys) || _.isEmpty(keys)) return false;
+  if (_.isEmpty(keys)) return false;
 
-  return keys.every((key) => {
+  return keys.every((key: string) => {
     return !_.isUndefined(object[key]) && !_.isEmpty(object[key]);
   });
 };
