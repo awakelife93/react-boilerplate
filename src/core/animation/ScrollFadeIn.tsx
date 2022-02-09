@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { useCallback, useEffect, useRef } from "react";
 import { AnimationOptionIE, CommonAnimationReturnIE } from "./interface";
 
@@ -12,26 +13,28 @@ const ScrollFadeIn = (
     style: {},
   }
 ): CommonAnimationReturnIE => {
-  const component: React.MutableRefObject<any> = useRef<HTMLDivElement>();
+  const component: React.MutableRefObject<HTMLDivElement | undefined> = useRef<HTMLDivElement>();
 
   const onScroll = useCallback(
-    ([entry]: any) => {
+    ([entry]: IntersectionObserverEntry[]) => {
       const { current } = component;
-      if (entry.isIntersecting) {
+      
+      if (!_.isUndefined(current) && entry.isIntersecting) {
         current.style.transitionDuration = `${option.duration}s`;
         current.style.transitionDelay = `${option.delay}s`;
-        current.style.opacity = 1;
+        current.style.opacity = "1";
       }
     },
     [option.delay, option.duration]
   );
 
   useEffect(() => {
+    const { current } = component;
     let observer: IntersectionObserver;
 
-    if (component.current) {
+    if (!_.isUndefined(current)) {
       observer = new IntersectionObserver(onScroll, { threshold: 0.7 });
-      observer.observe(component.current);
+      observer.observe(current);
     }
 
     return () => observer && observer.disconnect();

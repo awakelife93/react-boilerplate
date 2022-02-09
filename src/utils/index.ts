@@ -1,4 +1,5 @@
 import _ from "lodash";
+import { UnknownObject } from "../common/const/type";
 
 export const scrollTop = (): void => {
   window.scrollTo(0, 0);
@@ -12,7 +13,7 @@ export const revertBodyScroll = (): void => {
   document.body.style.overflow = "";
 };
 
-export const validationObject = (object: any): boolean => {
+export const validationObject = (object: UnknownObject): boolean => {
   const keys = Object.keys(object);
 
   if (!_.isArray(keys) || _.isEmpty(keys)) return false;
