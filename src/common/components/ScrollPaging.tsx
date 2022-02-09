@@ -38,8 +38,8 @@ const ScrollPaging: React.FC<ScrollPagingIE> = (
           if (_.isFunction(callback)) {
             callback();
           }
-        } catch (e) {
-          console.log("Paging Callback Error", e);
+        } catch (error: unknown) {
+          console.log("Paging Callback Error", error);
         }
       }
     },

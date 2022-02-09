@@ -21,8 +21,8 @@ export const updateUser = async ({
 
     // 사용자 화면은 권한 1 고정
     return await patchAPI("updateUser", { ...item });
-  } catch (e) {
-    console.log("===============> updateUser Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> updateUser Error", error);
+    throw error;
   }
 };

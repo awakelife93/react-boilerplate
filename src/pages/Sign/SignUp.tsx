@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { useCallback, useEffect, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 import { UserInfoIE } from "../../api/interface";
@@ -137,7 +137,7 @@ const SignUp: React.FC<ComponentIE> = (
             marginBottom: 15,
           }}
           placeholder={t(I18nCommandEnum.EMAIL)}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
         />
         {/**********************************************************/}
         <Container.RowContainer
@@ -155,7 +155,7 @@ const SignUp: React.FC<ComponentIE> = (
             marginBottom: 15,
           }}
           placeholder={t(I18nCommandEnum.NICKNAME)}
-          onChange={(e) => setNickname(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setNickname(e.target.value)}
         />
         {/**********************************************************/}
         <Container.RowContainer
@@ -174,7 +174,7 @@ const SignUp: React.FC<ComponentIE> = (
           }}
           type={"password"}
           placeholder={t(I18nCommandEnum.PASSWORD)}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
         />
         {/**********************************************************/}
         <Container.RowContainer
@@ -193,7 +193,7 @@ const SignUp: React.FC<ComponentIE> = (
           }}
           type={"password"}
           placeholder={t(I18nCommandEnum.CONFIRM_PASSWORD)}
-          onChange={(e) => setConfirmPassword(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value)}
         />
         {/**********************************************************/}
         <Button.SubMitButton

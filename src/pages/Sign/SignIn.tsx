@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { useCallback, useEffect, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router";
 import { UserInfoIE } from "../../api/interface";
@@ -127,7 +127,7 @@ const SignIn: React.FC<ComponentIE> = (
             marginBottom: 15,
           }}
           placeholder={t(I18nCommandEnum.EMAIL)}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
         />
         <Container.RowContainer
           style={{
@@ -145,7 +145,7 @@ const SignIn: React.FC<ComponentIE> = (
           }}
           placeholder={t(I18nCommandEnum.PASSWORD)}
           type={"password"}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
         />
         <Button.SubMitButton
           style={{

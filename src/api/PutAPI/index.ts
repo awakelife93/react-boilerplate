@@ -16,8 +16,8 @@ export const signUp = async ({
       userNickname,
       userPw,
     });
-  } catch (e) {
-    console.log("===============> signUp Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> signUp Error", error);
+    throw error;
   }
 };

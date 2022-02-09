@@ -6,9 +6,9 @@ import { ContentsIE } from "./interface";
 export const findThemeItem = async () => {
   try {
     return await getAPI("findThemeItem");
-  } catch (e) {
-    console.log("===============> findThemeItem Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> findThemeItem Error", error);
+    throw error;
   }
 };
 
@@ -21,17 +21,17 @@ export const findContents = async (
       take: defaultPagingCount,
       skip,
     });
-  } catch (e) {
-    console.log("===============> findContents Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> findContents Error", error);
+    throw error;
   }
 };
 
 export const findUserProfile = async (): Promise<UserInfoIE> => {
   try {
     return await getAPI("findUserProfile");
-  } catch (e) {
-    console.log("===============> findUserProfile Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> findUserProfile Error", error);
+    throw error;
   }
 };

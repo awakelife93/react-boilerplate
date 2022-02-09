@@ -33,8 +33,8 @@ const Contents: React.FC<ComponentIE> = (
         setSkip(skip + defaultPagingCount);
         getContentsAction(data[0]);
       }
-    } catch (e) {
-      console.log("===========> ContentsPage Error", e);
+    } catch (error: unknown) {
+      console.log("===========> ContentsPage Error", error);
     }
   }, [skip, getContentsAction]);
 

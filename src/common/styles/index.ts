@@ -5,7 +5,7 @@ import {
   BodyContainerIE,
   BottomContainerIE,
   HeaderContainerIE,
-  LayoutContainerIE,
+  LayoutContainerIE
 } from "../components/Container";
 import { ComponentStyleIE, ThemeItemIE } from "../interface";
 import CommonColor from "./color";
@@ -75,8 +75,8 @@ const generateThemeStyle = ({ item }: { item: any[] }) => {
     }
 
     return themeItem;
-  } catch (e) {
-    console.log(e);
+  } catch (error: unknown) {
+    console.log(error);
     return {};
   }
 };

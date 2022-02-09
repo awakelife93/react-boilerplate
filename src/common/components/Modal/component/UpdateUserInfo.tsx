@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { useCallback, useState } from "react";
+import { ChangeEvent, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button, Container, InputBox, Label } from "../../";
 import { UserInfoIE } from "../../../../api/interface";
@@ -68,8 +68,8 @@ const UpdateUserInfo: React.FC<UpdateUserInfoIE> = (
           },
         });
         _closeModal();
-      } catch (e) {
-        console.log("_updateUser Error", e);
+      } catch (error: unknown) {
+        console.log("_updateUser Error", error);
       }
     }
   };
@@ -93,7 +93,7 @@ const UpdateUserInfo: React.FC<UpdateUserInfoIE> = (
         }}
         placeholder={t(I18nCommandEnum.NICKNAME)}
         onClick={() => setNMErrorItems("")}
-        onChange={(e) => setNickname(e.target.value)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setNickname(e.target.value)}
       />
       <Container.RowContainer
         style={{
@@ -122,7 +122,7 @@ const UpdateUserInfo: React.FC<UpdateUserInfoIE> = (
         type={"password"}
         placeholder={t(I18nCommandEnum.PASSWORD)}
         onClick={() => setPWErrorItems("")}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
       />
       <Container.RowContainer
         style={{
@@ -151,7 +151,7 @@ const UpdateUserInfo: React.FC<UpdateUserInfoIE> = (
         type={"password"}
         placeholder={t(I18nCommandEnum.CONFIRM_PASSWORD)}
         onClick={() => setConfirmPWErrorItems("")}
-        onChange={(e) => setConfirmPassword(e.target.value)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value)}
       />
       <Container.RowContainer
         style={{
