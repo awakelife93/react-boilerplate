@@ -1,11 +1,11 @@
 import _ from "lodash";
-import { ActionIE, ThemeStoreIE } from "../../interface";
-import { ActionEnum } from "../../type";
+import { AnyAction } from "redux";
+import { ActionEnum, ThemeStoreType } from "../../type";
 import { initThemeState } from "./default";
 
 export default function themeStore(
-  state: ThemeStoreIE = initThemeState,
-  action: ActionIE
+  state: ThemeStoreType = initThemeState,
+  action: AnyAction
 ) {
   switch (action.type) {
     case ActionEnum.SET_THEME_MODE:

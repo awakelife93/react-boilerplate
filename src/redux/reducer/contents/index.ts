@@ -1,11 +1,11 @@
 import _ from "lodash";
-import { ActionIE, ContentsStoreIE } from "../../interface";
-import { ActionEnum } from "../../type";
+import { AnyAction } from "redux";
+import { ActionEnum, ContentsStoreType } from "../../type";
 import { initContentState } from "./default";
 
 export default function contentsStore(
-  state: ContentsStoreIE = initContentState,
-  action: ActionIE
+  state: ContentsStoreType = initContentState,
+  action: AnyAction
 ) {
   switch (action.type) {
     case ActionEnum.GET_CONTENTS:

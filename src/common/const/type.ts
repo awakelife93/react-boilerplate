@@ -1,1 +1,1 @@
-export type UnknownObject = Record<string, unknown>;
+export type UnknownObject<type = unknown> = Record<string, type>;

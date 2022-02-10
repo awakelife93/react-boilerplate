@@ -1,11 +1,11 @@
 import _ from "lodash";
-import { ActionIE, GlobalStoreIE } from "../../interface";
-import { ActionEnum } from "../../type";
+import { AnyAction } from "redux";
+import { ActionEnum, GlobalStoreType } from "../../type";
 import { initGlobalState } from "./default";
 
 export default function globalStore(
-  state: GlobalStoreIE = initGlobalState,
-  action: ActionIE
+  state: GlobalStoreType = initGlobalState,
+  action: AnyAction
 ) {
   switch (action.type) {
     case ActionEnum.SET_AD_CONTAINER:

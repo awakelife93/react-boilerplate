@@ -5,14 +5,14 @@ import { Button, Container, InputBox, Label } from "../../";
 import { UserInfoIE } from "../../../../api/interface";
 import { updateUser } from "../../../../api/PatchAPI";
 import { I18nCommandEnum } from "../../../../core";
-import { UserStoreIE } from "../../../../redux/interface";
+import { UserStoreType } from "../../../../redux/type";
 import { ComponentStyleIE } from "../../../interface";
 import { CommonColor } from "../../../styles";
 
 interface UpdateUserInfoIE {
   componentStyles: ComponentStyleIE;
   childrenProps: any;
-  userStore: UserStoreIE;
+  userStore: UserStoreType;
   _closeModal: Function;
   setUserInfoAction: Function;
 }

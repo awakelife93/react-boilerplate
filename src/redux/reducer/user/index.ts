@@ -1,11 +1,11 @@
 import _ from "lodash";
-import { ActionIE, UserStoreIE } from "../../interface";
-import { ActionEnum } from "../../type";
+import { AnyAction } from "redux";
+import { ActionEnum, UserStoreType } from "../../type";
 import { initUserState } from "./default";
 
 export default function themeStore(
-  state: UserStoreIE = initUserState,
-  action: ActionIE
+  state: UserStoreType = initUserState,
+  action: AnyAction
 ) {
   switch (action.type) {
     case ActionEnum.SET_USER_INFO:
