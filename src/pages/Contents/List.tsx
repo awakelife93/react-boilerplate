@@ -20,7 +20,7 @@ const gridItem = (
       style={{ cursor: "pointer" }}
       onClick={() => goDetail(item)}
     >
-      <Card.Img variant="top" src={imageUrl} />
+      <Card.Img variant="top" src={imageUrl} alt={`Thumbnail Image ${index}`} />
       <Card.Body style={{ backgroundColor: style.backgroundColor }}>
         <Card.Title style={{ color: style.color }}>{item.contTitle}</Card.Title>
         <Card.Subtitle style={{ color: style.color }}>

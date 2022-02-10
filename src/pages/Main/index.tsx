@@ -13,9 +13,9 @@ const Main: React.FC<ComponentIE> = (
 ): React.ReactElement => {
   return (
     <Container.LayoutContainer>
-      <Image.CommonImage src={CommonImage.FREE_IMAGE1} />
-      <Image.CommonImage src={CommonImage.FREE_IMAGE1} {...ScrollFadeIn()} />
-      <Image.CommonImage src={CommonImage.FREE_IMAGE1} {...ScrollFadeIn()} />
+      <Image.CommonImage src={CommonImage.FREE_IMAGE1} alt={'Sample Banner Image 1'} />
+      <Image.CommonImage src={CommonImage.FREE_IMAGE1} {...ScrollFadeIn()} alt={'Sample Banner Image 2'} />
+      <Image.CommonImage src={CommonImage.FREE_IMAGE1} {...ScrollFadeIn()} alt={'Sample Banner Image 3'} />
     </Container.LayoutContainer>
   );
 };
