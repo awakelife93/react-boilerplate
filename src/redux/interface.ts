@@ -1,9 +1,6 @@
-import { StateType } from "./type";
+import { ReduxStore } from "./type";
 
-export interface ReduxStoreIE {
-  reduxStore: StateType;
-}
-export interface ReduxIE extends ReduxStoreIE {
+export interface ReduxIE extends ReduxStore {
   initContentsAction: Function;
   getContentsAction: Function;
   initThemeAction: Function;

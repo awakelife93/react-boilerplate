@@ -57,6 +57,10 @@ export type StateType = {
   userStore: UserStore;
 };
 
+export type ReduxStore = {
+  reduxStore: StateType;
+};
+
 /**
  * @description
  * Redux Action Type 정의
