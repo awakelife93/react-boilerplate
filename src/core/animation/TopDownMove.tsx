@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { CommonAnimationReturnIE, MoveOptionIE } from "./interface";
+import { CommonAnimationReturn, MoveOptionIE } from "./type";
 
 /**
  * @description
@@ -13,7 +13,7 @@ const TopDownMove = (
     endPosition: 15,
     style: {},
   }
-): CommonAnimationReturnIE => {
+): CommonAnimationReturn => {
   const component: React.MutableRefObject<HTMLDivElement | undefined> = useRef<HTMLDivElement>();
   const [animationObject, setAnimationObject] = useState({
     isMove: false,

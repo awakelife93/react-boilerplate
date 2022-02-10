@@ -9,7 +9,7 @@ import { UserStore } from "../../../../redux/type";
 import { ComponentStyleIE } from "../../../interface";
 import { CommonColor } from "../../../styles";
 
-interface UpdateUserInfoIE {
+type UpdateUserInfoType = {
   componentStyles: ComponentStyleIE;
   childrenProps: any;
   userStore: UserStore;
@@ -17,8 +17,8 @@ interface UpdateUserInfoIE {
   setUserInfoAction: Function;
 }
 
-const UpdateUserInfo: React.FC<UpdateUserInfoIE> = (
-  props: UpdateUserInfoIE
+const UpdateUserInfo: React.FC<UpdateUserInfoType> = (
+  props: UpdateUserInfoType
 ) => {
   const { componentStyles, userStore, _closeModal, setUserInfoAction } = props;
   const { t } = useTranslation();

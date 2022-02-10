@@ -1,18 +1,18 @@
 import _ from "lodash";
 import { useCallback, useEffect, useRef } from "react";
-import { AnimationOptionIE, CommonAnimationReturnIE } from "./interface";
+import { AnimationOption, CommonAnimationReturn } from "./type";
 
 /**
  * @description
  * Scroll을 감지하여 FadeIn Animation
  */
 const ScrollFadeIn = (
-  option: AnimationOptionIE = {
+  option: AnimationOption = {
     delay: 0,
     duration: 1,
     style: {},
   }
-): CommonAnimationReturnIE => {
+): CommonAnimationReturn => {
   const component: React.MutableRefObject<HTMLDivElement | undefined> = useRef<HTMLDivElement>();
 
   const onScroll = useCallback(
