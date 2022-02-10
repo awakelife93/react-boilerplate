@@ -105,8 +105,8 @@ const generateQueryEndPoint = (
 
 export const getAPI = async (
   endPoint: string = "",
-  params = {},
-  axiosOption = {}
+  params: UnknownObject,
+  axiosOption: AxiosRequestConfig
 ) => {
   const getEndPoint = _.isEmpty(params)
     ? endPoint
@@ -117,8 +117,8 @@ export const getAPI = async (
 
 export const deleteAPI = async (
   endPoint: string = "",
-  params = {},
-  axiosOption = {}
+  params: UnknownObject,
+  axiosOption: AxiosRequestConfig
 ) => {
   const deleteEndPoint = _.isEmpty(params)
     ? endPoint
@@ -132,8 +132,8 @@ export const deleteAPI = async (
 
 export const postAPI = async (
   endPoint: string = "",
-  data = {},
-  axiosOption = {
+  data: UnknownObject,
+  axiosOption: AxiosRequestConfig = {
     timeout: 2000,
   }
 ) => {
@@ -147,8 +147,8 @@ export const postAPI = async (
 
 export const putAPI = async (
   endPoint: string = "",
-  data = {},
-  axiosOption = {
+  data: UnknownObject,
+  axiosOption: AxiosRequestConfig = {
     timeout: 2000,
   }
 ) => {
@@ -158,8 +158,8 @@ export const putAPI = async (
 
 export const patchAPI = async (
   endPoint: string = "",
-  data = {},
-  axiosOption = {
+  data: UnknownObject,
+  axiosOption: AxiosRequestConfig = {
     timeout: 2000,
   }
 ) => {
