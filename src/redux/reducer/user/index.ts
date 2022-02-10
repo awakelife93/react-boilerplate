@@ -1,10 +1,10 @@
 import _ from "lodash";
 import { AnyAction } from "redux";
-import { ActionEnum, UserStoreType } from "../../type";
+import { ActionEnum, UserStore } from "../../type";
 import { initUserState } from "./default";
 
 export default function themeStore(
-  state: UserStoreType = initUserState,
+  state: UserStore = initUserState,
   action: AnyAction
 ) {
   switch (action.type) {

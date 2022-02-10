@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { UnknownObject } from "../common/const/type";
+import { UnknownObject } from "../common/type";
 
 export const scrollTop = (): void => {
   window.scrollTo(0, 0);

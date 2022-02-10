@@ -1,10 +1,10 @@
 import _ from "lodash";
 import { AnyAction } from "redux";
-import { ActionEnum, ContentsStoreType } from "../../type";
+import { ActionEnum, ContentsStore } from "../../type";
 import { initContentState } from "./default";
 
 export default function contentsStore(
-  state: ContentsStoreType = initContentState,
+  state: ContentsStore = initContentState,
   action: AnyAction
 ) {
   switch (action.type) {

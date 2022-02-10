@@ -1,10 +1,10 @@
 import _ from "lodash";
 import { AnyAction } from "redux";
-import { ActionEnum, GlobalStoreType } from "../../type";
+import { ActionEnum, GlobalStore } from "../../type";
 import { initGlobalState } from "./default";
 
 export default function globalStore(
-  state: GlobalStoreType = initGlobalState,
+  state: GlobalStore = initGlobalState,
   action: AnyAction
 ) {
   switch (action.type) {

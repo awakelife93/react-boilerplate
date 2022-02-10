@@ -1,4 +1,4 @@
-import { UnknownObject } from "../common/const/type";
+import { UnknownObject } from "../common/type";
 
 /**
  * 공통 인터페이스만 작성

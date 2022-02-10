@@ -13,7 +13,7 @@ export enum RoutePath {
   CONTENTS_DETAIL = "/contentsDetail",
 }
 export interface RouteIE {
-  path: string;
+  path: RoutePath;
   exact: boolean;
   Component: React.FC<ComponentIE>;
 }

@@ -8,7 +8,7 @@ import { connectWrapper } from "../../redux";
 import { Container } from "../components";
 import AdLayout from "../components/Ad";
 import ModalLayout from "../components/Modal";
-import { ComponentStyleIE, LayoutIE, ThemeItemIE } from "../interface";
+import { ComponentStyleIE, LayoutIE } from "../interface";
 import {
   generateBodyContainerStyle,
   generateBottomContainerStyle,
@@ -20,6 +20,7 @@ import {
   showBottomContainer,
   showHeaderContainer
 } from "../styles";
+import { ThemeItem } from "../type";
 import BodyLayout from "./Body";
 import BottomLayout from "./Bottom";
 import HeaderLayout from "./Header";
@@ -47,7 +48,7 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
     setUserInfoAction,
     initUserInfoAction,
   } = props;
-  const [themeItem, setThemeItem] = useState<ThemeItemIE>({});
+  const [themeItem, setThemeItem] = useState<ThemeItem>({});
 
   const initThemeStyle = useCallback(async () => {
     const item: any = await findThemeItem();

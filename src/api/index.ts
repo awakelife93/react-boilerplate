@@ -1,10 +1,10 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import _ from "lodash";
-import { UnknownObject } from "../common/const/type";
+import { UnknownObject } from "../common/type";
 import {
   getLocalStorageItem,
   removeLocalStorageItem,
-  setLocalStorageItem,
+  setLocalStorageItem
 } from "../core";
 
 const _showMessageModal = (message: string): void => {
@@ -43,7 +43,7 @@ instance.interceptors.request.use(
 
     return config;
   },
-  (error: any) => {
+  (error: unknown) => {
     return Promise.reject(error);
   }
 );

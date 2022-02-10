@@ -2,15 +2,15 @@ import React from "react";
 import { CSSProperties } from "styled-components";
 import { ContentsIE } from "../api/GetAPI/interface";
 
-export type ContentsStoreType = {
+export type ContentsStore = {
   contents: ContentsIE[];
 };
 
-export type ThemeStoreType = {
+export type ThemeStore = {
   useTheme: boolean;
 };
 
-export type GlobalStoreType = {
+export type GlobalStore = {
   isShowAdContainer: boolean;
   modalItem: {
     isShowModal: boolean;
@@ -39,7 +39,7 @@ export type GlobalStoreType = {
   };
 };
 
-export type UserStoreType = {
+export type UserStore = {
   user: {
     isLogin: boolean;
     info: {
@@ -51,10 +51,10 @@ export type UserStoreType = {
 };
 
 export type StateType = {
-  contentsStore: ContentsStoreType;
-  themeStore: ThemeStoreType;
-  globalStore: GlobalStoreType;
-  userStore: UserStoreType;
+  contentsStore: ContentsStore;
+  themeStore: ThemeStore;
+  globalStore: GlobalStore;
+  userStore: UserStore;
 };
 
 /**

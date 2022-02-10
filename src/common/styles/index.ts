@@ -7,7 +7,8 @@ import {
   HeaderContainerIE,
   LayoutContainerIE
 } from "../components/Container";
-import { ComponentStyleIE, ThemeItemIE } from "../interface";
+import { ComponentStyleIE } from "../interface";
+import { ThemeItem } from "../type";
 import CommonColor from "./color";
 import CommonImage from "./image";
 import CommonTheme from "./theme";
@@ -17,10 +18,10 @@ import CommonTheme from "./theme";
  * @description
  * 컴포넌트, 레이아웃은 각각의 테마별로 지니고 있으며, __을 구분자로 사용한다.
  * @param item
- * @returns {ThemeItemIE}
+ * @returns {ThemeItem}
  */
 const generateThemeStyle = ({ item }: { item: any[] }) => {
-  const themeItem = {} as ThemeItemIE;
+  const themeItem = {} as ThemeItem;
 
   try {
     for (let i = 0; i < item.length; i++) {
@@ -126,11 +127,11 @@ const setMockUpStyleData = ({
 
 const generateLayoutContainerStyle = ({
   themeItem,
-  path = "",
+  path,
   useTheme = false,
 }: {
-  themeItem: any;
-  path: string;
+  themeItem: ThemeItem;
+  path: RoutePath;
   useTheme: boolean;
 }) => {
   const props = {} as LayoutContainerIE;
@@ -166,7 +167,7 @@ const generateModalContainerStyle = ({
   themeItem,
   useTheme = false,
 }: {
-  themeItem: any;
+  themeItem: ThemeItem;
   useTheme: boolean;
 }) => {
   let props = {} as LayoutContainerIE;
@@ -194,11 +195,11 @@ const generateModalContainerStyle = ({
 
 const generateHeaderContainerStyle = ({
   themeItem,
-  path = "",
+  path,
   useTheme = false,
 }: {
-  themeItem: any;
-  path: string;
+  themeItem: ThemeItem;
+  path: RoutePath;
   useTheme: boolean;
 }) => {
   let props = {} as HeaderContainerIE;
@@ -232,11 +233,11 @@ const generateHeaderContainerStyle = ({
 
 const generateBodyContainerStyle = ({
   themeItem,
-  path = "",
+  path,
   useTheme = false,
 }: {
-  themeItem: any;
-  path: string;
+  themeItem: ThemeItem;
+  path: RoutePath;
   useTheme: boolean;
 }) => {
   let props = {} as BodyContainerIE;
@@ -274,11 +275,11 @@ const generateBodyContainerStyle = ({
 
 const generateBottomContainerStyle = ({
   themeItem,
-  path = "",
+  path,
   useTheme = false,
 }: {
-  themeItem: any;
-  path: string;
+  themeItem: ThemeItem;
+  path: RoutePath;
   useTheme: boolean;
 }) => {
   let props = {} as BottomContainerIE;
@@ -312,11 +313,11 @@ const generateBottomContainerStyle = ({
 
 const generateComponentStyle = ({
   themeItem,
-  path = "",
+  path,
   useTheme = false,
 }: {
-  themeItem: any;
-  path: string;
+  themeItem: ThemeItem;
+  path: RoutePath;
   useTheme: boolean;
 }) => {
   let style = {} as ComponentStyleIE;
@@ -348,7 +349,7 @@ const generateComponentStyle = ({
   };
 };
 
-const showBottomContainer = (route: string): boolean => {
+const showBottomContainer = (route: RoutePath): boolean => {
   switch (route) {
     case RoutePath.SIGN_IN:
     case RoutePath.CONTENTS_DETAIL:
@@ -358,7 +359,7 @@ const showBottomContainer = (route: string): boolean => {
   }
 };
 
-const showHeaderContainer = (route: string): boolean => {
+const showHeaderContainer = (route: RoutePath): boolean => {
   switch (route) {
     default:
       return true;

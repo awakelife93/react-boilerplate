@@ -1,6 +1,6 @@
 import _ from "lodash";
 import { patchAPI } from "..";
-import { UnknownObject } from "../../common/const/type";
+import { UnknownObject } from "../../common/type";
 import { UserInfoIE } from "../interface";
 
 export const updateUser = async ({
