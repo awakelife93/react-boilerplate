@@ -1,20 +1,20 @@
 import _ from "lodash";
 
-type LocalStorageKeys = "token" | "lng" | "useTheme";
+type LocalStorageKey = "token" | "lng" | "useTheme";
 
 type LocalStorageItem = {
-  [key in LocalStorageKeys]: string;
+  [key in LocalStorageKey]: unknown;
 }
 
-export const getLocalStorageItem = (key: LocalStorageKeys): string | null =>
+export const getLocalStorageItem = (key: LocalStorageKey): string | null =>
   window.localStorage.getItem(key);
 
 export const getLocalStorageItems = (
-  keys: LocalStorageKeys[]
+  keys: LocalStorageKey[]
 ): LocalStorageItem => {
   const storageItems = {} as LocalStorageItem;
 
-  _.forEach(keys, (key: LocalStorageKeys) => {
+  _.forEach(keys, (key: LocalStorageKey) => {
     const storageItem = getLocalStorageItem(key);
 
     if (storageItem !== null) {
@@ -25,19 +25,23 @@ export const getLocalStorageItems = (
   return storageItems;
 };
 
-export const setLocalStorageItem = (item: LocalStorageItem): void => {
-  const keys = Object.keys(item) as LocalStorageKeys[];
+export const setLocalStorageItem = (item: Partial<LocalStorageItem>): void => {
+  const keys = Object.keys(item) as LocalStorageKey[];
 
-  _.forEach(keys, (key: LocalStorageKeys) => {
-    window.localStorage.setItem(key, item[key]);
+  _.forEach(keys, (key: LocalStorageKey) => {
+    const value = item[key];
+
+    if (!_.isEmpty(value)) {
+      window.localStorage.setItem(key, String(value));
+    }
   });
 };
 
-export const removeLocalStorageItem = (key: LocalStorageKeys): void =>
+export const removeLocalStorageItem = (key: LocalStorageKey): void =>
   window.localStorage.removeItem(key);
 
-export const removeLocalStorageItems = (keys: LocalStorageKeys[]): void => {
-  _.forEach(keys, (key: LocalStorageKeys) => {
+export const removeLocalStorageItems = (keys: LocalStorageKey[]): void => {
+  _.forEach(keys, (key: LocalStorageKey) => {
     removeLocalStorageItem(key);
   });
 };
