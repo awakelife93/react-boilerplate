@@ -6,7 +6,7 @@ export const getLocalStorageItem = (key: string): string | null =>
 export const getLocalStorageItems = (
   keys: string[]
 ): { [index: string]: string } => {
-  let storageItems: {
+  const storageItems: {
     [index: string]: string;
   } = {};
 
