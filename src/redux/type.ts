@@ -1,9 +1,9 @@
 import React from "react";
 import { CSSProperties } from "styled-components";
-import { ContentsIE } from "../api/GetAPI/interface";
+import { ContentsType } from "../api/GetAPI/type";
 
 export type ContentsStore = {
-  contents: ContentsIE[];
+  contents: ContentsType[];
 };
 
 export type ThemeStore = {
@@ -71,4 +71,4 @@ export enum ActionEnum {
   SET_THEME_MODE = "SET_THEME_MODE",
   SET_AD_CONTAINER = "SET_AD_CONTAINER",
   SET_MODAL_ITEM = "SET_MODAL_ITEM",
-};
+}

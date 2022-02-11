@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { ContentsIE } from "../../api/GetAPI/interface";
+import { ContentsType } from "../../api/GetAPI/type";
 import { Container, Image, Label } from "../../common/components";
 import { ComponentIE } from "../../common/interface";
 
@@ -8,7 +8,7 @@ const Detail: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {
   const location = useLocation();
-  const state = location.state as ContentsIE;
+  const state = location.state as ContentsType;
   const { componentStyles } = props;
 
   return (

@@ -2,12 +2,12 @@ import _ from "lodash";
 import React from "react";
 import { Card, CardColumns } from "react-bootstrap";
 import { CSSProperties } from "styled-components";
-import { ContentsIE } from "../../api/GetAPI/interface";
+import { ContentsType } from "../../api/GetAPI/type";
 import { ScrollPaging } from "../../common/components";
 import { CommonImage } from "../../common/styles";
 
 const gridItem = (
-  item: ContentsIE,
+  item: ContentsType,
   index: number,
   style: CSSProperties,
   goDetail: Function
@@ -40,7 +40,7 @@ const List = ({
   goDetail,
 }: {
   style: CSSProperties;
-  contents: ContentsIE[];
+  contents: ContentsType[];
   getContents: Function;
   goDetail: Function;
   skip: number;
@@ -48,7 +48,7 @@ const List = ({
   return (
     <CardColumns>
       {!_.isEmpty(contents) &&
-        contents.map((card: ContentsIE, index: number) => {
+        contents.map((card: ContentsType, index: number) => {
           if (index + 1 === contents.length) {
             return (
               <ScrollPaging

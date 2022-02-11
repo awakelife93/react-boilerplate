@@ -2,7 +2,7 @@ import _ from "lodash";
 import { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { findContents } from "../../api/GetAPI";
-import { ContentsIE } from "../../api/GetAPI/interface";
+import { ContentsType } from "../../api/GetAPI/type";
 import { defaultPagingCount } from "../../common/const";
 import { ComponentIE } from "../../common/interface";
 import { RoutePath } from "../../route/routes";
@@ -40,7 +40,7 @@ const Contents: React.FC<ComponentIE> = (
 
   const history = useHistory();
   const goDetail = useCallback(
-    (item: ContentsIE): void => {
+    (item: ContentsType): void => {
       history.push(RoutePath.CONTENTS_DETAIL, item);
     },
     [history]

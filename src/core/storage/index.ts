@@ -4,7 +4,7 @@ type LocalStorageKey = "token" | "lng" | "useTheme";
 
 type LocalStorageItem = {
   [key in LocalStorageKey]: unknown;
-}
+};
 
 export const getLocalStorageItem = (key: LocalStorageKey): string | null =>
   window.localStorage.getItem(key);

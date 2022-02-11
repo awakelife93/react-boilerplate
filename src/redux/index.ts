@@ -5,7 +5,7 @@ import {
   bindActionCreators,
   combineReducers,
   createStore,
-  Dispatch
+  Dispatch,
 } from "redux";
 import thunkMiddleware from "redux-thunk";
 import * as action from "./action";
