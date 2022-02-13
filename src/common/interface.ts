@@ -2,10 +2,10 @@ import React from "react";
 import { RouteComponentProps } from "react-router-dom";
 import { CSSProperties } from "styled-components";
 import { ReduxIE } from "../redux/interface";
-import { RouteIE } from "../route/routes";
+import { RouteType } from "../route/routes";
 import { ComponentStyleType } from "./type";
 
-export interface LayoutIE extends ReduxIE, RouteComponentProps, RouteIE {}
+export interface LayoutIE extends ReduxIE, RouteComponentProps, RouteType {}
 
 export interface ComponentIE extends LayoutIE {
   layoutStyles: CSSProperties;

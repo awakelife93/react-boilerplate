@@ -12,13 +12,14 @@ export enum RoutePath {
   CONTENTS = "/contents",
   CONTENTS_DETAIL = "/contentsDetail",
 }
-export interface RouteIE {
+
+export type RouteType = {
   path: RoutePath;
   exact: boolean;
   Component: React.FC<ComponentIE>;
-}
+};
 
-const routes: RouteIE[] = [
+const routes: RouteType[] = [
   {
     path: RoutePath.MAIN,
     exact: true,
