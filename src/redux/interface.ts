@@ -1,6 +1,6 @@
-import { ReduxStore } from "./type";
+import { ReduxStoreType } from "./type";
 
-export interface ReduxIE extends ReduxStore {
+export interface ReduxIE extends ReduxStoreType {
   initContentsAction: Function;
   getContentsAction: Function;
   initThemeAction: Function;

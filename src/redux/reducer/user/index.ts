@@ -3,10 +3,10 @@ import { AnyAction } from "redux";
 import { ActionEnum, UserStoreType } from "../../type";
 import { initUserState } from "./default";
 
-export default function themeStore(
+const userStore = (
   state: UserStoreType = initUserState,
   action: AnyAction
-) {
+): UserStoreType => {
   switch (action.type) {
     case ActionEnum.SET_USER_INFO:
       return _.merge({}, state, {
@@ -16,4 +16,6 @@ export default function themeStore(
     default:
       return state;
   }
-}
+};
+
+export default userStore;

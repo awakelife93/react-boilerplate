@@ -57,7 +57,7 @@ export type StateType = {
   userStore: UserStoreType;
 };
 
-export type ReduxStore = {
+export type ReduxStoreType = {
   reduxStore: StateType;
 };
 

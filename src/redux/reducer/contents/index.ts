@@ -3,10 +3,10 @@ import { AnyAction } from "redux";
 import { ActionEnum, ContentsStoreType } from "../../type";
 import { initContentState } from "./default";
 
-export default function contentsStore(
+const contentsStore = (
   state: ContentsStoreType = initContentState,
   action: AnyAction
-) {
+): ContentsStoreType => {
   switch (action.type) {
     case ActionEnum.GET_CONTENTS:
       return _.merge([], state, {
@@ -16,4 +16,6 @@ export default function contentsStore(
     default:
       return state;
   }
-}
+};
+
+export default contentsStore;

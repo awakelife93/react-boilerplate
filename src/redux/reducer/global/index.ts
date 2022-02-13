@@ -3,10 +3,10 @@ import { AnyAction } from "redux";
 import { ActionEnum, GlobalStoreType } from "../../type";
 import { initGlobalState } from "./default";
 
-export default function globalStore(
+const globalStore = (
   state: GlobalStoreType = initGlobalState,
   action: AnyAction
-) {
+): GlobalStoreType => {
   switch (action.type) {
     case ActionEnum.SET_AD_CONTAINER:
       return _.merge({}, state, {
@@ -21,4 +21,6 @@ export default function globalStore(
     default:
       return state;
   }
-}
+};
+
+export default globalStore;

@@ -3,10 +3,10 @@ import { AnyAction } from "redux";
 import { ActionEnum, ThemeStoreType } from "../../type";
 import { initThemeState } from "./default";
 
-export default function themeStore(
+const themeStore = (
   state: ThemeStoreType = initThemeState,
   action: AnyAction
-) {
+): ThemeStoreType => {
   switch (action.type) {
     case ActionEnum.SET_THEME_MODE:
       return _.merge({}, state, {
@@ -16,4 +16,6 @@ export default function themeStore(
     default:
       return state;
   }
-}
+};
+
+export default themeStore;
