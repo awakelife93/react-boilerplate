@@ -5,10 +5,9 @@ import {
   BodyContainerIE,
   BottomContainerIE,
   HeaderContainerIE,
-  LayoutContainerIE
+  LayoutContainerIE,
 } from "../components/Container";
-import { ComponentStyleIE } from "../interface";
-import { ThemeItem } from "../type";
+import { ComponentStyleType, ThemeItem } from "../type";
 import CommonColor from "./color";
 import CommonImage from "./image";
 import CommonTheme from "./theme";
@@ -116,11 +115,11 @@ const setMockUpStyleData = ({
       if (useTheme === true) {
         return {
           ...CommonTheme.BLACK_THEME_STYLE.COMPONENT,
-        } as ComponentStyleIE;
+        } as ComponentStyleType;
       } else {
         return {
           ...CommonTheme.WHITE_THEME_STYLE.COMPONENT,
-        } as ComponentStyleIE;
+        } as ComponentStyleType;
       }
   }
 };
@@ -320,22 +319,22 @@ const generateComponentStyle = ({
   path: RoutePath;
   useTheme: boolean;
 }) => {
-  let style = {} as ComponentStyleIE;
+  let style = {} as ComponentStyleType;
 
   if (_.isEmpty(themeItem)) {
     style = setMockUpStyleData({
       type: "COMPONENT",
       useTheme,
-    }) as ComponentStyleIE;
+    }) as ComponentStyleType;
   } else {
     style =
       useTheme === true
         ? ({
             ...themeItem.BLACK_THEME_STYLE.COMPONENT,
-          } as ComponentStyleIE)
+          } as ComponentStyleType)
         : ({
             ...themeItem.WHITE_THEME_STYLE.COMPONENT,
-          } as ComponentStyleIE);
+          } as ComponentStyleType);
   }
 
   switch (

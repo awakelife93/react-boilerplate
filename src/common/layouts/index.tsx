@@ -8,7 +8,7 @@ import { connectWrapper } from "../../redux";
 import { Container } from "../components";
 import AdLayout from "../components/Ad";
 import ModalLayout from "../components/Modal";
-import { ComponentStyleIE, LayoutIE } from "../interface";
+import { LayoutIE } from "../interface";
 import {
   generateBodyContainerStyle,
   generateBottomContainerStyle,
@@ -20,7 +20,7 @@ import {
   showBottomContainer,
   showHeaderContainer
 } from "../styles";
-import { ThemeItem } from "../type";
+import { ComponentStyleType, ThemeItem } from "../type";
 import BodyLayout from "./Body";
 import BottomLayout from "./Bottom";
 import HeaderLayout from "./Header";
@@ -106,7 +106,7 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
    * component styles
    * @function componentStyles 수정이 가능한 스타일
    */
-  const componentStyles: ComponentStyleIE = useMemo(
+  const componentStyles: ComponentStyleType = useMemo(
     () => generateComponentStyle({ themeItem, path, useTheme }) ?? {},
     [themeItem, path, useTheme]
   );

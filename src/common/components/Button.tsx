@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { CommonColor, CommonTheme } from "../styles";
-import { CommonComponentIE, DynamicColorComponentIE } from "./interface";
+import { CommonComponentType, DynamicColorComponentType } from "./type";
 
 /**
  * @description
@@ -8,7 +8,7 @@ import { CommonComponentIE, DynamicColorComponentIE } from "./interface";
  * 다크모드등 다양한 조건에서 변경해야하는 스타일들을 props로 받는다.
  * 상속받는 default style이 아닌 필수적인 스타일은 requireStyle로 정의
  */
-interface SubMitButtonIE extends CommonComponentIE {}
+interface SubMitButtonIE extends Partial<CommonComponentType> {}
 export const SubMitButton = styled.button`
   width: ${(props: SubMitButtonIE) => props.style?.width ?? "150px"};
   height: ${(props: SubMitButtonIE) => props.style?.height ?? "40px"};
@@ -23,7 +23,7 @@ export const SubMitButton = styled.button`
     props.style?.borderRadius ?? "0.25em"};
 `;
 
-interface TextButtonIE extends CommonComponentIE {}
+interface TextButtonIE extends Partial<CommonComponentType> {}
 export const TextButton = styled.button`
   background-color: ${(props: TextButtonIE) =>
     props.style?.backgroundColor ?? CommonColor.TRANS_PARENT};
@@ -35,8 +35,8 @@ export const TextButton = styled.button`
 `;
 
 interface DynamicColorButtonIE
-  extends CommonComponentIE,
-    DynamicColorComponentIE {}
+  extends Partial<CommonComponentType>,
+  Partial<DynamicColorComponentType> {}
 export const DynamicColorButton = styled.button`
   border: ${(props: DynamicColorButtonIE) => props.style?.border ?? "none"};
   color: ${(props: DynamicColorButtonIE) =>

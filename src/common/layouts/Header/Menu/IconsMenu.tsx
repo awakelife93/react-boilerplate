@@ -3,10 +3,10 @@ import { useTranslation } from "react-i18next";
 import { I18nCommandEnum } from "../../../../core/i18n/type";
 import { RoutePath } from "../../../../route/routes";
 import { Button, Container, Icon, MenuBox } from "../../../components";
-import { ComponentStyleIE } from "../../../interface";
+import { ComponentStyleType } from "../../../type";
 
-interface IconMenuIE {
-  componentStyles: ComponentStyleIE;
+type IconMenuType = {
+  componentStyles: ComponentStyleType;
   isShowAdContainer: boolean;
   _themeMode: Function;
   _routePush: Function;
@@ -17,11 +17,11 @@ interface IconMenuIE {
 
 /**
  * @description Header Icons Component
- * @param {IconsActionIE} props
+ * @param {IconMenuType} props
  * @returns {React.ReactElement}
  */
-const IconMenu: React.FC<IconMenuIE> = (
-  props: IconMenuIE
+const IconMenu: React.FC<IconMenuType> = (
+  props: IconMenuType
 ): React.ReactElement => {
   const { t } = useTranslation();
   const {

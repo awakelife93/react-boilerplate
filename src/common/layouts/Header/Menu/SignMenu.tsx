@@ -5,10 +5,10 @@ import { I18nCommandEnum } from "../../../../core/i18n/type";
 import { UserStore } from "../../../../redux/type";
 import { RoutePath } from "../../../../route/routes";
 import { Button, Container, Label, MenuBox } from "../../../components";
-import { ComponentStyleIE } from "../../../interface";
+import { ComponentStyleType } from "../../../type";
 
-interface SignMenuIE {
-  componentStyles: ComponentStyleIE;
+type SignMenuType = {
+  componentStyles: ComponentStyleType;
   userInfo: UserStore;
   _routePush: Function;
   _signOut: Function;
@@ -17,11 +17,11 @@ interface SignMenuIE {
 
 /**
  * @description Header Sign Component
- * @param {SignActionIE} props
+ * @param {SignMenuType} props
  * @returns {React.ReactElement}
  */
-const SignMenu: React.FC<SignMenuIE> = (
-  props: SignMenuIE
+const SignMenu: React.FC<SignMenuType> = (
+  props: SignMenuType
 ): React.ReactElement => {
   const {
     _routePush,

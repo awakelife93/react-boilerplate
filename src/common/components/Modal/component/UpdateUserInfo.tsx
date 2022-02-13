@@ -6,11 +6,11 @@ import { UserInfoIE } from "../../../../api/interface";
 import { updateUser } from "../../../../api/PatchAPI";
 import { I18nCommandEnum } from "../../../../core";
 import { UserStore } from "../../../../redux/type";
-import { ComponentStyleIE } from "../../../interface";
 import { CommonColor } from "../../../styles";
+import { ComponentStyleType } from "../../../type";
 
 type UpdateUserInfoType = {
-  componentStyles: ComponentStyleIE;
+  componentStyles: ComponentStyleType;
   childrenProps: any;
   userStore: UserStore;
   _closeModal: Function;
