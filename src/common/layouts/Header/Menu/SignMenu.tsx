@@ -2,14 +2,14 @@ import _ from "lodash";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { I18nCommandEnum } from "../../../../core/i18n/type";
-import { UserStore } from "../../../../redux/type";
+import { UserStoreType } from "../../../../redux/type";
 import { RoutePath } from "../../../../route/routes";
 import { Button, Container, Label, MenuBox } from "../../../components";
 import { ComponentStyleType } from "../../../type";
 
 type SignMenuType = {
   componentStyles: ComponentStyleType;
-  userInfo: UserStore;
+  userInfo: UserStoreType;
   _routePush: Function;
   _signOut: Function;
   _updateUserInfo: Function;

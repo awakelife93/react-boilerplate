@@ -5,14 +5,14 @@ import { Button, Container, InputBox, Label } from "../../";
 import { UserInfoIE } from "../../../../api/interface";
 import { updateUser } from "../../../../api/PatchAPI";
 import { I18nCommandEnum } from "../../../../core";
-import { UserStore } from "../../../../redux/type";
+import { UserStoreType } from "../../../../redux/type";
 import { CommonColor } from "../../../styles";
-import { ComponentStyleType } from "../../../type";
+import { ComponentStyleType, UnknownObject } from "../../../type";
 
 type UpdateUserInfoType = {
   componentStyles: ComponentStyleType;
-  childrenProps: any;
-  userStore: UserStore;
+  childrenProps: UnknownObject;
+  userStore: UserStoreType;
   _closeModal: Function;
   setUserInfoAction: Function;
 }
