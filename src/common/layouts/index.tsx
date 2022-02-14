@@ -1,13 +1,12 @@
-import _ from "lodash";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { CSSProperties } from "styled-components";
-import { findThemeItem, findUserProfile } from "../../api/GetAPI";
-import { UserInfoIE } from "../../api/interface";
-import { getLocalStorageItem, initWindowFunc } from "../../core";
+import { findThemeItem } from "../../api/GetAPI";
+import { initWindowFunc } from "../../core";
 import { connectWrapper } from "../../redux";
 import { Container } from "../components";
 import AdLayout from "../components/Ad";
 import ModalLayout from "../components/Modal";
+import useAuth from "../hooks/useAuth";
 import { LayoutIE } from "../interface";
 import {
   generateBodyContainerStyle,
@@ -38,32 +37,23 @@ import HeaderLayout from "./Header";
 const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
   const {
     reduxStore: {
-      userStore,
       globalStore: { modalItem, isShowAdContainer },
       themeStore: { useTheme },
     },
     path,
     Component,
     showModalAction,
-    setUserInfoAction,
     initUserInfoAction,
   } = props;
   const [themeItem, setThemeItem] = useState<ThemeItem>({});
-
+  useAuth();
+  
   const initThemeStyle = useCallback(async () => {
     const item: any = await findThemeItem();
     const themeItem = generateThemeStyle({ item });
     setThemeItem(themeItem);
   }, []);
 
-  const initUserProfile = useCallback(async () => {
-    const profile: UserInfoIE = await findUserProfile();
-
-    setUserInfoAction({
-      isLogin: true,
-      info: { ...profile },
-    });
-  }, [setUserInfoAction]);
 
   /**
    * common layout style
@@ -120,16 +110,8 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
       initUserInfoAction,
       showModalAction,
     });
-
-    const token = getLocalStorageItem("token");
-    // 로그인이 된 상태라면
-    if (!_.isNull(token) && !userStore.user.isLogin) {
-      initUserProfile();
-    }
   }, [
-    userStore.user.isLogin,
     initThemeStyle,
-    initUserProfile,
     initUserInfoAction,
     showModalAction,
   ]);
