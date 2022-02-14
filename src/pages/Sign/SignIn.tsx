@@ -103,7 +103,7 @@ const SignIn: React.FC<ComponentIE> = (
 
   const checkKeyPress = useCallback(
     (e: KeyboardEvent): void => {
-      if (_.isString(e.code) && e.code === "Enter") {
+      if (e.code === "Enter") {
         _signIn();
       }
     },

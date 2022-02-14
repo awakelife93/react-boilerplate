@@ -59,8 +59,8 @@ const Modal: React.FC<ModalIE> = (props: ModalIE) => {
     };
   });
 
-  const checkKeyPress = (event: any) => {
-    if (_.isString(event.code) && event.code === "Escape") {
+  const checkKeyPress = (e: KeyboardEvent) => {
+    if (e.code === "Escape") {
       _closeModal();
     }
   };
