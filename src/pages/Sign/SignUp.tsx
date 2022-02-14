@@ -6,6 +6,7 @@ import { UserInfoIE } from "../../api/interface";
 import { signUp } from "../../api/PutAPI";
 import { Button, Container, InputBox, Label } from "../../common/components";
 import { ComponentIE } from "../../common/interface";
+import { UnknownObject } from "../../common/type";
 import { I18nCommandEnum, setLocalStorageItem } from "../../core";
 import { RoutePath } from "../../route/routes";
 import { validationObject } from "../../utils";
@@ -44,7 +45,7 @@ const SignUp: React.FC<ComponentIE> = (
   }, []);
 
   const validationItem = useCallback(
-    (item: any): boolean => {
+    (item: UnknownObject): boolean => {
       if (!validationObject(item)) {
         _showMessageModal("회원가입 정보를 다시 한번 확인 해주시기 바랍니다.");
         return false;
@@ -86,8 +87,8 @@ const SignUp: React.FC<ComponentIE> = (
           });
           history.push(RoutePath.MAIN);
         }
-      } catch (e: any) {
-        switch (e.status) {
+      } catch (error: any) {
+        switch (error.status) {
           // 이메일 중복
           case 409: {
             _showMessageModal(
@@ -110,8 +111,8 @@ const SignUp: React.FC<ComponentIE> = (
   ]);
 
   const checkKeyPress = useCallback(
-    (event: any): void => {
-      if (_.isString(event.code) && event.code === "Enter") {
+    (e: KeyboardEvent): void => {
+      if (_.isString(e.code) && e.code === "Enter") {
         _signUp();
       }
     },

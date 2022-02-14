@@ -6,6 +6,7 @@ import { UserInfoIE } from "../../api/interface";
 import { signIn } from "../../api/PostAPI";
 import { Button, Container, InputBox, Label } from "../../common/components";
 import { ComponentIE } from "../../common/interface";
+import { UnknownObject } from "../../common/type";
 import { setLocalStorageItem } from "../../core";
 import { I18nCommandEnum } from "../../core/i18n/type";
 import { RoutePath } from "../../route/routes";
@@ -43,7 +44,7 @@ const SignIn: React.FC<ComponentIE> = (
   }, []);
 
   const validationItem = useCallback(
-    (item: any): boolean => {
+    (item: UnknownObject): boolean => {
       if (!validationObject(item)) {
         _showMessageModal("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
         return false;
@@ -78,8 +79,8 @@ const SignIn: React.FC<ComponentIE> = (
           });
           history.push(RoutePath.MAIN);
         }
-      } catch (e: any) {
-        switch (e.status) {
+      } catch (error: any) {
+        switch (error.status) {
           // 비밀번호 틀렸을 경우
           case 401: {
             _showMessageModal("잘못된 이메일, 비밀번호 입니다.");
@@ -101,8 +102,8 @@ const SignIn: React.FC<ComponentIE> = (
   }, [history, props, userEmail, userPw, validationItem, _showMessageModal]);
 
   const checkKeyPress = useCallback(
-    (event: any): void => {
-      if (_.isString(event.code) && event.code === "Enter") {
+    (e: KeyboardEvent): void => {
+      if (_.isString(e.code) && e.code === "Enter") {
         _signIn();
       }
     },
