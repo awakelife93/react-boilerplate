@@ -13,8 +13,7 @@ type IconMenuType = {
   _setLanguage: Function;
   _showAdContainer: Function;
   _showTemplateModal: Function;
-}
-
+};
 /**
  * @description Header Icons Component
  * @param {IconMenuType} props
