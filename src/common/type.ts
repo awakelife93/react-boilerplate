@@ -22,5 +22,5 @@ export type ThemeItem = {
 };
 
 export type ThemeType = {
-  themeItem: ThemeItem
+  themeItem: ThemeItem;
 };

@@ -3,7 +3,7 @@ import {
   initShowAdAction,
   initShowModalAction,
   showAdAction,
-  showModalAction
+  showModalAction,
 } from "./global";
 import { initThemeAction, setThemeAction } from "./theme";
 import { initUserInfoAction, setUserInfoAction } from "./user";

@@ -12,7 +12,11 @@ export const initWindowFunc = ({
 }): void => {
   window.globalFunc = {
     initUserInfoAction: () => initUserInfoAction(),
-    showModalAction: ({ next = showModalAction, type, item }: ShowModalActionType) =>
+    showModalAction: ({
+      next = showModalAction,
+      type,
+      item,
+    }: ShowModalActionType) =>
       _showModalAction({
         next,
         type,

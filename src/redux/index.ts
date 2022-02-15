@@ -5,7 +5,7 @@ import {
   bindActionCreators,
   combineReducers,
   createStore,
-  Dispatch
+  Dispatch,
 } from "redux";
 import thunkMiddleware from "redux-thunk";
 import { ComponentIE, LayoutIE } from "../common/interface";

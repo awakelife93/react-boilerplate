@@ -7,17 +7,19 @@ import { getLocalStorageItem } from "../../core";
 import { ReduxStoreType } from "../../redux/type";
 
 const useAuth = (setUserInfoAction: Function): void => {
-  const { reduxStore: { userStore } } = useSelector((state: ReduxStoreType) => state);
-  
+  const {
+    reduxStore: { userStore },
+  } = useSelector((state: ReduxStoreType) => state);
+
   const initUserProfile = async (): Promise<void> => {
     const profile: UserInfoIE = await findUserProfile();
-    
+
     if (_.isFunction(setUserInfoAction)) {
       setUserInfoAction({
         user: {
           isLogin: true,
           info: { ...profile },
-        }
+        },
       });
     }
   };
@@ -28,7 +30,7 @@ const useAuth = (setUserInfoAction: Function): void => {
     if (!_.isNull(token) && !userStore.user.isLogin) {
       initUserProfile();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
 

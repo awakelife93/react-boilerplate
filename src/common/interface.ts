@@ -4,7 +4,10 @@ import { ReduxActionType } from "../redux/type";
 import { RouteType } from "../route/routes";
 import { UnknownObject } from "./type";
 
-export interface LayoutIE extends ReduxActionType, RouteComponentProps, RouteType {}
+export interface LayoutIE
+  extends ReduxActionType,
+    RouteComponentProps,
+    RouteType {}
 
 export interface ComponentIE extends LayoutIE {
   // 단순 HTML을 Return 하는 경우를 대비하여 - ReactElement

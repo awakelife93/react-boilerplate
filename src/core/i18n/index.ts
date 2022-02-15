@@ -27,7 +27,7 @@ export enum I18nCommandEnum {
 
   UPDATE_USER_INFO = "update_user_info",
   DELETE_ACCOUNT = "delete_account",
-};
+}
 
 const resources = {
   en: {

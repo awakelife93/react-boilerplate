@@ -5,7 +5,7 @@ import {
   BodyContainerIE,
   BottomContainerIE,
   HeaderContainerIE,
-  LayoutContainerIE
+  LayoutContainerIE,
 } from "../components/Container";
 import { ComponentStyleType, ThemeItem } from "../type";
 import CommonColor from "./color";
@@ -26,12 +26,7 @@ const generateThemeStyle = ({ item }: { item: any[] }) => {
     for (let i = 0; i < item.length; i++) {
       const theme = item[i];
 
-      if (
-        !theme.isActive ||
-        theme.isDeleted ||
-        _.isEmpty(theme.styles)
-      )
-        break;
+      if (!theme.isActive || theme.isDeleted || _.isEmpty(theme.styles)) break;
 
       const style = theme.styles;
       const layouts = style.layout;
@@ -141,14 +136,13 @@ const generateLayoutContainerStyle = ({
       useTheme,
     }) as CSSProperties;
   } else {
-    props["style"] =
-      useTheme
-        ? ({
-            ...themeItem.BLACK_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
-          } as CSSProperties)
-        : ({
-            ...themeItem.WHITE_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
-          } as CSSProperties);
+    props["style"] = useTheme
+      ? ({
+          ...themeItem.BLACK_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
+        } as CSSProperties)
+      : ({
+          ...themeItem.WHITE_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
+        } as CSSProperties);
   }
 
   switch (
@@ -177,14 +171,13 @@ const generateModalContainerStyle = ({
       useTheme,
     }) as CSSProperties;
   } else {
-    props["style"] =
-      useTheme
-        ? ({
-            ...themeItem.BLACK_THEME_STYLE.LAYOUT.MODAL_LAYOUT,
-          } as CSSProperties)
-        : ({
-            ...themeItem.WHITE_THEME_STYLE.LAYOUT.MODAL_LAYOUT,
-          } as CSSProperties);
+    props["style"] = useTheme
+      ? ({
+          ...themeItem.BLACK_THEME_STYLE.LAYOUT.MODAL_LAYOUT,
+        } as CSSProperties)
+      : ({
+          ...themeItem.WHITE_THEME_STYLE.LAYOUT.MODAL_LAYOUT,
+        } as CSSProperties);
   }
 
   return {
@@ -209,14 +202,13 @@ const generateHeaderContainerStyle = ({
       useTheme,
     }) as CSSProperties;
   } else {
-    props["style"] =
-      useTheme
-        ? ({
-            ...themeItem.BLACK_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
-          } as CSSProperties)
-        : ({
-            ...themeItem.WHITE_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
-          } as CSSProperties);
+    props["style"] = useTheme
+      ? ({
+          ...themeItem.BLACK_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
+        } as CSSProperties)
+      : ({
+          ...themeItem.WHITE_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
+        } as CSSProperties);
   }
 
   switch (
@@ -247,14 +239,13 @@ const generateBodyContainerStyle = ({
       useTheme,
     }) as CSSProperties;
   } else {
-    props["style"] =
-      useTheme
-        ? ({
-            ...themeItem.BLACK_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
-          } as CSSProperties)
-        : ({
-            ...themeItem.WHITE_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
-          } as CSSProperties);
+    props["style"] = useTheme
+      ? ({
+          ...themeItem.BLACK_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
+        } as CSSProperties)
+      : ({
+          ...themeItem.WHITE_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
+        } as CSSProperties);
   }
 
   switch (path) {
@@ -289,14 +280,13 @@ const generateBottomContainerStyle = ({
       useTheme,
     }) as CSSProperties;
   } else {
-    props["style"] =
-      useTheme
-        ? ({
-            ...themeItem.BLACK_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
-          } as CSSProperties)
-        : ({
-            ...themeItem.WHITE_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
-          } as CSSProperties);
+    props["style"] = useTheme
+      ? ({
+          ...themeItem.BLACK_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
+        } as CSSProperties)
+      : ({
+          ...themeItem.WHITE_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
+        } as CSSProperties);
   }
 
   switch (
@@ -327,14 +317,13 @@ const generateComponentStyle = ({
       useTheme,
     }) as ComponentStyleType;
   } else {
-    style =
-      useTheme
-        ? ({
-            ...themeItem.BLACK_THEME_STYLE.COMPONENT,
-          } as ComponentStyleType)
-        : ({
-            ...themeItem.WHITE_THEME_STYLE.COMPONENT,
-          } as ComponentStyleType);
+    style = useTheme
+      ? ({
+          ...themeItem.BLACK_THEME_STYLE.COMPONENT,
+        } as ComponentStyleType)
+      : ({
+          ...themeItem.WHITE_THEME_STYLE.COMPONENT,
+        } as ComponentStyleType);
   }
 
   switch (

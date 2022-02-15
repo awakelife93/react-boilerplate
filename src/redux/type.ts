@@ -47,7 +47,7 @@ export type ReduxActionType = {
   showModalAction: Function;
   setUserInfoAction: Function;
   initUserInfoAction: Function;
-}
+};
 
 /**
  * @description
