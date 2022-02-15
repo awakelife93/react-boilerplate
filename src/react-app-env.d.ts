@@ -18,14 +18,11 @@ interface Window {
     showModalAction: ({
       next,
       type,
-      children,
       item: {
+        children,
         childrenProps,
         style,
-        option: {
-          isDimClose,
-          isKeyClose
-        },
+        option: { isDimClose, isKeyClose },
       },
     }: {
       next: Function;
