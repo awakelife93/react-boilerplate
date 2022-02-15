@@ -1,12 +1,9 @@
 import { Container, Label } from "../..";
-import { ComponentStyleType } from "../../../type";
+import useDesign from "../../../hooks/useDesign";
 
-type IntroduceType = {
-  componentStyles: ComponentStyleType;
-}
-
-const Introduce: React.FC<IntroduceType> = (props: IntroduceType) => {
-  const { componentStyles } = props;
+const Introduce: React.FC = () => {
+  const { componentStyles } = useDesign();
+  
   return (
     <Container.ColumnContainer>
       <Label.CommonLabel

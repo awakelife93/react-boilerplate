@@ -2,57 +2,56 @@ import _ from "lodash";
 import { useEffect } from "react";
 import { removeBodyScroll, revertBodyScroll } from "../../../utils";
 import { Container, Icon } from "../../components";
-import { ModalIE } from "./interface";
+import useAction from "../../hooks/useAction";
+import useDesign from "../../hooks/useDesign";
 import MessageLayout from "./layout/Message";
-import { ShowModalActionType } from "./type";
+import { ModalType, ShowModalActionType } from "./type";
 
 export const _showModalAction = ({
   next,
   type,
-  children,
   item,
 }: ShowModalActionType): void => {
-  if (_.isFunction(next)) {
-    // 넘겨 받은 children이 없거나, type을 주었을 경우 그것에 맞는 레이아웃 제공
-    if (_.isEmpty(children) || !_.isEmpty(type)) {
-      switch (type) {
-        case "MESSAGE":
-          children = MessageLayout;
-          break;
-      }
+  // 넘겨 받은 children이 없거나, type을 주었을 경우 그것에 맞는 레이아웃 제공
+  if (_.isEmpty(item.children) || !_.isEmpty(type)) {
+    switch (type) {
+      case "MESSAGE":
+        item.children = MessageLayout;
+        break;
     }
-
-    next({
-      isShowModal: true,
-      children,
-      childrenProps: item?.childrenProps,
-      style: item?.style,
-      option: item?.option,
-    });
   }
+
+  next({
+    isShowModal: true,
+    ...item
+  });
 };
 
-const Modal: React.FC<ModalIE> = (props: ModalIE) => {
+const Modal: React.FC<ModalType> = (props: ModalType): React.ReactElement => {
   const {
-    childrenProps,
+    modalItem: {
+      children,
+      childrenProps,
+      style,
+      option,
+    },
+  } = props;
+  const {
     layoutStyles,
     componentStyles,
-    style,
-    option,
-    reduxStore,
-    initShowModalAction,
-    setUserInfoAction,
-  } = props;
+    modalStyles,
+  } = useDesign();
+  const { initShowModalAction }= useAction();
 
   useEffect(() => {
     removeBodyScroll();
 
-    if (option.keyClose === true) {
+    if (option.isKeyClose) {
       window.addEventListener("keydown", checkKeyPress);
     }
 
     return () => {
-      if (option.keyClose === true) {
+      if (option.isKeyClose) {
         window.removeEventListener("keydown", checkKeyPress);
       }
       revertBodyScroll();
@@ -71,6 +70,7 @@ const Modal: React.FC<ModalIE> = (props: ModalIE) => {
     }
   };
 
+  const ChildrenComponent = children;
   return (
     <Container.LayoutContainer>
       {/* dim area */}
@@ -82,13 +82,14 @@ const Modal: React.FC<ModalIE> = (props: ModalIE) => {
           zIndex: 1,
         }}
         onClick={() => {
-          if (option.dimClose === true) _closeModal();
+          if (option.isDimClose) _closeModal();
         }}
       />
       {/* modal area */}
       <Container.LayoutContainer
         style={{
           ...layoutStyles,
+          ...modalStyles,
           ...style,
           display: "flex",
           justifyContent: "center",
@@ -112,12 +113,9 @@ const Modal: React.FC<ModalIE> = (props: ModalIE) => {
           onClick={() => _closeModal()}
         />
         <Container.LayoutContainer style={{ padding: 30 }}>
-          <props.children
+          <ChildrenComponent
             {...childrenProps}
-            {...reduxStore}
-            setUserInfoAction={setUserInfoAction}
             _closeModal={_closeModal}
-            componentStyles={componentStyles}
           />
         </Container.LayoutContainer>
       </Container.LayoutContainer>

@@ -1,13 +1,13 @@
 import { Container, Label } from "../..";
-import { ComponentStyleType } from "../../../type";
+import useDesign from "../../../hooks/useDesign";
 
 type MessageLayoutType = {
-  componentStyles: ComponentStyleType;
   message: string;
 }
-
 const MessageLayout: React.FC<MessageLayoutType> = (props: MessageLayoutType) => {
-  const { componentStyles, message } = props;
+  const { message } = props;
+  const { componentStyles } = useDesign();
+  
   return (
     <Container.ColumnContainer>
       <Label.CommonLabel

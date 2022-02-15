@@ -1,27 +1,36 @@
 import _ from "lodash";
 import { ChangeEvent, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import { Button, Container, InputBox, Label } from "../../";
 import { UserInfoIE } from "../../../../api/interface";
 import { updateUser } from "../../../../api/PatchAPI";
 import { I18nCommandEnum } from "../../../../core";
-import { UserStoreType } from "../../../../redux/type";
+import { ReduxStoreType } from "../../../../redux/type";
+import useAction from "../../../hooks/useAction";
+import useDesign from "../../../hooks/useDesign";
 import { CommonColor } from "../../../styles";
-import { ComponentStyleType, UnknownObject } from "../../../type";
+import { UnknownObject } from "../../../type";
 
 type UpdateUserInfoType = {
-  componentStyles: ComponentStyleType;
   childrenProps: UnknownObject;
-  userStore: UserStoreType;
   _closeModal: Function;
-  setUserInfoAction: Function;
 }
 
 const UpdateUserInfo: React.FC<UpdateUserInfoType> = (
   props: UpdateUserInfoType
 ) => {
-  const { componentStyles, userStore, _closeModal, setUserInfoAction } = props;
+  const { _closeModal } = props;
+  const { componentStyles } = useDesign();
+  const { setUserInfoAction } = useAction();
   const { t } = useTranslation();
+  const {
+    reduxStore: {
+      userStore: {
+        user
+      }
+    }
+  } = useSelector((state: ReduxStoreType) => state);
 
   // Error
   const [nicknameError, setNMErrorItems] = useState("");
@@ -54,19 +63,25 @@ const UpdateUserInfo: React.FC<UpdateUserInfoType> = (
   }, [userNickname, userPw, confirmPassword]);
 
   const _updateUser = async () => {
-    if (validationItem() === true) {
+    if (validationItem()) {
       try {
         const userInfo: UserInfoIE = await updateUser({
-          userId: userStore.user.info.userId,
+          userId: user.info.userId,
           userNickname,
           userPw,
         });
 
         setUserInfoAction({
-          info: {
-            userNickname: userInfo.userNickname,
-          },
-        });
+          user: {
+            isLogin: true,
+            info: {
+              userId: userInfo.userId,
+              userEmail: userInfo.userEmail,
+              userNickname: userInfo.userNickname,
+            },
+          }
+        })
+        
         _closeModal();
       } catch (error: unknown) {
         console.log("_updateUser Error", error);
@@ -120,6 +135,7 @@ const UpdateUserInfo: React.FC<UpdateUserInfoType> = (
           marginBottom: 15,
         }}
         type={"password"}
+        autoComplete={"off"}
         placeholder={t(I18nCommandEnum.PASSWORD)}
         onClick={() => setPWErrorItems("")}
         onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
@@ -149,6 +165,7 @@ const UpdateUserInfo: React.FC<UpdateUserInfoType> = (
           marginBottom: 15,
         }}
         type={"password"}
+        autoComplete={"off"}
         placeholder={t(I18nCommandEnum.CONFIRM_PASSWORD)}
         onClick={() => setConfirmPWErrorItems("")}
         onChange={(e: ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value)}
