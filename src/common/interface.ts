@@ -1,16 +1,13 @@
 import React from "react";
 import { RouteComponentProps } from "react-router-dom";
-import { CSSProperties } from "styled-components";
-import { ReduxIE } from "../redux/interface";
+import { ReduxActionType } from "../redux/type";
 import { RouteType } from "../route/routes";
-import { ComponentStyleType } from "./type";
+import { UnknownObject } from "./type";
 
-export interface LayoutIE extends ReduxIE, RouteComponentProps, RouteType {}
+export interface LayoutIE extends ReduxActionType, RouteComponentProps, RouteType {}
 
 export interface ComponentIE extends LayoutIE {
-  layoutStyles: CSSProperties;
-  componentStyles: ComponentStyleType;
   // 단순 HTML을 Return 하는 경우를 대비하여 - ReactElement
   // 컴포넌트 객체를 던질 경우를 대비하여 - FC
-  children?: React.ReactElement | React.FC<any>;
+  children?: React.ReactElement | React.FC<UnknownObject>;
 }
