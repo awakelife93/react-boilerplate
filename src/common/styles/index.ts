@@ -5,7 +5,7 @@ import {
   BodyContainerIE,
   BottomContainerIE,
   HeaderContainerIE,
-  LayoutContainerIE,
+  LayoutContainerIE
 } from "../components/Container";
 import { ComponentStyleType, ThemeItem } from "../type";
 import CommonColor from "./color";
@@ -27,8 +27,8 @@ const generateThemeStyle = ({ item }: { item: any[] }) => {
       const theme = item[i];
 
       if (
-        theme.isActive === false ||
-        theme.isDeleted === true ||
+        !theme.isActive ||
+        theme.isDeleted ||
         _.isEmpty(theme.styles)
       )
         break;
@@ -96,13 +96,13 @@ const setMockUpStyleData = ({
 }) => {
   switch (type) {
     case "LAYOUT":
-      if (useTheme === true) {
+      if (useTheme) {
         return { ...CommonTheme.BLACK_THEME_STYLE.LAYOUT } as CSSProperties;
       } else {
         return { ...CommonTheme.WHITE_THEME_STYLE.LAYOUT } as CSSProperties;
       }
     case "MODAL":
-      if (useTheme === true) {
+      if (useTheme) {
         return {
           ...CommonTheme.BLACK_THEME_STYLE.MODAL_LAYOUT,
         } as CSSProperties;
@@ -112,7 +112,7 @@ const setMockUpStyleData = ({
         } as CSSProperties;
       }
     case "COMPONENT":
-      if (useTheme === true) {
+      if (useTheme) {
         return {
           ...CommonTheme.BLACK_THEME_STYLE.COMPONENT,
         } as ComponentStyleType;
@@ -142,7 +142,7 @@ const generateLayoutContainerStyle = ({
     }) as CSSProperties;
   } else {
     props["style"] =
-      useTheme === true
+      useTheme
         ? ({
             ...themeItem.BLACK_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
           } as CSSProperties)
@@ -178,7 +178,7 @@ const generateModalContainerStyle = ({
     }) as CSSProperties;
   } else {
     props["style"] =
-      useTheme === true
+      useTheme
         ? ({
             ...themeItem.BLACK_THEME_STYLE.LAYOUT.MODAL_LAYOUT,
           } as CSSProperties)
@@ -210,7 +210,7 @@ const generateHeaderContainerStyle = ({
     }) as CSSProperties;
   } else {
     props["style"] =
-      useTheme === true
+      useTheme
         ? ({
             ...themeItem.BLACK_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
           } as CSSProperties)
@@ -248,7 +248,7 @@ const generateBodyContainerStyle = ({
     }) as CSSProperties;
   } else {
     props["style"] =
-      useTheme === true
+      useTheme
         ? ({
             ...themeItem.BLACK_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
           } as CSSProperties)
@@ -290,7 +290,7 @@ const generateBottomContainerStyle = ({
     }) as CSSProperties;
   } else {
     props["style"] =
-      useTheme === true
+      useTheme
         ? ({
             ...themeItem.BLACK_THEME_STYLE.LAYOUT.CONTAINER_LAYOUT,
           } as CSSProperties)
@@ -328,7 +328,7 @@ const generateComponentStyle = ({
     }) as ComponentStyleType;
   } else {
     style =
-      useTheme === true
+      useTheme
         ? ({
             ...themeItem.BLACK_THEME_STYLE.COMPONENT,
           } as ComponentStyleType)

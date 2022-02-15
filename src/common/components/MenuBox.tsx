@@ -36,13 +36,13 @@ const MenuBox: React.FC<MenuBoxType> = (
     renderType = "row",
   } = props;
 
-  const checkOutSideClick = useCallback((event: any): void => {
+  const checkOutSideClick = useCallback((event: MouseEvent): void => {
     // 어느 영역을 눌러도 종료가 되게끔...
     setShowMenuBox(false);
   }, []);
 
   useEffect(() => {
-    if (isShowMenuBox === true) {
+    if (isShowMenuBox) {
       window.addEventListener("click", checkOutSideClick);
     }
 
@@ -103,7 +103,7 @@ const MenuBox: React.FC<MenuBoxType> = (
       style={{ zIndex: 1, alignItems: "flex-start" }}
     >
       {children}
-      {isShowMenuBox === true && renderLayout()}
+      {isShowMenuBox && renderLayout()}
     </Container.ColumnContainer>
   );
 };
