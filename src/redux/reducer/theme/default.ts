@@ -1,5 +1,5 @@
-import { defaultUseTheme } from "../../../common/const";
+import { getLocalStorageItem } from "../../../core";
 
 export const initThemeState = {
-  useTheme: defaultUseTheme,
+  useTheme: getLocalStorageItem("useTheme") === "true" ?? false,
 };

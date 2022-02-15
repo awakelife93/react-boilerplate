@@ -1,5 +1,4 @@
 import { getAPI } from "..";
-import { defaultPagingCount } from "../../common/const";
 import { UserInfoIE } from "../interface";
 import { ContentsType } from "./type";
 
@@ -18,7 +17,7 @@ export const findContents = async (
   try {
     // typeorm 엔티티의 take, skip을 그대로 전송하기 위해 프로퍼티를 지어줌.
     return await getAPI("findContents", {
-      take: defaultPagingCount,
+      take: 20,
       skip,
     });
   } catch (error: unknown) {
