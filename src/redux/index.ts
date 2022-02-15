@@ -5,9 +5,11 @@ import {
   bindActionCreators,
   combineReducers,
   createStore,
-  Dispatch,
+  Dispatch
 } from "redux";
 import thunkMiddleware from "redux-thunk";
+import { ComponentIE, LayoutIE } from "../common/interface";
+import { UnknownObject } from "../common/type";
 import * as action from "./action";
 import reducers from "./reducer";
 import { ReduxStoreType } from "./type";
@@ -17,10 +19,10 @@ const mapStateToProps = (state: ReduxStoreType) => state;
 const mapDispatchToProps = (dispatch: Dispatch) =>
   bindActionCreators(action, dispatch);
 
-export const connectWrapper = (component: React.FC<any>) =>
+export const connectWrapper = (component: React.FC<LayoutIE | ComponentIE>) =>
   connect(mapStateToProps, mapDispatchToProps)(component);
 
-export const configureStore = (initialState: Partial<ReduxStoreType> = {}) => {
+export const configureStore = (initialState: UnknownObject = {}) => {
   const store = createStoreWithMiddleware(
     /**
      * reduxStore라는 이름으로 전역 Store들을 묶어준다.

@@ -1,10 +1,13 @@
 import _ from "lodash";
 import { useCallback, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { findContents } from "../../api/GetAPI";
 import { ContentsType } from "../../api/GetAPI/type";
-import { defaultPagingCount } from "../../common/const";
+import useAction from "../../common/hooks/useAction";
+import useDesign from "../../common/hooks/useDesign";
 import { ComponentIE } from "../../common/interface";
+import { ReduxStoreType } from "../../redux/type";
 import { RoutePath } from "../../route/routes";
 import List from "./List";
 
@@ -16,27 +19,30 @@ import List from "./List";
 const Contents: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {
-  const {
-    getContentsAction,
-    componentStyles,
-    reduxStore: {
-      contentsStore: { contents },
-    },
-  } = props;
+  const { componentStyles } = useDesign();
+  const { getContentsAction } = useAction();
   const [skip, setSkip] = useState(0);
+  const {
+    reduxStore: {
+      contentsStore: {
+        contents
+      }
+    }
+  } = useSelector((state: ReduxStoreType) => state);
 
   const getContents = useCallback(async (): Promise<void> => {
     try {
       const data = await findContents(skip);
 
       if (!_.isEmpty(data)) {
-        setSkip(skip + defaultPagingCount);
+        setSkip(skip + 20);
         getContentsAction(data[0]);
       }
     } catch (error: unknown) {
       console.log("===========> ContentsPage Error", error);
     }
-  }, [skip, getContentsAction]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const history = useHistory();
   const goDetail = useCallback(
@@ -48,7 +54,8 @@ const Contents: React.FC<ComponentIE> = (
 
   useEffect(() => {
     if (_.isEmpty(contents)) getContents();
-  }, [contents, getContents]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [contents]);
 
   return (
     <List

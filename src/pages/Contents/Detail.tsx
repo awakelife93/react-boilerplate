@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { ContentsType } from "../../api/GetAPI/type";
 import { Container, Image, Label } from "../../common/components";
+import useDesign from "../../common/hooks/useDesign";
 import { ComponentIE } from "../../common/interface";
 
 const Detail: React.FC<ComponentIE> = (
@@ -9,7 +10,7 @@ const Detail: React.FC<ComponentIE> = (
 ): React.ReactElement => {
   const location = useLocation();
   const state = location.state as ContentsType;
-  const { componentStyles } = props;
+  const { componentStyles } = useDesign();
 
   return (
     <Container.LayoutContainer>
@@ -50,4 +51,4 @@ const Detail: React.FC<ComponentIE> = (
   );
 };
 
-export default React.memo(Detail);
+export default Detail;

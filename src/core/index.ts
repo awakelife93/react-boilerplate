@@ -1,11 +1,10 @@
 import { ScrollFadeIn, TopDownMove } from "./animation";
-import i18n from "./i18n";
-import { I18nCommandEnum } from "./i18n/type";
+import i18n, { I18nCommandEnum } from "./i18n";
 import {
   clearLocalStorageItem,
   getLocalStorageItem,
   removeLocalStorageItem,
-  setLocalStorageItem,
+  setLocalStorageItem
 } from "./storage";
 import {
   clearWindowData,
@@ -14,7 +13,7 @@ import {
   initWindowFunc,
   initWindowObject,
   removeWindowData,
-  setWindowData,
+  setWindowData
 } from "./window";
 
 export {

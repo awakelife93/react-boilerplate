@@ -1,9 +1,13 @@
 import _ from "lodash";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import { Container, Icon, Image, Label } from ".";
 import { TopDownMove } from "../../core";
-import { I18nCommandEnum } from "../../core/i18n/type";
+import { I18nCommandEnum } from "../../core/i18n";
+import { ReduxStoreType } from "../../redux/type";
+import useAction from "../hooks/useAction";
+import useDesign from "../hooks/useDesign";
 import { ComponentIE } from "../interface";
 import { CommonImage } from "../styles";
 
@@ -14,21 +18,23 @@ import { CommonImage } from "../styles";
  * @returns {React.ReactElement}
  */
 const Ad: React.FC<ComponentIE> = (props: ComponentIE): React.ReactElement => {
-  const {
-    componentStyles,
-    reduxStore: {
-      themeStore: { useTheme },
-    },
-  } = props;
   const { t } = useTranslation();
+  const { componentStyles } = useDesign();
+  const { initShowAdAction } = useAction();
+  const {
+    reduxStore: { 
+      themeStore: {
+        useTheme
+      }
+    }
+  } = useSelector((state: ReduxStoreType) => state);
 
   const _hideAdContainer = useCallback((): void => {
-    const { initShowAdAction } = props;
-
     if (_.isFunction(initShowAdAction)) {
       initShowAdAction();
     }
-  }, [props]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Image.BackGroundImage

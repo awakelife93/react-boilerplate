@@ -1,13 +1,13 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { I18nCommandEnum } from "../../../../core/i18n/type";
+import { useSelector } from "react-redux";
+import { I18nCommandEnum } from "../../../../core/i18n";
+import { ReduxStoreType } from "../../../../redux/type";
 import { RoutePath } from "../../../../route/routes";
 import { Button, Container, Icon, MenuBox } from "../../../components";
-import { ComponentStyleType } from "../../../type";
+import useDesign from "../../../hooks/useDesign";
 
 type IconMenuType = {
-  componentStyles: ComponentStyleType;
-  isShowAdContainer: boolean;
   _themeMode: Function;
   _routePush: Function;
   _setLanguage: Function;
@@ -24,15 +24,21 @@ const IconMenu: React.FC<IconMenuType> = (
 ): React.ReactElement => {
   const { t } = useTranslation();
   const {
-    isShowAdContainer,
     _routePush,
     _themeMode,
     _showAdContainer,
     _setLanguage,
     _showTemplateModal,
-    componentStyles,
   } = props;
-
+  const {
+    reduxStore: {
+      globalStore: {
+        isShowAdContainer
+      }
+    }
+  } = useSelector((state: ReduxStoreType) => state);
+  const { componentStyles } = useDesign();
+  
   return (
     <Container.RowContainer
       style={{
@@ -129,4 +135,4 @@ const IconMenu: React.FC<IconMenuType> = (
   );
 };
 
-export default React.memo(IconMenu);
+export default IconMenu;

@@ -1,5 +1,6 @@
 import React from "react";
 import { Container } from "../../components";
+import useDesign from "../../hooks/useDesign";
 import { ComponentIE } from "../../interface";
 
 /**
@@ -10,12 +11,14 @@ import { ComponentIE } from "../../interface";
 const Body: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {
-  const { layoutStyles, children } = props;
+  const { children } = props;
+  const { bodyStyles } = useDesign();
+
   return (
-    <Container.BodyContainer style={{ ...layoutStyles }}>
+    <Container.BodyContainer style={{ ...bodyStyles }}>
       {children}
     </Container.BodyContainer>
   );
 };
 
-export default React.memo(Body);
+export default Body;

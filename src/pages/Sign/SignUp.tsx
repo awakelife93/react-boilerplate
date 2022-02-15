@@ -5,6 +5,8 @@ import { useHistory } from "react-router-dom";
 import { UserInfoIE } from "../../api/interface";
 import { signUp } from "../../api/PutAPI";
 import { Button, Container, InputBox, Label } from "../../common/components";
+import useAction from "../../common/hooks/useAction";
+import useDesign from "../../common/hooks/useDesign";
 import { ComponentIE } from "../../common/interface";
 import { UnknownObject } from "../../common/type";
 import { I18nCommandEnum, setLocalStorageItem } from "../../core";
@@ -19,7 +21,8 @@ import { validationObject } from "../../utils";
 const SignUp: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {
-  const { componentStyles } = props;
+  const { componentStyles } = useDesign();
+  const { setUserInfoAction } = useAction();
   const { t } = useTranslation();
 
   // Input
@@ -31,7 +34,7 @@ const SignUp: React.FC<ComponentIE> = (
   useEffect(() => {
     window.addEventListener("keypress", checkKeyPress);
     return () => window.removeEventListener("keypress", checkKeyPress);
-  });
+  }, []);
 
   const _showMessageModal = useCallback((message: string): void => {
     if (_.isFunction(window.globalFunc.showModalAction)) {
@@ -58,15 +61,15 @@ const SignUp: React.FC<ComponentIE> = (
 
       return true;
     },
-    [userPw, confirmPassword, _showMessageModal]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [userPw, confirmPassword]
   );
 
   const history = useHistory();
   const _signUp = useCallback(async (): Promise<void | boolean> => {
-    const { setUserInfoAction } = props;
     const item = { userEmail, userNickname, userPw, confirmPassword };
 
-    if (validationItem(item) === true) {
+    if (validationItem(item)) {
       try {
         const userInfo: UserInfoIE = await signUp(item);
 
@@ -99,15 +102,11 @@ const SignUp: React.FC<ComponentIE> = (
         }
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
-    _showMessageModal,
-    confirmPassword,
-    history,
-    props,
     userEmail,
     userNickname,
     userPw,
-    validationItem,
   ]);
 
   const checkKeyPress = useCallback(
@@ -121,92 +120,96 @@ const SignUp: React.FC<ComponentIE> = (
 
   return (
     <Container.RowContainer>
-      <Container.ColumnContainer>
-        {/**********************************************************/}
-        <Container.RowContainer
-          style={{
-            alignSelf: "flex-start",
-          }}
-        >
-          <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
-            {t(I18nCommandEnum.EMAIL)}
-          </Label.CommonLabel>
-        </Container.RowContainer>
-        <InputBox.CommonInputBox
-          style={{
-            padding: 5,
-            marginBottom: 15,
-          }}
-          placeholder={t(I18nCommandEnum.EMAIL)}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-        />
-        {/**********************************************************/}
-        <Container.RowContainer
-          style={{
-            alignSelf: "flex-start",
-          }}
-        >
-          <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
-            {t(I18nCommandEnum.NICKNAME)}
-          </Label.CommonLabel>
-        </Container.RowContainer>
-        <InputBox.CommonInputBox
-          style={{
-            padding: 5,
-            marginBottom: 15,
-          }}
-          placeholder={t(I18nCommandEnum.NICKNAME)}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setNickname(e.target.value)}
-        />
-        {/**********************************************************/}
-        <Container.RowContainer
-          style={{
-            alignSelf: "flex-start",
-          }}
-        >
-          <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
-            {t(I18nCommandEnum.PASSWORD)}
-          </Label.CommonLabel>
-        </Container.RowContainer>
-        <InputBox.CommonInputBox
-          style={{
-            padding: 5,
-            marginBottom: 15,
-          }}
-          type={"password"}
-          placeholder={t(I18nCommandEnum.PASSWORD)}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
-        />
-        {/**********************************************************/}
-        <Container.RowContainer
-          style={{
-            alignSelf: "flex-start",
-          }}
-        >
-          <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
-            {t(I18nCommandEnum.CONFIRM_PASSWORD)}
-          </Label.CommonLabel>
-        </Container.RowContainer>
-        <InputBox.CommonInputBox
-          style={{
-            padding: 5,
-            marginBottom: 15,
-          }}
-          type={"password"}
-          placeholder={t(I18nCommandEnum.CONFIRM_PASSWORD)}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value)}
-        />
-        {/**********************************************************/}
-        <Button.SubMitButton
-          style={{
-            ...componentStyles.SUB_MIT_BUTTON,
-            margin: 10,
-          }}
-          onClick={_signUp}
-        >
-          {t(I18nCommandEnum.SIGN_UP)}
-        </Button.SubMitButton>
-      </Container.ColumnContainer>
+      <form>
+        <Container.ColumnContainer>
+          {/**********************************************************/}
+          <Container.RowContainer
+            style={{
+              alignSelf: "flex-start",
+            }}
+          >
+            <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
+              {t(I18nCommandEnum.EMAIL)}
+            </Label.CommonLabel>
+          </Container.RowContainer>
+          <InputBox.CommonInputBox
+            style={{
+              padding: 5,
+              marginBottom: 15,
+            }}
+            placeholder={t(I18nCommandEnum.EMAIL)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+          />
+          {/**********************************************************/}
+          <Container.RowContainer
+            style={{
+              alignSelf: "flex-start",
+            }}
+          >
+            <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
+              {t(I18nCommandEnum.NICKNAME)}
+            </Label.CommonLabel>
+          </Container.RowContainer>
+          <InputBox.CommonInputBox
+            style={{
+              padding: 5,
+              marginBottom: 15,
+            }}
+            placeholder={t(I18nCommandEnum.NICKNAME)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setNickname(e.target.value)}
+          />
+          {/**********************************************************/}
+          <Container.RowContainer
+            style={{
+              alignSelf: "flex-start",
+            }}
+          >
+            <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
+              {t(I18nCommandEnum.PASSWORD)}
+            </Label.CommonLabel>
+          </Container.RowContainer>
+          <InputBox.CommonInputBox
+            style={{
+              padding: 5,
+              marginBottom: 15,
+            }}
+            type={"password"}
+            autoComplete={"off"}
+            placeholder={t(I18nCommandEnum.PASSWORD)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+          />
+          {/**********************************************************/}
+          <Container.RowContainer
+            style={{
+              alignSelf: "flex-start",
+            }}
+          >
+            <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
+              {t(I18nCommandEnum.CONFIRM_PASSWORD)}
+            </Label.CommonLabel>
+          </Container.RowContainer>
+          <InputBox.CommonInputBox
+            style={{
+              padding: 5,
+              marginBottom: 15,
+            }}
+            type={"password"}
+            autoComplete={"off"}
+            placeholder={t(I18nCommandEnum.CONFIRM_PASSWORD)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value)}
+          />
+          {/**********************************************************/}
+          <Button.SubMitButton
+            style={{
+              ...componentStyles.SUB_MIT_BUTTON,
+              margin: 10,
+            }}
+            onClick={_signUp}
+          >
+            {t(I18nCommandEnum.SIGN_UP)}
+          </Button.SubMitButton>
+        </Container.ColumnContainer>
+      </form>
     </Container.RowContainer>
   );
 };

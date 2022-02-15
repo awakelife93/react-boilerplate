@@ -1,6 +1,7 @@
 import _ from "lodash";
 import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deleteUser } from "../../../api/DeleteAPI";
 import { signOut } from "../../../api/PostAPI";
@@ -9,10 +10,13 @@ import {
   removeLocalStorageItem,
   setLocalStorageItem
 } from "../../../core";
+import { ReduxStoreType } from "../../../redux/type";
 import { RoutePath } from "../../../route/routes";
 import { Container } from "../../components";
 import Introduce from "../../components/Modal/component/Introduce";
 import UpdateUserInfo from "../../components/Modal/component/UpdateUserInfo";
+import useAction from "../../hooks/useAction";
+import useDesign from "../../hooks/useDesign";
 import { ComponentIE } from "../../interface";
 import { IconsMenu, SignMenu } from "./Menu";
 
@@ -25,24 +29,21 @@ const Header: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {
   const {
-    layoutStyles,
-    componentStyles,
-    setThemeAction,
-    showAdAction,
-    initUserInfoAction,
     reduxStore: {
       globalStore: { isShowAdContainer },
       themeStore: { useTheme },
-      userStore,
     },
-  } = props;
+  } = useSelector((state: ReduxStoreType) => state);
+  const { showAdAction, setThemeAction, initUserInfoAction } = useAction();
+  const { headerStyles } = useDesign();
 
   const history = useHistory();
   const _routePush = useCallback(
     (route: string) => {
       history.push(route);
     },
-    [history]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
   );
 
   const { i18n } = useTranslation();
@@ -57,8 +58,8 @@ const Header: React.FC<ComponentIE> = (
   const _updateUserInfo = useCallback(() => {
     if (_.isFunction(window.globalFunc.showModalAction)) {
       window.globalFunc.showModalAction({
-        children: UpdateUserInfo,
         item: {
+          children: UpdateUserInfo,
           style: {
             width: 500,
             height: document.documentElement.clientHeight - 100,
@@ -73,8 +74,8 @@ const Header: React.FC<ComponentIE> = (
   const _showTemplateModal = useCallback(() => {
     if (_.isFunction(window.globalFunc.showModalAction)) {
       window.globalFunc.showModalAction({
-        children: Introduce,
         item: {
+          children: Introduce,
           style: {
             width: 500,
             height: 300,
@@ -91,7 +92,8 @@ const Header: React.FC<ComponentIE> = (
       setLocalStorageItem({ useTheme: !useTheme });
       setThemeAction(!useTheme);
     }
-  }, [useTheme, setThemeAction]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [useTheme]);
 
   const _showAdContainer = useCallback(() => {
     if (_.isFunction(showAdAction)) {
@@ -104,7 +106,7 @@ const Header: React.FC<ComponentIE> = (
       const token = getLocalStorageItem("token");
 
       if (!_.isEmpty(token)) {
-        if (isDelete === true) {
+        if (isDelete) {
           await deleteUser();
         } else {
           await signOut();
@@ -133,22 +135,18 @@ const Header: React.FC<ComponentIE> = (
 
   return (
     <header>
-      <Container.HeaderContainer style={{ ...layoutStyles }}>
+      <Container.HeaderContainer style={{ ...headerStyles }}>
         <IconsMenu
-          isShowAdContainer={isShowAdContainer}
           _routePush={_routePush}
           _themeMode={_themeMode}
           _showAdContainer={_showAdContainer}
           _setLanguage={_setLanguage}
           _showTemplateModal={_showTemplateModal}
-          componentStyles={componentStyles}
         />
         <SignMenu
-          userInfo={userStore}
           _routePush={_routePush}
           _signOut={_signOut}
           _updateUserInfo={_updateUserInfo}
-          componentStyles={componentStyles}
         />
       </Container.HeaderContainer>
     </header>

@@ -5,10 +5,12 @@ import { useHistory } from "react-router";
 import { UserInfoIE } from "../../api/interface";
 import { signIn } from "../../api/PostAPI";
 import { Button, Container, InputBox, Label } from "../../common/components";
+import useAction from "../../common/hooks/useAction";
+import useDesign from "../../common/hooks/useDesign";
 import { ComponentIE } from "../../common/interface";
 import { UnknownObject } from "../../common/type";
 import { setLocalStorageItem } from "../../core";
-import { I18nCommandEnum } from "../../core/i18n/type";
+import { I18nCommandEnum } from "../../core/i18n";
 import { RoutePath } from "../../route/routes";
 import { validationObject } from "../../utils";
 
@@ -20,8 +22,10 @@ import { validationObject } from "../../utils";
 const SignIn: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {
-  const { componentStyles } = props;
+  const { componentStyles } = useDesign();
+  const { setUserInfoAction } = useAction();
   const { t } = useTranslation();
+  const history = useHistory();
 
   // Input
   const [userEmail, setEmail] = useState("");
@@ -30,7 +34,7 @@ const SignIn: React.FC<ComponentIE> = (
   useEffect(() => {
     window.addEventListener("keypress", checkKeyPress);
     return () => window.removeEventListener("keypress", checkKeyPress);
-  });
+  }, []);
 
   const _showMessageModal = useCallback((message: string): void => {
     if (_.isFunction(window.globalFunc.showModalAction)) {
@@ -55,12 +59,10 @@ const SignIn: React.FC<ComponentIE> = (
     [_showMessageModal]
   );
 
-  const history = useHistory();
   const _signIn = useCallback(async (): Promise<void | boolean> => {
-    const { setUserInfoAction } = props;
     const item = { userEmail, userPw };
 
-    if (validationItem(item) === true) {
+    if (validationItem(item)) {
       try {
         const userInfo: UserInfoIE = await signIn({ userEmail, userPw });
 
@@ -99,7 +101,8 @@ const SignIn: React.FC<ComponentIE> = (
         }
       }
     }
-  }, [history, props, userEmail, userPw, validationItem, _showMessageModal]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userEmail, userPw]);
 
   const checkKeyPress = useCallback(
     (e: KeyboardEvent): void => {
@@ -112,52 +115,55 @@ const SignIn: React.FC<ComponentIE> = (
 
   return (
     <Container.RowContainer>
-      <Container.ColumnContainer>
-        <Container.RowContainer
-          style={{
-            alignSelf: "flex-start",
-          }}
-        >
-          <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
-            {t(I18nCommandEnum.EMAIL)}
-          </Label.CommonLabel>
-        </Container.RowContainer>
-        <InputBox.CommonInputBox
-          style={{
-            padding: 5,
-            marginBottom: 15,
-          }}
-          placeholder={t(I18nCommandEnum.EMAIL)}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-        />
-        <Container.RowContainer
-          style={{
-            alignSelf: "flex-start",
-          }}
-        >
-          <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
-            {t(I18nCommandEnum.PASSWORD)}
-          </Label.CommonLabel>
-        </Container.RowContainer>
-        <InputBox.CommonInputBox
-          style={{
-            padding: 5,
-            marginBottom: 15,
-          }}
-          placeholder={t(I18nCommandEnum.PASSWORD)}
-          type={"password"}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
-        />
-        <Button.SubMitButton
-          style={{
-            ...componentStyles.SUB_MIT_BUTTON,
-            margin: 10,
-          }}
-          onClick={_signIn}
-        >
-          {t(I18nCommandEnum.SIGN_IN)}
-        </Button.SubMitButton>
-      </Container.ColumnContainer>
+      <form>
+        <Container.ColumnContainer>
+          <Container.RowContainer
+            style={{
+              alignSelf: "flex-start",
+            }}
+          >
+            <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
+              {t(I18nCommandEnum.EMAIL)}
+            </Label.CommonLabel>
+          </Container.RowContainer>
+          <InputBox.CommonInputBox
+            style={{
+              padding: 5,
+              marginBottom: 15,
+            }}
+            placeholder={t(I18nCommandEnum.EMAIL)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+          />
+          <Container.RowContainer
+            style={{
+              alignSelf: "flex-start",
+            }}
+          >
+            <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
+              {t(I18nCommandEnum.PASSWORD)}
+            </Label.CommonLabel>
+          </Container.RowContainer>
+          <InputBox.CommonInputBox
+            style={{
+              padding: 5,
+              marginBottom: 15,
+            }}
+            placeholder={t(I18nCommandEnum.PASSWORD)}
+            type={"password"}
+            autoComplete={"off"}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+          />
+          <Button.SubMitButton
+            style={{
+              ...componentStyles.SUB_MIT_BUTTON,
+              margin: 10,
+            }}
+            onClick={_signIn}
+          >
+            {t(I18nCommandEnum.SIGN_IN)}
+          </Button.SubMitButton>
+        </Container.ColumnContainer>
+      </form>
     </Container.RowContainer>
   );
 };

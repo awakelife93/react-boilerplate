@@ -4,22 +4,22 @@ import { useSelector } from "react-redux";
 import { findUserProfile } from "../../api/GetAPI";
 import { UserInfoIE } from "../../api/interface";
 import { getLocalStorageItem } from "../../core";
-import { setUserInfoAction } from "../../redux/action";
 import { ReduxStoreType } from "../../redux/type";
 
-const useAuth = (): void => {
+const useAuth = (setUserInfoAction: Function): void => {
   const { reduxStore: { userStore } } = useSelector((state: ReduxStoreType) => state);
-
+  
   const initUserProfile = async (): Promise<void> => {
     const profile: UserInfoIE = await findUserProfile();
     
-    setUserInfoAction({
-      user: {
-        isLogin: true,
-        info: { ...profile },
-      }
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (_.isFunction(setUserInfoAction)) {
+      setUserInfoAction({
+        user: {
+          isLogin: true,
+          info: { ...profile },
+        }
+      });
+    }
   };
 
   useEffect(() => {

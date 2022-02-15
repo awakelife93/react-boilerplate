@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Label } from "../../components";
+import useDesign from "../../hooks/useDesign";
 import { ComponentIE } from "../../interface";
 
 /**
@@ -10,10 +11,10 @@ import { ComponentIE } from "../../interface";
 const Bottom: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {
-  const { layoutStyles, componentStyles } = props;
+  const { bottomStyles, componentStyles } = useDesign();
 
   return (
-    <Container.BottomContainer style={{ ...layoutStyles }}>
+    <Container.BottomContainer style={{ ...bottomStyles }}>
       <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
         github:{" "}
         <a href="https://github.com/awakelife93" rel="noreferrer" target="_blank">
