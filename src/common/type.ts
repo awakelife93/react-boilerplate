@@ -20,3 +20,7 @@ export type ThemeItem = {
     COMPONENT?: any;
   };
 };
+
+export type ThemeType = {
+  themeItem: ThemeItem
+};
