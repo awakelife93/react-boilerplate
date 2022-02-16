@@ -5,7 +5,7 @@ import {
   BodyContainerIE,
   BottomContainerIE,
   HeaderContainerIE,
-  LayoutContainerIE,
+  LayoutContainerIE
 } from "../components/Container";
 import { ComponentStyleType, ThemeItem } from "../type";
 import CommonColor from "./color";
@@ -121,11 +121,11 @@ const setMockUpStyleData = ({
 
 const generateLayoutContainerStyle = ({
   themeItem,
-  path,
+  pathname,
   useTheme = false,
 }: {
   themeItem: ThemeItem;
-  path: RoutePath;
+  pathname: string;
   useTheme: boolean;
 }) => {
   const props = {} as LayoutContainerIE;
@@ -146,7 +146,7 @@ const generateLayoutContainerStyle = ({
   }
 
   switch (
-    path
+    pathname
     // todo: 필요 시 작성
   ) {
   }
@@ -187,11 +187,11 @@ const generateModalContainerStyle = ({
 
 const generateHeaderContainerStyle = ({
   themeItem,
-  path,
+  pathname,
   useTheme = false,
 }: {
   themeItem: ThemeItem;
-  path: RoutePath;
+  pathname: string;
   useTheme: boolean;
 }) => {
   let props = {} as HeaderContainerIE;
@@ -212,7 +212,7 @@ const generateHeaderContainerStyle = ({
   }
 
   switch (
-    path
+    pathname
     // todo: 필요 시 작성
   ) {
   }
@@ -224,11 +224,11 @@ const generateHeaderContainerStyle = ({
 
 const generateBodyContainerStyle = ({
   themeItem,
-  path,
+  pathname,
   useTheme = false,
 }: {
   themeItem: ThemeItem;
-  path: RoutePath;
+  pathname: string;
   useTheme: boolean;
 }) => {
   let props = {} as BodyContainerIE;
@@ -248,7 +248,7 @@ const generateBodyContainerStyle = ({
         } as CSSProperties);
   }
 
-  switch (path) {
+  switch (pathname) {
     case RoutePath.CONTENTS:
       props["style"].padding = 20;
       break;
@@ -265,11 +265,11 @@ const generateBodyContainerStyle = ({
 
 const generateBottomContainerStyle = ({
   themeItem,
-  path,
+  pathname,
   useTheme = false,
 }: {
   themeItem: ThemeItem;
-  path: RoutePath;
+  pathname: string;
   useTheme: boolean;
 }) => {
   let props = {} as BottomContainerIE;
@@ -290,7 +290,7 @@ const generateBottomContainerStyle = ({
   }
 
   switch (
-    path
+    pathname
     // todo: 필요 시 작성
   ) {
   }
@@ -302,11 +302,11 @@ const generateBottomContainerStyle = ({
 
 const generateComponentStyle = ({
   themeItem,
-  path,
+  pathname,
   useTheme = false,
 }: {
   themeItem: ThemeItem;
-  path: RoutePath;
+  pathname: string;
   useTheme: boolean;
 }) => {
   let style = {} as ComponentStyleType;
@@ -327,7 +327,7 @@ const generateComponentStyle = ({
   }
 
   switch (
-    path
+    pathname
     // todo: 필요 시 작성
   ) {
   }
@@ -337,8 +337,8 @@ const generateComponentStyle = ({
   };
 };
 
-const showBottomContainer = (route: RoutePath): boolean => {
-  switch (route) {
+const showBottomContainer = (pathname: string): boolean => {
+  switch (pathname) {
     case RoutePath.SIGN_IN:
     case RoutePath.CONTENTS_DETAIL:
       return false;
@@ -347,8 +347,8 @@ const showBottomContainer = (route: RoutePath): boolean => {
   }
 };
 
-const showHeaderContainer = (route: RoutePath): boolean => {
-  switch (route) {
+const showHeaderContainer = (pathname: string): boolean => {
+  switch (pathname) {
     default:
       return true;
   }

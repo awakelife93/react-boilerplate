@@ -3,9 +3,9 @@ import {
   initShowAdAction,
   initShowModalAction,
   showAdAction,
-  showModalAction,
+  showModalAction
 } from "./global";
-import { initThemeAction, setThemeAction } from "./theme";
+import { initThemeAction, setThemeAction, setThemeItemAction } from "./theme";
 import { initUserInfoAction, setUserInfoAction } from "./user";
 
 export {
@@ -13,6 +13,7 @@ export {
   getContentsAction,
   initThemeAction,
   setThemeAction,
+  setThemeItemAction,
   initShowAdAction,
   showAdAction,
   initShowModalAction,

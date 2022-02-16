@@ -1,34 +1,86 @@
 import React, { createContext } from "react";
-import { ReduxActionType } from "../../redux/type";
+import { useDispatch } from "react-redux";
+import { ContentsType } from "../../api/GetAPI/type";
+import {
+  getContentsAction,
+  initContentsAction,
+  initShowAdAction,
+  initShowModalAction,
+  initThemeAction,
+  initUserInfoAction,
+  setThemeAction,
+  setThemeItemAction,
+  setUserInfoAction,
+  showAdAction,
+  showModalAction
+} from "../../redux/action";
+import { ReduxActionType, UserStoreType } from "../../redux/type";
+import { ModalItem } from "../components/Modal/type";
+import { ThemeItem } from "../type";
 
 export const ActionContext = createContext<ReduxActionType | null>(null);
 
-const ActionProvider = ({
-  children,
-  initContentsAction,
-  getContentsAction,
-  initThemeAction,
-  setThemeAction,
-  initShowAdAction,
-  showAdAction,
-  initShowModalAction,
-  showModalAction,
-  setUserInfoAction,
-  initUserInfoAction,
-} : { children: React.ReactElement } & ReduxActionType) => {
+const ActionProvider = ({ children } : { children: React.ReactElement }) => {
+  const dispatch = useDispatch();
+
+  const _initContentsAction = () => {
+    dispatch(initContentsAction());
+  };
+
+  const _getContentsAction = (value: ContentsType[]) => {
+    dispatch(getContentsAction(value));
+  };
+
+  const _initThemeAction = () => {
+    dispatch(initThemeAction());
+  };
+
+  const _setThemeAction = (value: boolean) => {
+    dispatch(setThemeAction(value));
+  };
+
+  const _setThemeItemAction = (value: ThemeItem) => {
+    dispatch(setThemeItemAction(value));
+  };
+
+  const _initShowAdAction = () => {
+    dispatch(initShowAdAction());
+  };
+
+  const _showAdAction = (value: boolean) => {
+    dispatch(showAdAction(value));
+  };
+
+  const _initShowModalAction = () => {
+    dispatch(initShowModalAction());
+  };
+
+  const _showModalAction = (value: ModalItem) => {
+    dispatch(showModalAction(value));
+  };
+
+  const _setUserInfoAction = (value: UserStoreType) => {
+    dispatch(setUserInfoAction(value));
+  }
+
+  const _initUserInfoAction = () => {
+    dispatch(initUserInfoAction());
+  };
+
   return (
     <ActionContext.Provider
       value={{
-        initContentsAction,
-        getContentsAction,
-        initThemeAction,
-        setThemeAction,
-        initShowAdAction,
-        showAdAction,
-        initShowModalAction,
-        showModalAction,
-        setUserInfoAction,
-        initUserInfoAction,
+        initContentsAction: _initContentsAction,
+        getContentsAction: _getContentsAction,
+        initThemeAction: _initThemeAction,
+        setThemeAction: _setThemeAction,
+        setThemeItemAction: _setThemeItemAction,
+        initShowAdAction: _initShowAdAction,
+        showAdAction: _showAdAction,
+        initShowModalAction: _initShowModalAction,
+        showModalAction: _showModalAction,
+        setUserInfoAction: _setUserInfoAction,
+        initUserInfoAction: _initUserInfoAction,
       }}
     >
       {children}

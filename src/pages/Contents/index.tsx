@@ -1,7 +1,7 @@
 import _ from "lodash";
 import { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { findContents } from "../../api/GetAPI";
 import { ContentsType } from "../../api/GetAPI/type";
 import useAction from "../../common/hooks/useAction";
@@ -44,12 +44,13 @@ const Contents: React.FC<ComponentIE> = (
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const goDetail = useCallback(
     (item: ContentsType): void => {
-      history.push(RoutePath.CONTENTS_DETAIL, item);
+      navigate(RoutePath.CONTENTS_DETAIL, { state: item });
     },
-    [history]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
   );
 
   useEffect(() => {

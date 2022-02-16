@@ -1,7 +1,7 @@
 import _ from "lodash";
 import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserInfoIE } from "../../api/interface";
 import { signUp } from "../../api/PutAPI";
 import { Button, Container, InputBox, Label } from "../../common/components";
@@ -34,6 +34,7 @@ const SignUp: React.FC<ComponentIE> = (
   useEffect(() => {
     window.addEventListener("keypress", checkKeyPress);
     return () => window.removeEventListener("keypress", checkKeyPress);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const _showMessageModal = useCallback((message: string): void => {
@@ -65,7 +66,7 @@ const SignUp: React.FC<ComponentIE> = (
     [userPw, confirmPassword]
   );
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const _signUp = useCallback(async (): Promise<void | boolean> => {
     const item = { userEmail, userNickname, userPw, confirmPassword };
 
@@ -88,11 +89,10 @@ const SignUp: React.FC<ComponentIE> = (
               userNickname: userInfo.userNickname,
             },
           });
-          history.push(RoutePath.MAIN);
+          navigate(RoutePath.MAIN);
         }
       } catch (error: any) {
         switch (error.status) {
-          // 이메일 중복
           case 409: {
             _showMessageModal(
               "중복된 이메일이 있습니다. 다른 이메일을 사용해주시기 바랍니다."
@@ -115,7 +115,8 @@ const SignUp: React.FC<ComponentIE> = (
         _signUp();
       }
     },
-    [_signUp]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
   );
 
   return (

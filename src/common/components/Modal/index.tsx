@@ -112,10 +112,12 @@ const Modal: React.FC<ModalType> = (props: ModalType): React.ReactElement => {
           onClick={() => _closeModal()}
         />
         <Container.LayoutContainer style={{ padding: 30 }}>
-          <ChildrenComponent
-            {...childrenProps}
-            _closeModal={_closeModal}
-          />
+          {
+            <ChildrenComponent
+              {...childrenProps}
+              _closeModal={_closeModal}
+            />
+          }
         </Container.LayoutContainer>
       </Container.LayoutContainer>
     </Container.LayoutContainer>

@@ -1,7 +1,7 @@
 import _ from "lodash";
 import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import { UserInfoIE } from "../../api/interface";
 import { signIn } from "../../api/PostAPI";
 import { Button, Container, InputBox, Label } from "../../common/components";
@@ -25,15 +25,15 @@ const SignIn: React.FC<ComponentIE> = (
   const { componentStyles } = useDesign();
   const { setUserInfoAction } = useAction();
   const { t } = useTranslation();
-  const history = useHistory();
+  const navigate = useNavigate();
 
-  // Input
   const [userEmail, setEmail] = useState("");
   const [userPw, setPassword] = useState("");
 
   useEffect(() => {
     window.addEventListener("keypress", checkKeyPress);
     return () => window.removeEventListener("keypress", checkKeyPress);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const _showMessageModal = useCallback((message: string): void => {
@@ -56,7 +56,8 @@ const SignIn: React.FC<ComponentIE> = (
 
       return true;
     },
-    [_showMessageModal]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
   );
 
   const _signIn = useCallback(async (): Promise<void | boolean> => {
@@ -79,21 +80,18 @@ const SignIn: React.FC<ComponentIE> = (
               userNickname: userInfo.userNickname,
             },
           });
-          history.push(RoutePath.MAIN);
+          navigate(RoutePath.MAIN);
         }
       } catch (error: any) {
         switch (error.status) {
-          // 비밀번호 틀렸을 경우
           case 401: {
             _showMessageModal("잘못된 이메일, 비밀번호 입니다.");
             return false;
           }
-          // 사용자 권한이 없는 경우
           case 403: {
             _showMessageModal("잘못된 계정입니다.");
             return false;
           }
-          // 계정이 없는 경우
           case 404: {
             _showMessageModal("계정이 없습니다.");
             return false;
@@ -110,7 +108,8 @@ const SignIn: React.FC<ComponentIE> = (
         _signIn();
       }
     },
-    [_signIn]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
   );
 
   return (

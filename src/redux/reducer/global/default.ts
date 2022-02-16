@@ -1,10 +1,10 @@
-import { CommonRender } from "../../../common/components";
+import { DefaultFC } from "../../../common/components/CommonRender";
 
 export const initGlobalState = {
   isShowAdContainer: false,
   modalItem: {
     isShowModal: false,
-    children: CommonRender.DefaultFC,
+    children: DefaultFC,
     childrenProps: {},
     style: {},
     titleItem: {

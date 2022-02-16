@@ -12,6 +12,10 @@ const themeStore = (
       return _.merge({}, state, {
         useTheme: action.value,
       });
+    case ActionEnum.SET_THEME_ITEM:
+      return _.merge({}, state, {
+        themeItem: action.value,
+      });
 
     default:
       return state;

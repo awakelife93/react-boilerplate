@@ -5,10 +5,9 @@ import {
   bindActionCreators,
   combineReducers,
   createStore,
-  Dispatch,
+  Dispatch
 } from "redux";
 import thunkMiddleware from "redux-thunk";
-import { ComponentIE, LayoutIE } from "../common/interface";
 import { UnknownObject } from "../common/type";
 import * as action from "./action";
 import reducers from "./reducer";
@@ -19,7 +18,7 @@ const mapStateToProps = (state: ReduxStoreType) => state;
 const mapDispatchToProps = (dispatch: Dispatch) =>
   bindActionCreators(action, dispatch);
 
-export const connectWrapper = (component: React.FC<LayoutIE | ComponentIE>) =>
+export const connectWrapper = (component: React.FC<any>) =>
   connect(mapStateToProps, mapDispatchToProps)(component);
 
 export const configureStore = (initialState: UnknownObject = {}) => {

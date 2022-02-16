@@ -2,7 +2,7 @@ import _ from "lodash";
 import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { deleteUser } from "../../../api/DeleteAPI";
 import { signOut } from "../../../api/PostAPI";
 import {
@@ -37,10 +37,10 @@ const Header: React.FC<ComponentIE> = (
   const { showAdAction, setThemeAction, initUserInfoAction } = useAction();
   const { headerStyles } = useDesign();
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const _routePush = useCallback(
     (route: string) => {
-      history.push(route);
+      navigate(route);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
@@ -112,9 +112,7 @@ const Header: React.FC<ComponentIE> = (
           await signOut();
         }
 
-        // token 삭제
         removeLocalStorageItem("token");
-        // 리덕스 초기화
         initUserInfoAction();
         _routePush(RoutePath.MAIN);
       } else {
