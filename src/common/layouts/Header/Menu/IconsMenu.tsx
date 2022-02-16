@@ -98,10 +98,10 @@ const IconMenu: React.FC<IconMenuType> = (
         }
         menuContainerStyle={{
           ...componentStyles.MENU_BOX.CONTAINER,
-          // 최대한 공통으로 따고 싶은 스타일이지만, 애가 어디에 위치할지 몰라서
-          // props로 던지자...
+          // * 최대한 공통으로 따고 싶은 스타일이지만, 애가 어디에 위치할지 몰라서
+          // * props로 던지자...
 
-          // 애는 테마와 전혀 상관이 없어서 Theme에 안넣는다.
+          // * 애는 테마와 전혀 상관이 없어서 Theme에 안넣는다.
           borderRadius: 15,
           width: 150,
           height: 30,

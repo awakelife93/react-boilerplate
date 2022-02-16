@@ -19,7 +19,6 @@ export const updateUser = async ({
 
     if (!_.isEmpty(userPw)) item.userPw = userPw;
 
-    // 사용자 화면은 권한 1 고정
     return await patchAPI("updateUser", { ...item });
   } catch (error: unknown) {
     console.log("===============> updateUser Error", error);

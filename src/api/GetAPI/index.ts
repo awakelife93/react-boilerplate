@@ -15,7 +15,7 @@ export const findContents = async (
   skip: number = 0
 ): Promise<[ContentsType[], number]> => {
   try {
-    // typeorm 엔티티의 take, skip을 그대로 전송하기 위해 프로퍼티를 지어줌.
+    // * typeorm 엔티티의 take, skip을 그대로 전송하기 위해 프로퍼티를 지어줌.
     return await getAPI("findContents", {
       take: 20,
       skip,

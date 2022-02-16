@@ -40,9 +40,7 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
-  // 기본 언어
   lng: I18nCommandEnum.KO,
-  // 에러가 났을 시 대체할 언어
   fallbackLng: I18nCommandEnum.KO,
   keySeparator: false,
   interpolation: {

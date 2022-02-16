@@ -32,12 +32,10 @@ const UpdateUserInfo: React.FC<UpdateUserInfoType> = (
     }
   } = useSelector((state: ReduxStoreType) => state);
 
-  // Error
   const [nicknameError, setNMErrorItems] = useState("");
   const [passwordError, setPWErrorItems] = useState("");
   const [confirmPasswordError, setConfirmPWErrorItems] = useState("");
 
-  // Input
   const [userNickname, setNickname] = useState("");
   const [userPw, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");

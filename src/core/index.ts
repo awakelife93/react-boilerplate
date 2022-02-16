@@ -4,7 +4,7 @@ import {
   clearLocalStorageItem,
   getLocalStorageItem,
   removeLocalStorageItem,
-  setLocalStorageItem,
+  setLocalStorageItem
 } from "./storage";
 import {
   clearWindowData,
@@ -13,7 +13,7 @@ import {
   initWindowFunc,
   initWindowObject,
   removeWindowData,
-  setWindowData,
+  setWindowData
 } from "./window";
 
 export {
@@ -21,7 +21,6 @@ export {
   setLocalStorageItem,
   clearLocalStorageItem,
   removeLocalStorageItem,
-  // window
   initWindowFunc,
   initWindowObject,
   getWindowDataLength,
@@ -29,10 +28,8 @@ export {
   removeWindowData,
   clearWindowData,
   setWindowData,
-  // i18n
   i18n,
   I18nCommandEnum,
-  // animation
   ScrollFadeIn,
   TopDownMove,
 };

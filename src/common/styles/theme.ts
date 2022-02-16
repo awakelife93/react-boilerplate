@@ -1,6 +1,6 @@
 import { CommonColor } from ".";
 
-// 테마용 컬러
+// * 테마용 컬러
 const CommonTheme = {
   BLACK_THEME_STYLE: {
     LAYOUT: {
