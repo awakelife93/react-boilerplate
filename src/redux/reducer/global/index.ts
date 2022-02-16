@@ -12,12 +12,10 @@ const globalStore = (
       return _.merge({}, state, {
         isShowAdContainer: action.value,
       });
-
     case ActionEnum.SET_MODAL_ITEM:
       return _.merge({}, state, {
         modalItem: action.value,
       });
-
     default:
       return state;
   }

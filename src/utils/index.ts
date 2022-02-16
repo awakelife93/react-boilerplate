@@ -34,7 +34,7 @@ export const setDefaultLanguage = (): void => {
 
 export const setWindowFunction = ({
   initUserInfoAction,
-  showModalAction
+  showModalAction,
 }: {
   initUserInfoAction: Function;
   showModalAction: Function;

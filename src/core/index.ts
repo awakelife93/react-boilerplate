@@ -4,7 +4,7 @@ import {
   clearLocalStorageItem,
   getLocalStorageItem,
   removeLocalStorageItem,
-  setLocalStorageItem
+  setLocalStorageItem,
 } from "./storage";
 import {
   clearWindowData,
@@ -13,7 +13,7 @@ import {
   initWindowFunc,
   initWindowObject,
   removeWindowData,
-  setWindowData
+  setWindowData,
 } from "./window";
 
 export {

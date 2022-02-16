@@ -12,7 +12,6 @@ const userStore = (
       return _.merge({}, state, {
         user: action.value,
       });
-
     default:
       return state;
   }

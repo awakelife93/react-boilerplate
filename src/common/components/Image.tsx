@@ -13,6 +13,7 @@ export const CommonImage = styled.img`
   height: ${(props: CommonImageIE) =>
     props.style?.height ?? `${document.documentElement.clientHeight - 20}px`};
 `;
+
 interface BackgroundImageIE extends Partial<CommonComponentType> {
   requireStyle: {
     backgroundImage: string;

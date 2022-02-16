@@ -4,7 +4,7 @@ import { UnknownObject } from "../common/type";
 import {
   getLocalStorageItem,
   removeLocalStorageItem,
-  setLocalStorageItem
+  setLocalStorageItem,
 } from "../core";
 
 const _showMessageModal = (message: string): void => {

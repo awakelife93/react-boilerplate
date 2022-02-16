@@ -16,7 +16,6 @@ const themeStore = (
       return _.merge({}, state, {
         themeItem: action.value,
       });
-
     default:
       return state;
   }

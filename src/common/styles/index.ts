@@ -5,7 +5,7 @@ import {
   BodyContainerIE,
   BottomContainerIE,
   HeaderContainerIE,
-  LayoutContainerIE
+  LayoutContainerIE,
 } from "../components/Container";
 import { ComponentStyleType, ThemeItem } from "../type";
 import CommonColor from "./color";

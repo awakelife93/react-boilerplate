@@ -12,7 +12,6 @@ const contentsStore = (
       return _.merge([], state, {
         contents: [...state.contents, ...action.value],
       });
-
     default:
       return state;
   }

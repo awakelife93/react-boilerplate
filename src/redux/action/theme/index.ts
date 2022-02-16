@@ -15,4 +15,4 @@ export const setThemeAction = (value: boolean) => ({
 export const setThemeItemAction = (value: ThemeItem) => ({
   type: ActionEnum.SET_THEME_ITEM,
   value,
-})
+});
