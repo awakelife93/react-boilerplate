@@ -121,96 +121,94 @@ const SignUp: React.FC<ComponentIE> = (
 
   return (
     <Container.RowContainer>
-      <form>
-        <Container.ColumnContainer>
-          {/**********************************************************/}
-          <Container.RowContainer
-            style={{
-              alignSelf: "flex-start",
-            }}
-          >
-            <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
-              {t(I18nCommandEnum.EMAIL)}
-            </Label.CommonLabel>
-          </Container.RowContainer>
-          <InputBox.CommonInputBox
-            style={{
-              padding: 5,
-              marginBottom: 15,
-            }}
-            placeholder={t(I18nCommandEnum.EMAIL)}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-          />
-          {/**********************************************************/}
-          <Container.RowContainer
-            style={{
-              alignSelf: "flex-start",
-            }}
-          >
-            <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
-              {t(I18nCommandEnum.NICKNAME)}
-            </Label.CommonLabel>
-          </Container.RowContainer>
-          <InputBox.CommonInputBox
-            style={{
-              padding: 5,
-              marginBottom: 15,
-            }}
-            placeholder={t(I18nCommandEnum.NICKNAME)}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setNickname(e.target.value)}
-          />
-          {/**********************************************************/}
-          <Container.RowContainer
-            style={{
-              alignSelf: "flex-start",
-            }}
-          >
-            <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
-              {t(I18nCommandEnum.PASSWORD)}
-            </Label.CommonLabel>
-          </Container.RowContainer>
-          <InputBox.CommonInputBox
-            style={{
-              padding: 5,
-              marginBottom: 15,
-            }}
-            type={"password"}
-            autoComplete={"off"}
-            placeholder={t(I18nCommandEnum.PASSWORD)}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
-          />
-          {/**********************************************************/}
-          <Container.RowContainer
-            style={{
-              alignSelf: "flex-start",
-            }}
-          >
-            <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
-              {t(I18nCommandEnum.CONFIRM_PASSWORD)}
-            </Label.CommonLabel>
-          </Container.RowContainer>
-          <InputBox.CommonInputBox
-            style={{
-              padding: 5,
-              marginBottom: 15,
-            }}
-            type={"password"}
-            autoComplete={"off"}
-            placeholder={t(I18nCommandEnum.CONFIRM_PASSWORD)}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value)}
-          />
-          {/**********************************************************/}
-          <Button.SubMitButton
-            style={{
-              ...componentStyles.SUB_MIT_BUTTON,
-              margin: 10,
-            }}
-            onClick={_signUp}
-          >
-            {t(I18nCommandEnum.SIGN_UP)}
-          </Button.SubMitButton>
-        </Container.ColumnContainer>
-      </form>
+      <Container.ColumnContainer>
+        {/**********************************************************/}
+        <Container.RowContainer
+          style={{
+            alignSelf: "flex-start",
+          }}
+        >
+          <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
+            {t(I18nCommandEnum.EMAIL)}
+          </Label.CommonLabel>
+        </Container.RowContainer>
+        <InputBox.CommonInputBox
+          style={{
+            padding: 5,
+            marginBottom: 15,
+          }}
+          placeholder={t(I18nCommandEnum.EMAIL)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+        />
+        {/**********************************************************/}
+        <Container.RowContainer
+          style={{
+            alignSelf: "flex-start",
+          }}
+        >
+          <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
+            {t(I18nCommandEnum.NICKNAME)}
+          </Label.CommonLabel>
+        </Container.RowContainer>
+        <InputBox.CommonInputBox
+          style={{
+            padding: 5,
+            marginBottom: 15,
+          }}
+          placeholder={t(I18nCommandEnum.NICKNAME)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setNickname(e.target.value)}
+        />
+        {/**********************************************************/}
+        <Container.RowContainer
+          style={{
+            alignSelf: "flex-start",
+          }}
+        >
+          <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
+            {t(I18nCommandEnum.PASSWORD)}
+          </Label.CommonLabel>
+        </Container.RowContainer>
+        <InputBox.CommonInputBox
+          style={{
+            padding: 5,
+            marginBottom: 15,
+          }}
+          type={"password"}
+          autoComplete={"off"}
+          placeholder={t(I18nCommandEnum.PASSWORD)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+        />
+        {/**********************************************************/}
+        <Container.RowContainer
+          style={{
+            alignSelf: "flex-start",
+          }}
+        >
+          <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
+            {t(I18nCommandEnum.CONFIRM_PASSWORD)}
+          </Label.CommonLabel>
+        </Container.RowContainer>
+        <InputBox.CommonInputBox
+          style={{
+            padding: 5,
+            marginBottom: 15,
+          }}
+          type={"password"}
+          autoComplete={"off"}
+          placeholder={t(I18nCommandEnum.CONFIRM_PASSWORD)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value)}
+        />
+        {/**********************************************************/}
+        <Button.SubMitButton
+          style={{
+            ...componentStyles.SUB_MIT_BUTTON,
+            margin: 10,
+          }}
+          onClick={_signUp}
+        >
+          {t(I18nCommandEnum.SIGN_UP)}
+        </Button.SubMitButton>
+      </Container.ColumnContainer>
     </Container.RowContainer>
   );
 };
