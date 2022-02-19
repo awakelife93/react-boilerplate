@@ -82,12 +82,14 @@ const SignUp: React.FC<ComponentIE> = (
         } else {
           setLocalStorageItem({ token: userInfo.token });
           setUserInfoAction({
-            isLogin: true,
-            info: {
-              userId: userInfo.userId,
-              userEmail: userInfo.userEmail,
-              userNickname: userInfo.userNickname,
-            },
+            user: {
+              isLogin: true,
+              info: {
+                userId: userInfo.userId,
+                userEmail: userInfo.userEmail,
+                userNickname: userInfo.userNickname,
+              },
+            }
           });
           navigate(RoutePath.MAIN);
         }

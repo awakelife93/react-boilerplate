@@ -6,7 +6,7 @@ export const initShowAdAction = () => globalWorker.actions.initShowAd();
 export const initShowModalAction = () => globalWorker.actions.initShowModal();
 
 export const showAdAction = (value: boolean) =>
-  globalWorker.actions.showAd(value);
+  globalWorker.actions.showAd({ isShowAdContainer: value });
 
 export const showModalAction = (value: ModalItem) =>
   globalWorker.actions.showModal({ modalItem: value });

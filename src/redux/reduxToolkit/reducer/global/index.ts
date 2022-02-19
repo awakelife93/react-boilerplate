@@ -17,11 +17,11 @@ const slice = createSlice({
     },
     showAd: (
       state: GlobalStoreType,
-      action: PayloadAction<boolean>
+      action: PayloadAction<{ isShowAdContainer: boolean }>
     ): GlobalStoreType => {
-      const { payload } = action;
+      const { isShowAdContainer } = action.payload;
 
-      state.isShowAdContainer = payload;
+      state.isShowAdContainer = isShowAdContainer;
 
       return state;
     },

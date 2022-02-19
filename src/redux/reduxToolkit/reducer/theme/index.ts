@@ -13,11 +13,11 @@ const slice = createSlice({
     },
     setTheme: (
       state: ThemeStoreType,
-      action: PayloadAction<boolean>
+      action: PayloadAction<{ useTheme: boolean }>
     ): ThemeStoreType => {
-      const { payload } = action;
+      const { useTheme } = action.payload;
 
-      state.useTheme = payload;
+      state.useTheme = useTheme;
 
       return state;
     },

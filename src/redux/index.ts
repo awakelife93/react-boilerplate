@@ -1,7 +1,11 @@
 import reduxLibStore from "./reduxLib";
 import reduxToolkitStore from "./reduxToolkit";
 
-const reduxSelector = {
+type ReduxSelectType = {
+  reduxLib: Function;
+  reduxToolkit: Function;
+};
+const reduxSelector: ReduxSelectType = {
   reduxLib: () => {
     return reduxLibStore();
   },
