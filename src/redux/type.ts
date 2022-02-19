@@ -2,6 +2,8 @@ import { ContentsType } from "../api/GetAPI/type";
 import { ModalItem } from "../common/components/Modal/type";
 import { ThemeItem } from "../common/type";
 
+export type UseReduxType = "reduxLib" | "reduxToolkit";
+
 export type ContentsStoreType = {
   contents: ContentsType[];
 };
