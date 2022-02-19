@@ -46,6 +46,7 @@ Bootstrap
 Material
 I18n
 Redux
+Redux ToolKit
 Redux Thunk
 ```
 
