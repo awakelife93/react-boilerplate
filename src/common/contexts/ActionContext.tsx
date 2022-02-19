@@ -1,26 +1,27 @@
 import React, { createContext } from "react";
 import { useDispatch } from "react-redux";
 import { ContentsType } from "../../api/GetAPI/type";
-import {
-  getContentsAction,
-  initContentsAction,
-  initShowAdAction,
-  initShowModalAction,
-  initThemeAction,
-  initUserInfoAction,
-  setThemeAction,
-  setThemeItemAction,
-  setUserInfoAction,
-  showAdAction,
-  showModalAction
-} from "../../redux/action";
-import { ReduxActionType, UserStoreType } from "../../redux/type";
+import { ReduxActionType, UseReduxType, UserStoreType } from "../../redux/type";
 import { ModalItem } from "../components/Modal/type";
 import { ThemeItem } from "../type";
 
 export const ActionContext = createContext<ReduxActionType | null>(null);
 
-const ActionProvider = ({ children } : { children: React.ReactElement }) => {
+const ActionProvider = ({ children, useRedux } : { children: React.ReactElement, useRedux: UseReduxType }) => {
+  const {
+    getContentsAction,
+    initContentsAction,
+    initShowAdAction,
+    initShowModalAction,
+    initThemeAction,
+    initUserInfoAction,
+    setThemeAction,
+    setThemeItemAction,
+    setUserInfoAction,
+    showAdAction,
+    showModalAction
+  } = require(`../../redux/${useRedux}/action`);
+  
   const dispatch = useDispatch();
 
   const _initContentsAction = () => {
