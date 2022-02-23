@@ -3,7 +3,7 @@ import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { UserInfoIE } from "../../api/interface";
-import { signUp } from "../../api/PutAPI";
+import { signUp } from "../../api/PostAPI";
 import { Button, Container, InputBox, Label } from "../../common/components";
 import useAction from "../../common/hooks/useAction";
 import useDesign from "../../common/hooks/useDesign";
