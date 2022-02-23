@@ -3,7 +3,7 @@ import { ChangeEvent, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Button, Container, InputBox, Label } from "../../";
-import { UserInfoIE } from "../../../../api/interface";
+import { IUserInfo } from "../../../../api/interface";
 import { updateUser } from "../../../../api/PatchAPI";
 import { I18nCommandEnum } from "../../../../core";
 import { ReduxStoreType } from "../../../../redux/type";
@@ -63,7 +63,7 @@ const UpdateUserInfo: React.FC<UpdateUserInfoType> = (
   const _updateUser = async () => {
     if (validationItem()) {
       try {
-        const userInfo: UserInfoIE = await updateUser({
+        const userInfo: IUserInfo = await updateUser({
           userId: user.info.userId,
           userNickname,
           userPw,

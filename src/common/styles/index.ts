@@ -2,10 +2,7 @@ import _ from "lodash";
 import { CSSProperties } from "styled-components";
 import { RoutePath } from "../../route/routes";
 import {
-  BodyContainerIE,
-  BottomContainerIE,
-  HeaderContainerIE,
-  LayoutContainerIE,
+  IBodyContainer, IBottomContainer, IHeaderContainer, ILayoutContainer
 } from "../components/Container";
 import { ComponentStyleType, ThemeItem } from "../type";
 import CommonColor from "./color";
@@ -128,7 +125,7 @@ const generateLayoutContainerStyle = ({
   pathname: string;
   useTheme: boolean;
 }) => {
-  const props = {} as LayoutContainerIE;
+  const props = {} as ILayoutContainer;
 
   if (_.isEmpty(themeItem)) {
     props["style"] = setMockUpStyleData({
@@ -163,7 +160,7 @@ const generateModalContainerStyle = ({
   themeItem: ThemeItem;
   useTheme: boolean;
 }) => {
-  let props = {} as LayoutContainerIE;
+  let props = {} as ILayoutContainer;
 
   if (_.isEmpty(themeItem)) {
     props["style"] = setMockUpStyleData({
@@ -194,7 +191,7 @@ const generateHeaderContainerStyle = ({
   pathname: string;
   useTheme: boolean;
 }) => {
-  let props = {} as HeaderContainerIE;
+  let props = {} as IHeaderContainer;
 
   if (_.isEmpty(themeItem)) {
     props["style"] = setMockUpStyleData({
@@ -231,7 +228,7 @@ const generateBodyContainerStyle = ({
   pathname: string;
   useTheme: boolean;
 }) => {
-  let props = {} as BodyContainerIE;
+  let props = {} as IBodyContainer;
 
   if (_.isEmpty(themeItem)) {
     props["style"] = setMockUpStyleData({
@@ -272,7 +269,7 @@ const generateBottomContainerStyle = ({
   pathname: string;
   useTheme: boolean;
 }) => {
-  let props = {} as BottomContainerIE;
+  let props = {} as IBottomContainer;
 
   if (_.isEmpty(themeItem)) {
     props["style"] = setMockUpStyleData({

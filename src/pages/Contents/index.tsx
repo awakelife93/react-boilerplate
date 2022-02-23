@@ -6,18 +6,18 @@ import { findContents } from "../../api/GetAPI";
 import { ContentsType } from "../../api/GetAPI/type";
 import useAction from "../../common/hooks/useAction";
 import useDesign from "../../common/hooks/useDesign";
-import { ComponentIE } from "../../common/interface";
+import { IComponent } from "../../common/interface";
 import { ReduxStoreType } from "../../redux/type";
 import { RoutePath } from "../../route/routes";
 import List from "./List";
 
 /**
  * @description Contents Component
- * @param {ComponentIE} props
+ * @param {IComponent} props
  * @returns {React.ReactElement}
  */
-const Contents: React.FC<ComponentIE> = (
-  props: ComponentIE
+const Contents: React.FC<IComponent> = (
+  props: IComponent
 ): React.ReactElement => {
   const { componentStyles } = useDesign();
   const { getContentsAction } = useAction();

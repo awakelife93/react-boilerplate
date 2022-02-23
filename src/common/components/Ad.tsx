@@ -8,16 +8,16 @@ import { I18nCommandEnum } from "../../core/i18n";
 import { ReduxStoreType } from "../../redux/type";
 import useAction from "../hooks/useAction";
 import useDesign from "../hooks/useDesign";
-import { ComponentIE } from "../interface";
+import { IComponent } from "../interface";
 import { CommonImage } from "../styles";
 
 /**
  * Ad
  * @description 미리 만들어둔 여분의 공간 컴포넌트
- * @param {ComponentIE} props
+ * @param {IComponent} props
  * @returns {React.ReactElement}
  */
-const Ad: React.FC<ComponentIE> = (props: ComponentIE): React.ReactElement => {
+const Ad: React.FC<IComponent> = (props: IComponent): React.ReactElement => {
   const { t } = useTranslation();
   const { componentStyles } = useDesign();
   const { initShowAdAction } = useAction();

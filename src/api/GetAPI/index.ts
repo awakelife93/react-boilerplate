@@ -1,5 +1,5 @@
 import { getAPI } from "..";
-import { UserInfoIE } from "../interface";
+import { IUserInfo } from "../interface";
 import { ContentsType } from "./type";
 
 export const findThemeItem = async () => {
@@ -26,7 +26,7 @@ export const findContents = async (
   }
 };
 
-export const findUserProfile = async (): Promise<UserInfoIE> => {
+export const findUserProfile = async (): Promise<IUserInfo> => {
   try {
     return await getAPI("findUserProfile");
   } catch (error: unknown) {

@@ -6,16 +6,16 @@ import { ReduxStoreType } from "../../redux/type";
 import { Container } from "../components";
 import AdLayout from "../components/Ad";
 import ModalLayout from "../components/Modal";
-import { LayoutIE } from "../interface";
+import { ILayout } from "../interface";
 import {
-  showBottomContainer,
-  showHeaderContainer
+    showBottomContainer,
+    showHeaderContainer
 } from "../styles";
 import BodyLayout from "./Body";
 import BottomLayout from "./Bottom";
 import HeaderLayout from "./Header";
 
-const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
+const Layout: React.FC<ILayout> = (props: ILayout): React.ReactElement => {
   const {
     reduxStore: {
       globalStore: { modalItem, isShowAdContainer },

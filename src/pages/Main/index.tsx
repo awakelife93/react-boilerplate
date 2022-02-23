@@ -1,15 +1,15 @@
 import { Container, Image } from "../../common/components";
-import { ComponentIE } from "../../common/interface";
+import { IComponent } from "../../common/interface";
 import { CommonImage } from "../../common/styles";
 import { ScrollFadeIn } from "../../core";
 
 /**
  * @description Main Component
- * @param {ComponentIE} props
+ * @param {IComponent} props
  * @returns {React.ReactElement}
  */
-const Main: React.FC<ComponentIE> = (
-  props: ComponentIE
+const Main: React.FC<IComponent> = (
+  props: IComponent
 ): React.ReactElement => {
   return (
     <Container.LayoutContainer>

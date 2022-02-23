@@ -1,7 +1,7 @@
 import _ from "lodash";
 import { patchAPI } from "..";
 import { UnknownObject } from "../../common/type";
-import { UserInfoIE } from "../interface";
+import { IUserInfo } from "../interface";
 
 export const updateUser = async ({
   userId,
@@ -11,7 +11,7 @@ export const updateUser = async ({
   userId: number;
   userNickname: string;
   userPw: string;
-}): Promise<UserInfoIE> => {
+}): Promise<IUserInfo> => {
   try {
     const item: UnknownObject = { userId };
 

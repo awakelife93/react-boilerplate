@@ -6,9 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { deleteUser } from "../../../api/DeleteAPI";
 import { signOut } from "../../../api/PostAPI";
 import {
-  getLocalStorageItem,
-  removeLocalStorageItem,
-  setLocalStorageItem
+    getLocalStorageItem,
+    removeLocalStorageItem,
+    setLocalStorageItem
 } from "../../../core";
 import { ReduxStoreType } from "../../../redux/type";
 import { RoutePath } from "../../../route/routes";
@@ -17,16 +17,16 @@ import Introduce from "../../components/Modal/component/Introduce";
 import UpdateUserInfo from "../../components/Modal/component/UpdateUserInfo";
 import useAction from "../../hooks/useAction";
 import useDesign from "../../hooks/useDesign";
-import { ComponentIE } from "../../interface";
+import { IComponent } from "../../interface";
 import { IconsMenu, SignMenu } from "./Menu";
 
 /**
  * @description Header Component
- * @param {ComponentIE} props
+ * @param {IComponent} props
  * @returns {React.ReactElement}
  */
-const Header: React.FC<ComponentIE> = (
-  props: ComponentIE
+const Header: React.FC<IComponent> = (
+  props: IComponent
 ): React.ReactElement => {
   const {
     reduxStore: {

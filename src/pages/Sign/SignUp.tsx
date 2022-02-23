@@ -2,12 +2,12 @@ import _ from "lodash";
 import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { UserInfoIE } from "../../api/interface";
+import { IUserInfo } from "../../api/interface";
 import { signUp } from "../../api/PostAPI";
 import { Button, Container, InputBox, Label } from "../../common/components";
 import useAction from "../../common/hooks/useAction";
 import useDesign from "../../common/hooks/useDesign";
-import { ComponentIE } from "../../common/interface";
+import { IComponent } from "../../common/interface";
 import { UnknownObject } from "../../common/type";
 import { I18nCommandEnum, setLocalStorageItem } from "../../core";
 import { RoutePath } from "../../route/routes";
@@ -15,11 +15,11 @@ import { validationObject } from "../../utils";
 
 /**
  * @description SignUp Component
- * @param {ComponentIE} props
+ * @param {IComponent} props
  * @returns {React.ReactElement}
  */
-const SignUp: React.FC<ComponentIE> = (
-  props: ComponentIE
+const SignUp: React.FC<IComponent> = (
+  props: IComponent
 ): React.ReactElement => {
   const { componentStyles } = useDesign();
   const { setUserInfoAction } = useAction();
@@ -72,7 +72,7 @@ const SignUp: React.FC<ComponentIE> = (
 
     if (validationItem(item)) {
       try {
-        const userInfo: UserInfoIE = await signUp(item);
+        const userInfo: IUserInfo = await signUp(item);
 
         if (_.isUndefined(userInfo)) {
           _showMessageModal(

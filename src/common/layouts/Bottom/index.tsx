@@ -1,15 +1,15 @@
 import React from "react";
 import { Container, Label } from "../../components";
 import useDesign from "../../hooks/useDesign";
-import { ComponentIE } from "../../interface";
+import { IComponent } from "../../interface";
 
 /**
  * @description Bottom Component
- * @param {ComponentIE} props
+ * @param {IComponent} props
  * @returns {React.ReactElement}
  */
-const Bottom: React.FC<ComponentIE> = (
-  props: ComponentIE
+const Bottom: React.FC<IComponent> = (
+  props: IComponent
 ): React.ReactElement => {
   const { bottomStyles, componentStyles } = useDesign();
 
