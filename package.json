@@ -54,9 +54,9 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -78,6 +78,7 @@
     ]
   },
   "devDependencies": {
+    "@craco/craco": "^6.4.3",
     "@types/jest": "^26.0.23",
     "@types/lodash": "^4.14.170",
     "@types/node": "^15.12.2",
@@ -87,6 +88,9 @@
     "@types/react-router-dom": "^5.1.7",
     "@types/react-virtualized": "^9.21.11",
     "@types/styled-components": "^5.1.10",
+    "craco-alias": "^3.0.1",
+    "install": "^0.13.0",
+    "npm": "^8.5.2",
     "prettier": "^2.2.1"
   }
 }
