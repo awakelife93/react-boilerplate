@@ -1,4 +1,4 @@
-import { ThemeItem } from "../../../../common/type";
+import { ThemeItem } from "@/common/type";
 import themeWorker from "../../reducer/theme";
 
 export const initThemeAction = () => themeWorker.actions.initTheme();

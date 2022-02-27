@@ -1,6 +1,6 @@
+import { ThemeItem } from "@/common/type";
+import { ThemeStoreType } from "@/redux/type";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ThemeItem } from "../../../../common/type";
-import { ThemeStoreType } from "../../../type";
 import { initThemeState } from "./default";
 
 const slice = createSlice({

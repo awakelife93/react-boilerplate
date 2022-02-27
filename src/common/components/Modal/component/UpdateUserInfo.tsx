@@ -1,16 +1,16 @@
+import { IUserInfo } from "@/api/interface";
+import { updateUser } from "@/api/PatchAPI";
+import useAction from "@/common/hooks/useAction";
+import useDesign from "@/common/hooks/useDesign";
+import { CommonColor } from "@/common/styles";
+import { UnknownObject } from "@/common/type";
+import { I18nCommandEnum } from "@/core";
+import { ReduxStoreType } from "@/redux/type";
 import _ from "lodash";
 import { ChangeEvent, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Button, Container, InputBox, Label } from "../../";
-import { IUserInfo } from "../../../../api/interface";
-import { updateUser } from "../../../../api/PatchAPI";
-import { I18nCommandEnum } from "../../../../core";
-import { ReduxStoreType } from "../../../../redux/type";
-import useAction from "../../../hooks/useAction";
-import useDesign from "../../../hooks/useDesign";
-import { CommonColor } from "../../../styles";
-import { UnknownObject } from "../../../type";
 
 type UpdateUserInfoType = {
   childrenProps: UnknownObject;

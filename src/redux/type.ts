@@ -1,6 +1,6 @@
-import { ContentsType } from "../api/GetAPI/type";
-import { ModalItem } from "../common/components/Modal/type";
-import { ThemeItem } from "../common/type";
+import { ContentsType } from "@/api/GetAPI/type";
+import { ModalItem } from "@/common/components/Modal/type";
+import { ThemeItem } from "@/common/type";
 
 export type UseReduxType = "reduxLib" | "reduxToolkit";
 

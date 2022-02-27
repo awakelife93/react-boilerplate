@@ -1,5 +1,5 @@
+import { ActionEnum, UserStoreType } from "@/redux/type";
 import { initUserState } from "../../reducer/user/default";
-import { ActionEnum, UserStoreType } from "../../../type";
 
 export const initUserInfoAction = () => ({
   type: ActionEnum.SET_USER_INFO,

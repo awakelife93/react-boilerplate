@@ -1,4 +1,4 @@
-import { ModalItem } from "../../../../common/components/Modal/type";
+import { ModalItem } from "@/common/components/Modal/type";
 import globalWorker from "../../reducer/global";
 
 export const initShowAdAction = () => globalWorker.actions.initShowAd();
