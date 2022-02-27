@@ -1,8 +1,8 @@
+import "@/core/i18n";
 import { ReduxStoreType } from "@/redux/type";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Outlet, useLocation } from "react-router-dom";
-import "../../core/i18n";
 import { Container } from "../components";
 import AdLayout from "../components/Ad";
 import ModalLayout from "../components/Modal";
