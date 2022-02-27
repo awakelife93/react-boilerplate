@@ -2,7 +2,10 @@ import _ from "lodash";
 import { CSSProperties } from "styled-components";
 import { RoutePath } from "../../route/routes";
 import {
-  IBodyContainer, IBottomContainer, IHeaderContainer, ILayoutContainer
+  IBodyContainer,
+  IBottomContainer,
+  IHeaderContainer,
+  ILayoutContainer,
 } from "../components/Container";
 import { ComponentStyleType, ThemeItem } from "../type";
 import CommonColor from "./color";
