@@ -1,10 +1,10 @@
+import { ContentsType } from "@/api/GetAPI/type";
+import { ScrollPaging } from "@/common/components";
+import CommonImageResources from "@/common/styles/image";
 import _ from "lodash";
 import React from "react";
 import { Card, CardColumns } from "react-bootstrap";
 import { CSSProperties } from "styled-components";
-import { ContentsType } from "../../api/GetAPI/type";
-import { ScrollPaging } from "../../common/components";
-import { CommonImage } from "../../common/styles";
 
 const gridItem = (
   item: ContentsType,
@@ -12,7 +12,7 @@ const gridItem = (
   style: CSSProperties,
   goDetail: Function
 ): React.ReactElement => {
-  const imageUrl: string = item.contImageLink ?? CommonImage.FREE_IMAGE1;
+  const imageUrl: string = item.contImageLink ?? CommonImageResources.FREE_IMAGE1;
 
   return (
     <Card

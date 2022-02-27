@@ -1,7 +1,7 @@
+import { Container, Label } from "@/common/components";
+import useDesign from "@/common/hooks/useDesign";
+import { IComponent } from "@/common/interface";
 import React from "react";
-import { Container, Label } from "../../components";
-import useDesign from "../../hooks/useDesign";
-import { IComponent } from "../../interface";
 
 /**
  * @description Bottom Component

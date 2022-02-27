@@ -1,11 +1,11 @@
+import { Button, Container, Icon, MenuBox } from "@/common/components";
+import useDesign from "@/common/hooks/useDesign";
+import { I18nCommandEnum } from "@/core";
+import { ReduxStoreType } from "@/redux/type";
+import { RoutePath } from "@/route/routes";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { I18nCommandEnum } from "../../../../core/i18n";
-import { ReduxStoreType } from "../../../../redux/type";
-import { RoutePath } from "../../../../route/routes";
-import { Button, Container, Icon, MenuBox } from "../../../components";
-import useDesign from "../../../hooks/useDesign";
 
 type IconMenuType = {
   _themeMode: Function;

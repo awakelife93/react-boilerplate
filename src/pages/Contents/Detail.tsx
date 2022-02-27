@@ -1,9 +1,9 @@
+import { ContentsType } from "@/api/GetAPI/type";
+import { Container, Image, Label } from "@/common/components";
+import useDesign from "@/common/hooks/useDesign";
+import { IComponent } from "@/common/interface";
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { ContentsType } from "../../api/GetAPI/type";
-import { Container, Image, Label } from "../../common/components";
-import useDesign from "../../common/hooks/useDesign";
-import { IComponent } from "../../common/interface";
 
 const Detail: React.FC<IComponent> = (
   props: IComponent

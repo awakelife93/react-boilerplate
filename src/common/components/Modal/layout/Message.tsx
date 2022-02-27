@@ -1,5 +1,5 @@
+import useDesign from "@/common/hooks/useDesign";
 import { Container, Label } from "../..";
-import useDesign from "../../../hooks/useDesign";
 
 type MessageLayoutType = {
   message: string;

@@ -1,17 +1,17 @@
+import { IUserInfo } from "@/api/interface";
+import { signUp } from "@/api/PostAPI";
+import { Button, Container, InputBox, Label } from "@/common/components";
+import useAction from "@/common/hooks/useAction";
+import useDesign from "@/common/hooks/useDesign";
+import { IComponent } from "@/common/interface";
+import { UnknownObject } from "@/common/type";
+import { I18nCommandEnum, setLocalStorageItem } from "@/core";
+import { RoutePath } from "@/route/routes";
+import { validationObject } from "@/utils";
 import _ from "lodash";
 import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { IUserInfo } from "../../api/interface";
-import { signUp } from "../../api/PostAPI";
-import { Button, Container, InputBox, Label } from "../../common/components";
-import useAction from "../../common/hooks/useAction";
-import useDesign from "../../common/hooks/useDesign";
-import { IComponent } from "../../common/interface";
-import { UnknownObject } from "../../common/type";
-import { I18nCommandEnum, setLocalStorageItem } from "../../core";
-import { RoutePath } from "../../route/routes";
-import { validationObject } from "../../utils";
 
 /**
  * @description SignUp Component

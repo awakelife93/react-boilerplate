@@ -1,23 +1,19 @@
+import { deleteUser } from "@/api/DeleteAPI";
+import { signOut } from "@/api/PostAPI";
+import { Container } from "@/common/components";
+import Introduce from "@/common/components/Modal/component/Introduce";
+import UpdateUserInfo from "@/common/components/Modal/component/UpdateUserInfo";
+import useAction from "@/common/hooks/useAction";
+import useDesign from "@/common/hooks/useDesign";
+import { IComponent } from "@/common/interface";
+import { getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem } from "@/core";
+import { ReduxStoreType } from "@/redux/type";
+import { RoutePath } from "@/route/routes";
 import _ from "lodash";
 import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { deleteUser } from "../../../api/DeleteAPI";
-import { signOut } from "../../../api/PostAPI";
-import {
-    getLocalStorageItem,
-    removeLocalStorageItem,
-    setLocalStorageItem
-} from "../../../core";
-import { ReduxStoreType } from "../../../redux/type";
-import { RoutePath } from "../../../route/routes";
-import { Container } from "../../components";
-import Introduce from "../../components/Modal/component/Introduce";
-import UpdateUserInfo from "../../components/Modal/component/UpdateUserInfo";
-import useAction from "../../hooks/useAction";
-import useDesign from "../../hooks/useDesign";
-import { IComponent } from "../../interface";
 import { IconsMenu, SignMenu } from "./Menu";
 
 /**

@@ -1,6 +1,6 @@
+import { UnknownObject } from "@/common/type";
 import _ from "lodash";
 import { patchAPI } from "..";
-import { UnknownObject } from "../../common/type";
 import { IUserInfo } from "../interface";
 
 export const updateUser = async ({

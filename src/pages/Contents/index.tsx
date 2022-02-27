@@ -1,14 +1,14 @@
+import { findContents } from "@/api/GetAPI";
+import { ContentsType } from "@/api/GetAPI/type";
+import useAction from "@/common/hooks/useAction";
+import useDesign from "@/common/hooks/useDesign";
+import { IComponent } from "@/common/interface";
+import { ReduxStoreType } from "@/redux/type";
+import { RoutePath } from "@/route/routes";
 import _ from "lodash";
 import { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { findContents } from "../../api/GetAPI";
-import { ContentsType } from "../../api/GetAPI/type";
-import useAction from "../../common/hooks/useAction";
-import useDesign from "../../common/hooks/useDesign";
-import { IComponent } from "../../common/interface";
-import { ReduxStoreType } from "../../redux/type";
-import { RoutePath } from "../../route/routes";
 import List from "./List";
 
 /**

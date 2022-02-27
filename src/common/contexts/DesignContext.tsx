@@ -1,8 +1,8 @@
+import { ReduxStoreType } from "@/redux/type";
 import React, { createContext, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { CSSProperties } from "styled-components";
-import { ReduxStoreType } from "../../redux/type";
 import {
   generateBodyContainerStyle,
   generateBottomContainerStyle,

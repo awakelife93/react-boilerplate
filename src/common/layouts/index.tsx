@@ -1,15 +1,15 @@
+import { ReduxStoreType } from "@/redux/type";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Outlet, useLocation } from "react-router-dom";
 import "../../core/i18n";
-import { ReduxStoreType } from "../../redux/type";
 import { Container } from "../components";
 import AdLayout from "../components/Ad";
 import ModalLayout from "../components/Modal";
 import { ILayout } from "../interface";
 import {
-    showBottomContainer,
-    showHeaderContainer
+  showBottomContainer,
+  showHeaderContainer
 } from "../styles";
 import BodyLayout from "./Body";
 import BottomLayout from "./Bottom";

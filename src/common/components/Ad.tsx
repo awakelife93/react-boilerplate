@@ -1,15 +1,14 @@
+import { I18nCommandEnum, TopDownMove } from "@/core";
+import { ReduxStoreType } from "@/redux/type";
 import _ from "lodash";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Container, Icon, Image, Label } from ".";
-import { TopDownMove } from "../../core";
-import { I18nCommandEnum } from "../../core/i18n";
-import { ReduxStoreType } from "../../redux/type";
 import useAction from "../hooks/useAction";
 import useDesign from "../hooks/useDesign";
 import { IComponent } from "../interface";
-import { CommonImage } from "../styles";
+import CommonImageResources from "../styles/image";
 
 /**
  * Ad
@@ -40,8 +39,8 @@ const Ad: React.FC<IComponent> = (props: IComponent): React.ReactElement => {
     <Image.BackGroundImage
       requireStyle={{
         backgroundImage: useTheme
-          ? `url(${CommonImage.FREE_IMAGE2})`
-          : `url(${CommonImage.FREE_IMAGE3})`,
+          ? `url(${CommonImageResources.FREE_IMAGE2})`
+          : `url(${CommonImageResources.FREE_IMAGE3})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}

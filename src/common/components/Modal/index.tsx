@@ -1,9 +1,9 @@
+import useAction from "@/common/hooks/useAction";
+import useDesign from "@/common/hooks/useDesign";
+import { removeBodyScroll, revertBodyScroll } from "@/utils";
 import _ from "lodash";
 import { useEffect } from "react";
-import { removeBodyScroll, revertBodyScroll } from "../../../utils";
-import { Container, Icon } from "../../components";
-import useAction from "../../hooks/useAction";
-import useDesign from "../../hooks/useDesign";
+import { Container, Icon } from "..";
 import MessageLayout from "./layout/Message";
 import { ModalType, ShowModalActionType } from "./type";
 

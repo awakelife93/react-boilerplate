@@ -1,7 +1,7 @@
-import { Container, Image } from "../../common/components";
-import { IComponent } from "../../common/interface";
-import { CommonImage } from "../../common/styles";
-import { ScrollFadeIn } from "../../core";
+import { Container, Image } from "@/common/components";
+import { IComponent } from "@/common/interface";
+import CommonImageResources from "@/common/styles/image";
+import { ScrollFadeIn } from "@/core";
 
 /**
  * @description Main Component
@@ -13,9 +13,9 @@ const Main: React.FC<IComponent> = (
 ): React.ReactElement => {
   return (
     <Container.LayoutContainer>
-      <Image.CommonImage src={CommonImage.FREE_IMAGE1} alt={'Sample Banner Image 1'} />
-      <Image.CommonImage src={CommonImage.FREE_IMAGE1} {...ScrollFadeIn()} alt={'Sample Banner Image 2'} />
-      <Image.CommonImage src={CommonImage.FREE_IMAGE1} {...ScrollFadeIn()} alt={'Sample Banner Image 3'} />
+      <Image.CommonImage src={CommonImageResources.FREE_IMAGE1} alt={'Sample Banner Image 1'} />
+      <Image.CommonImage src={CommonImageResources.FREE_IMAGE1} {...ScrollFadeIn()} alt={'Sample Banner Image 2'} />
+      <Image.CommonImage src={CommonImageResources.FREE_IMAGE1} {...ScrollFadeIn()} alt={'Sample Banner Image 3'} />
     </Container.LayoutContainer>
   );
 };
