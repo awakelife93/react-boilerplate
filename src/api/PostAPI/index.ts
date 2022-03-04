@@ -2,14 +2,14 @@ import { postAPI } from "..";
 import { IUserInfo } from "../interface";
 
 export const signIn = async ({
-  userEmail,
-  userPw,
+  email,
+  password,
 }: {
-  userEmail: string;
-  userPw: string;
+  email: string;
+  password: string;
 }): Promise<IUserInfo> => {
   try {
-    return await postAPI("signInUser", { userEmail, userPw });
+    return await postAPI("signInUser", { email, password });
   } catch (error: unknown) {
     console.log("===============> signIn Error", error);
     throw error;
@@ -26,19 +26,19 @@ export const signOut = async (): Promise<object> => {
 };
 
 export const signUp = async ({
-  userEmail,
-  userNickname,
-  userPw,
+  email,
+  name,
+  password,
 }: {
-  userEmail: string;
-  userNickname: string;
-  userPw: string;
+  email: string;
+  name: string;
+  password: string;
 }): Promise<IUserInfo> => {
   try {
     return await postAPI("signUp", {
-      userEmail,
-      userNickname,
-      userPw,
+      email,
+      name,
+      password,
     });
   } catch (error: unknown) {
     console.log("===============> signUp Error", error);

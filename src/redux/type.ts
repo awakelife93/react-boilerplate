@@ -23,8 +23,8 @@ export type UserStoreType = {
     isLogin: boolean;
     info: {
       userId: number;
-      userEmail: string;
-      userNickname: string;
+      email: string;
+      name: string;
     };
   };
 };

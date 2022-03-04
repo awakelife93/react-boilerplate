@@ -5,19 +5,19 @@ import { IUserInfo } from "../interface";
 
 export const updateUser = async ({
   userId,
-  userNickname,
-  userPw,
+  name,
+  password,
 }: {
   userId: number;
-  userNickname: string;
-  userPw: string;
+  name: string;
+  password: string;
 }): Promise<IUserInfo> => {
   try {
     const item: UnknownObject = { userId };
 
-    if (!_.isEmpty(userNickname)) item.userNickname = userNickname;
+    if (!_.isEmpty(name)) item.name = name;
 
-    if (!_.isEmpty(userPw)) item.userPw = userPw;
+    if (!_.isEmpty(password)) item.password = password;
 
     return await patchAPI("updateUser", { ...item });
   } catch (error: unknown) {

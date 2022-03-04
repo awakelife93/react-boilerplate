@@ -26,8 +26,8 @@ const SignIn: React.FC<IComponent> = (
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const [userEmail, setEmail] = useState("");
-  const [userPw, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
     window.addEventListener("keypress", checkKeyPress);
@@ -60,11 +60,11 @@ const SignIn: React.FC<IComponent> = (
   );
 
   const _signIn = useCallback(async (): Promise<void | boolean> => {
-    const item = { userEmail, userPw };
+    const item = { email, password };
 
     if (validationItem(item)) {
       try {
-        const userInfo: IUserInfo = await signIn({ userEmail, userPw });
+        const userInfo: IUserInfo = await signIn({ email, password });
 
         if (_.isUndefined(userInfo)) {
           _showMessageModal("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
@@ -76,8 +76,8 @@ const SignIn: React.FC<IComponent> = (
               isLogin: true,
               info: {
                 userId: userInfo.userId,
-                userEmail: userInfo.userEmail,
-                userNickname: userInfo.userNickname,
+                email: userInfo.email,
+                name: userInfo.name,
               },
             }
           });
@@ -101,7 +101,7 @@ const SignIn: React.FC<IComponent> = (
       }
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userEmail, userPw]);
+  }, [email, password]);
 
   const checkKeyPress = useCallback(
     (e: KeyboardEvent): void => {

@@ -1,4 +1,4 @@
-import { UnknownObject } from "@/common/type";
+export type UserRoleType = "user" | "admin";
 
 /**
  * 공통 인터페이스만 작성
@@ -6,7 +6,7 @@ import { UnknownObject } from "@/common/type";
 export interface IUserInfo {
   userId: number;
   token: string;
-  userEmail: string;
-  userNickname: string;
-  userRoles: UnknownObject[];
+  email: string;
+  name: string;
+  role: UserRoleType;
 }

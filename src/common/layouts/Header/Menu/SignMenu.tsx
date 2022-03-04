@@ -33,7 +33,7 @@ const SignMenu: React.FC<SignMenuType> = (
         user: {
           isLogin,
           info: {
-            userNickname
+            name
           }
         }
       }
@@ -75,7 +75,7 @@ const SignMenu: React.FC<SignMenuType> = (
                   cursor: "pointer",
                 }}
               >
-                {userNickname}
+                {name}
               </Label.CommonLabel>
             }
             menuContainerStyle={{

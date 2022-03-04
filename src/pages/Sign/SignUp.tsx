@@ -26,9 +26,9 @@ const SignUp: React.FC<IComponent> = (
   const { t } = useTranslation();
 
   // Input
-  const [userEmail, setEmail] = useState("");
-  const [userNickname, setNickname] = useState("");
-  const [userPw, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [name, setNickname] = useState("");
+  const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   useEffect(() => {
@@ -55,7 +55,7 @@ const SignUp: React.FC<IComponent> = (
         return false;
       }
 
-      if (confirmPassword !== userPw) {
+      if (confirmPassword !== password) {
         _showMessageModal("패스워드를 확인해주시기 바랍니다.");
         return false;
       }
@@ -63,12 +63,12 @@ const SignUp: React.FC<IComponent> = (
       return true;
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [userPw, confirmPassword]
+    [password, confirmPassword]
   );
 
   const navigate = useNavigate();
   const _signUp = useCallback(async (): Promise<void | boolean> => {
-    const item = { userEmail, userNickname, userPw, confirmPassword };
+    const item = { email, name, password, confirmPassword };
 
     if (validationItem(item)) {
       try {
@@ -86,8 +86,8 @@ const SignUp: React.FC<IComponent> = (
               isLogin: true,
               info: {
                 userId: userInfo.userId,
-                userEmail: userInfo.userEmail,
-                userNickname: userInfo.userNickname,
+                email: userInfo.email,
+                name: userInfo.name,
               },
             }
           });
@@ -106,9 +106,9 @@ const SignUp: React.FC<IComponent> = (
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
-    userEmail,
-    userNickname,
-    userPw,
+    email,
+    name,
+    password,
   ]);
 
   const checkKeyPress = useCallback(
