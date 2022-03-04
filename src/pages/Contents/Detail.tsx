@@ -15,7 +15,7 @@ const Detail: React.FC<IComponent> = (
   return (
     <Container.LayoutContainer>
       <Image.CommonImage
-        src={state.contImageLink}
+        src={state.imageLink}
         style={{ height: 400, marginBottom: 20 }}
       />
       <Container.LayoutContainer style={{ padding: 20 }}>
@@ -27,7 +27,7 @@ const Detail: React.FC<IComponent> = (
               fontSize: 30,
             }}
           >
-            {state.contTitle}
+            {state.title}
           </Label.CommonLabel>
           <Label.CommonLabel
             style={{
@@ -35,7 +35,7 @@ const Detail: React.FC<IComponent> = (
               fontSize: 20,
             }}
           >
-            {state.contSubTitle}
+            {state.subTitle}
           </Label.CommonLabel>
           <Label.CommonLabel
             style={{
@@ -43,7 +43,7 @@ const Detail: React.FC<IComponent> = (
               fontSize: 15,
             }}
           >
-            {state.contDesc}
+            {state.description}
           </Label.CommonLabel>
         </Container.ColumnContainer>
       </Container.LayoutContainer>

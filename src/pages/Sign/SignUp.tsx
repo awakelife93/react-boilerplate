@@ -27,7 +27,7 @@ const SignUp: React.FC<IComponent> = (
 
   // Input
   const [email, setEmail] = useState("");
-  const [name, setNickname] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -149,7 +149,7 @@ const SignUp: React.FC<IComponent> = (
           }}
         >
           <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
-            {t(I18nCommandEnum.NICKNAME)}
+            {t(I18nCommandEnum.NAME)}
           </Label.CommonLabel>
         </Container.RowContainer>
         <InputBox.CommonInputBox
@@ -157,8 +157,8 @@ const SignUp: React.FC<IComponent> = (
             padding: 5,
             marginBottom: 15,
           }}
-          placeholder={t(I18nCommandEnum.NICKNAME)}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setNickname(e.target.value)}
+          placeholder={t(I18nCommandEnum.NAME)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
         />
         {/**********************************************************/}
         <Container.RowContainer

@@ -12,7 +12,7 @@ const gridItem = (
   style: CSSProperties,
   goDetail: Function
 ): React.ReactElement => {
-  const imageUrl: string = item.contImageLink ?? CommonImageResources.FREE_IMAGE1;
+  const imageUrl: string = item.imageLink ?? CommonImageResources.FREE_IMAGE1;
 
   return (
     <Card
@@ -22,11 +22,11 @@ const gridItem = (
     >
       <Card.Img variant="top" src={imageUrl} alt={`Thumbnail Image ${index}`} />
       <Card.Body style={{ backgroundColor: style.backgroundColor }}>
-        <Card.Title style={{ color: style.color }}>{item.contTitle}</Card.Title>
+        <Card.Title style={{ color: style.color }}>{item.title}</Card.Title>
         <Card.Subtitle style={{ color: style.color }}>
-          {item.contSubTitle}
+          {item.subTitle}
         </Card.Subtitle>
-        <Card.Text style={{ color: style.color }}>{item.contDesc}</Card.Text>
+        <Card.Text style={{ color: style.color }}>{item.description}</Card.Text>
       </Card.Body>
     </Card>
   );

@@ -4,7 +4,7 @@ interface Window {
   globalEntity: {
     [index: string];
     email: string;
-    nickname: string;
+    name: string;
   };
   globalFunc: {
     initUserInfoAction: Function;

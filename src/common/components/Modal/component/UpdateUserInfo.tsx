@@ -32,11 +32,11 @@ const UpdateUserInfo: React.FC<UpdateUserInfoType> = (
     }
   } = useSelector((state: ReduxStoreType) => state);
 
-  const [nicknameError, setNMErrorItems] = useState("");
+  const [nameError, setNMErrorItems] = useState("");
   const [passwordError, setPWErrorItems] = useState("");
   const [confirmPasswordError, setConfirmPWErrorItems] = useState("");
 
-  const [name, setNickname] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -96,7 +96,7 @@ const UpdateUserInfo: React.FC<UpdateUserInfoType> = (
         }}
       >
         <Label.CommonLabel style={{ ...componentStyles.COMMON_LABEL }}>
-          {t(I18nCommandEnum.NICKNAME)}
+          {t(I18nCommandEnum.NAME)}
         </Label.CommonLabel>
       </Container.RowContainer>
       <InputBox.CommonInputBox
@@ -104,9 +104,9 @@ const UpdateUserInfo: React.FC<UpdateUserInfoType> = (
           padding: 5,
           marginBottom: 15,
         }}
-        placeholder={t(I18nCommandEnum.NICKNAME)}
+        placeholder={t(I18nCommandEnum.NAME)}
         onClick={() => setNMErrorItems("")}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => setNickname(e.target.value)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
       />
       <Container.RowContainer
         style={{
@@ -114,7 +114,7 @@ const UpdateUserInfo: React.FC<UpdateUserInfoType> = (
         }}
       >
         <Label.CommonLabel style={{ color: CommonColor.RED, fontSize: 12 }}>
-          {nicknameError}
+          {nameError}
         </Label.CommonLabel>
       </Container.RowContainer>
       {/**********************************************************/}

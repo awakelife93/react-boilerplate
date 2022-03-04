@@ -1,7 +1,7 @@
 export type ContentsType = {
-  contId: number;
-  contImageLink: string;
-  contTitle: string;
-  contSubTitle: string;
-  contDesc: string;
+  contentId: number;
+  imageLink: string;
+  title: string;
+  subTitle: string;
+  description: string;
 };

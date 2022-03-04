@@ -21,7 +21,7 @@ export enum I18nCommandEnum {
   AD_CONTENT2 = "ad_content2",
 
   EMAIL = "email",
-  NICKNAME = "nickname",
+  NAME = "name",
   PASSWORD = "password",
   CONFIRM_PASSWORD = "confirm_password",
 

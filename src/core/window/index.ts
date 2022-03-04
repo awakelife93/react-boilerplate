@@ -43,7 +43,7 @@ export const initWindowFunc = ({
 export const initWindowObject = (): void => {
   window.globalEntity = {
     email: "",
-    nickname: "",
+    name: "",
   };
 };
 
