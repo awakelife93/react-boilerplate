@@ -37,7 +37,7 @@ const SignUp: React.FC<IComponent> = (
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const _showMessageModal = useCallback((message: string): void => {
+  const showMessageModal = useCallback((message: string): void => {
     if (_.isFunction(window.globalFunc.showModalAction)) {
       window.globalFunc.showModalAction({
         type: "MESSAGE",
@@ -51,12 +51,12 @@ const SignUp: React.FC<IComponent> = (
   const validationItem = useCallback(
     (item: UnknownObject): boolean => {
       if (!validationObject(item)) {
-        _showMessageModal("회원가입 정보를 다시 한번 확인 해주시기 바랍니다.");
+        showMessageModal("회원가입 정보를 다시 한번 확인 해주시기 바랍니다.");
         return false;
       }
 
       if (confirmPassword !== password) {
-        _showMessageModal("패스워드를 확인해주시기 바랍니다.");
+        showMessageModal("패스워드를 확인해주시기 바랍니다.");
         return false;
       }
 
@@ -75,7 +75,7 @@ const SignUp: React.FC<IComponent> = (
         const userInfo: IUserInfo = await signUp(item);
 
         if (_.isUndefined(userInfo)) {
-          _showMessageModal(
+          showMessageModal(
             "회원가입 정보를 다시 한번 확인 해주시기 바랍니다."
           );
           return false;
@@ -96,7 +96,7 @@ const SignUp: React.FC<IComponent> = (
       } catch (error: any) {
         switch (error.status) {
           case 409: {
-            _showMessageModal(
+            showMessageModal(
               "중복된 이메일이 있습니다. 다른 이메일을 사용해주시기 바랍니다."
             );
             return false;
