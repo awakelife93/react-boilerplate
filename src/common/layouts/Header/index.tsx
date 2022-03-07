@@ -35,8 +35,8 @@ const Header: React.FC<IComponent> = (
 
   const navigate = useNavigate();
   const routePush = useCallback(
-    (route: string) => {
-      navigate(route);
+    (routePath: RoutePath) => {
+      navigate(routePath);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
