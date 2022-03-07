@@ -10,7 +10,7 @@ const reduxSelector: ReduxSelectType = {
     return reduxLibStore();
   },
   reduxToolkit: () => {
-    return reduxToolkitStore;
+    return reduxToolkitStore();
   },
 };
 
