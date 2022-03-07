@@ -16,6 +16,6 @@ const store = (initialState: UnknownObject = {}) => {
 });
 
   return _store;
-}
+};
 
 export default store;
