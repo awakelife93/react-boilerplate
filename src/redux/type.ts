@@ -40,18 +40,18 @@ export type ReduxStoreType = {
   reduxStore: StateType;
 };
 
-export type ReduxActionType = {
-  initContentsAction: Function;
-  getContentsAction: Function;
-  initThemeAction: Function;
-  setThemeAction: Function;
-  setThemeItemAction: Function;
-  initShowAdAction: Function;
-  showAdAction: Function;
-  initShowModalAction: Function;
-  showModalAction: Function;
-  setUserInfoAction: Function;
-  initUserInfoAction: Function;
+export type ReduxProviderActionType = {
+  initContentsAction: VoidFunction;
+  getContentsAction: (value: ContentsType[]) => void;
+  initThemeAction: VoidFunction;
+  setThemeAction: (value: boolean) => void;
+  setThemeItemAction: (value: ThemeItem) => void;
+  initShowAdAction: VoidFunction
+  showAdAction: (value: boolean) => void;
+  initShowModalAction: VoidFunction;
+  showModalAction: (value: ModalItem) => void;
+  setUserInfoAction: (value: UserStoreType) => void;
+  initUserInfoAction: VoidFunction;
 };
 
 /**
