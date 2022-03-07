@@ -8,12 +8,13 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
 type IconMenuType = {
-  _themeMode: Function;
-  _routePush: Function;
-  _setLanguage: Function;
-  _showAdContainer: Function;
-  _showTemplateModal: Function;
+  themeMode: VoidFunction;
+  routePush: (routePath: RoutePath) => void;
+  setLanguage: (lng: string) => void;
+  showAdContainer: VoidFunction;
+  showTemplateModal: VoidFunction;
 };
+
 /**
  * @description Header Icons Component
  * @param {IconMenuType} props
@@ -24,11 +25,11 @@ const IconMenu: React.FC<IconMenuType> = (
 ): React.ReactElement => {
   const { t } = useTranslation();
   const {
-    _routePush,
-    _themeMode,
-    _showAdContainer,
-    _setLanguage,
-    _showTemplateModal,
+    routePush,
+    themeMode,
+    showAdContainer,
+    setLanguage,
+    showTemplateModal,
   } = props;
   const {
     reduxStore: {
@@ -50,19 +51,19 @@ const IconMenu: React.FC<IconMenuType> = (
           ...componentStyles.TEXT_BUTTON,
           fontSize: 35,
         }}
-        onClick={() => _routePush("/")}
+        onClick={() => routePush(RoutePath.MAIN)}
       >
         React Project
       </Button.TextButton>
       <Icon.FaList
         style={{ ...componentStyles.ICON, marginLeft: 20, cursor: "pointer" }}
         size={20}
-        onClick={() => _routePush(RoutePath.CONTENTS)}
+        onClick={() => routePush(RoutePath.CONTENTS)}
       />
       <Icon.IoIosFlashlight
         style={{ ...componentStyles.ICON, marginLeft: 20, cursor: "pointer" }}
         size={20}
-        onClick={() => _themeMode()}
+        onClick={() => themeMode()}
       />
       {isShowAdContainer ? (
         <Icon.FaAngleUp
@@ -72,7 +73,7 @@ const IconMenu: React.FC<IconMenuType> = (
             cursor: "pointer",
           }}
           size={20}
-          onClick={() => _showAdContainer()}
+          onClick={() => showAdContainer()}
         />
       ) : (
         <Icon.FaAngleDown
@@ -82,7 +83,7 @@ const IconMenu: React.FC<IconMenuType> = (
             cursor: "pointer",
           }}
           size={20}
-          onClick={() => _showAdContainer()}
+          onClick={() => showAdContainer()}
         />
       )}
       <MenuBox
@@ -124,12 +125,12 @@ const IconMenu: React.FC<IconMenuType> = (
             value: "en",
           },
         ]}
-        onClick={(lng: string) => _setLanguage(lng)}
+        onClick={(lng: string) => setLanguage(lng)}
       />
       <Icon.FaThList
         style={{ ...componentStyles.ICON, marginLeft: 20, cursor: "pointer" }}
         size={20}
-        onClick={() => _showTemplateModal()}
+        onClick={() => showTemplateModal()}
       />
     </Container.RowContainer>
   );
