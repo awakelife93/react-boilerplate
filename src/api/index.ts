@@ -178,5 +178,5 @@ export const patchAPI = async (
 
 export const generateAPIData = async (response: AxiosResponse) => {
   // 확장할 것이 있으면 여기에 작성
-  return response.data;
+  return response.data.item;
 };
