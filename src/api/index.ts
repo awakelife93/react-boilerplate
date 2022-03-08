@@ -2,7 +2,7 @@ import { UnknownObject } from "@/common/type";
 import {
   getLocalStorageItem,
   removeLocalStorageItem,
-  setLocalStorageItem
+  setLocalStorageItem,
 } from "@/core";
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import _ from "lodash";
@@ -177,6 +177,5 @@ export const patchAPI = async (
 };
 
 export const generateAPIData = async (response: AxiosResponse) => {
-  // 확장할 것이 있으면 여기에 작성
   return response.data.item;
 };
