@@ -5,7 +5,7 @@ import { Container } from ".";
 type ScrollPagingType = {
   children: React.ReactElement;
   target: {
-    callback: Function;
+    callback: VoidFunction;
     skip: number;
   };
   observerOption?: {

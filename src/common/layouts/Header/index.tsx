@@ -34,16 +34,16 @@ const Header: React.FC<IComponent> = (
   const { headerStyles } = useDesign();
 
   const navigate = useNavigate();
-  const _routePush = useCallback(
-    (route: string) => {
-      navigate(route);
+  const routePush = useCallback(
+    (routePath: RoutePath) => {
+      navigate(routePath);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
   const { i18n } = useTranslation();
-  const _setLanguage = useCallback(
+  const setLanguage = useCallback(
     (lng: string) => {
       setLocalStorageItem({ lng });
       i18n.changeLanguage(lng);
@@ -51,7 +51,7 @@ const Header: React.FC<IComponent> = (
     [i18n]
   );
 
-  const _updateUserInfo = useCallback(() => {
+  const updateUserInfo = useCallback(() => {
     if (_.isFunction(window.globalFunc.showModalAction)) {
       window.globalFunc.showModalAction({
         item: {
@@ -67,7 +67,7 @@ const Header: React.FC<IComponent> = (
     }
   }, []);
 
-  const _showTemplateModal = useCallback(() => {
+  const showTemplateModal = useCallback(() => {
     if (_.isFunction(window.globalFunc.showModalAction)) {
       window.globalFunc.showModalAction({
         item: {
@@ -83,7 +83,7 @@ const Header: React.FC<IComponent> = (
     }
   }, []);
 
-  const _themeMode = useCallback(() => {
+  const themeMode = useCallback(() => {
     if (_.isFunction(setThemeAction)) {
       setLocalStorageItem({ useTheme: !useTheme });
       setThemeAction(!useTheme);
@@ -91,7 +91,7 @@ const Header: React.FC<IComponent> = (
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [useTheme]);
 
-  const _showAdContainer = useCallback(() => {
+  const showAdContainer = useCallback(() => {
     if (_.isFunction(showAdAction)) {
       showAdAction(!isShowAdContainer);
     }
@@ -110,7 +110,7 @@ const Header: React.FC<IComponent> = (
 
         removeLocalStorageItem("token");
         initUserInfoAction();
-        _routePush(RoutePath.MAIN);
+        routePush(RoutePath.MAIN);
       } else {
         if (_.isFunction(window.globalFunc.showModalAction)) {
           window.globalFunc.showModalAction({
@@ -131,16 +131,16 @@ const Header: React.FC<IComponent> = (
     <header>
       <Container.HeaderContainer style={{ ...headerStyles }}>
         <IconsMenu
-          _routePush={_routePush}
-          _themeMode={_themeMode}
-          _showAdContainer={_showAdContainer}
-          _setLanguage={_setLanguage}
-          _showTemplateModal={_showTemplateModal}
+          routePush={routePush}
+          themeMode={themeMode}
+          showAdContainer={showAdContainer}
+          setLanguage={setLanguage}
+          showTemplateModal={showTemplateModal}
         />
         <SignMenu
-          _routePush={_routePush}
+          routePush={routePush}
           _signOut={_signOut}
-          _updateUserInfo={_updateUserInfo}
+          updateUserInfo={updateUserInfo}
         />
       </Container.HeaderContainer>
     </header>

@@ -41,7 +41,7 @@ const List = ({
 }: {
   style: CSSProperties;
   contents: ContentsType[];
-  getContents: Function;
+  getContents: VoidFunction;
   goDetail: Function;
   skip: number;
 }): React.ReactElement => {

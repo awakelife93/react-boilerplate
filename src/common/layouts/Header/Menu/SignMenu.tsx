@@ -9,9 +9,9 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
 type SignMenuType = {
-  _routePush: Function;
-  _signOut: Function;
-  _updateUserInfo: Function;
+  routePush: (routePath: RoutePath) => void;
+  _signOut: ({ isDelete }: { isDelete: boolean }) => void;
+  updateUserInfo: VoidFunction;
 }
 
 /**
@@ -23,9 +23,9 @@ const SignMenu: React.FC<SignMenuType> = (
   props: SignMenuType
 ): React.ReactElement => {
   const {
-    _routePush,
+    routePush,
     _signOut,
-    _updateUserInfo,
+    updateUserInfo,
   } = props;
   const {
     reduxStore: {
@@ -50,7 +50,7 @@ const SignMenu: React.FC<SignMenuType> = (
             style={{
               ...componentStyles.TEXT_BUTTON,
             }}
-            onClick={() => _routePush(RoutePath.SIGN_UP)}
+            onClick={() => routePush(RoutePath.SIGN_UP)}
           >
             {t(I18nCommandEnum.SIGN_UP)}
           </Button.TextButton>
@@ -58,7 +58,7 @@ const SignMenu: React.FC<SignMenuType> = (
             style={{
               ...componentStyles.TEXT_BUTTON,
             }}
-            onClick={() => _routePush(RoutePath.SIGN_IN)}
+            onClick={() => routePush(RoutePath.SIGN_IN)}
           >
             {t(I18nCommandEnum.SIGN_IN)}
           </Button.TextButton>
@@ -97,7 +97,7 @@ const SignMenu: React.FC<SignMenuType> = (
             renderItems={[
               {
                 displayName: t(I18nCommandEnum.UPDATE_USER_INFO),
-                value: () => _updateUserInfo(),
+                value: () => updateUserInfo(),
               },
               {
                 displayName: t(I18nCommandEnum.DELETE_ACCOUNT),
