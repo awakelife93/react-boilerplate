@@ -2,7 +2,7 @@ import { UnknownObject } from "@/common/type";
 import {
   getLocalStorageItem,
   removeLocalStorageItem,
-  setLocalStorageItem,
+  setLocalStorageItem
 } from "@/core";
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import _ from "lodash";
@@ -60,7 +60,7 @@ instance.interceptors.response.use(
     const _error = error.response ?? error;
 
     // ! 네트워크 에러
-    if (_.isUndefined(_error.status)) {
+    if (_.isUndefined(_error.status) || _error.status === 502) {
       console.log("NETWORK ERROR", _error);
       showMessageModal("네트워크가 불안정합니다.");
     }

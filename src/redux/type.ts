@@ -40,7 +40,7 @@ export type ReduxStoreType = {
   reduxStore: StateType;
 };
 
-export type ReduxProviderActionType = {
+export type ReduxActionProviderType = {
   initContentsAction: VoidFunction;
   getContentsAction: (value: ContentsType[]) => void;
   initThemeAction: VoidFunction;

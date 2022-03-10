@@ -41,8 +41,10 @@ const Contents: React.FC<IComponent> = (
     } catch (error: unknown) {
       console.log("===========> ContentsPage Error", error);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    skip
+  ]);
 
   const navigate = useNavigate();
   const goDetail = useCallback(
