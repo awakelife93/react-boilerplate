@@ -10,7 +10,7 @@ https://github.com/awakelife93/react-admin-template
 
 ## Gateway Server Repository
 
-https://github.com/awakelife93/study-spring-boot
+https://github.com/awakelife93/spring-boot-gateway
 
 ## API Server Repository
 
