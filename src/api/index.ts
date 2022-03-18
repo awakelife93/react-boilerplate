@@ -2,7 +2,7 @@ import { UnknownObject } from "@/common/type";
 import {
   getLocalStorageItem,
   removeLocalStorageItem,
-  setLocalStorageItem
+  setLocalStorageItem,
 } from "@/core";
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import _ from "lodash";
@@ -58,6 +58,7 @@ instance.interceptors.response.use(
   },
   (error: any) => {
     const _error = error.response ?? error;
+    // todo: 공통 에러 처리 필요
 
     // ! 네트워크 에러
     if (_.isUndefined(_error.status) || _error.status === 502) {
