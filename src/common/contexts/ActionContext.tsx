@@ -1,4 +1,3 @@
-import { ContentsType } from "@/api/GetAPI/type";
 import { ReduxActionProviderType, UseReduxType, UserStoreType } from "@/redux/type";
 import React, { createContext } from "react";
 import { useDispatch } from "react-redux";
@@ -9,8 +8,6 @@ export const ActionContext = createContext<ReduxActionProviderType | null>(null)
 
 const ActionProvider = ({ children, useRedux } : { children: React.ReactElement, useRedux: UseReduxType }) => {
   const {
-    getContentsAction,
-    initContentsAction,
     initShowAdAction,
     initShowModalAction,
     initThemeAction,
@@ -23,14 +20,6 @@ const ActionProvider = ({ children, useRedux } : { children: React.ReactElement,
   } = require(`../../redux/${useRedux}/action`);
   
   const dispatch = useDispatch();
-
-  const _initContentsAction = () => {
-    dispatch(initContentsAction());
-  };
-
-  const _getContentsAction = (value: ContentsType[]) => {
-    dispatch(getContentsAction(value));
-  };
 
   const _initThemeAction = () => {
     dispatch(initThemeAction());
@@ -71,8 +60,6 @@ const ActionProvider = ({ children, useRedux } : { children: React.ReactElement,
   return (
     <ActionContext.Provider
       value={{
-        initContentsAction: _initContentsAction,
-        getContentsAction: _getContentsAction,
         initThemeAction: _initThemeAction,
         setThemeAction: _setThemeAction,
         setThemeItemAction: _setThemeItemAction,
