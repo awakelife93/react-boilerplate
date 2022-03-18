@@ -41,12 +41,10 @@ export type ReduxStoreType = {
 };
 
 export type ReduxActionProviderType = {
-  initContentsAction: VoidFunction;
-  getContentsAction: (value: ContentsType[]) => void;
   initThemeAction: VoidFunction;
   setThemeAction: (value: boolean) => void;
   setThemeItemAction: (value: ThemeItem) => void;
-  initShowAdAction: VoidFunction
+  initShowAdAction: VoidFunction;
   showAdAction: (value: boolean) => void;
   initShowModalAction: VoidFunction;
   showModalAction: (value: ModalItem) => void;

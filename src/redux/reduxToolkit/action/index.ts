@@ -1,4 +1,3 @@
-import { getContentsAction, initContentsAction } from "./contents";
 import {
   initShowAdAction,
   initShowModalAction,
@@ -9,8 +8,6 @@ import { initThemeAction, setThemeAction, setThemeItemAction } from "./theme";
 import { initUserInfoAction, setUserInfoAction } from "./user";
 
 export {
-  initContentsAction,
-  getContentsAction,
   initThemeAction,
   setThemeAction,
   setThemeItemAction,
