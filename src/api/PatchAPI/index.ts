@@ -1,5 +1,3 @@
-import { UnknownObject } from "@/common/type";
-import _ from "lodash";
 import { patchAPI } from "..";
 import { IUserInfo } from "../interface";
 
@@ -13,13 +11,11 @@ export const updateUser = async ({
   password: string;
 }): Promise<IUserInfo> => {
   try {
-    const item: UnknownObject = { userId };
-
-    if (!_.isEmpty(name)) item.name = name;
-
-    if (!_.isEmpty(password)) item.password = password;
-
-    return await patchAPI("updateUser", { ...item });
+    return await patchAPI("updateUser", {
+      userId,
+      name,
+      password,
+    });
   } catch (error: unknown) {
     console.log("===============> updateUser Error", error);
     throw error;
