@@ -9,7 +9,7 @@ import { I18nCommandEnum, setLocalStorageItem } from "@/core";
 import { RoutePath } from "@/route/routes";
 import { validationObject } from "@/utils";
 import _ from "lodash";
-import { ChangeEvent, useCallback, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
@@ -34,10 +34,9 @@ const SignUp: React.FC<IComponent> = (
   useEffect(() => {
     window.addEventListener("keypress", checkKeyPress);
     return () => window.removeEventListener("keypress", checkKeyPress);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const showMessageModal = useCallback((message: string): void => {
+  const showMessageModal = (message: string): void => {
     if (_.isFunction(window.globalFunc.showModalAction)) {
       window.globalFunc.showModalAction({
         type: "MESSAGE",
@@ -46,28 +45,24 @@ const SignUp: React.FC<IComponent> = (
         },
       });
     }
-  }, []);
+  };
 
-  const validationItem = useCallback(
-    (item: UnknownObject): boolean => {
-      if (!validationObject(item)) {
-        showMessageModal("회원가입 정보를 다시 한번 확인 해주시기 바랍니다.");
-        return false;
-      }
+  const validationItem = (item: UnknownObject): boolean => {
+    if (!validationObject(item)) {
+      showMessageModal("회원가입 정보를 다시 한번 확인 해주시기 바랍니다.");
+      return false;
+    }
 
-      if (confirmPassword !== password) {
-        showMessageModal("패스워드를 확인해주시기 바랍니다.");
-        return false;
-      }
+    if (confirmPassword !== password) {
+      showMessageModal("패스워드를 확인해주시기 바랍니다.");
+      return false;
+    }
 
-      return true;
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [password, confirmPassword]
-  );
+    return true;
+  };
 
   const navigate = useNavigate();
-  const _signUp = useCallback(async (): Promise<void | boolean> => {
+  const _signUp = async (): Promise<void | boolean> => {
     const item = { email, name, password, confirmPassword };
 
     if (validationItem(item)) {
@@ -104,22 +99,13 @@ const SignUp: React.FC<IComponent> = (
         }
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    email,
-    name,
-    password,
-  ]);
+  };
 
-  const checkKeyPress = useCallback(
-    (e: KeyboardEvent): void => {
-      if (e.code === "Enter") {
-        _signUp();
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
+  const checkKeyPress = (e: KeyboardEvent): void => {
+    if (e.code === "Enter") {
+      _signUp();
+    }
+  };
 
   return (
     <Container.RowContainer>

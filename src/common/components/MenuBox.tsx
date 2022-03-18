@@ -1,5 +1,5 @@
 import _ from "lodash";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CSSProperties } from "styled-components";
 import { Container } from "../components";
 
@@ -36,9 +36,9 @@ const MenuBox: React.FC<MenuBoxType> = (
     renderType = "row",
   } = props;
 
-  const checkOutSideClick = useCallback((event: MouseEvent): void => {
+  const checkOutSideClick = (event: MouseEvent): void => {
     setShowMenuBox(false);
-  }, []);
+  };
 
   useEffect(() => {
     if (isShowMenuBox) {

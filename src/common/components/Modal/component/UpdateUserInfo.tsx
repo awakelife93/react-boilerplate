@@ -7,7 +7,7 @@ import { UnknownObject } from "@/common/type";
 import { I18nCommandEnum } from "@/core";
 import { ReduxStoreType } from "@/redux/type";
 import _ from "lodash";
-import { ChangeEvent, useCallback, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Button, Container, InputBox, Label } from "../../";
@@ -40,7 +40,7 @@ const UpdateUserInfo: React.FC<UpdateUserInfoType> = (
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const validationItem = useCallback(() => {
+  const validationItem = () => {
     if (!_.isEmpty(password)) {
       if (_.isEmpty(confirmPassword)) {
         setConfirmPWErrorItems("확인 패스워드를 입력해주시기 바랍니다.");
@@ -58,7 +58,7 @@ const UpdateUserInfo: React.FC<UpdateUserInfoType> = (
     }
 
     return true;
-  }, [name, password, confirmPassword]);
+  };
 
   const _updateUser = async () => {
     if (validationItem()) {

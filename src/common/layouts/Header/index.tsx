@@ -10,7 +10,7 @@ import { getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem } from
 import { ReduxStoreType } from "@/redux/type";
 import { RoutePath } from "@/route/routes";
 import _ from "lodash";
-import React, { useCallback } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -34,24 +34,17 @@ const Header: React.FC<IComponent> = (
   const { headerStyles } = useDesign();
 
   const navigate = useNavigate();
-  const routePush = useCallback(
-    (routePath: RoutePath) => {
-      navigate(routePath);
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
+  const routePush = (routePath: RoutePath) => {
+    navigate(routePath);
+  };
 
   const { i18n } = useTranslation();
-  const setLanguage = useCallback(
-    (lng: string) => {
-      setLocalStorageItem({ lng });
-      i18n.changeLanguage(lng);
-    },
-    [i18n]
-  );
+  const setLanguage = (lng: string) => {
+    setLocalStorageItem({ lng });
+    i18n.changeLanguage(lng);
+  };
 
-  const updateUserInfo = useCallback(() => {
+  const updateUserInfo = () => {
     if (_.isFunction(window.globalFunc.showModalAction)) {
       window.globalFunc.showModalAction({
         item: {
@@ -65,9 +58,9 @@ const Header: React.FC<IComponent> = (
         },
       });
     }
-  }, []);
+  };
 
-  const showTemplateModal = useCallback(() => {
+  const showTemplateModal = () => {
     if (_.isFunction(window.globalFunc.showModalAction)) {
       window.globalFunc.showModalAction({
         item: {
@@ -81,21 +74,20 @@ const Header: React.FC<IComponent> = (
         },
       });
     }
-  }, []);
+  };
 
-  const themeMode = useCallback(() => {
+  const themeMode = () => {
     if (_.isFunction(setThemeAction)) {
       setLocalStorageItem({ useTheme: !useTheme });
       setThemeAction(!useTheme);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [useTheme]);
+  };
 
-  const showAdContainer = useCallback(() => {
+  const showAdContainer = () => {
     if (_.isFunction(showAdAction)) {
       showAdAction(!isShowAdContainer);
     }
-  }, [isShowAdContainer, showAdAction]);
+  };
 
   const _signOut = async ({ isDelete = false }: { isDelete: boolean }) => {
     try {

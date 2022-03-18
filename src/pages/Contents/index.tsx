@@ -20,19 +20,19 @@ const Contents: React.FC<IComponent> = (
   const [skip, setSkip] = useState(0);
   const [ contents, setContents ] = useState<ContentsType[]>([]);
   
-  const getContents = useCallback(async (): Promise<void> => {
-      const data = await findContents(skip);
+  const getContents = async (): Promise<void> => {
+    const data = await findContents(skip);
           
-      if (!_.isEmpty(data[0])) {
-        setSkip(skip + 20);
-        setContents(contents.concat(data[0]));
-      }
-  }, [ skip ]);
+    if (!_.isEmpty(data[0])) {
+      setSkip(skip + 20);
+      setContents(contents.concat(data[0]));
+    }
+  };
 
   const navigate = useNavigate();
-  const goDetail = (item: ContentsType): void => {
+  const goDetail = useCallback((item: ContentsType): void => {
     navigate(RoutePath.CONTENTS_DETAIL, { state: item });
-  }
+  }, []);
 
   useEffect(() => {
     getContents();

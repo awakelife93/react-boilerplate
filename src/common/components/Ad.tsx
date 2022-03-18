@@ -1,7 +1,6 @@
 import { I18nCommandEnum, TopDownMove } from "@/core";
 import { ReduxStoreType } from "@/redux/type";
 import _ from "lodash";
-import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Container, Icon, Image, Label } from ".";
@@ -28,12 +27,11 @@ const Ad: React.FC<IComponent> = (props: IComponent): React.ReactElement => {
     }
   } = useSelector((state: ReduxStoreType) => state);
 
-  const _hideAdContainer = useCallback((): void => {
+  const _hideAdContainer = (): void => {
     if (_.isFunction(initShowAdAction)) {
       initShowAdAction();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  };
 
   return (
     <Image.BackGroundImage

@@ -9,7 +9,7 @@ import { I18nCommandEnum, setLocalStorageItem } from "@/core";
 import { RoutePath } from "@/route/routes";
 import { validationObject } from "@/utils";
 import _ from "lodash";
-import { ChangeEvent, useCallback, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 
@@ -32,10 +32,9 @@ const SignIn: React.FC<IComponent> = (
   useEffect(() => {
     window.addEventListener("keypress", checkKeyPress);
     return () => window.removeEventListener("keypress", checkKeyPress);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const showMessageModal = useCallback((message: string): void => {
+  const showMessageModal = (message: string): void => {
     if (_.isFunction(window.globalFunc.showModalAction)) {
       window.globalFunc.showModalAction({
         type: "MESSAGE",
@@ -44,22 +43,18 @@ const SignIn: React.FC<IComponent> = (
         },
       });
     }
-  }, []);
+  };
 
-  const validationItem = useCallback(
-    (item: UnknownObject): boolean => {
-      if (!validationObject(item)) {
-        showMessageModal("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
-        return false;
-      }
+  const validationItem = (item: UnknownObject): boolean => {
+    if (!validationObject(item)) {
+      showMessageModal("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
+      return false;
+    }
 
-      return true;
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
+    return true;
+  };
 
-  const _signIn = useCallback(async (): Promise<void | boolean> => {
+  const _signIn = async (): Promise<void | boolean> => {
     const item = { email, password };
 
     if (validationItem(item)) {
@@ -100,18 +95,13 @@ const SignIn: React.FC<IComponent> = (
         }
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [email, password]);
+  };
 
-  const checkKeyPress = useCallback(
-    (e: KeyboardEvent): void => {
-      if (e.code === "Enter") {
-        _signIn();
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
+  const checkKeyPress = (e: KeyboardEvent): void => {
+    if (e.code === "Enter") {
+      _signIn();
+    }
+  };
 
   return (
     <Container.RowContainer>

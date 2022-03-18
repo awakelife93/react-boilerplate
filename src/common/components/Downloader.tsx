@@ -1,5 +1,5 @@
 import _ from "lodash";
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { CSSProperties } from "styled-components";
 import { Container, InputBox, Label } from ".";
 
@@ -42,13 +42,10 @@ const DownLoader: React.FC<DownLoaderType> = (
     }
   };
 
-  const handleFileInput = useCallback(
-    (e: any): void => {
-      next(e.target.files[0]);
-      initialize();
-    },
-    [next]
-  );
+  const handleFileInput = (e: any): void => {
+    next(e.target.files[0]);
+    initialize();
+  };
 
   useEffect(() => {
     return () => {
