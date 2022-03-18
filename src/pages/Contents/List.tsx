@@ -1,7 +1,6 @@
 import { ContentsType } from "@/api/GetAPI/type";
 import { ScrollPaging } from "@/common/components";
 import CommonImageResources from "@/common/styles/image";
-import _ from "lodash";
 import React from "react";
 import { Card, CardColumns } from "react-bootstrap";
 import { CSSProperties } from "styled-components";
@@ -47,7 +46,7 @@ const List = ({
 }): React.ReactElement => {
   return (
     <CardColumns>
-      {!_.isEmpty(contents) &&
+      {
         contents.map((card: ContentsType, index: number) => {
           if (index + 1 === contents.length) {
             return (
