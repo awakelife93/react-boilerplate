@@ -1,4 +1,4 @@
-import { UserStoreItemType, UserStoreType } from "@/redux/type";
+import { UserStoreType } from "@/redux/type";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { initUserState } from "./default";
 
@@ -12,9 +12,10 @@ const slice = createSlice({
     },
     setUserInfo: (
       state: UserStoreType,
-      action: PayloadAction<UserStoreItemType>
+      action: PayloadAction<UserStoreType>
     ): UserStoreType => {
-      state.user = action.payload;
+      const { user } = action.payload;
+      state.user = user;
       return state;
     },
   },
