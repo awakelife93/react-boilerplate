@@ -9,7 +9,9 @@ const userStore = (
 ): UserStoreType => {
   switch (action.type) {
     case ActionEnum.SET_USER_INFO:
-      return _.merge({}, state, action.value);
+      return _.merge({}, state, {
+        user: action.value,
+      });
     default:
       return state;
   }

@@ -18,15 +18,17 @@ export type GlobalStoreType = {
   modalItem: ModalItem;
 };
 
-export type UserStoreType = {
-  user: {
-    isLogin: boolean;
-    info: {
-      userId: number;
-      email: string;
-      name: string;
-    };
+export type UserStoreItemType = {
+  isLogin: boolean;
+  info: {
+    userId: number;
+    email: string;
+    name: string;
   };
+};
+
+export type UserStoreType = {
+  user: UserStoreItemType;
 };
 
 export type StateType = {
@@ -48,7 +50,7 @@ export type ReduxActionProviderType = {
   showAdAction: (value: boolean) => void;
   initShowModalAction: VoidFunction;
   showModalAction: (value: ModalItem) => void;
-  setUserInfoAction: (value: UserStoreType) => void;
+  setUserInfoAction: (value: UserStoreItemType) => void;
   initUserInfoAction: VoidFunction;
 };
 

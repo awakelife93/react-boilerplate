@@ -1,7 +1,7 @@
-import { UserStoreType } from "@/redux/type";
+import { UserStoreItemType } from "@/redux/type";
 import userWorker from "../../reducer/user";
 
 export const initUserInfoAction = () => userWorker.actions.initUserInfo();
 
-export const setUserInfoAction = (value: UserStoreType) =>
+export const setUserInfoAction = (value: UserStoreItemType) =>
   userWorker.actions.setUserInfo(value);
