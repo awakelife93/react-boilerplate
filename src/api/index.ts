@@ -140,7 +140,7 @@ export const postAPI = async (
   endPoint: string = "",
   data: UnknownObject = {},
   axiosOption: AxiosRequestConfig = {
-    timeout: 2000,
+    timeout: 6000,
   }
 ) => {
   const result: AxiosResponse = await instance.post(
@@ -155,7 +155,7 @@ export const putAPI = async (
   endPoint: string = "",
   data: UnknownObject = {},
   axiosOption: AxiosRequestConfig = {
-    timeout: 2000,
+    timeout: 6000,
   }
 ) => {
   const result: AxiosResponse = await instance.put(endPoint, data, axiosOption);
@@ -166,7 +166,7 @@ export const patchAPI = async (
   endPoint: string = "",
   data: UnknownObject = {},
   axiosOption: AxiosRequestConfig = {
-    timeout: 2000,
+    timeout: 6000,
   }
 ) => {
   const result: AxiosResponse = await instance.patch(
