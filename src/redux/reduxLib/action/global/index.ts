@@ -1,4 +1,4 @@
-import { ModalItem } from "@/common/components/Modal/type";
+import { ModalItemType } from "@/common/components/Modal/type";
 import { ActionEnum } from "@/redux/type";
 import { initGlobalState } from "../../reducer/global/default";
 
@@ -17,7 +17,7 @@ export const showAdAction = (value: boolean) => ({
   value,
 });
 
-export const showModalAction = (value: ModalItem) => ({
+export const showModalAction = (value: ModalItemType) => ({
   type: ActionEnum.SET_MODAL_ITEM,
   value,
 });

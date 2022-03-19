@@ -3,7 +3,7 @@ import { CSSProperties } from "styled-components";
 
 type ModalTemplateType = "MESSAGE";
 
-export type ModalItem = {
+export type ModalItemType = {
   isShowModal?: boolean;
   children: React.FC<any>;
   childrenProps?: {
@@ -32,11 +32,11 @@ export type ModalItem = {
 };
 
 export type ModalType = {
-  modalItem: ModalItem;
+  modalItem: ModalItemType;
 };
 
 export type ShowModalActionType = {
   next: Function;
   type: ModalTemplateType;
-  item: ModalItem;
+  item: ModalItemType;
 };

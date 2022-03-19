@@ -1,7 +1,7 @@
 import { ReduxActionProviderType, UseReduxType, UserStoreItemType } from "@/redux/type";
 import React, { createContext } from "react";
 import { useDispatch } from "react-redux";
-import { ModalItem } from "../components/Modal/type";
+import { ModalItemType } from "../components/Modal/type";
 import { ThemeItem } from "../type";
 
 export const ActionContext = createContext<ReduxActionProviderType | null>(null);
@@ -45,7 +45,7 @@ const ActionProvider = ({ children, useRedux } : { children: React.ReactElement,
     dispatch(initShowModalAction());
   };
 
-  const _showModalAction = (value: ModalItem) => {
+  const _showModalAction = (value: ModalItemType) => {
     dispatch(showModalAction(value));
   };
 

@@ -1,5 +1,5 @@
 import { ContentsType } from "@/api/GetAPI/type";
-import { ModalItem } from "@/common/components/Modal/type";
+import { ModalItemType } from "@/common/components/Modal/type";
 import { ThemeItem } from "@/common/type";
 
 export type UseReduxType = "reduxLib" | "reduxToolkit";
@@ -15,7 +15,7 @@ export type ThemeStoreType = {
 
 export type GlobalStoreType = {
   isShowAdContainer: boolean;
-  modalItem: ModalItem;
+  modalItem: ModalItemType;
 };
 
 export type UserStoreItemType = {
@@ -49,7 +49,7 @@ export type ReduxActionProviderType = {
   initShowAdAction: VoidFunction;
   showAdAction: (value: boolean) => void;
   initShowModalAction: VoidFunction;
-  showModalAction: (value: ModalItem) => void;
+  showModalAction: (value: ModalItemType) => void;
   setUserInfoAction: (value: UserStoreItemType) => void;
   initUserInfoAction: VoidFunction;
 };

@@ -1,4 +1,4 @@
-import { ModalItem } from "@/common/components/Modal/type";
+import { ModalItemType } from "@/common/components/Modal/type";
 import { GlobalStoreType } from "@/redux/type";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { initGlobalState } from "./default";
@@ -27,7 +27,7 @@ const slice = createSlice({
     },
     showModal: (
       state: GlobalStoreType,
-      action: PayloadAction<{ modalItem: ModalItem }>
+      action: PayloadAction<{ modalItem: ModalItemType }>
     ): GlobalStoreType => {
       const { modalItem } = action.payload;
 
