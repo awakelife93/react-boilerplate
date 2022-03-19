@@ -63,13 +63,11 @@ const SignIn: React.FC<IComponent> = (
         
         setLocalStorageItem({ token: userInfo.token });
         setUserInfoAction({
-          user: {
-            isLogin: true,
-            info: {
-              userId: userInfo.userId,
-              email: userInfo.email,
-              name: userInfo.name,
-            },
+          isLogin: true,
+          info: {
+            userId: userInfo.userId,
+            email: userInfo.email,
+            name: userInfo.name,
           }
         });
         navigate(RoutePath.MAIN);

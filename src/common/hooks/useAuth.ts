@@ -18,10 +18,8 @@ const useAuth = (): void => {
 
     if (_.isFunction(setUserInfoAction)) {
       setUserInfoAction({
-        user: {
-          isLogin: true,
-          info: { ...profile },
-        },
+        isLogin: true,
+        info: { ...profile },
       });
     }
   };

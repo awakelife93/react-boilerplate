@@ -69,18 +69,15 @@ const UpdateUserInfo: React.FC<UpdateUserInfoType> = (
           password,
         });
 
-        setUserInfoAction({
-          user: {
-            isLogin: true,
-            info: {
-              userId: userInfo.userId,
-              email: userInfo.email,
-              name: userInfo.name,
-            },
-          }
-        })
-        
         _closeModal();
+        setUserInfoAction({
+          isLogin: true,
+          info: {
+            userId: userInfo.userId,
+            email: userInfo.email,
+            name: userInfo.name,
+          },
+        });
       } catch (error: unknown) {
         console.log("_updateUser Error", error);
       }
