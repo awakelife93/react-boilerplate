@@ -22,7 +22,7 @@ import CommonTheme from "./theme";
 const generateThemeStyle = ({ item }: { item: any[] }) => {
   const themeItem = {} as ThemeItem;
 
-  try {
+  if (!_.isEmpty(item)) {
     for (let i = 0; i < item.length; i++) {
       const theme = item[i];
 
@@ -68,12 +68,9 @@ const generateThemeStyle = ({ item }: { item: any[] }) => {
         }
       });
     }
-
-    return themeItem;
-  } catch (error: unknown) {
-    console.log(error);
-    return {};
   }
+
+  return themeItem;
 };
 
 /**
