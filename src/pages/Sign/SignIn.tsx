@@ -56,28 +56,23 @@ const SignIn: React.FC<IComponent> = (
 
   const _signIn = async (): Promise<void | boolean> => {
     const item = { email, password };
-
+    
     if (validationItem(item)) {
       try {
         const userInfo: IUserInfo = await signIn({ email, password });
-
-        if (_.isUndefined(userInfo)) {
-          showMessageModal("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
-          return false;
-        } else {
-          setLocalStorageItem({ token: userInfo.token });
-          setUserInfoAction({
-            user: {
-              isLogin: true,
-              info: {
-                userId: userInfo.userId,
-                email: userInfo.email,
-                name: userInfo.name,
-              },
-            }
-          });
-          navigate(RoutePath.MAIN);
-        }
+        
+        setLocalStorageItem({ token: userInfo.token });
+        setUserInfoAction({
+          user: {
+            isLogin: true,
+            info: {
+              userId: userInfo.userId,
+              email: userInfo.email,
+              name: userInfo.name,
+            },
+          }
+        });
+        navigate(RoutePath.MAIN);
       } catch (error: any) {
         switch (error.status) {
           case 401: {
