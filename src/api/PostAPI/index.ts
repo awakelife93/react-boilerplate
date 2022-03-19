@@ -39,6 +39,7 @@ export const signUp = async ({
       email,
       name,
       password,
+      role: "user",
     });
   } catch (error: unknown) {
     console.log("===============> signUp Error", error);
