@@ -1,4 +1,4 @@
-import { ThemeItem } from "@/common/type";
+import { ThemeItemType } from "@/common/type";
 import { ThemeStoreType } from "@/redux/type";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { initThemeState } from "./default";
@@ -23,7 +23,7 @@ const slice = createSlice({
     },
     setThemeItem: (
       state: ThemeStoreType,
-      action: PayloadAction<{ themeItem: ThemeItem }>
+      action: PayloadAction<{ themeItem: ThemeItemType }>
     ): ThemeStoreType => {
       const { themeItem } = action.payload;
 

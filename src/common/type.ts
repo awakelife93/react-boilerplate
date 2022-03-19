@@ -14,7 +14,7 @@ export type ComponentStyleType = {
   CARD: CSSProperties;
 };
 
-export type ThemeItem = {
+export type ThemeItemType = {
   [index: string]: {
     LAYOUT?: any;
     COMPONENT?: any;
@@ -22,5 +22,5 @@ export type ThemeItem = {
 };
 
 export type ThemeType = {
-  themeItem: ThemeItem;
+  themeItem: ThemeItemType;
 };

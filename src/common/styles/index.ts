@@ -7,7 +7,7 @@ import {
   IHeaderContainer,
   ILayoutContainer,
 } from "../components/Container";
-import { ComponentStyleType, ThemeItem } from "../type";
+import { ComponentStyleType, ThemeItemType } from "../type";
 import CommonColor from "./color";
 import CommonImage from "./image";
 import CommonTheme from "./theme";
@@ -17,10 +17,10 @@ import CommonTheme from "./theme";
  * @description
  * 컴포넌트, 레이아웃은 각각의 테마별로 지니고 있으며, __을 구분자로 사용한다.
  * @param item
- * @returns {ThemeItem}
+ * @returns {ThemeItemType}
  */
 const generateThemeStyle = ({ item }: { item: any[] }) => {
-  const themeItem = {} as ThemeItem;
+  const themeItem = {} as ThemeItemType;
 
   if (!_.isEmpty(item)) {
     for (let i = 0; i < item.length; i++) {
@@ -121,7 +121,7 @@ const generateLayoutContainerStyle = ({
   pathname,
   useTheme = false,
 }: {
-  themeItem: ThemeItem;
+  themeItem: ThemeItemType;
   pathname: string;
   useTheme: boolean;
 }) => {
@@ -157,7 +157,7 @@ const generateModalContainerStyle = ({
   themeItem,
   useTheme = false,
 }: {
-  themeItem: ThemeItem;
+  themeItem: ThemeItemType;
   useTheme: boolean;
 }) => {
   let props = {} as ILayoutContainer;
@@ -187,7 +187,7 @@ const generateHeaderContainerStyle = ({
   pathname,
   useTheme = false,
 }: {
-  themeItem: ThemeItem;
+  themeItem: ThemeItemType;
   pathname: string;
   useTheme: boolean;
 }) => {
@@ -224,7 +224,7 @@ const generateBodyContainerStyle = ({
   pathname,
   useTheme = false,
 }: {
-  themeItem: ThemeItem;
+  themeItem: ThemeItemType;
   pathname: string;
   useTheme: boolean;
 }) => {
@@ -265,7 +265,7 @@ const generateBottomContainerStyle = ({
   pathname,
   useTheme = false,
 }: {
-  themeItem: ThemeItem;
+  themeItem: ThemeItemType;
   pathname: string;
   useTheme: boolean;
 }) => {
@@ -302,7 +302,7 @@ const generateComponentStyle = ({
   pathname,
   useTheme = false,
 }: {
-  themeItem: ThemeItem;
+  themeItem: ThemeItemType;
   pathname: string;
   useTheme: boolean;
 }) => {

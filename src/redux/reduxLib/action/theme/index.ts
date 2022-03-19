@@ -1,4 +1,4 @@
-import { ThemeItem } from "@/common/type";
+import { ThemeItemType } from "@/common/type";
 import { ActionEnum } from "@/redux/type";
 import { initThemeState } from "../../reducer/theme/default";
 
@@ -12,7 +12,7 @@ export const setThemeAction = (value: boolean) => ({
   value,
 });
 
-export const setThemeItemAction = (value: ThemeItem) => ({
+export const setThemeItemAction = (value: ThemeItemType) => ({
   type: ActionEnum.SET_THEME_ITEM,
   value,
 });

@@ -1,6 +1,6 @@
 import { ContentsType } from "@/api/GetAPI/type";
 import { ModalItemType } from "@/common/components/Modal/type";
-import { ThemeItem } from "@/common/type";
+import { ThemeItemType } from "@/common/type";
 
 export type UseReduxType = "reduxLib" | "reduxToolkit";
 
@@ -10,7 +10,7 @@ export type ContentsStoreType = {
 
 export type ThemeStoreType = {
   useTheme: boolean;
-  themeItem: ThemeItem;
+  themeItem: ThemeItemType;
 };
 
 export type GlobalStoreType = {
@@ -45,7 +45,7 @@ export type ReduxStoreType = {
 export type ReduxActionProviderType = {
   initThemeAction: VoidFunction;
   setThemeAction: (value: boolean) => void;
-  setThemeItemAction: (value: ThemeItem) => void;
+  setThemeItemAction: (value: ThemeItemType) => void;
   initShowAdAction: VoidFunction;
   showAdAction: (value: boolean) => void;
   initShowModalAction: VoidFunction;
