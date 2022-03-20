@@ -35,7 +35,7 @@ export const signUp = async ({
   password: string;
 }): Promise<IUserInfo> => {
   try {
-    return await postAPI("signUp", {
+    return await postAPI("createUser", {
       email,
       name,
       password,
