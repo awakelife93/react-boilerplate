@@ -25,7 +25,7 @@ export const signOut = async (): Promise<object> => {
   }
 };
 
-export const signUp = async ({
+export const createUser = async ({
   email,
   name,
   password,
@@ -42,7 +42,7 @@ export const signUp = async ({
       role: "user",
     });
   } catch (error: unknown) {
-    console.log("===============> signUp Error", error);
+    console.log("===============> createUser Error", error);
     throw error;
   }
 };

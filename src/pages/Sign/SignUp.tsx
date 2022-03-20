@@ -1,5 +1,5 @@
 import { IUserInfo } from "@/api/interface";
-import { signUp } from "@/api/PostAPI";
+import { createUser } from "@/api/PostAPI";
 import { Button, Container, InputBox, Label } from "@/common/components";
 import useAction from "@/common/hooks/useAction";
 import useDesign from "@/common/hooks/useDesign";
@@ -62,12 +62,12 @@ const SignUp: React.FC<IComponent> = (
   };
 
   const navigate = useNavigate();
-  const _signUp = async (): Promise<void | boolean> => {
+  const _createUser = async (): Promise<void | boolean> => {
     const item = { email, name, password, confirmPassword };
 
     if (validationItem(item)) {
       try {
-        const userInfo: IUserInfo = await signUp(item);
+        const userInfo: IUserInfo = await createUser(item);
         
         setLocalStorageItem({ token: userInfo.token });
         setUserInfoAction({
@@ -94,7 +94,7 @@ const SignUp: React.FC<IComponent> = (
 
   const checkKeyPress = (e: KeyboardEvent): void => {
     if (e.code === "Enter") {
-      _signUp();
+      _createUser();
     }
   };
 
@@ -183,7 +183,7 @@ const SignUp: React.FC<IComponent> = (
             ...componentStyles.SUB_MIT_BUTTON,
             margin: 10,
           }}
-          onClick={_signUp}
+          onClick={_createUser}
         >
           {t(I18nCommandEnum.SIGN_UP)}
         </Button.SubMitButton>
