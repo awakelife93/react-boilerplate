@@ -1,5 +1,5 @@
-import { IUserInfo } from "@/api/interface";
 import { signIn } from "@/api/PostAPI";
+import { UserInfoType } from "@/api/type";
 import { Button, Container, InputBox, Label } from "@/common/components";
 import useAction from "@/common/hooks/useAction";
 import useDesign from "@/common/hooks/useDesign";
@@ -59,7 +59,7 @@ const SignIn: React.FC<IComponent> = (
     
     if (validationItem(item)) {
       try {
-        const userInfo: IUserInfo = await signIn({ email, password });
+        const userInfo: UserInfoType = await signIn({ email, password });
         
         setLocalStorageItem({ token: userInfo.token });
         setUserInfoAction({

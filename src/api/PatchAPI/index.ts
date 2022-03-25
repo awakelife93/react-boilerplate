@@ -1,6 +1,6 @@
 import _ from "lodash";
 import { patchAPI } from "..";
-import { IUserInfo } from "../interface";
+import { UserInfoType } from "../type";
 
 export const updateUser = async ({
   userId,
@@ -10,7 +10,7 @@ export const updateUser = async ({
   userId: number;
   name: string;
   password: string;
-}): Promise<IUserInfo> => {
+}): Promise<UserInfoType> => {
   try {
     const item = {} as {
       name: string;

@@ -1,5 +1,5 @@
 import { postAPI } from "..";
-import { IUserInfo } from "../interface";
+import { UserInfoType } from "../type";
 
 export const signIn = async ({
   email,
@@ -7,7 +7,7 @@ export const signIn = async ({
 }: {
   email: string;
   password: string;
-}): Promise<IUserInfo> => {
+}): Promise<UserInfoType> => {
   try {
     return await postAPI("signInUser", { email, password });
   } catch (error: unknown) {
@@ -33,7 +33,7 @@ export const createUser = async ({
   email: string;
   name: string;
   password: string;
-}): Promise<IUserInfo> => {
+}): Promise<UserInfoType> => {
   try {
     return await postAPI("createUser", {
       email,

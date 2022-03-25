@@ -1,5 +1,5 @@
 import { findUserProfile } from "@/api/GetAPI";
-import { IUserInfo } from "@/api/interface";
+import { UserInfoType } from "@/api/type";
 import { getLocalStorageItem } from "@/core";
 import { ReduxStoreType } from "@/redux/type";
 import _ from "lodash";
@@ -14,7 +14,7 @@ const useAuth = (): void => {
   } = useSelector((state: ReduxStoreType) => state);
 
   const initUserProfile = async (): Promise<void> => {
-    const profile: IUserInfo = await findUserProfile();
+    const profile: UserInfoType = await findUserProfile();
 
     if (_.isFunction(setUserInfoAction)) {
       setUserInfoAction({

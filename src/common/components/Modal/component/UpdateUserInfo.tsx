@@ -1,5 +1,5 @@
-import { IUserInfo } from "@/api/interface";
 import { updateUser } from "@/api/PatchAPI";
+import { UserInfoType } from "@/api/type";
 import useAction from "@/common/hooks/useAction";
 import useDesign from "@/common/hooks/useDesign";
 import { CommonColor } from "@/common/styles";
@@ -63,7 +63,7 @@ const UpdateUserInfo: React.FC<UpdateUserInfoType> = (
   const _updateUser = async () => {
     if (validationItem()) {
       try {
-        const userInfo: IUserInfo = await updateUser({
+        const userInfo: UserInfoType = await updateUser({
           userId: user.info.userId,
           name,
           password,
