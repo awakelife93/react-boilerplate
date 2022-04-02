@@ -9,7 +9,11 @@ export const signIn = async ({
   password: string;
 }): Promise<UserInfoType> => {
   try {
-    return await postAPI("signInUser", { email, password });
+    return await postAPI("auth/signIn", {
+      role: "user",
+      email,
+      password,
+    });
   } catch (error: unknown) {
     console.log("===============> signIn Error", error);
     throw error;
@@ -18,7 +22,7 @@ export const signIn = async ({
 
 export const signOut = async (): Promise<object> => {
   try {
-    return await postAPI("signOut");
+    return await postAPI("auth/signOut");
   } catch (error: unknown) {
     console.log("===============> signOut Error", error);
     throw error;
@@ -35,7 +39,7 @@ export const createUser = async ({
   password: string;
 }): Promise<UserInfoType> => {
   try {
-    return await postAPI("createUser", {
+    return await postAPI("users", {
       email,
       name,
       password,

@@ -21,10 +21,7 @@ export const updateUser = async ({
 
     if (!_.isEmpty(password)) item.password = password;
 
-    return await patchAPI("updateUser", {
-      userId,
-      ...item,
-    });
+    return await patchAPI(`users/${userId}`, item);
   } catch (error: unknown) {
     console.log("===============> updateUser Error", error);
     throw error;
