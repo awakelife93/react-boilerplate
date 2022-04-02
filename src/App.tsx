@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import { findThemeItem } from "./api/GetAPI";
+import { getThemeItem } from "./api/GetAPI";
 import "./App.css";
 import DesignProvider from "./common/contexts/DesignContext";
 import useAction from "./common/hooks/useAction";
@@ -17,7 +17,7 @@ const App = (): React.ReactElement => {
   
   const setThemeItem = async (): Promise<void> => {
     try {
-      const item = await findThemeItem();
+      const item = await getThemeItem();
       const themeItem = generateThemeStyle({ item });
       setThemeItemAction(themeItem);
     } catch(error: unknown) {

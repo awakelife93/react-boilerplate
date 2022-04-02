@@ -1,4 +1,4 @@
-import { findContents } from "@/api/GetAPI";
+import { getContents } from "@/api/GetAPI";
 import { ContentsType } from "@/api/GetAPI/type";
 import useDesign from "@/common/hooks/useDesign";
 import { IComponent } from "@/common/interface";
@@ -20,8 +20,8 @@ const Contents: React.FC<IComponent> = (
   const [skip, setSkip] = useState(0);
   const [ contents, setContents ] = useState<ContentsType[]>([]);
   
-  const getContents = async (): Promise<void> => {
-    const data = await findContents(skip);
+  const initialize = async (): Promise<void> => {
+    const data = await getContents(skip);
           
     if (!_.isEmpty(data[0])) {
       setSkip(skip + 20);
@@ -35,7 +35,7 @@ const Contents: React.FC<IComponent> = (
   }, []);
 
   useEffect(() => {
-    getContents();
+    initialize();
   }, []);
 
   return (
