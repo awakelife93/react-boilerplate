@@ -54,7 +54,7 @@ Craco
 ## 실행
 
 ```
-1. npm install
+1. yarn or yarn install
 2. npm start
 ```
 
