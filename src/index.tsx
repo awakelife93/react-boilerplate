@@ -1,5 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import { Provider as ReduxProvider } from "react-redux";
 import App from "./App";
 import ActionProvider from "./common/contexts/ActionContext";
@@ -10,14 +9,13 @@ import reportWebVitals from "./reportWebVitals";
 
 const useRedux: UseReduxType = "reduxToolkit";
 
-ReactDOM.render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <ReduxProvider store={reduxSelector[useRedux]()}>
     <ActionProvider useRedux={useRedux}>
       <App />
     </ActionProvider>
   </ReduxProvider>,
-  document.getElementById("root")
-);
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
