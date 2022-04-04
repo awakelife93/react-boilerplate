@@ -35,7 +35,7 @@ const SignIn: React.FC<IComponent> = (
   }, []);
 
   const showMessageModal = (message: string): void => {
-    if (_.isFunction(window.globalFunc.showModalAction)) {
+    if (_.isFunction(window.globalFunc?.showModalAction)) {
       window.globalFunc.showModalAction({
         type: "MESSAGE",
         item: {

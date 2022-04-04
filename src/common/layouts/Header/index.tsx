@@ -45,7 +45,7 @@ const Header: React.FC<IComponent> = (
   };
 
   const updateUserInfo = () => {
-    if (_.isFunction(window.globalFunc.showModalAction)) {
+    if (_.isFunction(window.globalFunc?.showModalAction)) {
       window.globalFunc.showModalAction({
         item: {
           children: UpdateUserInfo,
@@ -61,7 +61,7 @@ const Header: React.FC<IComponent> = (
   };
 
   const showTemplateModal = () => {
-    if (_.isFunction(window.globalFunc.showModalAction)) {
+    if (_.isFunction(window.globalFunc?.showModalAction)) {
       window.globalFunc.showModalAction({
         item: {
           children: Introduce,
@@ -104,7 +104,7 @@ const Header: React.FC<IComponent> = (
         initUserInfoAction();
         routePush(RoutePath.MAIN);
       } else {
-        if (_.isFunction(window.globalFunc.showModalAction)) {
+        if (_.isFunction(window.globalFunc?.showModalAction)) {
           window.globalFunc.showModalAction({
             type: "MESSAGE",
             item: {

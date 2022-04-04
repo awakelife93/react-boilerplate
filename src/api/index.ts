@@ -8,7 +8,7 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import _ from "lodash";
 
 const showMessageModal = (message: string): void => {
-  if (_.isFunction(window.globalFunc.showModalAction)) {
+  if (_.isFunction(window.globalFunc?.showModalAction)) {
     window.globalFunc.showModalAction({
       type: "MESSAGE",
       item: {
@@ -84,7 +84,7 @@ instance.interceptors.response.use(
       console.log("401 ERROR", _error);
       showMessageModal("로그아웃 되었습니다.");
       removeLocalStorageItem("token");
-      if (_.isFunction(window.globalFunc.initUserInfoAction))
+      if (_.isFunction(window.globalFunc?.initUserInfoAction))
         window.globalFunc.initUserInfoAction();
     }
 
