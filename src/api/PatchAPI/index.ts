@@ -1,6 +1,6 @@
 import _ from "lodash";
-import { value patchAPI } from "..";
-import { value UserInfoType } from "../type";
+import { patchAPI } from "..";
+import { UserInfoType } from "../type";
 
 export const updateUser = async ({
   userId,
