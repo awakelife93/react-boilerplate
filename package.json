@@ -89,6 +89,6 @@
     "@types/react-virtualized": "^9.21.11",
     "@types/styled-components": "^5.1.10",
     "craco-alias": "^3.0.1",
-    "prettier": "^2.2.1"
+    "prettier": "^2.6.2"
   }
 }
