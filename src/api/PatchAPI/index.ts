@@ -1,6 +1,6 @@
 import _ from "lodash";
-import { patchAPI } from "..";
-import { UserInfoType } from "../type";
+import { value patchAPI } from "..";
+import { value UserInfoType } from "../type";
 
 export const updateUser = async ({
   userId,
@@ -18,7 +18,6 @@ export const updateUser = async ({
     };
 
     if (!_.isEmpty(name)) item.name = name;
-
     if (!_.isEmpty(password)) item.password = password;
 
     return await patchAPI(`users/${userId}`, item);
