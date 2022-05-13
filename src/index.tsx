@@ -4,10 +4,10 @@ import App from "./App";
 import ActionProvider from "./common/contexts/ActionContext";
 import "./index.css";
 import reduxSelector from "./redux";
-import { UseReduxType } from "./redux/type";
+import { ReduxType } from "./redux/type";
 import reportWebVitals from "./reportWebVitals";
 
-const useRedux: UseReduxType = "reduxToolkit";
+const useRedux: ReduxType = "toolkit";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <ReduxProvider store={reduxSelector[useRedux]()}>

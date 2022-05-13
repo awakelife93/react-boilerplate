@@ -1,4 +1,4 @@
-import { ReduxActionProviderType, UseReduxType, UserStoreItemType } from "@/redux/type";
+import { ReduxActionProviderType, ReduxType, UserStoreItemType } from "@/redux/type";
 import React, { createContext } from "react";
 import { useDispatch } from "react-redux";
 import { ModalItemType } from "../components/Modal/type";
@@ -6,7 +6,7 @@ import { ThemeItemType } from "../type";
 
 export const ActionContext = createContext<ReduxActionProviderType | null>(null);
 
-const ActionProvider = ({ children, useRedux } : { children: React.ReactElement, useRedux: UseReduxType }) => {
+const ActionProvider = ({ children, useRedux } : { children: React.ReactElement, useRedux: ReduxType }) => {
   const {
     initShowAdAction,
     initShowModalAction,
