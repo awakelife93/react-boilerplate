@@ -5,7 +5,7 @@ import { Container } from "../components";
 
 type ItemType = {
   displayName: string;
-  value: any;
+  value: unknown;
 }
 
 type MenuBoxType = {
