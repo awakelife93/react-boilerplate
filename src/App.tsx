@@ -5,7 +5,7 @@ import { getThemeItem } from "./api/GetAPI";
 import "./App.css";
 import DesignProvider from "./common/contexts/DesignContext";
 import useAction from "./common/hooks/useAction";
-import useAuth from "./common/hooks/useAuth";
+import useAuth from "./common/hooks/useInitUserProfile";
 import { generateThemeStyle } from "./common/styles";
 import "./core/i18n";
 import Route from "./route";
