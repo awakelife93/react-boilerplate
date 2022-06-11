@@ -1,24 +1,24 @@
-# React Client Template
+# React Client Boilerplate
 
-## React Client + React Admin + Gateway Server + API Server + Style Server
+## React Client + React Admin + API Gateway Server + API Server + Style Server
 
 ![구조](https://user-images.githubusercontent.com/20429356/158008003-23315066-bca4-402c-af4e-10d81a886ec7.png)
 
 ## Admin Repository
 
-https://github.com/awakelife93/react-admin-template
+https://github.com/awakelife93/react-admin-boilerplate
 
 ## Gateway Server Repository
 
-https://github.com/awakelife93/spring-boot-gateway
+https://github.com/awakelife93/spring-boot-api-gateway
 
 ## API Server Repository
 
-https://github.com/awakelife93/node-api-template
+https://github.com/awakelife93/express-boilerplate
 
 ## Style Server Repository
 
-https://github.com/awakelife93/node-design-template
+https://github.com/awakelife93/express-design-system-boilerplate
 
 ## [노트]
 

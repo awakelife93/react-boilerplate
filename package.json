@@ -1,9 +1,9 @@
 {
   "version": "0.1.0",
-  "description": "React Template",
+  "description": "React Boilerplate",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/awakelife93/react-template.git"
+    "url": "git+https://github.com/awakelife93/react-boilerplate.git"
   },
   "keywords": [
     "React",
@@ -13,15 +13,14 @@
     "Design",
     "design system",
     "Theme",
-    "React Temaplte",
+    "React Boilerplate",
     "react",
-    "template",
-    "react template"
+    "boilerplate"
   ],
   "author": "HyunwooPark",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/awakelife93/react-template/issues"
+    "url": "https://github.com/awakelife93/react-boilerplate/issues"
   },
   "private": true,
   "dependencies": {
