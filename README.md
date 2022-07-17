@@ -2,7 +2,7 @@
 
 ## React Client + React Admin + API Gateway Server + API Server + Style Server
 
-![구조](https://user-images.githubusercontent.com/20429356/158008003-23315066-bca4-402c-af4e-10d81a886ec7.png)
+![Architecture](https://user-images.githubusercontent.com/20429356/158008003-23315066-bca4-402c-af4e-10d81a886ec7.png)
 
 ## Admin Repository
 
@@ -20,42 +20,25 @@ https://github.com/awakelife93/express-boilerplate
 
 https://github.com/awakelife93/express-design-system-boilerplate
 
-## [노트]
+## [Note]
 
-### 설명
-
-```
-1. 디자인 시스템에 포함되는 모든 요소는 테마에 따라 "\_\_"을 구분자로 약속함으로써 어느 테마를 위해 제작되었는지 표시한다.
-```
-
-## 작성자
+### Description
 
 ```
-2020.06.02
-Author: 박현우
+1. All elements included in the design system indicate which theme they were made for by promising "\_\_" as a delimiter depending on the theme.
 ```
 
-## Framework & Library
+## Author
 
 ```
-React
-React Icons
-Styled-Component
-Axios
-Bootstrap
-Material
-I18n
-Redux
-Redux ToolKit
-Redux Thunk
-Craco
+2020.06.02 ->
+Author: Hyunwoo Park
 ```
-
-## 실행
+## Execute
 
 ```
-1. yarn or yarn install
-2. npm start
+1. yarn install
+2. yarn start
 ```
 
 #
