@@ -34,7 +34,7 @@ https://github.com/awakelife93/express-design-system-boilerplate
 2020.06.02 ->
 Author: Hyunwoo Park
 ```
-## Execute
+## Getting Started
 
 ```
 1. yarn install
